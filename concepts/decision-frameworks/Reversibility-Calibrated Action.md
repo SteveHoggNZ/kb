@@ -73,3 +73,7 @@ This is one of three related frameworks about **resource allocation under uncert
 - [[_MOCs/Decision Frameworks]] — Back to the MOC
 - [[Scarcity to Abundance - A Unifying Lens]] — Another cross-domain synthesis
 - [[SAGE Synthesis]] — The synthesis log
+
+---
+
+*Updated [[2026-02-16]] — Added "The Bike Principle" section*

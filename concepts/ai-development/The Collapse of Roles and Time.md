@@ -197,3 +197,7 @@ As [[Rules of Thumb]] puts it: "If a decision is not permanent, it is better to 
 ## Sources
 
 - [The Collapse of Roles and Time (YouTube)](https://www.youtube.com/watch?v=q6p-_W6_VoM) — Nate B. Jones
+
+---
+
+*Updated [[2026-02-16]] — Removed redundant Related Concepts list; added Rules of Thumb quote to Bike Principle*

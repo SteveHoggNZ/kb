@@ -69,3 +69,7 @@ Rules of thumb are pattern-matching shortcuts, not algorithms. They can mislead:
 ## See Also
 
 - [[_MOCs/Decision Frameworks]] — Back to the MOC
+
+---
+
+*Updated [[2026-02-16]] — Restructured to weave links into context*

@@ -167,3 +167,7 @@ Part of structuring intent well is knowing what NOT to specify — letting the a
 ## See Also
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
+
+---
+
+*Updated [[2026-02-16]] — Added The Collapse of Roles and Time to Connection section; removed redundant list*

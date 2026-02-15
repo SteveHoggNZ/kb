@@ -218,3 +218,7 @@ The constraint isn't the enemy of good thinking — it's the **forcing function*
 ## See Also
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
+
+---
+
+*Updated [[2026-02-16]] — Added missing connections to Connection section; removed redundant list*
