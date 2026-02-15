@@ -31,7 +31,7 @@ The connection is explained where it matters, not orphaned at the bottom.
 
 When making updates to the KB, record them in a daily note:
 
-- **Location:** Root folder, named `YYYY-MM-DD.md`
+- **Location:** `_periodic-notes/YYYY-MM-DD.md`
 - **Structure:** Include prev/next navigation links at top
 - **Content:** Summarise what changed and why
 
@@ -78,4 +78,4 @@ This creates bidirectional linking between daily notes and concept notes.
 - `concepts/` — Main ideas organised by domain (ai-development, decision-frameworks, etc.)
 - `reference/` — Technical reference, snippets, setup guides
 - `_MOCs/` — Maps of Content for navigation
-- Daily notes at root — Session history (`YYYY-MM-DD.md`)
+- `_periodic-notes/` — Daily notes for session history (`YYYY-MM-DD.md`)
