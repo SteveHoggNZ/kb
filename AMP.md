@@ -1,5 +1,10 @@
 TODO
 
+```bash
+./packages/python/experiments/event_trigger/run.sh --title "We need to cut costs ASAP. "
+```
+
+
 Strategy - https://aistudio.google.com/prompts/1H-0glcOe99I8qtYyZS7IEUSu3HvjhdEr
 
 - [ ] Implement activity stream, see `feature/add-app-frame-diffs-2` branch
