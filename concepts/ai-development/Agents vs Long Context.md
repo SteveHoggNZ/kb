@@ -105,3 +105,7 @@ Each modality compensates for the others' blind spots. The deliberate alternatio
 ## See Also
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
+
+---
+
+*Updated [[2026-02-16]] — Added "Beyond Either/Or: The Orchestration Pattern" section*

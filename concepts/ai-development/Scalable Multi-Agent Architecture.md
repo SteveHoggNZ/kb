@@ -129,6 +129,7 @@ This creates productive tension with [[Teams Of Agents - LLM Specialisation+Pers
 
 | Concept | Connection |
 |---------|------------|
+| [[Law vs Physics in Agent Design]] | Hard ceilings (`max_entries`, rate limits) are Physics — they can't be bypassed. Prompts ("stay in budget") are Law — they can be ignored. Both layers needed. |
 | [[Context Distillation Loop - amnesia as a feature]] | Episodic operation = forced distillation. "Amnesia" is a feature here too. |
 | [[The Great Inversion]] | Orchestration is cheap; agent complexity is the bottleneck |
 | [[Strategic vs Tactical Documentation]] | Minimum Viable Context = tactical docs only, no strategic loading |
@@ -138,6 +139,7 @@ This creates productive tension with [[Teams Of Agents - LLM Specialisation+Pers
 
 ## Related Concepts
 
+- [[Law vs Physics in Agent Design]] — The enforcement layer that makes these rules work
 - [[Teams Of Agents - LLM Specialisation+Personas]] — Contrasting approach for small-scale quality
 - [[Context Distillation Loop - amnesia as a feature]] — Episodic operation as forced clarity
 - [[Agents vs Long Context]] — Another dimension of the agent architecture trade-off
@@ -146,3 +148,7 @@ This creates productive tension with [[Teams Of Agents - LLM Specialisation+Pers
 ## Sources
 
 - [Scalable Multi-Agent Architecture (YouTube)](https://youtu.be/2EXyj_fHU48?si=tgjOMKUOdZKp6uBT) — Nate B. Jones
+
+---
+
+*Updated [[2026-02-16]] — Added Law vs Physics connection to existing patterns*
