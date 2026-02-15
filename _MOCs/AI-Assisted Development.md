@@ -56,6 +56,9 @@ In humans, expertise produces expert language (language is a *symptom* of though
 ### [[concepts/ai-development/Scalable Multi-Agent Architecture|Scalable Multi-Agent Architecture]]
 The "human team" fallacy: mimicking human collaboration fails at scale. Coordination overhead kills parallelism. Five rules: (1) Two tiers not teams (planners + isolated workers), (2) Workers stay ignorant (minimum viable context), (3) No shared state (3-5 tools max), (4) Plan for endings (episodic operation), (5) Sophisticated orchestration, simple agents. At scale, 10,000 dumb workers beat 100 smart ones. *Contrasts with Multi-Persona approach — different tools for different scales.*
 
+### [[concepts/ai-development/Law vs Physics in Agent Design|Law vs Physics in Agent Design]]
+Law (prompts) tells agents what to do; Physics (platform/API) ensures they can't do what they shouldn't. Law is voluntary and degrades under context pressure. Physics is involuntary — a 429 is a 429. **Design rule:** For every Law, ask "What happens when the agent ignores this?" If catastrophic → add Physics. Both layers are necessary: Law without Physics → agents drift; Physics without Law → agents crash blindly.
+
 ### [[concepts/ai-development/Strategic vs Tactical Documentation|Strategic vs Tactical Documentation]]
 Two-tier documentation for AI agent consumption. Strategic (the WHY) = stable, foundational, load at session start. Tactical (the HOW) = volatile, actionable, load per-task. Stability correlates with importance — things that change least are foundational constraints that must always be respected.
 
