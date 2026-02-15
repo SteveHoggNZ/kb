@@ -176,6 +176,13 @@ All three are about **resource allocation under uncertainty**:
 **Content:** The "human team" fallacy — mimicking human collaboration fails at scale due to coordination overhead. Five rules: (1) Two tiers not teams (planners + isolated workers), (2) Workers stay ignorant (minimum viable context prevents scope creep), (3) No shared state (3-5 tools max, merge via external systems), (4) Plan for endings (episodic operation, idempotent state), (5) Sophisticated orchestration, simple agents. Google/MIT finding: more agents can perform *worse* past 45% single-agent accuracy. Creates productive tension with Multi-Persona approach — different tools for different scales.
 **Added:** 2026-01-27
 
+### Law vs Physics in Agent Design
+**Location:** `concepts/ai-development/Law vs Physics in Agent Design.md`
+**MOC:** AI-Assisted Development
+**Source:** Internal planning document (AMP multi-agent coordination protocol)
+**Content:** Fundamental distinction for reliable agentic systems. Law (prompts) = voluntary instructions, degrades under context pressure. Physics (API/platform) = involuntary guards, cannot be bypassed. Design rule: for every Law, ask "What happens when the agent ignores this?" — if catastrophic, add Physics. Three failure modes: Law without Physics (drift), Physics without Law (blind crashes), Law + Physics (bounded failure). The advisory layer (warnings before hard limits) bridges both. Connects to Scalable Multi-Agent Architecture (hard ceilings), Colleague vs Tool-Shaped AI (spec precision), The Great Inversion (cheap execution enables Physics-heavy design).
+**Added:** 2026-02-15
+
 ---
 
 ## Edits to Existing Notes
