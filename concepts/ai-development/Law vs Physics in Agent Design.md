@@ -159,6 +159,7 @@ The goal isn't perfect compliance. It's **bounded failure** — when things go w
 
 ## Related Concepts
 
+- [[Physics Thinking]] — The umbrella meta-principle this instantiates
 - [[Database Physics vs Policy]] — Same principle at the infrastructure layer (columns vs JSONB)
 - [[Scalable Multi-Agent Architecture]] — Hard ceilings as universal pattern
 - [[Colleague vs Tool-Shaped AI]] — Spec precision determines Physics requirements

@@ -1,11 +1,11 @@
 {
-  "collapse-filter": false,
-  "search": "2 tier",
+  "collapse-filter": true,
+  "search": "physics",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "path:_MOCs",

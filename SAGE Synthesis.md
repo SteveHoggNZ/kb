@@ -44,6 +44,15 @@
 
 ---
 
+### Physics Thinking
+**Location:** `concepts/design-principles/Physics Thinking.md`
+**MOC:** Design Principles
+**Domains connected:** Design Principles, AI Development, Infrastructure, Databases
+**Insight:** At every layer of a system, distinguish what components *should* do (Law/Policy) from what they *can* do (Physics). Catastrophic failures must be prevented by Physics, not just discouraged by Law. The pattern applies across agents (prompts vs API limits), databases (JSONB vs columns), APIs (docs vs validation), UI (hints vs disabled states), and infrastructure (runbooks vs circuit breakers). The goal isn't perfect compliance — it's **bounded failure**. Unifies [[Law vs Physics in Agent Design]] and [[Database Physics vs Policy]] under a single meta-principle.
+**Added:** 2026-02-16
+
+---
+
 ## The Meta-Connection
 
 The three core syntheses (Reversibility-Calibrated Action, Signal in the Scar, Leverage Selection) aren't separate frameworks — they're facets of the same meta-principle:

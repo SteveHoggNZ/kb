@@ -12,6 +12,9 @@ How to write good code and build good systems.
 ### [[concepts/design-principles/Taste in Software|Taste in Software]]
 Christopher Alexander's "Quality Without a Name" — why some products *feel* right while others feel generic. Two types of architecture: Type 1 (explicit rules, delegatable to AI) vs Type 2 (taste, coherence, vision — not delegatable). In the agentic era, taste is the irreducible human contribution. You can delegate construction; you cannot delegate vision.
 
+### [[concepts/design-principles/Physics Thinking|Physics Thinking]]
+Design meta-principle: distinguish what components *should* do (Law/Policy) from what they *can* do (Physics). Ensure catastrophic failures are prevented by Physics, not just discouraged by Law. Applies across all layers — agents, APIs, databases, UI, infrastructure. The goal isn't perfect compliance; it's **bounded failure**. See [[Law vs Physics in Agent Design]] and [[Database Physics vs Policy]] for layer-specific deep-dives.
+
 ---
 
 ## Foundational Concepts

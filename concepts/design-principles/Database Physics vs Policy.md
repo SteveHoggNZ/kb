@@ -173,6 +173,7 @@ Everything else goes in JSONB `settings` or `metadata`.
 
 ## Related Concepts
 
+- [[Physics Thinking]] — The umbrella meta-principle this instantiates
 - [[Law vs Physics in Agent Design]] — Same principle at the agent layer
 - [[Scalable Multi-Agent Architecture]] — These primitives enable the architecture
 - [[Idempotency Keys]] — Another Physics primitive
