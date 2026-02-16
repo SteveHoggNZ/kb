@@ -194,3 +194,8 @@ And to [[The Barbell Economy]]'s layer model:
 ## See Also
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
+- [[reference/How to Document a Project|How to Document a Project]] — Practical how-to guide that applies this two-tier model
+
+---
+
+*Updated [[2026-02-16]] — Added link to How to Document a Project reference guide*
