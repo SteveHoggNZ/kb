@@ -1,4 +1,4 @@
-# Strategic vs Tactical Documentation
+# Strategic vs Tactical Documentation - Split Documentation - 2-tier Documentation
 
 A two-tier documentation structure designed for AI agent consumption, optimizing for context relevance and token efficiency.
 
