@@ -212,6 +212,7 @@ When compute is cheap, it's more economical to let a component hit a wall and re
 
 | Principle | Connection |
 |-----------|------------|
+| [[Trinity Protocol]] | Three primitives (Semaphore, Bell, Watchdog) with Physics backstops for multi-agent coordination |
 | [[Reversibility-Calibrated Action]] | Calibrate Physics strictness to reversibility — irreversible actions need stronger guards |
 | [[Scalable Multi-Agent Architecture]] | Hard ceilings are Physics; the "5 rules" are Law backed by Physics |
 | [[RLS-First Authorization]] | Database as final Physics layer — middleware is optimization, DB is truth |
@@ -246,6 +247,7 @@ The goal isn't perfect compliance. It's **bounded failure**.
 
 - [[Law vs Physics in Agent Design]] — Deep-dive on agent/prompt layer
 - [[Database Physics vs Policy]] — Deep-dive on database/schema layer
+- [[Trinity Protocol]] — Concrete implementation for multi-agent coordination
 - [[The Great Inversion]] — Economics that make Physics-heavy design viable
 - [[Reversibility-Calibrated Action]] — Calibrate Physics strictness to reversibility
 - [[RLS-First Authorization]] — Database as final Physics enforcement

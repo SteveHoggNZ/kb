@@ -160,6 +160,7 @@ The goal isn't perfect compliance. It's **bounded failure** — when things go w
 ## Related Concepts
 
 - [[Physics Thinking]] — The umbrella meta-principle this instantiates
+- [[Trinity Protocol]] — Concrete implementation: Semaphore (state), Bell (signal), Watchdog (timers) with Physics backstops
 - [[Database Physics vs Policy]] — Same principle at the infrastructure layer (columns vs JSONB)
 - [[Scalable Multi-Agent Architecture]] — Hard ceilings as universal pattern
 - [[Colleague vs Tool-Shaped AI]] — Spec precision determines Physics requirements
@@ -175,4 +176,4 @@ The goal isn't perfect compliance. It's **bounded failure** — when things go w
 
 ---
 
-*Updated [[2026-02-16]] — Added Database Physics vs Policy cross-reference*
+*Updated [[2026-02-16]] — Added Trinity Protocol as concrete implementation example*

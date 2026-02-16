@@ -59,6 +59,9 @@ The "human team" fallacy: mimicking human collaboration fails at scale. Coordina
 ### [[concepts/ai-development/Law vs Physics in Agent Design|Law vs Physics in Agent Design]]
 Law (prompts) tells agents what to do; Physics (platform/API) ensures they can't do what they shouldn't. Law is voluntary and degrades under context pressure. Physics is involuntary — a 429 is a 429. **Design rule:** For every Law, ask "What happens when the agent ignores this?" If catastrophic → add Physics. Both layers are necessary: Law without Physics → agents drift; Physics without Law → agents crash blindly.
 
+### [[concepts/ai-development/Trinity Protocol|Trinity Protocol]]
+Multi-agent coordination framework with three primitives: **Semaphore** (state — `_data` frames), **Bell** (signal — mentions), **Watchdog** (entropy — timers). One Law: "Show and Tell" — when you complete work, patch the state AND mention the next agent. Physics backstops: Watchdog timers fire if no handoff arrives; Sticky Streams auto-coalesce entries within 3s window. A concrete implementation of [[Law vs Physics in Agent Design|Law vs Physics]] for coordination.
+
 ### [[Strategic vs Tactical Documentation|Strategic vs Tactical Documentation - Split Documentation]]
 Two-tier documentation for AI agent consumption. Strategic (the WHY) = stable, foundational, load at session start. Tactical (the HOW) = volatile, actionable, load per-task. Stability correlates with importance — things that change least are foundational constraints that must always be respected.
 
