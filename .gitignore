@@ -1,3 +1,10 @@
 .DS_Store
-.obsidian/
 .smart-env/
+
+# Obsidian - ignore machine-specific, share config
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+
+# Claude Code - local settings have machine-specific paths
+.claude/settings.local.json

@@ -1,0 +1,72 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "path:_MOCs",
+      "color": {
+        "a": 1,
+        "rgb": 10494192
+      }
+    },
+    {
+      "query": "path:concepts/design-principles",
+      "color": {
+        "a": 1,
+        "rgb": 5275647
+      }
+    },
+    {
+      "query": "path:concepts/philosophy",
+      "color": {
+        "a": 1,
+        "rgb": 5025616
+      }
+    },
+    {
+      "query": "path:concepts/leadership",
+      "color": {
+        "a": 1,
+        "rgb": 16744448
+      }
+    },
+    {
+      "query": "path:concepts/decision-frameworks",
+      "color": {
+        "a": 1,
+        "rgb": 16771584
+      }
+    },
+    {
+      "query": "path:concepts/ai-development",
+      "color": {
+        "a": 1,
+        "rgb": 16711935
+      }
+    },
+    {
+      "query": "path:work",
+      "color": {
+        "a": 1,
+        "rgb": 52945
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": -0.5,
+  "nodeSizeMultiplier": 1.26797688802083,
+  "lineSizeMultiplier": 1.18304036458333,
+  "collapse-forces": true,
+  "centerStrength": 0.253011067708333,
+  "repelStrength": 10.0260416666667,
+  "linkStrength": 1,
+  "linkDistance": 295,
+  "scale": 0.4164960314205143,
+  "close": false
+}
