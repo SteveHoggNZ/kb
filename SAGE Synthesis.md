@@ -183,6 +183,13 @@ All three are about **resource allocation under uncertainty**:
 **Content:** Fundamental distinction for reliable agentic systems. Law (prompts) = voluntary instructions, degrades under context pressure. Physics (API/platform) = involuntary guards, cannot be bypassed. Design rule: for every Law, ask "What happens when the agent ignores this?" — if catastrophic, add Physics. Three failure modes: Law without Physics (drift), Physics without Law (blind crashes), Law + Physics (bounded failure). The advisory layer (warnings before hard limits) bridges both. Connects to Scalable Multi-Agent Architecture (hard ceilings), Colleague vs Tool-Shaped AI (spec precision), The Great Inversion (cheap execution enables Physics-heavy design).
 **Added:** 2026-02-15
 
+### Database Physics vs Policy
+**Location:** `concepts/design-principles/Database Physics vs Policy.md`
+**MOC:** Design Principles
+**Source:** Internal architecture discussion
+**Content:** Decision framework for Columns vs JSONB in schema design. Three litmus tests: (1) Foreign Key Test — references another table? Column. (2) Indexing/Poller Test — background job queries it? Column. (3) Write-Path Gatekeeper Test — checked on every hot-path write? Column. Copy-Down pattern (resolve hierarchical settings at creation time) beats Runtime Lookup (join 3 tables every query). Same Law vs Physics philosophy at the infrastructure layer — Physics is what the database *cannot* violate; Policy is what the application *should* follow.
+**Added:** 2026-02-16
+
 ---
 
 ## Edits to Existing Notes

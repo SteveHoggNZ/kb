@@ -159,6 +159,7 @@ The goal isn't perfect compliance. It's **bounded failure** — when things go w
 
 ## Related Concepts
 
+- [[Database Physics vs Policy]] — Same principle at the infrastructure layer (columns vs JSONB)
 - [[Scalable Multi-Agent Architecture]] — Hard ceilings as universal pattern
 - [[Colleague vs Tool-Shaped AI]] — Spec precision determines Physics requirements
 - [[Strategic vs Tactical Documentation]] — Law for agent behavior guidance
@@ -169,3 +170,8 @@ The goal isn't perfect compliance. It's **bounded failure** — when things go w
 ## See Also
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
+- [[_MOCs/Design Principles]] — Infrastructure-level patterns
+
+---
+
+*Updated [[2026-02-16]] — Added Database Physics vs Policy cross-reference*

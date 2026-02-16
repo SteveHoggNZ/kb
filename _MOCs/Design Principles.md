@@ -103,6 +103,9 @@ Resilient retry strategy. Prevents thundering herds. Formula: `min(initial × 2^
 ### [[concepts/design-principles/Graduated Defense|Graduated Defense]]
 Multi-layer rate limiting with escalating consequences. Different limits for different risk profiles. Cooldowns compound.
 
+### [[concepts/design-principles/Database Physics vs Policy|Database Physics vs Policy]]
+Decision framework for Columns vs JSONB. Three litmus tests: (1) Foreign Key Test — references another table? Column. (2) Indexing/Poller Test — background job queries it? Column. (3) Write-Path Gatekeeper Test — checked on every hot-path write? Column. Everything else goes in JSONB. Copy-Down pattern beats Runtime Lookup for hierarchical settings.
+
 ---
 
 ## Security & Authorization
