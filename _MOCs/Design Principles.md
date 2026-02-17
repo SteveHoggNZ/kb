@@ -109,6 +109,9 @@ Multi-layer rate limiting with escalating consequences. Different limits for dif
 ### [[concepts/design-principles/Database Physics vs Policy|Database Physics vs Policy]]
 Decision framework for Columns vs JSONB. Three litmus tests: (1) Foreign Key Test — references another table? Column. (2) Indexing/Poller Test — background job queries it? Column. (3) Write-Path Gatekeeper Test — checked on every hot-path write? Column. Everything else goes in JSONB. Copy-Down pattern beats Runtime Lookup for hierarchical settings.
 
+### [[concepts/design-principles/Logical Resource Separation|Logical Resource Separation]]
+One connection string per concern, even when all concerns share one physical resource. Makes future scaling a config change, not a code change. Apply to Redis, databases, S3 buckets, API keys — anywhere two features would benefit from different scaling or tuning policies.
+
 ---
 
 ## Security & Authorization
