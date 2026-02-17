@@ -35,6 +35,8 @@ https://youtu.be/PScdHzUiBLA
 
 TODO
 
+* Are we using proper environment variables for all Redis server usage? We may be using one physical Redis instance right now, but we should be using a logical one for each piece of functionality so that we can scale in the future. 
+* 
 * Spit-up MCPs: communication, ui, etc
 
 
