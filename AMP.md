@@ -3,6 +3,11 @@
 ./packages/python/experiments/event_trigger/run.sh --title "We need to cut costs ASAP. "
 ```
 
+```
+/context-dump packages/go/services/amp, apps/ui, packages/python/experiments/claude_agent, packages/python/mcp_server, packages/python/agent_sdk,  
+  docs/01_vision, docs/02_strategy, .ai/plans/_p0-_specialise-agents.md, output to /Users/one/Projects/amp-cloud/amp2/tmp 
+```
+
 
 ```
 We have a few things to work through here. We want to have the right balance of physics and law.  
