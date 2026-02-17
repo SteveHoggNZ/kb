@@ -35,7 +35,7 @@ https://youtu.be/PScdHzUiBLA
 
 TODO
 
-* Are we using proper environment variables for all Redis server usage? We may be using one physical Redis instance right now, but we should be using a logical one for each piece of functionality so that we can scale in the future. 
+* For personal assistants, they probably need to use the Thread ID when building their session. Otherwise, the same personal assistant used in the same channel by different people will be able to see content they shouldn't. 
 * 
 * Spit-up MCPs: communication, ui, etc
 
