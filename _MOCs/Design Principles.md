@@ -112,6 +112,9 @@ Decision framework for Columns vs JSONB. Three litmus tests: (1) Foreign Key Tes
 ### [[concepts/design-principles/Logical Resource Separation|Logical Resource Separation]]
 One connection string per concern, even when all concerns share one physical resource. Makes future scaling a config change, not a code change. Apply to Redis, databases, S3 buckets, API keys — anywhere two features would benefit from different scaling or tuning policies.
 
+### [[concepts/design-principles/Agent Ergonomics|Agent Ergonomics]]
+Cockpit shape coding applied to software: if two things do different things, they must *feel* different. Introduces **Affordance** as the middle layer between Law and Physics — reducing cognitive load through design rather than rules or hard limits. Two dimensions: Human→Agent (interaction modes, feedback shapes) and Agent→Tool (distinct names, parameter shapes, response structures). Includes the Blindfold Test, Swap Test, and Pressure Test as design heuristics.
+
 ---
 
 ## Security & Authorization

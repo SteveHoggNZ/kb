@@ -166,6 +166,8 @@ Binary Law/Physics misses a middle ground: **warnings before hard limits**.
 
 Advisories let components adjust behavior *before* hitting walls — reducing wasted work while maintaining safety.
 
+[[Agent Ergonomics]] extends this further: **Affordance** makes the advisory layer *perceptual* rather than informational. Shape-coded tools, distinct response structures, and typed parameters mean actors feel the difference without actively checking — like a pilot identifying the gear lever by its wheel shape.
+
 ---
 
 ## Design Heuristics
@@ -212,6 +214,7 @@ When compute is cheap, it's more economical to let a component hit a wall and re
 
 | Principle | Connection |
 |-----------|------------|
+| [[Agent Ergonomics]] | Affordance as the perceptual layer between Law and Physics — shape coding for tools and APIs |
 | [[Trinity Protocol]] | Three primitives (Semaphore, Bell, Watchdog) with Physics backstops for multi-agent coordination |
 | [[Reversibility-Calibrated Action]] | Calibrate Physics strictness to reversibility — irreversible actions need stronger guards |
 | [[Scalable Multi-Agent Architecture]] | Hard ceilings are Physics; the "5 rules" are Law backed by Physics |
