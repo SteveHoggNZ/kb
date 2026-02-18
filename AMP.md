@@ -41,6 +41,7 @@ https://youtu.be/PScdHzUiBLA
 TODO
 
 * AMP main.go refactor - https://aistudio.google.com/prompts/1cPn7vRs9mCHf9GjgD3RyJ7p-8O0t1k8V
+* Is this a good idea? ![[Pasted image 20260218163701.png]]
 * 
 * Spit-up MCPs: communication, ui, etc
 
