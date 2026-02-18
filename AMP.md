@@ -40,7 +40,7 @@ https://youtu.be/PScdHzUiBLA
 
 TODO
 
-* For personal assistants, they probably need to use the Thread ID when building their session. Otherwise, the same personal assistant used in the same channel by different people will be able to see content they shouldn't. 
+* AMP main.go refactor - https://aistudio.google.com/prompts/1cPn7vRs9mCHf9GjgD3RyJ7p-8O0t1k8V
 * 
 * Spit-up MCPs: communication, ui, etc
 
