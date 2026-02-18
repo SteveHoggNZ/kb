@@ -41,7 +41,7 @@ https://youtu.be/PScdHzUiBLA
 TODO
 
 * AMP main.go refactor - https://aistudio.google.com/prompts/1cPn7vRs9mCHf9GjgD3RyJ7p-8O0t1k8V
-* Is this a good idea? ![[Pasted image 20260218163701.png]]![[Pasted image 20260218164443.png]]
+* Is this a good idea? ![[Pasted image 20260218163701.png]]![[Pasted image 20260218164443.png]]![[Pasted image 20260218192139.png]]![[Pasted image 20260218192600.png]]
 * Perhaps be need an action with more detail? Agents in the chat, why they're there i.e. semantic matches, etc ![[Pasted image 20260218164206.png]]
 * Spit-up MCPs: communication, ui, etc
 
