@@ -48,13 +48,13 @@ TODO
 * Bug report. The green tick shows when the agent's still working. I think this could be a timing issue depending on when I open the channel. If the agent is already thinking, then we get a spinny wheel. If it hasn't already, we get a checkbox from the start. 
 * What other effective communication protocols should be run? 
 	* https://aistudio.google.com/prompts/1Z_G_S9uXI2N3IFqkU8cWsfZnWuuOF9xt
+	* Is our current implementation adhering to our principles? e.g. thread budget
 	* Shared task list, Kanban, open discussion, round base, communication, auctions, etc. 
 	* What shared physics do these have that would allow the logic to be in prompts instead of API? 
 	* What other fail safes like timers should we consider? 
 		* Message must include a mention or "Reporter must-callback" physics: Add an optional reporter_agent_id field to thread metadata. When a thread is closed, if the reporter never mentioned the Commander, record a negative physics signal. This is observational (learning loop) not blocking (400 error). Over time, agents with low callback rates get lower trust scores
 * What is the right balance of AMP, MCP, Agent functionality that is strategically aligned and KISS?
-	* Are we adhering to 
-
+	* Are we adhering to [Scalable Multi-Agent Architecture](obsidian://open?vault=kb&file=concepts%2Fai-development%2FScalable%20Multi-Agent%20Architecture)?
 
 
 Strategy - https://aistudio.google.com/prompts/1H-0glcOe99I8qtYyZS7IEUSu3HvjhdEr
