@@ -48,6 +48,7 @@ TODO
 * Bug report. The green tick shows when the agent's still working. I think this could be a timing issue depending on when I open the channel. If the agent is already thinking, then we get a spinny wheel. If it hasn't already, we get a checkbox from the start. 
 * What other effective communication protocols should be run? 
 	* The round-based communication is working really well. What should we do for communication that is better suited for open-ended conversations? For example, brainstorming sessions about what to do in the next round. It would be useful to have a physics-supported way of facilitating these types of rounds too. In addition to that, allowing agents to run a shared checklist or shared Kanban board of activities could be another communication protocol. Combining these approaches
+		* Workflow physics with Gemini 3.1 https://aistudio.google.com/prompts/1Z_G_S9uXI2N3IFqkU8cWsfZnWuuOF9xt
 
 	* https://aistudio.google.com/prompts/1Z_G_S9uXI2N3IFqkU8cWsfZnWuuOF9xt
 	* Is our current implementation adhering to our principles? e.g. thread budget
