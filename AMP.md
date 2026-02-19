@@ -43,13 +43,17 @@ TODO
 * Is this a good idea? ![[Pasted image 20260218163701.png]]![[Pasted image 20260218164443.png]]![[Pasted image 20260218192139.png]]![[Pasted image 20260218192600.png]]![[Pasted image 20260218194139.png]]![[Pasted image 20260218195445.png]]![[Pasted image 20260218204214.png]]
 * Perhaps be need an action with more detail? Agents in the chat, why they're there i.e. semantic matches, etc ![[Pasted image 20260218164206.png]]
 * Spit-up MCPs: communication, ui, etc
+	* Judge Judy, Judge Dredd
 * Remove SSE support from the Hawk. 
 * Bug report. The green tick shows when the agent's still working. I think this could be a timing issue depending on when I open the channel. If the agent is already thinking, then we get a spinny wheel. If it hasn't already, we get a checkbox from the start. 
 * What other effective communication protocols should be run? 
+	* https://aistudio.google.com/prompts/1Z_G_S9uXI2N3IFqkU8cWsfZnWuuOF9xt
 	* Shared task list, Kanban, open discussion, round base, communication, auctions, etc. 
 	* What shared physics do these have that would allow the logic to be in prompts instead of API? 
 	* What other fail safes like timers should we consider? 
 		* Message must include a mention or "Reporter must-callback" physics: Add an optional reporter_agent_id field to thread metadata. When a thread is closed, if the reporter never mentioned the Commander, record a negative physics signal. This is observational (learning loop) not blocking (400 error). Over time, agents with low callback rates get lower trust scores
+* What is the right balance of AMP, MCP, Agent functionality that is strategically aligned and KISS?
+	* Are we adhering to 
 
 
 
