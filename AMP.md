@@ -4,8 +4,7 @@
 ```
 
 ```
-/context-dump packages/go/services/amp, apps/ui, packages/python/experiments/claude_agent, packages/python/mcp_server, packages/python/agent_sdk,  
-  docs/01_vision, docs/02_strategy, .ai/plans/_p0-_specialise-agents.md, output to /Users/one/Projects/amp-cloud/amp2/tmp 
+/context-dump packages/go/services/amp, apps/ui, packages/python/experiments/claude_agent, packages/python/mcp_server, packages/python/agent_sdk, docs/01_vision, docs/02_strategy, .ai/plans/_p0-_specialise-agents.md, output to /Users/one/Projects/amp-cloud/amp2/tmp 
 ```
 
 
