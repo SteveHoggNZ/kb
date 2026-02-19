@@ -53,6 +53,7 @@ TODO
 	* What shared physics do these have that would allow the logic to be in prompts instead of API? 
 	* What other fail safes like timers should we consider? 
 		* Message must include a mention or "Reporter must-callback" physics: Add an optional reporter_agent_id field to thread metadata. When a thread is closed, if the reporter never mentioned the Commander, record a negative physics signal. This is observational (learning loop) not blocking (400 error). Over time, agents with low callback rates get lower trust scores
+	* Where could these protocols be displayed like shared checklist or Kanban? Is something inside the thread a good idea or is a link from the thread to the app tab a better idea? 
 * What is the right balance of AMP, MCP, Agent functionality that is strategically aligned and KISS?
 	* Are we adhering to [Scalable Multi-Agent Architecture](obsidian://open?vault=kb&file=concepts%2Fai-development%2FScalable%20Multi-Agent%20Architecture)?
 
