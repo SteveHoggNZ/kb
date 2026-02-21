@@ -1,4 +1,7 @@
 
+* The principle of stigmergy is correct: database stores breadcrumbs, MCP server serves them back JIT
+* Is there something we can do with responses to tool calls? So for example, if an agent posts to a thread and we accept that message response, we can say, hey, remember you've got two outstanding to-dos. 
+
 ```bash
 ./packages/python/experiments/event_trigger/run.sh --title "We need to cut costs ASAP. "
 ```
@@ -6,32 +9,6 @@
 ```
 /context-dump packages/go/services/amp, apps/ui, packages/python/experiments/claude_agent, packages/python/mcp_server, packages/python/agent_sdk, docs/01_vision, docs/02_strategy, .ai/plans/_p0-_specialise-agents.md, output to /Users/one/Projects/amp-cloud/amp2/tmp 
 ```
-
-
-```
-We have a few things to work through here. We want to have the right balance of physics and law.  
-
-We need to support both agents that only respond to webhooks and those that respond to SSE and any combination of the two. We might have agents that all use SSE, we might have all agents that use webhooks, and we might have a mixture. 
-
-The channel and thread physics must be able to support both. So for example, if an agent knows that is not using SSE, then it should be responsible for setting up a timer to wake itself up again. This could be an amp timer so that an action is sent to it to wake it up, for example.
-
-It could set that with MCP. If an agent knows that it's using SSE, it should know that it should ignore certain SSE messages coming through or take action when it gets the one it's waiting for. 
-
-We also need to prove out this idea of agents writing to a shared to-do list. We need to see this visually in the thread when they do this. An agent should be able to assign themselves a to-do or assign another agent a to-do. When a to-do is checked off, that action should be sent to the agents that are interested. So when a to-do is created, I think we need the idea of subscribers.
-
-So, for example, an agent could say, I'm going to set up a to-do and I want to notify this other agent when I check it off. Or an agent could say, I'm going to assign this to-do to another agent and I want to know when it gets checked off.
-
-Agents should be able to subscribe themselves to these to-dos dynamically, unless it's already been checked off. 
-
-The fallback needs to be that we can use mentions to accomplish this workflow. The checklist and SSE are opt-in features. 
-
-I think we need to update our system prompts so that we can be dynamic based upon the properties of a given thread. So for example, in this stalled thread, the agent didn't do the work. So how do we deal with that? One way would be that another agent that does have SSE mention them and say, hey, can you get onto this, please, to wake them up. Or the agent should know that it can set a timer for itself so that AMP can wake them up with a timer. 
-
-As you can see, this is quite a complex testing matrix. I think we need to enumerate all of the possible scenarios and what the approach is for each, and then we need to go through and comprehensively test this, refining our system prompts as we go. The system prompts should be modular enough so that we can change the type of agent from one to another in the future.
-
-For example, if we enable SSE, for an agent, it dynamically includes the instruction at the agent's bootstrap time to say that you're listening for events and you can choose when is a good time to react or not. 
-```
-
 
 
 
