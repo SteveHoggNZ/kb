@@ -2,6 +2,9 @@
 * The principle of stigmergy is correct: database stores breadcrumbs, MCP server serves them back JIT
 * Is there something we can do with responses to tool calls? So for example, if an agent posts to a thread and we accept that message response, we can say, hey, remember you've got two outstanding to-dos. 
 
+* Good ROUNDTABLE example - http://localhost:4173/?channel=019c81e3-a325-7d84-97ef-65e88ebc5a77&inspector=hidden
+
+
 ```bash
 ./packages/python/experiments/event_trigger/run.sh --title "We need to cut costs ASAP. "
 ```
