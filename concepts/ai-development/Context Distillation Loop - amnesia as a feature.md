@@ -150,6 +150,10 @@ What survives distillation *should be* the novel stuff — [[Teach the Delta]]. 
 
 Choosing the right modality is choosing the right intervention level ([[Leverage Selection]]). "Altitude shifting" from [[The 2026 Builder Operating System]] is a form of modality toggling.
 
+### Contextual Breadcrumbs
+
+[[Contextual Breadcrumbs]] is the complement to this pattern. Where the Distillation Loop embraces forgetting as a feature, Breadcrumbs *selectively prevent* forgetting for critical information by injecting reminders into tool results at perfect recency. Distillation compresses across sessions; Breadcrumbs preserve within sessions.
+
 ### Scarcity Reframed
 
 This is [[Scarcity to Abundance - A Unifying Lens]] applied to context windows: what looks like a limitation (amnesia, finite context) is actually a feature (forced clarity, compression).
@@ -221,4 +225,4 @@ The constraint isn't the enemy of good thinking — it's the **forcing function*
 
 ---
 
-*Updated [[2026-02-16]] — Added missing connections to Connection section; removed redundant list*
+*Updated [[2026-02-17]] — Added Contextual Breadcrumbs as complementary pattern*

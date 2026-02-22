@@ -115,6 +115,9 @@ One connection string per concern, even when all concerns share one physical res
 ### [[concepts/design-principles/Agent Ergonomics|Agent Ergonomics]]
 Cockpit shape coding applied to software: if two things do different things, they must *feel* different. Introduces **Affordance** as the middle layer between Law and Physics — reducing cognitive load through design rather than rules or hard limits. Two dimensions: Human→Agent (interaction modes, feedback shapes) and Agent→Tool (distinct names, parameter shapes, response structures). Includes the Blindfold Test, Swap Test, and Pressure Test as design heuristics.
 
+### [[concepts/design-principles/Dumb Pipe Smart Edge|Dumb Pipe, Smart Edge]]
+Push intelligence toward the agent. Keep the API as a dumb pipe (stores and returns, no opinions). Put interpretation, injection, and ergonomics in the edge layer (MCP). Physics sinks to the bottom (database constraints), intelligence rises to the top (agent autonomy), the middle stays dumb. The Sandwich Rule: when in doubt, ask whether the logic is enforcement (→ database), interpretation (→ edge), or storage (→ API).
+
 ---
 
 ## Security & Authorization

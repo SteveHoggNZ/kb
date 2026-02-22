@@ -62,6 +62,9 @@ Law (prompts) tells agents what to do; Physics (platform/API) ensures they can't
 ### [[concepts/ai-development/Trinity Protocol|Trinity Protocol]]
 Multi-agent coordination framework with three primitives: **Semaphore** (state — `_data` frames), **Bell** (signal — mentions), **Watchdog** (entropy — timers). One Law: "Show and Tell" — when you complete work, patch the state AND mention the next agent. Physics backstops: Watchdog timers fire if no handoff arrives; Sticky Streams auto-coalesce entries within 3s window. A concrete implementation of [[Law vs Physics in Agent Design|Law vs Physics]] for coordination.
 
+### [[concepts/ai-development/Contextual Breadcrumbs|Contextual Breadcrumbs]]
+Solve LLM context amnesia by injecting reminders into tool results — the last thing an agent reads before its next thought. Borrows **stigmergy** from biology: agents leave trails in thread metadata, the platform echoes them back at perfect recency. Three primitives: `on_turn_reminder` (whisper per turn), `on_close_reminder` (post-close instruction), `require_collection_status` (blocking validation). Physics for critical paths, [[Agent Ergonomics|Ergonomics]] for everything else.
+
 ### [[Strategic vs Tactical Documentation|Strategic vs Tactical Documentation - Split Documentation]]
 Two-tier documentation for AI agent consumption. Strategic (the WHY) = stable, foundational, load at session start. Tactical (the HOW) = volatile, actionable, load per-task. Stability correlates with importance — things that change least are foundational constraints that must always be respected.
 
