@@ -3,6 +3,8 @@
 * Is there something we can do with responses to tool calls? So for example, if an agent posts to a thread and we accept that message response, we can say, hey, remember you've got two outstanding to-dos. 
 
 * Good ROUNDTABLE example - http://localhost:4173/?channel=019c81e3-a325-7d84-97ef-65e88ebc5a77&inspector=hidden
+	* Fixture driven development - https://aistudio.google.com/prompts/1_230LEilxuMO4eAo7jtVCvjnJoUg5dSl
+	* Lifecycle Hooks for agents - breadcrumbs pattern - https://aistudio.google.com/prompts/1fPejqYmFSZeMmr9AdSs4s6umozJhTGHY
 
 
 ```bash
