@@ -139,6 +139,7 @@ Your job is to do the articulation work — to convert tacit taste into explicit
 
 ## Related Concepts
 
+- [[Seven Dimensions of Hard Work]] — Taste lives at the intersection of Judgment (Dim 5), Domain Expertise (Dim 6), and Ambiguity (Dim 7)
 - [[The 2026 Builder Operating System]] — Two types of architecture
 - [[The Barbell Economy]] — Taste is Layer 2 judgment
 - [[Colleague vs Tool-Shaped AI]] — Colleague AI helps discover taste through iteration
@@ -148,3 +149,7 @@ Your job is to do the articulation work — to convert tacit taste into explicit
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
+
+---
+
+*Updated [[2026-02-17]] — Added Seven Dimensions of Hard Work cross-reference*

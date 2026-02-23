@@ -109,6 +109,7 @@ The Great Inversion focuses on *how to work*. The Barbell Economy focuses on *wh
 
 ## Related Concepts
 
+- [[Seven Dimensions of Hard Work]] — Refines Layer 2 into four distinct dimensions: Coordination, EQ, Judgment/Courage, and Ambiguity
 - [[The Great Inversion]] — Execution is cheap; clarity is the bottleneck
 - [[The Bottleneck Economy]] — Value flows to binding constraints; Layer 2 is the bottleneck
 - [[Scarcity to Abundance - A Unifying Lens]] — The meta-pattern across domains
