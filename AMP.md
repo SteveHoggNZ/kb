@@ -1,6 +1,10 @@
 
 * The principle of stigmergy is correct: database stores breadcrumbs, MCP server serves them back JIT
 * Let the to-do list be generated automatically for roundtable discussions. Or at least strongly recommended. 
+* TODO
+	* Human-in-the-loop pattern
+	* TASKFORCE pattern - https://aistudio.google.com/prompts/1fPejqYmFSZeMmr9AdSs4s6umozJhTGHY
+
 
 * Good ROUNDTABLE example - http://localhost:4173/?channel=019c81e3-a325-7d84-97ef-65e88ebc5a77&inspector=hidden
 	* Fixture driven development - https://aistudio.google.com/prompts/1_230LEilxuMO4eAo7jtVCvjnJoUg5dSl
