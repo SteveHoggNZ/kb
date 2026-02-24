@@ -139,6 +139,7 @@ This creates productive tension with [[Teams Of Agents - LLM Specialisation+Pers
 
 ## Related Concepts
 
+- [[Twelve-Factor Agents]] — Complementary engineering principles; micro-agents echo "simple agents + smart orchestration"
 - [[Law vs Physics in Agent Design]] — The enforcement layer that makes these rules work
 - [[Teams Of Agents - LLM Specialisation+Personas]] — Contrasting approach for small-scale quality
 - [[Context Distillation Loop - amnesia as a feature]] — Episodic operation as forced clarity
@@ -151,4 +152,4 @@ This creates productive tension with [[Teams Of Agents - LLM Specialisation+Pers
 
 ---
 
-*Updated [[2026-02-16]] — Added Law vs Physics connection to existing patterns*
+*Updated [[2026-02-17]] — Added Twelve-Factor Agents cross-reference*
