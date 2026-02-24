@@ -101,6 +101,9 @@ Habits we cling to that now slow us down:
 ### [[concepts/ai-development/Seven Dimensions of Hard Work|Seven Dimensions of Hard Work]]
 We've been lazy in defining "hard work." Disentangles difficulty into seven dimensions: (1) **Reasoning** — deep logic, solved by pure intelligence (Gemini), (2) **Effort** — massive volume, solved by agents (Opus/Claude), (3) **Coordination** — alignment between entities, emerging AI-assist, (4) **EQ** — reading unstated human dynamics, human domain, (5) **Judgment/Courage** — having the nerve to execute, human domain, (6) **Domain Expertise** — pattern matching from lived experience, contested frontier, (7) **Ambiguity** — defining what the problem even is, human domain. Refines [[The Barbell Economy|Barbell Economy]]'s Layer 2 into four distinct capabilities.
 
+### [[concepts/ai-development/Decompose-Route-Recompose|Decompose-Route-Recompose]]
+The meta-skill for the AI era. **Decompose** complex work into sub-problems by [[Seven Dimensions of Hard Work|dimension]], **Route** each to the right engine (deep-think model, agent swarm, human), **Recompose** with taste and judgment. Includes the brownfield application (Research-Plan-Implement): break codebase work into three phases with fresh context windows and dense handoff artifacts (`research.md` → `plan.md` → code). Sub-agents aren't personas — they're context isolators. Review shifts from code to plans. The 40% Rule: compact when context exceeds 40%.
+
 ---
 
 ## Synthesis

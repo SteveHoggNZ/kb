@@ -171,6 +171,8 @@ The practical takeaway: the most valuable skill is no longer doing the work your
 
 This is [[Colleague vs Tool-Shaped AI]] extended to the full problem space. The decision isn't just "colleague or tool?" — it's "which of seven problem types am I facing, and what's the right engine for each?"
 
+[[Decompose-Route-Recompose]] operationalises this routing skill into a three-step process: decompose the problem by dimension, route each sub-problem to the right engine, and recompose the results with human judgment (Dims 5-7).
+
 ---
 
 ## Connection to Taste and the Moat Discussion
@@ -187,6 +189,7 @@ The [[The 2026 Builder Operating System|2026 Builder Operating System]]'s "exper
 
 ## See Also
 
+- [[Decompose-Route-Recompose]] — The operational process that makes these dimensions actionable
 - [[The Barbell Economy]] — Three layers of value; seven dimensions refine Layer 2
 - [[Taste in Software]] — Lives at the intersection of Judgment, Expertise, and Ambiguity
 - [[Scalable Multi-Agent Architecture]] — How Dimension 2 (Effort) gets solved at scale
