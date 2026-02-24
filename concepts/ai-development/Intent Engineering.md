@@ -4,6 +4,9 @@ The discipline of translating organisational goals, values, trade-offs, and deci
 
 > **The one-sentence version:** Don't just give agents data — give them purpose.
 
+> [!warning] The Core Risk
+> Without Intent Engineering, you get **technically brilliant, strategically blind AI** — systems that hit every technical metric while destroying the business goals those metrics were supposed to serve.
+
 ---
 
 ## The Evolution
@@ -302,6 +305,36 @@ The contrast is instructive:
 - **Result** = Lots of activity, no value
 
 The analogy: deploying autonomous agents without Intent Engineering is like hiring 40,000 employees and never telling them what the company values or how to make decisions. They'll be busy. They won't be aligned.
+
+### The Two Cultures Problem
+
+MIT found that AI investment is still viewed primarily as a tech challenge for the CIO rather than a business issue requiring leadership across the organisation. This creates a dangerous divide:
+
+| | Technologists (CIO, Engineers) | Business Leaders (Execs, Managers) |
+|--|-------------------------------|-----------------------------------|
+| **Strength** | Can build infrastructure — MCP servers, vector DBs, integrations | Hold organisational intent — values, trade-offs, tacit cultural knowledge |
+| **Weakness** | Don't hold strategic goals or complex trade-offs | Don't build or prompt AI agents |
+| **Owns** | Layer 1 (data infrastructure) + Layer 2 (tooling) | Layer 3 (Intent Engineering) |
+
+**The result when only technologists build AI:** Technically brilliant, strategically blind. The Klarna team built an AI that hit its technical metric (2-minute resolution) while destroying the business goal (customer retention). The engineering was flawless. The intent was absent.
+
+**The fix:** The era of AI as "just an IT project" is over. CIOs build the pipes (Layers 1-2). But the business side must do the hard work of Layer 3 — translating OKRs, values, and decision frameworks into machine-readable parameters. If the business relies entirely on the CIO to figure out how AI should behave, the AI defaults to narrow technical execution with zero mission alignment.
+
+This mirrors the [[Decompose-Route-Recompose]] insight: the decomposition and routing require business judgment ([[Seven Dimensions of Hard Work|Dims 5-7]]). The recomposition requires taste. Technology is necessary but not sufficient.
+
+### The AI Workflow Architect
+
+The Two Cultures gap implies a new role: the **AI Workflow Architect** — someone who sits at the intersection of Engineering, Operations, and Strategy. Their job is to act as the translator: taking human organisational knowledge and encoding it into the infrastructure described above.
+
+This is the [[Taste in Software|Articulation Gap]] made into a job description. The architect doesn't just build systems (Layer 1-2) or define strategy (Layer 3 goals) — they *translate between the two*, doing the decomposition and encoding work that neither side can do alone.
+
+### The End of Tacit Knowledge
+
+The deepest organisational implication: **agents cannot learn through osmosis.** Everything that used to be "understood" by senior employees — the unwritten rules, the cultural norms, the judgment calls — must now be documented, structured, and encoded.
+
+This is a one-way door. Once an organisation commits to autonomous agents running for weeks or months, they must commit to making the implicit explicit. The tacit knowledge that lived in the heads of 20-year veterans becomes a machine-readable asset — or a liability when those veterans leave and the agents have no intent to inherit.
+
+> **The meta-insight:** Stop building smarter models. Start building smarter alignment.
 
 ---
 
