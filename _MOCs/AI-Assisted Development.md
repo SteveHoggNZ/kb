@@ -56,6 +56,9 @@ In humans, expertise produces expert language (language is a *symptom* of though
 ### [[concepts/ai-development/Scalable Multi-Agent Architecture|Scalable Multi-Agent Architecture]]
 The "human team" fallacy: mimicking human collaboration fails at scale. Coordination overhead kills parallelism. Five rules: (1) Two tiers not teams (planners + isolated workers), (2) Workers stay ignorant (minimum viable context), (3) No shared state (3-5 tools max), (4) Plan for endings (episodic operation), (5) Sophisticated orchestration, simple agents. At scale, 10,000 dumb workers beat 100 smart ones. *Contrasts with Multi-Persona approach — different tools for different scales.*
 
+### [[concepts/ai-development/Twelve-Factor Agents|Twelve-Factor Agents]]
+Agents are just software — apply sound engineering principles. LLMs are pure functions (tokens in, tokens out); "tool use" is just JSON → switch statement → function. Key factors: own your control flow (don't let LLMs loop forever), own your prompts (frameworks hide the hard parts), manage state explicitly in a database (pause/resume), compact errors (don't feed failure tokens back), humans as tools (not special architecture), and micro-agents over mega-agents (~10 tools, ~20 steps). Frameworks abstract the hard parts, but the hard parts are where production quality lives.
+
 ### [[concepts/ai-development/Law vs Physics in Agent Design|Law vs Physics in Agent Design]]
 Law (prompts) tells agents what to do; Physics (platform/API) ensures they can't do what they shouldn't. Law is voluntary and degrades under context pressure. Physics is involuntary — a 429 is a 429. **Design rule:** For every Law, ask "What happens when the agent ignores this?" If catastrophic → add Physics. Both layers are necessary: Law without Physics → agents drift; Physics without Law → agents crash blindly.
 

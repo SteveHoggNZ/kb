@@ -51,9 +51,13 @@ Don't rely on infinite loops where the LLM figures everything out on its own.
 
 **The principle:** Use deterministic code for deterministic work. Inject LLM calls only where reasoning is genuinely needed. A "DeployBot" where CI/CD is code but the rollback decision based on error logs is an LLM call.
 
-### 2. Own Your Prompts
+### 2. Own Your Prompts — Everything Is Context Engineering
 
 Frameworks that hide prompts prevent optimisation. To pass the 80% reliability bar, you must control every token in the context window. This connects to [[Contextual Breadcrumbs]] — the position and content of every token matters.
+
+![[everything-is-context-engineering.png]]
+
+"Prompt Engineering" is just one slice of the real discipline: **Context Engineering**. The full picture includes prompt engineering, RAG, state/history management, memory systems, and structured outputs — all overlapping, all contributing tokens to the context window. Owning your prompts means owning *all* of these.
 
 ### 3. Manage State Explicitly
 
