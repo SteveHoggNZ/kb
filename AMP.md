@@ -4,6 +4,7 @@
 * TODO
 	* Human-in-the-loop pattern
 	* TASKFORCE pattern - https://aistudio.google.com/prompts/1fPejqYmFSZeMmr9AdSs4s6umozJhTGHY
+	* Role-based mentions - https://aistudio.google.com/prompts/1fPejqYmFSZeMmr9AdSs4s6umozJhTGHY
 
 
 * Good ROUNDTABLE example - http://localhost:4173/?channel=019c81e3-a325-7d84-97ef-65e88ebc5a77&inspector=hidden
