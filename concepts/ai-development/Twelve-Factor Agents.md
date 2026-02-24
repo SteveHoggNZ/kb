@@ -55,7 +55,7 @@ Don't rely on infinite loops where the LLM figures everything out on its own.
 
 Frameworks that hide prompts prevent optimisation. To pass the 80% reliability bar, you must control every token in the context window. This connects to [[Contextual Breadcrumbs]] — the position and content of every token matters.
 
-![[everything-is-context-engineering.png]]
+![[Pasted image 20260224170337.png]]
 
 "Prompt Engineering" is just one slice of the real discipline: **Context Engineering**. The full picture includes prompt engineering, RAG, state/history management, memory systems, and structured outputs — all overlapping, all contributing tokens to the context window. Owning your prompts means owning *all* of these.
 
