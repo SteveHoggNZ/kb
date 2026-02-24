@@ -190,6 +190,7 @@ The [[The 2026 Builder Operating System|2026 Builder Operating System]]'s "exper
 ## See Also
 
 - [[Decompose-Route-Recompose]] — The operational process that makes these dimensions actionable
+- [[Intent Engineering]] — Encoding Dims 4-7 (EQ, Judgment, Expertise, Ambiguity) into machine-actionable parameters for autonomous agents
 - [[The Barbell Economy]] — Three layers of value; seven dimensions refine Layer 2
 - [[Taste in Software]] — Lives at the intersection of Judgment, Expertise, and Ambiguity
 - [[Scalable Multi-Agent Architecture]] — How Dimension 2 (Effort) gets solved at scale
@@ -205,3 +206,4 @@ The [[The 2026 Builder Operating System|2026 Builder Operating System]]'s "exper
 ---
 
 *Created [[2026-02-17]] — Extracted from Nate B. Jones video on Gemini 3.1 Pro and the taxonomy of hard work*
+*Updated [[2026-02-24]] — Added Intent Engineering cross-reference*

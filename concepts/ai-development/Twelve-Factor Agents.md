@@ -186,6 +186,7 @@ These are software engineering problems, not AI problems. The twelve factors are
 - [[Decompose-Route-Recompose]] — RPI as twelve-factor workflow in practice
 - [[Agent Ergonomics]] — Compact errors = ergonomic context management
 - [[Physics Thinking]] — The enforcement spectrum the factors map onto
+- [[Intent Engineering]] — The layer above Context Engineering: what agents should *want*, not just what they should *know*
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
 
 ## Sources
@@ -196,3 +197,4 @@ These are software engineering problems, not AI problems. The twelve factors are
 ---
 
 *Created [[2026-02-17]] — Extracted from Dex Horthy's 12-Factor Agents talk*
+*Updated [[2026-02-24]] — Added Intent Engineering cross-reference*
