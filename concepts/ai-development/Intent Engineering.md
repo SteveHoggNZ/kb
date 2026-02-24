@@ -42,6 +42,39 @@ Humans close this gap through **cultural osmosis** — months of observing manag
 
 > **The one-liner:** You cannot just give an AI a login and a prompt. You must provide it with unified data (Layer 1), standardised workflows (Layer 2), and explicitly coded goals and boundaries (Layer 3).
 
+### The Full Architecture
+
+```mermaid
+flowchart TD
+    subgraph Problem["The Intent Gap"]
+        direction LR
+        H["Human Intent<br/>(OKRs, Tacit Culture, Nuance)"] -.->|Disconnected| P["Basic AI Prompts<br/>(Narrow Metrics)"]
+    end
+
+    subgraph Solution["The 3 Layers"]
+        direction TB
+        L1["Layer 1: Unified Context Infrastructure<br/>(Secure Data, MCP, Cures Shadow AI)"]
+        L2["Layer 2: Coherent AI Worker Toolkit<br/>(Shared Workflows, AI Fluency)"]
+        L3["Layer 3: Intent Engineering Proper<br/>(Prose → Parameters)"]
+        L1 -->|Feeds secure data to| L2
+        L2 -->|Executes workflows via| L3
+    end
+
+    subgraph Cascade["The Cascade of Specificity"]
+        direction TB
+        GS["Goal Structures"]
+        DF["Delegation Frameworks"]
+        FL["Feedback Loops"]
+        GS --> DF --> FL
+    end
+
+    Auto["Aligned Autonomous Agent"]
+
+    Problem ==> Solution
+    L3 ==> Cascade
+    FL ==> Auto
+```
+
 To close the Intent Gap, organisations must build three layers:
 
 ---
@@ -91,16 +124,109 @@ The AI landscape today is highly individualised: one employee uses ChatGPT for d
 
 Human goals live in slide decks, OKR documents, and leadership principles. An AI agent cannot read "Increase Customer Satisfaction" and autonomously know how to execute it in a nuanced situation. Without this layer, AI agents are "loaded weapons with no targets."
 
-**The solution:** A translation layer that explicitly codes organisational intent into machine-actionable parameters:
+The core challenge is moving from **prose** (words in a document) to **parameters** (rules in a system). This is not copy-pasting OKRs into a prompt — it requires a **Cascade of Specificity**.
 
-| Component | What It Encodes | Example |
-|-----------|----------------|---------|
+#### Machine-Readable Organisational Intent
+
+A human goal is an aspiration: *"Increase customer satisfaction."* An AI doesn't know what to do with this.
+
+An **agent goal structure** is actionable and tied to data: *"Monitor data sources A, B, and C for customer frustration signals. If a signal is detected, you are authorised to take actions X or Y to resolve it, provided it costs less than $50."*
+
+Goal structures force business leaders to explicitly define:
+- What success looks like **in data terms**
+- What actions an agent is **authorised to take**
+- What the **ultimate boundaries** are
+
+#### The Cascade of Specificity
+
+Organisations have never had to define intent at this level of granularity because human employees fill gaps with common sense. AI has no common sense, so the cascade must explicitly define everything a human would normally assume.
+
+The cascade has three major components, each flowing into the next:
+
+```mermaid
+flowchart TD
+    MROI["Machine-Readable Organisational Intent<br/>(Translating human goals to code)"]
+    GS["1. Goal Structures<br/>(Actionable objectives & specific data signals)"]
+    DF["2. Delegation Frameworks<br/>(Decision boundaries, trade-offs, escalation paths)"]
+    FL["3. Feedback Loops<br/>(Measurement & course-correction mechanisms)"]
+    OUT["Aligned Autonomous Agent<br/>(Safely executes complex tasks for weeks/months)"]
+
+    MROI --> GS
+    GS --> DF
+    DF --> FL
+    FL --> OUT
+```
+
+#### 1. Goal Structures (What to Achieve)
+
+The top of the cascade. Goal structures are machine-actionable translations of business objectives — not aspirations, but data-tied parameters:
+
+| Level | What It Encodes | Example |
+|-------|----------------|---------|
+| **Goal Structure** | Machine-actionable version of business objective | "Monitor frustration signals; authorised to resolve within $50 budget" |
 | **Actionable Objectives** | What data signals equal success? | Customer retention rate > ticket closure speed |
-| **Trade-off Hierarchies** | When to prioritise speed vs thoroughness, cost vs quality | "If customer tenure > 4 years: generosity > efficiency. Otherwise: efficiency > generosity." |
-| **Decision Boundaries** | Hard rules and escalation triggers | "Auto-refund up to $50. Anything higher → human. Any legal threat → immediate escalation." |
-| **Feedback Loops** | Measurement of intent alignment | "Weekly audit: did AI decisions match what a senior agent would have done?" |
 
-The key insight: these four components are what experienced employees carry as tacit knowledge. Intent Engineering makes that knowledge explicit and machine-readable.
+#### 2. Delegation Frameworks (How to Behave)
+
+The critical safety net. While goal structures tell the AI *what to achieve*, delegation frameworks tell it *how it is allowed to behave* while achieving those goals. Two techniques make this concrete:
+
+##### Principles Decomposed
+
+Human organisations run on high-level principles — Amazon's "Customer Obsession," or "Frugality." For a human, a principle is enough. They intuitively know it means being polite, occasionally bending a minor policy for a high-value customer, and where the limits are.
+
+**AI agents cannot interpret high-level principles.** Telling an AI to be "Customer Obsessed" gives it no limits. Telling it to "Maximise Efficiency" gives it no conscience. The principle must be *decomposed* into hard, machine-readable logic:
+
+**Trade-off Hierarchies:** When principles conflict, which wins?
+- Customer demands a refund (Customer Obsession) but item is out of warranty (Frugality/Policy). The framework provides explicit logic: *"If customer lifetime value > $500, override policy. If < $500, enforce policy."*
+
+**Decision Boundaries (Hard Stops):** Exactly how far does the principle extend?
+- *"You are authorised to issue credits up to $50. Anything above $50 is strictly prohibited."*
+
+**Escalation Triggers:** What scenarios fall outside the decomposed principle?
+- *"Draft a summary of the dispute and route it to the Tier 2 Human Support queue."*
+
+You cannot feed an AI your corporate value statement. You must decompose those values into a literal framework of data signals, limits, and if/then trade-offs.
+
+##### Encoded Judgement
+
+A veteran customer service rep who's worked five years carries massive **tacit knowledge** — unwritten rules, cultural norms, intuition. They *know* when a customer is about to churn and needs extra time, or when a customer is gaming the system and needs to be shut down quickly. This is human **judgement**.
+
+When companies deploy AI, they replace that judgement with static rules ("close tickets in under 2 minutes"). As Klarna discovered, static rules applied to complex human interactions create terrible experiences.
+
+**Encoded judgement** goes further — it takes the nuanced, contextual intuition of senior employees and explicitly encodes it as dynamic logic:
+
+| Static Rule (Fails) | Encoded Judgement (Works) |
+|---------------------|--------------------------|
+| "Close tickets in under 2 minutes" | "If sentiment score drops 30% during chat AND lifetime value > $1,000: ignore the 2-minute rule. Spend up to 15 extra minutes and offer a free month of service." |
+| "Always follow refund policy" | "If customer tenure > 4 years AND they mention cancelling: override standard policy, authorise up to $200 retention credit" |
+| "Escalate complaints" | "If customer mentions lawyer, regulator, or media in any form: immediate human handoff, no exceptions" |
+
+The key difference: static rules are **Law without Physics** — they tell the agent what to do but provide no nuance. Encoded judgement is **Law informed by Intent** — it gives the agent enough context to approximate senior human decision-making within explicit boundaries. This maps directly to [[Law vs Physics in Agent Design]]: delegation frameworks are Law made explicit, with Physics (hard stops) as the backstop.
+
+Without delegation frameworks, AI agents invent their own logic to solve problems — resulting in rogue actions, broken policies, or terrible customer experiences.
+
+#### 3. Feedback Loops (Did It Work?)
+
+The bottom of the cascade. Mechanisms to measure whether the AI's autonomous decisions actually aligned with the organisation's intent:
+
+| Feedback Type | Example |
+|--------------|---------|
+| **Alignment audit** | "Weekly review: did AI decisions match what a senior agent would have done?" |
+| **Drift detection** | "Are refund rates trending higher than baseline?" |
+| **Course correction** | "If alignment score drops below 80%, tighten decision boundaries" |
+
+#### The Full Cascade in Practice
+
+| Level | What It Encodes | Example |
+|-------|----------------|---------|
+| **Goal Structure** | What to achieve, in data terms | "Monitor frustration signals; authorised to resolve within $50 budget" |
+| **Actionable Objectives** | Success signals | Customer retention rate > ticket closure speed |
+| **Trade-off Hierarchies** | Conflict resolution | "If tenure > 4 years: generosity > efficiency. Otherwise: efficiency > generosity." |
+| **Decision Boundaries** | Hard limits | "Auto-refund up to $50. Anything higher → human." |
+| **Escalation Paths** | Handoff triggers | "Customer mentions lawyer, regulator, or media → immediate human handoff" |
+| **Feedback Loops** | Measurement | "Weekly audit: did AI decisions match senior agent judgment?" |
+
+**Why this is hard:** Most organisations don't have this cascade documented anywhere. This knowledge lives purely in the heads of senior employees as tacit knowledge. But for agents running autonomously for weeks or months — not 10-minute chat sessions — this cascade must be explicit and machine-readable. Without it, you get Klarna: technically brilliant AI that destroys customer relationships because no one gave it the specificity to care.
 
 ---
 
