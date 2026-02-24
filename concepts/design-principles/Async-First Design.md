@@ -95,7 +95,12 @@ Options for notifying clients of completion:
 - [[Event-Driven Side Effects]] — Async processing pattern
 - [[Idempotency Keys]] — Safe retries for async operations
 - [[CQRS]] — Commands are naturally async
+- [[Commands That Emit Events]] — Async-first as the structural foundation: commands return 202, events flow downstream
 
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
+
+---
+
+*Updated [[2026-02-24]] — Added Commands That Emit Events cross-reference*

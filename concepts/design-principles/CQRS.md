@@ -90,7 +90,12 @@ Queries become composable: filter → sort → paginate → return.
 - [[Strategy Pattern]] — Different strategies for read vs write paths
 - [[Outbox Pattern]] — Commands write to outbox; events flow to read models
 - [[Idempotency Keys]] — Only commands need idempotency; queries are naturally idempotent
+- [[Commands That Emit Events]] — Extends CQRS: commands don't just mutate, they announce what happened via events
 
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
+
+---
+
+*Updated [[2026-02-24]] — Added Commands That Emit Events cross-reference*

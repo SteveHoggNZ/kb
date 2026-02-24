@@ -93,7 +93,12 @@ Need locks (Postgres advisory locks, Redis locks) for:
 - [[Strategy Pattern]] — Queue implementation as swappable strategy
 - [[Graduated Defense]] — Rate limit event consumers separately
 - [[Outbox Pattern]] — Guarantees event emission within the same transaction
+- [[Commands That Emit Events]] — The unifying philosophy: APIs as commands that announce what happened
 
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
+
+---
+
+*Updated [[2026-02-24]] — Added Commands That Emit Events cross-reference*

@@ -118,7 +118,12 @@ For simpler cases, publish inline but implement compensating transactions if pub
 - [[Event-Driven Side Effects]] — Outbox feeds the event-driven architecture
 - [[Idempotency Keys]] — Consumers need idempotency for at-least-once delivery
 - [[CQRS]] — Commands write to outbox; events flow to read models
+- [[Commands That Emit Events]] — Outbox is the Physics guarantee in the command-event architecture
 
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
+
+---
+
+*Updated [[2026-02-24]] — Added Commands That Emit Events cross-reference*
