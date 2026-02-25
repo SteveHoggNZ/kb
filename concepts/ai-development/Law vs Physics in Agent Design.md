@@ -6,14 +6,14 @@ A fundamental distinction for building reliable agentic systems: **Law** tells a
 
 ## The Core Distinction
 
-| Aspect | Law (Prompts) | Physics (Platform/API) |
-|--------|---------------|------------------------|
-| **What it is** | Instructions in system prompts | Guards enforced by infrastructure |
-| **Enforcement** | Voluntary — the LLM decides whether to comply | Involuntary — the system rejects violations |
-| **Can be violated?** | Yes. LLMs are probabilistic. Rules get ignored under context pressure. | No. A 429 is a 429. No prompting bypasses it. |
-| **Failure mode** | Gradual degradation — agent drifts from instructions | Hard stop — agent receives error, must adapt |
-| **Role** | Defines *intent* — what agents *should* do | Defines *reality* — what agents *can* do |
-| **Analogy** | Traffic laws (you *should* stop at red lights) | Physics of walls (you *cannot* drive through concrete) |
+| Aspect               | Law (Prompts)                                                          | Physics (Platform/API)                                 |
+| -------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------ |
+| **What it is**       | Instructions in system prompts                                         | Guards enforced by infrastructure                      |
+| **Enforcement**      | Voluntary — the LLM decides whether to comply                          | Involuntary — the system rejects violations            |
+| **Can be violated?** | Yes. LLMs are probabilistic. Rules get ignored under context pressure. | No. A 429 is a 429. No prompting bypasses it.          |
+| **Failure mode**     | Gradual degradation — agent drifts from instructions                   | Hard stop — agent receives error, must adapt           |
+| **Role**             | Defines *intent* — what agents *should* do                             | Defines *reality* — what agents *can* do               |
+| **Analogy**          | Traffic laws (you *should* stop at red lights)                         | Physics of walls (you *cannot* drive through concrete) |
 
 ---
 
