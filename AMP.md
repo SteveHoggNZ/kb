@@ -5,6 +5,7 @@
 	* Human-in-the-loop pattern
 	* TASKFORCE pattern - https://aistudio.google.com/prompts/1fPejqYmFSZeMmr9AdSs4s6umozJhTGHY
 	* Role-based mentions - https://aistudio.google.com/prompts/1fPejqYmFSZeMmr9AdSs4s6umozJhTGHY
+	* Gemini review - https://gemini.google.com/gem/23dbac612e35/641b7ff7c544e4b9
 * Microsoft Agent 365 - https://aistudio.google.com/prompts/1XkxBtmKwBAADdzNtkJGY3yOgyMgBoJ9s
 
 
