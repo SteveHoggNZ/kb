@@ -13,6 +13,12 @@ px4ai.io - pipe exchange for ai
 
 a2chat.io
 
+prisim.io
+prisim.ai
+
+kotia.ai
+kotia.io
+
 # High Conflict
 
 korx.ai
