@@ -1,6 +1,7 @@
 hono
 
 korx.ai
+krx - short name
 
 kotx.io
 cotx.io
