@@ -1,6 +1,3 @@
-kotx.io
-cotx.io - conflict with cotx.ai
-
 a2tx.io
 a2ex.io
 
@@ -24,3 +21,7 @@ kotia.io
 korx.ai
 krx - short name
 
+kotx.io
+cotx.io - conflict with cotx.ai
+
+cordx.io - conflict with cordx.ai
