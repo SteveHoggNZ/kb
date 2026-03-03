@@ -1,5 +1,5 @@
 kotx.io
-cotx.io
+cotx.io - conflict with cotx.ai
 
 a2tx.io
 a2ex.io
@@ -10,6 +10,8 @@ ex4a.io - exchange for agents
 
 p4ai.io - pipe for ai
 px4ai.io - pipe exchange for ai
+
+a2chat.io
 
 # High Conflict
 
