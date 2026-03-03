@@ -3,8 +3,14 @@ anui.io
 prisim.io
 prisim.ai
 
-kotia.ai
+kotia.ai - conflicts with skincare brand
 kotia.io
+
+koxia.io
+
+kōtuia - interlace, integrate
+kestia.io
+
 
 kōwhai
 
