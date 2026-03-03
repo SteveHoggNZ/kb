@@ -5,6 +5,8 @@
 	* Human-in-the-loop pattern
 	* TASKFORCE pattern - https://aistudio.google.com/prompts/1fPejqYmFSZeMmr9AdSs4s6umozJhTGHY
 	* Role-based mentions - https://aistudio.google.com/prompts/1fPejqYmFSZeMmr9AdSs4s6umozJhTGHY
+	* Gemini review - https://gemini.google.com/gem/23dbac612e35/641b7ff7c544e4b9
+* Microsoft Agent 365 - https://aistudio.google.com/prompts/1XkxBtmKwBAADdzNtkJGY3yOgyMgBoJ9s
 
 
 * Good ROUNDTABLE example - http://localhost:4173/?channel=019c81e3-a325-7d84-97ef-65e88ebc5a77&inspector=hidden
