@@ -1,3 +1,11 @@
+prisim.io
+prisim.ai
+
+kotia.ai
+kotia.io
+
+kōrero.io - speech
+
 a2tx.io
 a2ex.io
 
@@ -9,12 +17,6 @@ p4ai.io - pipe for ai
 px4ai.io - pipe exchange for ai
 
 a2chat.io
-
-prisim.io
-prisim.ai
-
-kotia.ai
-kotia.io
 
 # High Conflict
 
