@@ -1,2 +1,4 @@
-Hono
-Korx
+hono
+korx
+kotx.io
+x4ai.io
