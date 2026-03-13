@@ -1,8 +1,11 @@
 
 SCHRA.ai
 APNEU.ai
+VARTEN.ai
 Vitten.ai
 Pylaia.ai
+cunic.ai
+POSOT.ai
 
 
 reference: https://gemini.google.com/app/2eb2eba39118e912
