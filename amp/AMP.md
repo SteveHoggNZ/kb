@@ -1,4 +1,13 @@
 
+SCHRA.ai
+APNEU.ai
+Vitten.ai
+Pylaia.ai
+
+
+reference: https://gemini.google.com/app/2eb2eba39118e912
+
+
 * The principle of stigmergy is correct: database stores breadcrumbs, MCP server serves them back JIT
 * Let the to-do list be generated automatically for roundtable discussions. Or at least strongly recommended. 
 * TODO
