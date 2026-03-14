@@ -1,11 +1,13 @@
 
 SCHRA.ai
 APNEU.ai
-VARTEN.ai
+VARTEN.ai - vrtn.ai and vrtn.io are available
 Vitten.ai
 Pylaia.ai
 cunic.ai
+cnic.ai - no .io available unfortunately
 POSOT.ai
+
 
 
 reference: https://gemini.google.com/app/2eb2eba39118e912
