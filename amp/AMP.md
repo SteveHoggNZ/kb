@@ -6,7 +6,10 @@ set -a
 source .env.dev
 set +a
 
-uv run python -m claude_agent.main --persona personas/assistant.yaml --verbose
+source .venv/bin/activate
+python run-all-agents.py --platform-sse
+
+# uv run python -m claude_agent.main --persona personas/assistant.yaml --verbose
 ```
 
 
