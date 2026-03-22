@@ -10,7 +10,7 @@ unset ALL_PROXY all_proxy HTTP_PROXY http_proxy HTTPS_PROXY https_proxy
 
 # Activate venv and run
 source .env.dev
-python -m claude_agent.main --persona personas/assistant.yaml --channel <uuid> --verbose
+uv python -m claude_agent.main --persona personas/assistant.yaml --channel 019d129f-4db6-74c9-833e-7659b7db006e --verbose
 ```
 
 
