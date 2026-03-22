@@ -1,4 +1,19 @@
 
+```bash
+set -a
+source ../../../../.env
+source ../../../../.env.local
+set +a
+
+# Clear proxy variables
+unset ALL_PROXY all_proxy HTTP_PROXY http_proxy HTTPS_PROXY https_proxy
+
+# Activate venv and run
+source .env.dev
+python -m claude_agent.main --persona personas/assistant.yaml --channel <uuid> --verbose
+```
+
+
 SCHRA.ai
 APNEU.ai
 VARTEN.ai - vrtn.ai and vrtn.io are available
