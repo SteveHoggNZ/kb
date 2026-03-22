@@ -1,16 +1,12 @@
 
 ```bash
+cd packages/python/experiments/claude_agent
+
 set -a
-source ../../../../.env
-source ../../../../.env.local
+source .env.dev
 set +a
 
-# Clear proxy variables
-unset ALL_PROXY all_proxy HTTP_PROXY http_proxy HTTPS_PROXY https_proxy
-
-# Activate venv and run
-source .env.dev
-uv python -m claude_agent.main --persona personas/assistant.yaml --channel 019d129f-4db6-74c9-833e-7659b7db006e --verbose
+uv run python -m claude_agent.main --persona personas/assistant.yaml --verbose
 ```
 
 
