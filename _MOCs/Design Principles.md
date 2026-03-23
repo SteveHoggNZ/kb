@@ -143,6 +143,13 @@ One authoritative log line per request with all key context. Stripe's pattern: m
 
 ---
 
+## UI & Product Design
+
+### [[concepts/design-principles/Vibe Code to Production UI|Vibe Code to Production UI]]
+Practical checklist for upgrading AI-generated interfaces into polished SaaS products. AI makes predictable UI mistakes: emojis instead of icon libraries, clashing colours, KPI boxes without context, sprawling layouts, sparse flyout forms, non-functional billing pages, basic analytics, and generic landing pages. Each fix follows the same pattern: remove noise, add context, show don't tell. Type 1 architecture (functional) delegated to AI; Type 2 (trust, cohesion, feel) applied by human taste.
+
+---
+
 ## Practical Patterns
 
 ### Removing Complexity
