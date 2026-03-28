@@ -97,6 +97,7 @@ Managers who manage monkeys well:
 - [[⚠️ Scrum Critique]] — Daily standups can become monkey-passing rituals
 - [[Six Phrases to Stop Using]] — Language that enables poor delegation
 - [[Agent Autonomy Levels]] — The Five Degrees of Initiative applied to AI agents
+- [[Commitment Loops]] — Self-directed monkeys: every promise opens a loop; AI agents close them by executing to completion
 
 ## See Also
 
@@ -106,3 +107,7 @@ Managers who manage monkeys well:
 
 - Oncken, W. & Wass, D. (1974). "Management Time: Who's Got the Monkey?" Harvard Business Review
 - https://hbr.org/1999/11/management-time-whos-got-the-monkey
+
+---
+
+*Updated [[2026-02-24]] — Added Commitment Loops cross-reference*

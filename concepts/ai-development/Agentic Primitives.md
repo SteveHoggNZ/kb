@@ -144,6 +144,7 @@ The three primitives map onto the KB's existing frameworks:
 - [[Agent Autonomy Levels]] — The five levels; primitives push toward Level 5
 - [[Scalable Multi-Agent Architecture]] — Dispatch is personal multi-agent orchestration
 - [[The 2026 Builder Operating System]] — Engineering Manager Mindset
+- [[Commitment Loops]] — Pseudo-work vs real work; close loops by delegating to completion
 - [[Monkey Management]] — Delegate commitments immediately
 - [[Decompose-Route-Recompose]] — Research phase (agent) → judgment phase (human)
 - [[Colleague vs Tool-Shaped AI]] — Dispatch enables Tool-shaped delegation at scale
