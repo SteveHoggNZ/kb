@@ -153,6 +153,7 @@ Is "correct" well-defined?
 - [[The 2026 Builder Operating System]] — "Engineering Manager Mindset" = managing agent autonomy
 - [[The Barbell Economy]] — Level 1-3 work is increasingly Layer 1; Level 4-5 orchestration is Layer 2
 - [[The Inference Crunch]] — Agentic systems (Level 4-5) drive 100x token consumption; efficiency matters
+- [[Agentic Primitives]] — Scheduled Tasks, Dispatch, and Computer Use as the concrete tools pushing agents toward Level 5
 
 ## See Also
 
@@ -163,3 +164,7 @@ Is "correct" well-defined?
 
 - Oncken, W. & Wass, D. (1974). "Management Time: Who's Got the Monkey?" — The original five degrees of initiative
 - Synthesis connecting leadership frameworks to AI agent design
+
+---
+
+*Updated [[2026-02-24]] — Added Agentic Primitives cross-reference*

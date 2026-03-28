@@ -53,6 +53,9 @@ Specialization navigates the model to high-quality "corners" of latent space by 
 ### [[concepts/ai-development/The Inverted Causality of Language|The Inverted Causality of Language]]
 In humans, expertise produces expert language (language is a *symptom* of thought). In LLMs, expert language produces expertise-shaped output (language is a *driver* of "thought"). The arrow of causality is reversed — and the output can look identical. This is the deeper "why" behind persona prompting and distribution conditioning. Explains why vocabulary seeding is the primary lever, and why fluency is not a reliable signal of correctness.
 
+### [[concepts/ai-development/Agentic Primitives|Agentic Primitives]]
+Three building blocks that move AI from "pseudo-work" (summarising, briefing) to "real work" (tasks genuinely off your desk): **Scheduled Tasks** (your computer in the cloud — recurring background work), **Dispatch** (mobile orchestration of parallel agent sessions), and **Computer Use** (rescuing trapped data from legacy systems with no APIs). Together they push agents toward [[Agent Autonomy Levels|Level 5]] autonomy. Requires the **Manager Mindset**: delegate open commitments immediately, gather deep context before deciding, trust the background process. Managed infrastructure (like Dispatch) enables mass adoption, just as Gmail replaced self-hosted mail servers.
+
 ### [[concepts/ai-development/Scalable Multi-Agent Architecture|Scalable Multi-Agent Architecture]]
 The "human team" fallacy: mimicking human collaboration fails at scale. Coordination overhead kills parallelism. Five rules: (1) Two tiers not teams (planners + isolated workers), (2) Workers stay ignorant (minimum viable context), (3) No shared state (3-5 tools max), (4) Plan for endings (episodic operation), (5) Sophisticated orchestration, simple agents. At scale, 10,000 dumb workers beat 100 smart ones. *Contrasts with Multi-Persona approach — different tools for different scales.*
 
