@@ -91,6 +91,8 @@ Agents can evaluate quality better than they generate it on first pass. The eval
 ### The Rating Prompt
 > "Rate that out of 10 and explain what would make it a 9."
 
+**Caveat:** This works well for creative and drafting tasks where the rating triggers improvement. For **extraction and verification** tasks, self-rating gives the model another opportunity to lie — a model that hallucinated an answer will confidently rate it 9/10. See [[The Honesty Gap]] for structural alternatives (forced blanks, source labelling) that make uncertainty visible without relying on the model's self-assessment.
+
 ### The Critique Prompt
 > "What's wrong with this response? What did you miss?"
 
