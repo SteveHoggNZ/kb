@@ -1,15 +1,5 @@
-DSE - canned microsoft - gateway into Purview
-Helps with Copilot too
+Hayden mentioned, DSE - canned microsoft - gateway into Purview
+Helps with Copilot enablement too
 
 Need to assessment first, can't give a price range
 Charge for 1 week of discovery
-
-Costco BP
-disel 3.23 3.39
-91 3.33 3.40
-
-
-
-look forward to your feedback
-makt this your own
-roadmap and delivery imparticular
