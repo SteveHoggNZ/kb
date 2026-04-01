@@ -52,6 +52,27 @@ The maturity model is useful as a communication tool for workshops and consultin
 
 ---
 
+## Our Extension: ADCs with RPI Phase Artefacts
+
+ACF's ADC records are designed for individual architectural decisions — one flat record per decision, with an optional execution plan in a separate `plans/` directory. [[Decompose-Route-Recompose]] produces *phased artefacts* (research.md, plan.md) that don't fit neatly into that flat structure.
+
+The extension: an ADC record gets a **companion directory** containing its phase artefacts. The ADC wrapper document captures the decision context (motivation, rejected alternatives, rollback, risks) and points to the phase outputs:
+
+```
+docs/adc/
+├── 2026-03-31--extract-cart-service.md        ← decision record
+└── 2026-03-31--extract-cart-service/          ← phase artefacts
+    ├── research.md                             ← RPI Phase 1 output
+    ├── plan.md                                 ← RPI Phase 2 output
+    └── handoff.md                              ← agent context for Phase 3
+```
+
+The wrapper document is what an agent reads first — it tells them which phase they're in, what artefacts already exist, and what was decided (and rejected). The phase artefacts are the dense handoff documents that RPI requires. This combines ADC's decision-trail value with RPI's fresh-context-window discipline.
+
+Tested on the nopCommerce brownfield workshop (`docs/adc/2026-03-31--extract-cart-service`).
+
+---
+
 ## See Also
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
