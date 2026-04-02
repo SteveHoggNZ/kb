@@ -70,6 +70,14 @@ Curated list of useful development tools and utilities.
 
 ---
 
+## Frontend Libraries
+
+| Tool | Description | URL |
+|------|-------------|-----|
+| **Pretext** | Pure JS text measurement & layout without DOM reflows. Separates `prepare()` (one-time, ~19ms/500 texts) from `layout()` (arithmetic-only, ~0.09ms). Handles all languages, emojis, bidi text. Use for: virtualisation without estimation, canvas/SVG/WebGL text rendering, layout shift prevention, masonry layouts | https://github.com/chenglou/pretext |
+
+---
+
 ## Testing & Quality
 
 | Tool | Description | URL |
