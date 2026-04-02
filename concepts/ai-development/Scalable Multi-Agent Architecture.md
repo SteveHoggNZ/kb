@@ -153,3 +153,4 @@ This creates productive tension with [[Teams Of Agents - LLM Specialisation+Pers
 ---
 
 *Updated [[2026-02-17]] — Added Twelve-Factor Agents cross-reference*
+*Updated [[2026-04-02]] — Referenced from [[Preparing for Next-Gen AI Models]]: next-gen models extend Rule 5 — the orchestration layer itself becomes an AI planner*

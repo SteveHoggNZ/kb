@@ -78,3 +78,4 @@ Choosing an AI coding tool is no longer just a technical decision — it's a str
 ---
 
 *Created [[2026-02-16]]*
+*Updated [[2026-04-02]] — Referenced from [[Preparing for Next-Gen AI Models]]: harnesses still matter, but the optimal harness shifts from complex orchestration to clean data + clear intent + hard guardrails*

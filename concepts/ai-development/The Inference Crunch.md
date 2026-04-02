@@ -164,3 +164,7 @@ This is [[The Bottleneck Economy]]'s "Atoms vs. Bits" bottleneck made concrete:
 ## Sources
 
 - [The Inference Crunch (YouTube)](https://youtu.be/pSgy2P2q790?si=b9j6aBHF_dcNhOn1)
+
+---
+
+*Updated [[2026-04-02]] — Referenced from [[Preparing for Next-Gen AI Models]]: next-gen models compound the crunch with higher per-inference compute costs*

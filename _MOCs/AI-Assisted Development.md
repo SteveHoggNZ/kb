@@ -113,6 +113,9 @@ We've been lazy in defining "hard work." Disentangles difficulty into seven dime
 ### [[concepts/ai-development/Intent Engineering|Intent Engineering]]
 The missing discipline above Context Engineering. Context tells the AI what to *know*; Intent tells it what to *want*. Three layers to bridge the gap: unified context infrastructure, coherent AI worker toolkit, and the goal translation layer (trade-off hierarchies, decision boundaries, feedback loops). Without intent alignment, capable agents efficiently optimise for the wrong things — the Klarna cautionary tale and Copilot's 5% deployment rate illustrate the cost. Operationalises [[The Barbell Economy|Barbell Economy]]'s Layer 2; encodes [[Seven Dimensions of Hard Work|Dims 4-7]] into machine-actionable parameters.
 
+### [[concepts/ai-development/Preparing for Next-Gen AI Models|Preparing for Next-Gen AI Models]]
+The "bitter lesson" of AI scaling applied to production workflows: as model intelligence increases, human-imposed structure should decrease. Eight principles for stripping scaffolding — procedural prompts, hand-crafted retrieval, intermediate review gates — before next-gen models make it obsolete. The meta-pattern: optimal harnesses shift from complex orchestration to clean data + clear intent + hard guardrails.
+
 ### [[concepts/ai-development/Decompose-Route-Recompose|Decompose-Route-Recompose]]
 The meta-skill for the AI era. **Decompose** complex work into sub-problems by [[Seven Dimensions of Hard Work|dimension]], **Route** each to the right engine (deep-think model, agent swarm, human), **Recompose** with taste and judgment. Includes the brownfield application (Research-Plan-Implement): break codebase work into three phases with fresh context windows and dense handoff artifacts (`research.md` → `plan.md` → code). Sub-agents aren't personas — they're context isolators. Review shifts from code to plans. The 40% Rule: compact when context exceeds 40%.
 
@@ -141,3 +144,4 @@ The Great Inversion isn't just about AI — it's a lens that reframes Leadership
 - [Colleague vs Tool-Shaped AI (YouTube)](https://www.youtube.com/watch?v=hDpjMJw3flk)
 - [The 2026 Builder Operating System (YouTube)](https://www.youtube.com/watch?v=RadhS7Jl9sU)
 - [Scalable Multi-Agent Architecture (YouTube)](https://youtu.be/2EXyj_fHU48?si=tgjOMKUOdZKp6uBT)
+- [Preparing for Claude Mythos (YouTube)](https://youtu.be/hV5_XSEBZNg?si=oeiJO2vhpaspfd5i)
