@@ -145,6 +145,7 @@ This creates productive tension with [[Teams Of Agents - LLM Specialisation+Pers
 - [[Context Distillation Loop - amnesia as a feature]] — Episodic operation as forced clarity
 - [[Agents vs Long Context]] — Another dimension of the agent architecture trade-off
 - [[The 2026 Builder Operating System]] — Engineering Manager Mindset applied to agent orchestration
+- [[Agentic Harness Primitives]] — The 12 infrastructure primitives; constrained agent types (Primitive 12) echo "simple agents + smart orchestration"
 
 ## Sources
 
