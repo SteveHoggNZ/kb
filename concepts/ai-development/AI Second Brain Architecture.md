@@ -107,6 +107,7 @@ By following this architecture, you can close "open loops" in your brain, reduce
 
 - [[The Great Inversion]] — AI has flipped the cost of thinking vs. doing
 - [[Eight Habits to Break]] — Scarcity-era habits to unlearn
+- [[Outcome Agent Architecture]] — Extends this into a full three-layer system: the Second Brain becomes Layer 1 (Knowledge Store), with Agent Recipes (Layer 2) and a Scheduling Loop (Layer 3) built on top
 
 ## See Also
 
@@ -115,3 +116,7 @@ By following this architecture, you can close "open loops" in your brain, reduce
 ## Sources
 
 - [Building a Second Brain with AI (YouTube)](https://www.youtube.com/watch?v=0TpON5T-Sw4)
+
+---
+
+*Updated [[2026-04-05]] — Added Outcome Agent Architecture cross-reference*

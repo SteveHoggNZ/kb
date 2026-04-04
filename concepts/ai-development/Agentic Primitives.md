@@ -149,6 +149,7 @@ The three primitives map onto the KB's existing frameworks:
 - [[Decompose-Route-Recompose]] — Research phase (agent) → judgment phase (human)
 - [[Colleague vs Tool-Shaped AI]] — Dispatch enables Tool-shaped delegation at scale
 - [[Intent Engineering]] — What agents need to act autonomously at Level 5
+- [[Outcome Agent Architecture]] — Three-layer system that organises the primitives into Knowledge Store → Agent Recipes → Scheduling Loop
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
 
 ## Sources
@@ -158,3 +159,4 @@ The three primitives map onto the KB's existing frameworks:
 ---
 
 *Created [[2026-02-24]] — Captured from video on Claude's agentic building blocks*
+*Updated [[2026-04-05]] — Added Outcome Agent Architecture cross-reference*

@@ -56,6 +56,9 @@ In humans, expertise produces expert language (language is a *symptom* of though
 ### [[concepts/ai-development/Commitment Loops|Commitment Loops]]
 Every promise opens a loop in your brain that buzzes until completed. The highest-ROI agent use case is **closing these loops immediately** — not by drafting or summarising (pseudo-work that keeps loops open), but by executing to completion (real work that closes them). The test: after the AI finishes, is the task *done*? "A summary for you to read" = pseudo-work. "A report sent for you" = real work. Extends [[Monkey Management]] to self-directed promises; requires Level 4-5 [[Agent Autonomy Levels|autonomy]] and the [[The 2026 Builder Operating System|Manager Mindset]].
 
+### [[concepts/ai-development/Outcome Agent Architecture|Outcome Agent Architecture]]
+A three-layer architecture for building custom, outcome-focused AI agents. Layer 1: **Knowledge Store** (persistent memory — feed and ground the agent). Layer 2: **Agent Recipes** (pre-wired workflows that produce editable artifacts, not chat). Layer 3: **Scheduling Loop** (autonomous runs that write learnings back to the Knowledge Store, compounding context over time). Organises [[Agentic Primitives]] into a coherent system and extends [[AI Second Brain Architecture]] from capture into action. Open-source implementation: Open Brain.
+
 ### [[concepts/ai-development/Agentic Primitives|Agentic Primitives]]
 Three building blocks that move AI from "pseudo-work" (summarising, briefing) to "real work" (tasks genuinely off your desk): **Scheduled Tasks** (your computer in the cloud — recurring background work), **Dispatch** (mobile orchestration of parallel agent sessions), and **Computer Use** (rescuing trapped data from legacy systems with no APIs). Together they push agents toward [[Agent Autonomy Levels|Level 5]] autonomy. Requires the **Manager Mindset**: delegate open commitments immediately, gather deep context before deciding, trust the background process. Managed infrastructure (like Dispatch) enables mass adoption, just as Gmail replaced self-hosted mail servers.
 
@@ -148,3 +151,4 @@ The Great Inversion isn't just about AI — it's a lens that reframes Leadership
 - [The 2026 Builder Operating System (YouTube)](https://www.youtube.com/watch?v=RadhS7Jl9sU)
 - [Scalable Multi-Agent Architecture (YouTube)](https://youtu.be/2EXyj_fHU48?si=tgjOMKUOdZKp6uBT)
 - [Preparing for Claude Mythos (YouTube)](https://youtu.be/hV5_XSEBZNg?si=oeiJO2vhpaspfd5i)
+- [Outcome Agent Architecture (YouTube)](https://youtu.be/D-Ww1wLIp60?si=F7rJze31TCv59OJK)
