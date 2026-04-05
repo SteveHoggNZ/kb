@@ -1,4 +1,12 @@
 
+```
+We should create a plan for the .ai/plans/__p0-add-mcp-auth.md changes. I think we need to document these auth flows in the appropriate
+  places. That could be docs/ and/or the examples/*/README.md somewhere. \                                                                     
+  \                                                                                                                                            
+  We should also make the plans aim to get everything working in Claude Cowork. The auth used will likely be one of the 3 options mentioned,   
+  so we need to go through and get it working and document what works and what doesn't, and what the future state could be e.g. OAUTH2 
+```
+
 ```bash
 cd packages/python/experiments/claude_agent
 
