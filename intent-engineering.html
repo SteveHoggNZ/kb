@@ -523,6 +523,143 @@
   /* ─── Footer ─── */
   .site-footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.8rem; }
 
+  /* ─── Wave Timeline ─── */
+  .wave-timeline {
+    display: flex; align-items: flex-start; gap: 0; margin: 2.5rem 0;
+    position: relative; padding-top: 3rem;
+  }
+  .wave-timeline::before {
+    content: ''; position: absolute; top: calc(3rem + 24px); left: 5%; right: 5%;
+    height: 3px; background: linear-gradient(90deg, var(--accent-2), var(--blue), var(--accent-light), var(--accent));
+    border-radius: 2px; opacity: 0.4;
+  }
+  .wave-card {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    position: relative; padding: 0 0.5rem;
+  }
+  .wave-pip {
+    width: 14px; height: 14px; border-radius: 50%; margin-bottom: 1.25rem;
+    position: relative; z-index: 2;
+  }
+  .wave-card:nth-child(1) .wave-pip { background: var(--accent-2); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
+  .wave-card:nth-child(2) .wave-pip { background: var(--blue); box-shadow: 0 0 12px rgba(91,141,239,0.4); }
+  .wave-card:nth-child(3) .wave-pip { background: var(--accent-light); box-shadow: 0 0 12px rgba(155,127,255,0.4); }
+  .wave-card:nth-child(4) .wave-pip { background: var(--accent); box-shadow: 0 0 16px rgba(124,92,252,0.5); }
+  .wave-label {
+    font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 3px 10px; border-radius: 12px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--text-muted); position: absolute; top: 0; white-space: nowrap;
+  }
+  .wave-card:nth-child(1) .wave-label { color: var(--accent-2); border-color: rgba(0,212,170,0.3); }
+  .wave-card:nth-child(2) .wave-label { color: var(--blue); border-color: rgba(91,141,239,0.3); }
+  .wave-card:nth-child(3) .wave-label { color: var(--accent-light); border-color: rgba(155,127,255,0.3); }
+  .wave-card:nth-child(4) .wave-label { color: var(--accent); border-color: rgba(124,92,252,0.3); }
+  .wave-body {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.5rem; text-align: center; width: 100%; transition: var(--transition);
+    min-height: 280px; display: flex; flex-direction: column;
+  }
+  .wave-body:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .wave-card.current .wave-body {
+    border-color: rgba(91,141,239,0.4);
+    background: linear-gradient(180deg, rgba(91,141,239,0.06), var(--surface));
+  }
+  .wave-card.future .wave-body { opacity: 0.7; }
+  .wave-body h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .wave-card:nth-child(1) .wave-body h4 { color: var(--accent-2); }
+  .wave-card:nth-child(2) .wave-body h4 { color: var(--blue); }
+  .wave-card:nth-child(3) .wave-body h4 { color: var(--accent-light); }
+  .wave-card:nth-child(4) .wave-body h4 { color: var(--accent); }
+  .wave-body .wave-subtitle { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 1rem; }
+  .wave-body p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+  .wave-icons {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin: 1rem 0; flex-wrap: wrap;
+  }
+  .wave-icon-person {
+    width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 0.85rem;
+  }
+  .wi-human { background: rgba(91,141,239,0.2); border: 2px solid var(--blue); }
+  .wi-agent { background: rgba(0,212,170,0.2); border: 2px solid var(--accent-2); }
+  .wi-agent-dark { background: rgba(100,100,120,0.2); border: 2px solid #555; }
+  .wi-plus { color: var(--text-dim); font-size: 1rem; font-weight: 300; }
+  .wave-today {
+    position: absolute; top: -0.5rem; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: #fff; font-size: 0.6rem; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  /* ─── Adoption Path ─── */
+  .adoption-path { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; position: relative; }
+  .adoption-path::before {
+    content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(to bottom, var(--accent-2), var(--blue), var(--accent-light), var(--accent));
+    border-radius: 2px; opacity: 0.3;
+  }
+  .adopt-step {
+    display: flex; gap: 1.5rem; padding: 1.5rem 0; position: relative;
+  }
+  .adopt-marker {
+    width: 56px; min-width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; z-index: 1; background: var(--surface); border: 2px solid var(--border);
+  }
+  .adopt-step:nth-child(1) .adopt-marker { border-color: var(--accent-2); color: var(--accent-2); }
+  .adopt-step:nth-child(2) .adopt-marker { border-color: var(--blue); color: var(--blue); }
+  .adopt-step:nth-child(3) .adopt-marker { border-color: var(--accent-light); color: var(--accent-light); }
+  .adopt-step:nth-child(4) .adopt-marker { border-color: var(--accent); color: var(--accent); }
+  .adopt-body { flex: 1; }
+  .adopt-body h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .adopt-body p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .adopt-examples {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem;
+  }
+  .adopt-chip {
+    font-size: 0.7rem; font-weight: 500; padding: 3px 10px; border-radius: 6px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text-muted);
+  }
+  .adopt-step:nth-child(1) .adopt-chip { border-color: rgba(0,212,170,0.2); color: var(--accent-2); }
+  .adopt-step:nth-child(2) .adopt-chip { border-color: rgba(91,141,239,0.2); color: var(--blue); }
+  .adopt-step:nth-child(3) .adopt-chip { border-color: rgba(155,127,255,0.2); color: var(--accent-light); }
+  .adopt-step:nth-child(4) .adopt-chip { border-color: rgba(124,92,252,0.2); color: var(--accent); }
+
+  /* ─── Maturity columns ─── */
+  .maturity-cols {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2rem 0;
+  }
+  .maturity-col {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.75rem; position: relative; overflow: hidden;
+  }
+  .maturity-col::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .maturity-col.individual::before { background: linear-gradient(90deg, var(--accent-2), var(--blue)); }
+  .maturity-col.team::before { background: linear-gradient(90deg, var(--accent-light), var(--accent)); }
+  .maturity-col h4 {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 1.25rem; font-weight: 700;
+  }
+  .maturity-col.individual h4 { color: var(--accent-2); }
+  .maturity-col.team h4 { color: var(--accent-light); }
+  .maturity-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+  }
+  .maturity-item:last-child { border-bottom: none; }
+  .maturity-item .mi-icon {
+    width: 28px; height: 28px; min-width: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  }
+  .maturity-col.individual .mi-icon { background: rgba(0,212,170,0.06); border-color: rgba(0,212,170,0.15); }
+  .maturity-col.team .mi-icon { background: rgba(155,127,255,0.06); border-color: rgba(155,127,255,0.15); }
+  .maturity-item .mi-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+  .maturity-item .mi-text strong { color: var(--text); }
+
   /* ─── Responsive ─── */
   @media (max-width: 900px) {
     .stack-diagram { flex-direction: column; gap: 2rem; }
@@ -540,6 +677,13 @@
     .wow-timeline { flex-direction: column; }
     .wow-timeline::before { display: none; }
     .diet-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .wave-timeline { flex-direction: column; gap: 1.5rem; padding-top: 0; }
+    .wave-timeline::before { display: none; }
+    .wave-label { position: static; margin-bottom: 0.5rem; }
+    .wave-pip { display: none; }
+    .wave-body { min-height: auto; }
+    .wave-today { position: static; transform: none; margin-bottom: 0.5rem; }
+    .maturity-cols { grid-template-columns: 1fr; }
     .feedback-loop-diagram { flex-direction: column; gap: 0.5rem; }
     .fl-arrow { transform: rotate(90deg); }
     .fl-return-arrow { display: none; }
@@ -569,6 +713,8 @@
       <button class="tab-btn" onclick="showPage('methodology')" role="tab">Methodology</button>
       <button class="tab-btn" onclick="showPage('patterns')" role="tab">Patterns</button>
       <button class="tab-btn" onclick="showPage('workshop')" role="tab">In Practice</button>
+      <button class="tab-btn" onclick="showPage('tokens')" role="tab">Tokens</button>
+      <button class="tab-btn" onclick="showPage('aisdlc')" role="tab">AI-SDLC</button>
     </nav>
   </div>
 </header>
@@ -1123,6 +1269,629 @@
 
       <div class="callout">
         <p><strong>The takeaway:</strong> The model doesn't matter as much as the methodology. A well-structured intent engineering system — with phases, harnesses, and feedback loops — produces reliable results regardless of which AI you use.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 7: AI-SDLC ═══════════ -->
+<div id="aisdlc" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>The <span class="gradient">AI-SDLC</span></h1>
+      <p class="subtitle">Intent engineering doesn't just change how you prompt. It changes how you build software. Here's the adoption path — from your machine to your team's pipeline.</p>
+    </section>
+
+    <!-- ── Four Waves ── -->
+    <section class="content-section">
+      <div class="section-label">The Four Waves</div>
+      <h2>From Assistance to Autonomy</h2>
+      <p>AI adoption in software development follows a progression. Each wave changes the ratio of humans to agents — and the kind of intent engineering required.</p>
+
+      <div class="wave-timeline">
+        <div class="wave-card">
+          <div class="wave-label">Wave 1</div>
+          <div class="wave-pip"></div>
+          <div class="wave-body">
+            <h4>Assistance</h4>
+            <div class="wave-subtitle">Human + Copilot</div>
+            <div class="wave-icons">
+              <div class="wave-icon-person wi-human">&#128100;</div>
+              <span class="wi-plus">+</span>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+            </div>
+            <p>AI as autocomplete. You drive, it suggests. Code completion, inline help, simple Q&A. The human does all the thinking.</p>
+          </div>
+        </div>
+        <div class="wave-card current">
+          <div class="wave-label">Wave 2</div>
+          <div class="wave-pip"><div class="wave-today">Today</div></div>
+          <div class="wave-body">
+            <h4>Augmentation</h4>
+            <div class="wave-subtitle">Human-directed agents</div>
+            <div class="wave-icons">
+              <div class="wave-icon-person wi-human">&#128100;</div>
+              <div style="display:flex; gap:4px;">
+                <div class="wave-icon-person wi-agent">&#9881;</div>
+                <div class="wave-icon-person wi-agent">&#9881;</div>
+                <div class="wave-icon-person wi-agent">&#9881;</div>
+              </div>
+            </div>
+            <p>You direct agents to do whole tasks. Local skills, RPI methodology, personal agent workflows. <strong style="color:var(--blue)">This is where intent engineering begins.</strong></p>
+          </div>
+        </div>
+        <div class="wave-card">
+          <div class="wave-label">Wave 3</div>
+          <div class="wave-pip"></div>
+          <div class="wave-body">
+            <h4>Orchestration</h4>
+            <div class="wave-subtitle">Team-wide agent workflows</div>
+            <div class="wave-icons">
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-human">&#128100;</div>
+            </div>
+            <div class="wave-icons" style="margin-top: 0;">
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-human">&#128100;</div>
+            </div>
+            <p>Shared skills repos, pipeline agents, PR review bots. Agents become team infrastructure. Humans supervise.</p>
+          </div>
+        </div>
+        <div class="wave-card future">
+          <div class="wave-label">Wave 4</div>
+          <div class="wave-pip"></div>
+          <div class="wave-body">
+            <h4>Autonomy</h4>
+            <div class="wave-subtitle">Agent-orchestrated systems</div>
+            <div class="wave-icons">
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+            </div>
+            <div class="wave-icons" style="margin-top:0;">
+              <div class="wave-icon-person wi-agent-dark">&#9881;</div>
+              <div class="wave-icon-person wi-human">&#128100;</div>
+              <div class="wave-icon-person wi-agent-dark">&#9881;</div>
+            </div>
+            <div class="wave-icons" style="margin-top:0;">
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+            </div>
+            <p>Agents coordinating agents at scale. Humans set intent and review outcomes. The SDLC runs itself.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="takeaway-banner">
+        <em>We must shift our mindset from text-crafters to systems architects.</em>
+      </div>
+    </section>
+
+    <!-- ── The Adoption Path ── -->
+    <section class="content-section">
+      <div class="section-label">The Path</div>
+      <h2>Getting There: Individual First, Then Team</h2>
+      <p>You don't jump straight to pipeline agents. The adoption path starts with you — proving the patterns locally — then graduating them to shared infrastructure.</p>
+
+      <div class="adoption-path">
+        <div class="adopt-step">
+          <div class="adopt-marker">&#9998;</div>
+          <div class="adopt-body">
+            <h4>1. Get It Working Locally</h4>
+            <p>Build your own skills, refine your own agent workflows, prove the RPI methodology on real tasks. This is your lab — experiment, iterate, learn what works. You're building muscle memory for intent engineering.</p>
+            <div class="adopt-examples">
+              <span class="adopt-chip">Personal CLAUDE.md</span>
+              <span class="adopt-chip">Local skills</span>
+              <span class="adopt-chip">RPI on your own PRs</span>
+              <span class="adopt-chip">Custom agent prompts</span>
+              <span class="adopt-chip">ADC decision records</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-step">
+          <div class="adopt-marker">&#128101;</div>
+          <div class="adopt-body">
+            <h4>2. Share Patterns with Your Team</h4>
+            <p>Once your skills and workflows are proven, promote them to shared infrastructure. A team skills repo means everyone benefits from your hard-won patterns. Shared CLAUDE.md files encode team conventions as agent-readable intent.</p>
+            <div class="adopt-examples">
+              <span class="adopt-chip">Shared skills repo</span>
+              <span class="adopt-chip">Team CLAUDE.md</span>
+              <span class="adopt-chip">Documented agent workflows</span>
+              <span class="adopt-chip">Pair-programming with agents</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-step">
+          <div class="adopt-marker">&#9881;</div>
+          <div class="adopt-body">
+            <h4>3. Agents in the Pipeline</h4>
+            <p>Agents move from your terminal into the CI/CD pipeline. PR review agents check for style, test coverage, and architectural compliance. Research agents pre-analyse tickets. Plan agents draft implementation approaches before a human even starts.</p>
+            <div class="adopt-examples">
+              <span class="adopt-chip">PR review agents</span>
+              <span class="adopt-chip">CI/CD pipeline agents</span>
+              <span class="adopt-chip">Ticket pre-analysis</span>
+              <span class="adopt-chip">Automated research phase</span>
+              <span class="adopt-chip">Architecture compliance</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-step">
+          <div class="adopt-marker">&#127758;</div>
+          <div class="adopt-body">
+            <h4>4. Agentic Workflows at Scale</h4>
+            <p>The full AI-SDLC: agents that research, plan, implement, and verify — with humans setting intent and reviewing outcomes. The RPI methodology you proved locally is now an organisational capability. Custom Skills encode your org's patterns as portable, reusable knowledge.</p>
+            <div class="adopt-examples">
+              <span class="adopt-chip">Agent-to-agent handoffs</span>
+              <span class="adopt-chip">Org-wide skills marketplace</span>
+              <span class="adopt-chip">Autonomous RPI pipelines</span>
+              <span class="adopt-chip">Intent-driven backlog</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Individual vs Team ── -->
+    <section class="content-section">
+      <div class="section-label">Two Phases</div>
+      <h2>What Changes When You Go from You to Us</h2>
+
+      <div class="maturity-cols">
+        <div class="maturity-col individual">
+          <h4>Individual (Waves 1-2)</h4>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128196;</div>
+            <div class="mi-text"><strong>Personal CLAUDE.md</strong> — your coding conventions, preferences, and project-specific rules</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#9881;</div>
+            <div class="mi-text"><strong>Local skills</strong> — custom skills in your own .claude/skills/ folder, iterated until they work</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128270;</div>
+            <div class="mi-text"><strong>Manual RPI</strong> — you trigger each phase, review each artefact, guide each agent</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128203;</div>
+            <div class="mi-text"><strong>ADC records</strong> — your own decision contexts, learning what to capture</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128736;</div>
+            <div class="mi-text"><strong>Local harnesses</strong> — tests and linters on your machine, run by your agents</div>
+          </div>
+        </div>
+        <div class="maturity-col team">
+          <h4>Team &amp; Organisation (Waves 3-4)</h4>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128196;</div>
+            <div class="mi-text"><strong>Shared CLAUDE.md</strong> — team conventions, architecture decisions, and coding standards as agent-readable intent</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#9881;</div>
+            <div class="mi-text"><strong>Shared skills repo</strong> — proven skills promoted from individual to team, versioned and reviewed like code</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128270;</div>
+            <div class="mi-text"><strong>Pipeline RPI</strong> — agents triggered by events (new PR, ticket assignment), phased workflows automated</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128203;</div>
+            <div class="mi-text"><strong>Org-wide ADCs</strong> — decision contexts become institutional memory, searchable by future agents</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128736;</div>
+            <div class="mi-text"><strong>CI/CD harnesses</strong> — the same physics-based enforcement, now running in pipelines with agent reviewers</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skills as the Bridge ── -->
+    <section class="content-section">
+      <div class="section-label">The Bridge</div>
+      <h2>Skills Are the Unit of Adoption</h2>
+      <p>A skill is a self-contained folder — a SKILL.md plus any bundled scripts, references, and examples. Skills are how individual knowledge becomes team capability.</p>
+
+      <!-- Visual: skill lifecycle -->
+      <div style="display: flex; align-items: center; gap: 0; margin: 2.5rem 0; justify-content: center; flex-wrap: wrap;">
+        <div style="text-align: center; padding: 1rem;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius); background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.8rem;">&#128161;</div>
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-2); margin-top: 0.5rem;">Create</div>
+          <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem;">Build locally,<br>iterate until proven</div>
+        </div>
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.25rem;">&rarr;</div>
+        <div style="text-align: center; padding: 1rem;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius); background: rgba(91,141,239,0.06); border: 1px solid rgba(91,141,239,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.8rem;">&#128269;</div>
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--blue); margin-top: 0.5rem;">Prove</div>
+          <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem;">Use on real tasks,<br>refine the SKILL.md</div>
+        </div>
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.25rem;">&rarr;</div>
+        <div style="text-align: center; padding: 1rem;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius); background: rgba(155,127,255,0.06); border: 1px solid rgba(155,127,255,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.8rem;">&#128101;</div>
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-light); margin-top: 0.5rem;">Share</div>
+          <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem;">Promote to shared<br>skills repo via PR</div>
+        </div>
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.25rem;">&rarr;</div>
+        <div style="text-align: center; padding: 1rem;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius); background: rgba(124,92,252,0.08); border: 1px solid rgba(124,92,252,0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.8rem;">&#127758;</div>
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent); margin-top: 0.5rem;">Scale</div>
+          <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem;">Agents use skills<br>in pipelines at scale</div>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <p><strong>The industry is converging.</strong> GitHub's Custom Skills, Copilot's Modernization Agent, the Agentic Context Framework — they all use the same pattern: self-contained skill folders with documentation, scripts, and examples. Your RPI methodology can be packaged as a skill. Your ADC pattern can be a skill. This is how methodology becomes infrastructure.</p>
+      </div>
+    </section>
+
+    <!-- ── What the AI-SDLC Looks Like ── -->
+    <section class="content-section">
+      <div class="section-label">The Vision</div>
+      <h2>The AI-Native SDLC</h2>
+      <p>In the AI-SDLC, every stage of the development lifecycle has agent participation — guided by intent, constrained by harnesses, connected by dense artefacts.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 4px; margin: 2rem 0;">
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.2); font-size: 0.78rem; font-weight: 600; color: var(--accent-2);">&#128196; Ticket Created</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--accent-2)">Research agent</strong> analyses the ticket, maps affected files, produces research.md</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(91,141,239,0.1); border: 1px solid rgba(91,141,239,0.2); font-size: 0.78rem; font-weight: 600; color: var(--blue);">&#128208; Research Ready</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--blue)">Plan agent</strong> reads research.md, drafts implementation plan with risk register</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(155,127,255,0.1); border: 1px solid rgba(155,127,255,0.2); font-size: 0.78rem; font-weight: 600; color: var(--accent-light);">&#9745; Human Review</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--accent-light)">Developer</strong> reviews the plan, adjusts intent, approves or redirects</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(232,145,58,0.1); border: 1px solid rgba(232,145,58,0.2); font-size: 0.78rem; font-weight: 600; color: var(--orange);">&#9889; Plan Approved</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--orange)">Implement agent</strong> follows plan step-by-step, self-corrects from harness output</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(124,92,252,0.1); border: 1px solid rgba(124,92,252,0.2); font-size: 0.78rem; font-weight: 600; color: var(--accent);">&#128640; PR Created</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--accent)">Review agent</strong> checks architecture, test coverage, style &mdash; human does final approval</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>The key insight:</strong> The same intent engineering patterns that make agents reliable on your machine — phased workflows, dense artefacts, physics-based enforcement — are exactly what make them reliable in a pipeline. The AI-SDLC isn't a different methodology. It's the same methodology, graduated from individual to infrastructure.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 6: TOKENS ═══════════ -->
+<div id="tokens" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>Minimising <span class="gradient">Token Usage</span></h1>
+      <p class="subtitle">Every token you waste is a token the agent can't use for reasoning. Curated context beats raw context every time.</p>
+    </section>
+
+    <!-- ── The Dumb Zone ── -->
+    <section class="content-section">
+      <div class="section-label">The Problem</div>
+      <h2>The Dumb Zone</h2>
+      <p>AI agents don't degrade gracefully as context fills up. Past roughly 40% context usage, reasoning quality drops sharply — the model becomes confident but wrong. This is the Dumb Zone.</p>
+
+      <div style="margin: 2.5rem 0;">
+        <div style="display: flex; align-items: flex-end; height: 200px; gap: 2px; position: relative; padding-bottom: 2rem;">
+          <!-- Y axis label -->
+          <div style="position: absolute; left: -10px; top: 0; bottom: 2rem; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.65rem; color: var(--text-dim); text-align: right; width: 60px;">
+            <span>Excellent</span>
+            <span>Good</span>
+            <span>Poor</span>
+          </div>
+          <!-- Bars -->
+          <div style="display: flex; align-items: flex-end; gap: 3px; flex: 1; height: 100%; margin-left: 70px;">
+            <div style="flex:1; height: 95%; background: linear-gradient(to top, rgba(0,212,170,0.3), rgba(0,212,170,0.08)); border-radius: 4px 4px 0 0; border: 1px solid rgba(0,212,170,0.2); border-bottom: none;"></div>
+            <div style="flex:1; height: 90%; background: linear-gradient(to top, rgba(0,212,170,0.3), rgba(0,212,170,0.08)); border-radius: 4px 4px 0 0; border: 1px solid rgba(0,212,170,0.2); border-bottom: none;"></div>
+            <div style="flex:1; height: 85%; background: linear-gradient(to top, rgba(0,212,170,0.25), rgba(0,212,170,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(0,212,170,0.15); border-bottom: none;"></div>
+            <div style="flex:1; height: 78%; background: linear-gradient(to top, rgba(91,141,239,0.25), rgba(91,141,239,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(91,141,239,0.2); border-bottom: none;"></div>
+            <!-- The 40% mark -->
+            <div style="flex:1; height: 60%; background: linear-gradient(to top, rgba(232,145,58,0.3), rgba(232,145,58,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(232,145,58,0.2); border-bottom: none; position: relative;">
+              <div style="position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; color: var(--orange); white-space: nowrap; font-weight: 600;">~40%</div>
+            </div>
+            <div style="flex:1; height: 42%; background: linear-gradient(to top, rgba(255,107,138,0.3), rgba(255,107,138,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.2); border-bottom: none;"></div>
+            <div style="flex:1; height: 30%; background: linear-gradient(to top, rgba(255,107,138,0.3), rgba(255,107,138,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.2); border-bottom: none;"></div>
+            <div style="flex:1; height: 22%; background: linear-gradient(to top, rgba(255,107,138,0.35), rgba(255,107,138,0.08)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.25); border-bottom: none;"></div>
+            <div style="flex:1; height: 18%; background: linear-gradient(to top, rgba(255,107,138,0.35), rgba(255,107,138,0.08)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.25); border-bottom: none;"></div>
+            <div style="flex:1; height: 15%; background: linear-gradient(to top, rgba(255,107,138,0.4), rgba(255,107,138,0.1)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.3); border-bottom: none;"></div>
+          </div>
+        </div>
+        <!-- X axis -->
+        <div style="display: flex; margin-left: 70px; justify-content: space-between; font-size: 0.65rem; color: var(--text-dim);">
+          <span>0%</span><span>20%</span><span>40%</span><span>60%</span><span>80%</span><span>100%</span>
+        </div>
+        <div style="text-align: center; margin-top: 0.75rem;">
+          <span style="font-size: 0.72rem; color: var(--text-muted);">Context Window Usage &rarr;</span>
+        </div>
+        <!-- Legend -->
+        <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; font-size: 0.72rem;">
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 10px; height: 10px; border-radius: 2px; background: rgba(0,212,170,0.3); border: 1px solid rgba(0,212,170,0.3);"></span><span style="color: var(--accent-2);">Strong reasoning</span></span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 10px; height: 10px; border-radius: 2px; background: rgba(232,145,58,0.3); border: 1px solid rgba(232,145,58,0.3);"></span><span style="color: var(--orange);">Degrading</span></span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 10px; height: 10px; border-radius: 2px; background: rgba(255,107,138,0.3); border: 1px solid rgba(255,107,138,0.3);"></span><span style="color: var(--accent-3);">Dumb Zone</span></span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>200k+ lines can't fit in a window.</strong> nopCommerce's ShoppingCartService alone is 1,976 lines with 31 dependencies. Dumping files into context doesn't work — you need curated context, not raw context.</p>
+      </div>
+    </section>
+
+    <!-- ── Three Strategies ── -->
+    <section class="content-section">
+      <div class="section-label">Strategies</div>
+      <h2>Three Ways to Minimise Token Waste</h2>
+
+      <div class="card-grid three">
+        <div class="card">
+          <div class="card-icon">&#128270;</div>
+          <h4>1. Precise Tools</h4>
+          <p>Use LSP, AST queries, and structured APIs instead of grep and file reads. Get exactly the data you need, not pages of approximate matches.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">&#128230;</div>
+          <h4>2. Dense Artefacts</h4>
+          <p>Compress hours of exploration into structured documents. Handoff artefacts carry intent forward without carrying raw context.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon orange">&#9986;</div>
+          <h4>3. Fresh Context Windows</h4>
+          <p>Start each phase clean. Don't accumulate stale tokens from earlier exploration. The RPI methodology bakes this in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LSP vs Grep ── -->
+    <section class="content-section">
+      <div class="section-label">Precise Tools</div>
+      <h2>LSP Changes Everything</h2>
+      <p>The same research task — mapping the shopping cart steel thread — was run twice. Once with grep and manual file reads, once with Language Server Protocol. The difference isn't subtle.</p>
+
+      <div class="physics-visual">
+        <div class="pv-side law">
+          <h4>Without LSP (grep)</h4>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128196;</div>
+            <div class="pv-row-text"><strong style="color:var(--text)">6</strong> methods identified for extraction</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#9888;</div>
+            <div class="pv-row-text"><strong style="color:var(--text)">10</strong> risks in register</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128269;</div>
+            <div class="pv-row-text">Caller counts <strong style="color:var(--text)">estimated</strong>, not verified</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128203;</div>
+            <div class="pv-row-text">Reads many files to find partial matches</div>
+          </div>
+        </div>
+        <div class="pv-arrow-col">
+          <span class="pv-arrow">vs</span>
+        </div>
+        <div class="pv-side physics">
+          <h4>With LSP</h4>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128196;</div>
+            <div class="pv-row-text"><strong style="color:#fff">10</strong> methods identified for extraction</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#9888;</div>
+            <div class="pv-row-text"><strong style="color:#fff">12</strong> risks in register (+2 critical)</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128269;</div>
+            <div class="pv-row-text">Precise caller counts: <strong style="color:#fff">30+ consumers by layer</strong></div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128203;</div>
+            <div class="pv-row-text">Structured queries return <strong style="color:#fff">only what's needed</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Three critical gaps -->
+      <h3 style="margin-top: 2.5rem;">Three Critical Gaps Grep Missed</h3>
+      <div class="wow-timeline" style="margin-top: 1.5rem;">
+        <div class="wow-moment">
+          <div class="wow-badge" style="font-size: 1.2rem; background: rgba(255,107,138,0.15); border: 2px solid var(--accent-3);">1</div>
+          <h4>Test DI Registration</h4>
+          <p><code style="font-size:0.75rem; color:var(--accent-2)">BaseNopTest.cs</code> needs CartService registered too — not just <code style="font-size:0.75rem; color:var(--accent-2)">NopStartup.cs</code>. Without this, all unit tests fail.</p>
+          <span class="wow-principle" style="color:var(--accent-3); background:rgba(255,107,138,0.1);">Would break all tests</span>
+        </div>
+        <div class="wow-moment">
+          <div class="wow-badge" style="font-size: 1.2rem; background: rgba(255,107,138,0.15); border: 2px solid var(--accent-3);">2</div>
+          <h4>Bidirectional Coupling</h4>
+          <p>Delete and Update call each other. Moving one without the other creates a circular dependency that the compiler rejects.</p>
+          <span class="wow-principle" style="color:var(--accent-3); background:rgba(255,107,138,0.1);">Would block compilation</span>
+        </div>
+        <div class="wow-moment">
+          <div class="wow-badge" style="font-size: 1.2rem; background: rgba(255,107,138,0.15); border: 2px solid var(--accent-3);">3</div>
+          <h4>Hidden External Callers</h4>
+          <p>8 callers on <code style="font-size:0.75rem; color:var(--accent-2)">GetStandardWarningsAsync</code> from outside the service. Grep found 0 — treated as internal only.</p>
+          <span class="wow-principle" style="color:var(--accent-3); background:rgba(255,107,138,0.1);">Would break 8 callers</span>
+        </div>
+      </div>
+
+      <div class="callout green" style="margin-top: 2rem;">
+        <p><strong>LSP-verified research is physics for planning.</strong> Any of these three gaps would have caused the implementation to fail. LSP answers precise questions with precise data — no wasted tokens on scanning files for approximate matches.</p>
+      </div>
+    </section>
+
+    <!-- ── Context Compression ── -->
+    <section class="content-section">
+      <div class="section-label">Dense Artefacts</div>
+      <h2>Compression, Not Accumulation</h2>
+      <p>Each RPI phase compresses its findings into a dense handoff document. The next phase gets curated knowledge, not raw exploration. This is how you stay out of the Dumb Zone.</p>
+
+      <!-- Compression funnel visual -->
+      <div style="display: flex; align-items: center; gap: 0; margin: 2.5rem 0; justify-content: center;">
+        <!-- Full codebase -->
+        <div style="text-align: center; width: 160px;">
+          <div style="width: 140px; height: 140px; border-radius: var(--radius); background: rgba(91,141,239,0.06); border: 1px solid rgba(91,141,239,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+            <div style="font-size: 2rem; font-weight: 800; color: var(--blue);">200k</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">lines of code</div>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem;">Full codebase</div>
+        </div>
+
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.5rem;">&rarr;</div>
+
+        <!-- Research output -->
+        <div style="text-align: center; width: 140px;">
+          <div style="width: 110px; height: 110px; border-radius: var(--radius); background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-2);">~2k</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">lines</div>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem;">research.md</div>
+        </div>
+
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.5rem;">&rarr;</div>
+
+        <!-- Plan output -->
+        <div style="text-align: center; width: 130px;">
+          <div style="width: 90px; height: 90px; border-radius: var(--radius); background: rgba(232,145,58,0.06); border: 1px solid rgba(232,145,58,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+            <div style="font-size: 1.3rem; font-weight: 800; color: var(--orange);">~350</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">lines</div>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem;">plan.md</div>
+        </div>
+
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.5rem;">&rarr;</div>
+
+        <!-- Focused action -->
+        <div style="text-align: center; width: 110px;">
+          <div style="width: 64px; height: 64px; border-radius: var(--radius); background: rgba(124,92,252,0.08); border: 1px solid rgba(124,92,252,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent-light);">6</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted);">steps</div>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem;">Focused action</div>
+        </div>
+      </div>
+
+      <p class="center-text" style="max-width: 600px;">Each stage compresses by roughly 100x. The implementing agent works with a plan, not a codebase. It stays well under the 40% threshold where reasoning degrades.</p>
+    </section>
+
+    <!-- ── Context Dump: Selective Extraction ── -->
+    <section class="content-section">
+      <div class="section-label">Selective Extraction</div>
+      <h2>Context Dumps: Curated, Not Complete</h2>
+      <p>When you need to seed a fresh agent with project context, don't dump everything. Extract only the paths and artefacts relevant to the task at hand — a targeted context dump.</p>
+
+      <div style="margin: 2rem 0;">
+        <div class="code-block">
+          <span class="label">Targeted context dump</span>
+<pre>
+<span class="comment"># Instead of giving the agent the entire repo...</span>
+<span class="keyword">/context-dump</span> <span class="string">\
+  src/Services/ShoppingCartService.cs  \
+  src/Interfaces/ICartService.cs       \
+  docs/adc/extract-cart-service/       \
+  docs/01_strategy/                    \
+  .ai/plans/current-plan.md</span>
+
+<span class="comment"># The agent gets ~500 lines of curated context</span>
+<span class="comment"># instead of 200k lines of raw codebase</span>
+</pre>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <div class="compare-col old">
+          <h4>Raw Context Dump</h4>
+          <ul>
+            <li>Entire repo loaded into context</li>
+            <li>Agent must sift through irrelevant files</li>
+            <li>Hits context window limits quickly</li>
+            <li>Falls into the Dumb Zone</li>
+          </ul>
+        </div>
+        <div class="compare-col highlight">
+          <h4>Curated Context Dump</h4>
+          <ul>
+            <li>Specific paths and artefacts selected</li>
+            <li>Agent starts with focused, relevant context</li>
+            <li>Stays well under context limits</li>
+            <li>Maximum reasoning quality preserved</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>This applies beyond initial seeding. Any time you're passing context to an agent — whether through files, tool outputs, or system prompts — ask: <em>is every token here earning its place?</em></p>
+    </section>
+
+    <!-- ── Token Budget Mental Model ── -->
+    <section class="content-section">
+      <div class="section-label">Mental Model</div>
+      <h2>Think in Token Budgets</h2>
+      <p>Every token in the context window has an opportunity cost. Tokens spent on irrelevant context are tokens the agent can't use for reasoning about the actual problem.</p>
+
+      <!-- Stacked bar visual -->
+      <div style="margin: 2.5rem 0;">
+        <!-- Bad example -->
+        <div style="margin-bottom: 1.5rem;">
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">Naive approach: dump everything</div>
+          <div style="display: flex; height: 44px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
+            <div style="width: 65%; background: rgba(255,107,138,0.15); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 12px; font-size: 0.72rem; color: var(--accent-3); font-weight: 500;">Raw files (65%)</div>
+            <div style="width: 20%; background: rgba(232,145,58,0.1); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 8px; font-size: 0.72rem; color: var(--orange); font-weight: 500;">Prompts (20%)</div>
+            <div style="width: 15%; background: rgba(91,141,239,0.08); display: flex; align-items: center; padding-left: 8px; font-size: 0.72rem; color: var(--blue); font-weight: 500;">Reasoning</div>
+          </div>
+        </div>
+        <!-- Good example -->
+        <div>
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">Intent-engineered: curated context</div>
+          <div style="display: flex; height: 44px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,212,170,0.2);">
+            <div style="width: 15%; background: rgba(0,212,170,0.1); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 10px; font-size: 0.72rem; color: var(--accent-2); font-weight: 500;">Artefact</div>
+            <div style="width: 20%; background: rgba(124,92,252,0.08); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 8px; font-size: 0.72rem; color: var(--accent-light); font-weight: 500;">Prompts (20%)</div>
+            <div style="width: 65%; background: rgba(0,212,170,0.05); display: flex; align-items: center; padding-left: 12px; font-size: 0.72rem; color: var(--accent-2); font-weight: 500;">Reasoning (65%) &larr; this is what you want</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Putting It All Together ── -->
+    <section class="content-section">
+      <div class="section-label">Summary</div>
+      <h2>The Token Minimisation Toolkit</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">&#9881;</div>
+          <h4>LSP Over Grep</h4>
+          <p>Structured queries return precise answers. <code>find-references</code> gives you exact callers; grep gives you every line containing a string. One is signal, the other is noise.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">&#128230;</div>
+          <h4>Dense Handoff Artefacts</h4>
+          <p>Compress exploration into structured documents. 200k lines &rarr; 2k line research.md &rarr; 350 line plan.md. Each step is ~100x compression.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon orange">&#9986;</div>
+          <h4>Targeted Context Dumps</h4>
+          <p>Select specific paths and artefacts for fresh agents. Every token should earn its place in the context window.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon pink">&#128260;</div>
+          <h4>Fresh Context Windows</h4>
+          <p>Start each RPI phase clean. Don't accumulate stale exploration tokens. Dense artefacts bridge the gap between phases.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>The principle:</strong> Legacy systems require curated context, not raw context dumps. Adding more files to context does not automatically solve the problem — it usually makes it worse.</p>
       </div>
     </section>
   </div>
