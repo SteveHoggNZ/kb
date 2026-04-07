@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intent Engineering — Beyond Prompt Engineering</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface-2: #1a1a26;
+    --surface-3: #22222f;
+    --border: #2a2a3a;
+    --text: #e4e4ef;
+    --text-muted: #8888a0;
+    --text-dim: #5a5a72;
+    --accent: #7c5cfc;
+    --accent-light: #9b7fff;
+    --accent-glow: rgba(124, 92, 252, 0.15);
+    --accent-2: #00d4aa;
+    --accent-2-glow: rgba(0, 212, 170, 0.12);
+    --accent-3: #ff6b8a;
+    --gradient-1: linear-gradient(135deg, #7c5cfc 0%, #00d4aa 100%);
+    --gradient-2: linear-gradient(135deg, #7c5cfc 0%, #ff6b8a 100%);
+    --gradient-text: linear-gradient(135deg, #9b7fff 0%, #00d4aa 100%);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── Background effects ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 20%, rgba(124, 92, 252, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(0, 212, 170, 0.04) 0%, transparent 50%);
+    z-index: -1;
+    animation: bgShift 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes bgShift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-5%, 3%); }
+  }
+
+  /* ─── Header ─── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+  }
+
+  /* ─── Tab Navigation ─── */
+  .tab-nav {
+    display: flex;
+    gap: 2px;
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 3px;
+  }
+
+  .tab-btn {
+    padding: 8px 18px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+
+  .tab-btn:hover { color: var(--text); background: var(--surface-2); }
+
+  .tab-btn.active {
+    color: #fff;
+    background: var(--accent);
+    box-shadow: 0 2px 12px rgba(124, 92, 252, 0.3);
+  }
+
+  /* ─── Page sections ─── */
+  .page { display: none; animation: fadeIn 0.4s ease; }
+  .page.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ─── Hero ─── */
+  .hero {
+    padding: 5rem 0 4rem;
+    text-align: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--accent-light);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 .gradient {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* ─── Content sections ─── */
+  .content-section {
+    padding: 3rem 0;
+  }
+
+  .content-section + .content-section {
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .content-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    color: var(--text);
+  }
+
+  .content-section p {
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    max-width: 720px;
+  }
+
+  .content-section p.wide { max-width: none; }
+
+  /* ─── Cards ─── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-1);
+    opacity: 0;
+    transition: var(--transition);
+  }
+
+  .card:hover {
+    border-color: rgba(124, 92, 252, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(124, 92, 252, 0.08);
+  }
+
+  .card:hover::before { opacity: 1; }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    background: var(--accent-glow);
+    border: 1px solid rgba(124, 92, 252, 0.2);
+  }
+
+  .card-icon.green { background: var(--accent-2-glow); border-color: rgba(0, 212, 170, 0.2); }
+  .card-icon.pink { background: rgba(255, 107, 138, 0.1); border-color: rgba(255, 107, 138, 0.2); }
+
+  .card h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+
+  .card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0; }
+
+  /* ─── Comparison table ─── */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin: 2rem 0;
+  }
+
+  .compare-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+
+  .compare-col.highlight {
+    border-color: rgba(124, 92, 252, 0.3);
+    background: linear-gradient(180deg, rgba(124, 92, 252, 0.05) 0%, var(--surface) 100%);
+  }
+
+  .compare-col h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .compare-col.old h4 { color: var(--text-dim); }
+  .compare-col.highlight h4 { color: var(--accent-light); }
+
+  .compare-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .compare-col li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding-left: 1.4rem;
+    position: relative;
+  }
+
+  .compare-col li::before {
+    position: absolute;
+    left: 0;
+    font-size: 0.85rem;
+  }
+
+  .compare-col.old li::before { content: '~'; color: var(--text-dim); }
+  .compare-col.highlight li::before { content: '→'; color: var(--accent-light); }
+
+  /* ─── Code blocks ─── */
+  .code-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    position: relative;
+  }
+
+  .code-block .label {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    background: var(--surface-2);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .code-block pre {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .code-block .comment { color: var(--text-dim); }
+  .code-block .keyword { color: var(--accent-light); }
+  .code-block .string { color: var(--accent-2); }
+  .code-block .highlight-line { color: var(--text); }
+
+  /* ─── Funnel / Flow diagram ─── */
+  .funnel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .funnel::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+    opacity: 0.3;
+  }
+
+  .funnel-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+    position: relative;
+  }
+
+  .funnel-dot {
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 4px;
+    position: relative;
+    left: 18px;
+    z-index: 1;
+    box-shadow: 0 0 12px rgba(124, 92, 252, 0.4);
+  }
+
+  .funnel-step:nth-child(2) .funnel-dot { background: #6a8cfc; }
+  .funnel-step:nth-child(3) .funnel-dot { background: #3ab0e8; }
+  .funnel-step:nth-child(4) .funnel-dot { background: #1cc4b8; }
+  .funnel-step:nth-child(5) .funnel-dot { background: var(--accent-2); }
+
+  .funnel-content { padding-left: 1rem; }
+  .funnel-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .funnel-content p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+
+  /* ─── Principle cards (numbered) ─── */
+  .principle {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .principle .num {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 5rem;
+    font-weight: 800;
+    color: rgba(124, 92, 252, 0.06);
+    line-height: 1;
+  }
+
+  .principle h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: var(--text);
+  }
+
+  .principle p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.75rem; max-width: 640px; }
+  .principle p:last-child { margin-bottom: 0; }
+
+  /* ─── Physics vs Law table ─── */
+  .law-physics {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+  }
+
+  .law-physics th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--border);
+    color: var(--text-dim);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .law-physics th:last-child { color: var(--accent-light); }
+
+  .law-physics td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  .law-physics td:first-child { color: var(--text-dim); }
+  .law-physics td:last-child { color: var(--text); }
+
+  .law-physics tr:hover td { background: rgba(124, 92, 252, 0.03); }
+
+  /* ─── Callout ─── */
+  .callout {
+    background: var(--accent-glow);
+    border: 1px solid rgba(124, 92, 252, 0.2);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.75rem;
+    margin: 2rem 0;
+  }
+
+  .callout.green {
+    background: var(--accent-2-glow);
+    border-color: rgba(0, 212, 170, 0.2);
+  }
+
+  .callout p { color: var(--text); margin: 0; font-size: 0.95rem; }
+  .callout strong { color: #fff; }
+
+  /* ─── Footer ─── */
+  .site-footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .header-inner { flex-direction: column; height: auto; padding: 1rem 1.5rem; gap: 0.75rem; }
+    .tab-nav { overflow-x: auto; width: 100%; justify-content: flex-start; }
+    .tab-btn { padding: 8px 14px; font-size: 0.8rem; }
+    .hero { padding: 3rem 0 2rem; }
+    .comparison { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">Intent Engineering</div>
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showPage('overview')" role="tab">Overview</button>
+      <button class="tab-btn" onclick="showPage('shift')" role="tab">The Shift</button>
+      <button class="tab-btn" onclick="showPage('methodology')" role="tab">Methodology</button>
+      <button class="tab-btn" onclick="showPage('patterns')" role="tab">Patterns</button>
+      <button class="tab-btn" onclick="showPage('workshop')" role="tab">In Practice</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════ PAGE 1: OVERVIEW ═══════════ -->
+<div id="overview" class="page active">
+  <div class="container">
+    <section class="hero">
+      <div class="hero-badge">Workshop Guide</div>
+      <h1>Stop Crafting Prompts.<br>Start Engineering <span class="gradient">Intent.</span></h1>
+      <p class="subtitle">Prompt engineering asks "what words make the AI do the right thing?" Intent engineering asks "how do I make the right thing the only possible outcome?"</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">The Idea</div>
+      <h2>What is Intent Engineering?</h2>
+      <p>Intent engineering is the practice of communicating <em>what you want to achieve</em> — the goal, constraints, success criteria, and context — rather than obsessing over the exact phrasing of a prompt. It shifts the focus from words to outcomes.</p>
+      <p>As AI models have become more capable, the bottleneck is no longer "did I use the magic words?" It's "do I actually know what I want, and have I structured things so the AI can't get it wrong?"</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h4>Goals, Not Scripts</h4>
+          <p>Define what success looks like — measurable criteria the AI can work toward — rather than scripting every step.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">🧱</div>
+          <h4>Structure, Not Hope</h4>
+          <p>Encode your intent into structural mechanisms (tests, types, linters) that make wrong behaviour impossible, not just discouraged.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon pink">📦</div>
+          <h4>Context, Not Repetition</h4>
+          <p>Give the AI the right information at the right time. Compress context into dense handoff artefacts rather than dumping everything.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Core Insight</div>
+      <h2>Physics Thinking</h2>
+      <p>The central idea of intent engineering is distinguishing between <strong style="color:#fff">laws</strong> and <strong style="color:#fff">physics</strong>. Laws are instructions — they can be broken. Physics are structural constraints — they can't.</p>
+
+      <table class="law-physics">
+        <thead>
+          <tr>
+            <th>Law (Prompt Instruction)</th>
+            <th>Physics (Structural Enforcement)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"Don't break existing behaviour"</td>
+            <td>Playwright E2E tests that fail if behaviour changes</td>
+          </tr>
+          <tr>
+            <td>"Follow the existing coding style"</td>
+            <td>Linter configured to enforce style rules</td>
+          </tr>
+          <tr>
+            <td>"Make sure the cart logic is correct"</td>
+            <td>Unit tests that assert cart calculations</td>
+          </tr>
+          <tr>
+            <td>"Don't introduce type errors"</td>
+            <td>Compiler that refuses to build</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout">
+        <p><strong>The rule:</strong> If a human has to manually check something, the harness is incomplete. Encode every compliance check as an automated constraint.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 2: THE SHIFT ═══════════ -->
+<div id="shift" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>From Prompts to <span class="gradient">Intent</span></h1>
+      <p class="subtitle">Prompt engineering is a subset of intent engineering. Here's what changes when you think bigger.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Comparison</div>
+      <h2>What's Actually Different?</h2>
+      <p>Prompt engineering treats the prompt as the product. Intent engineering treats the <em>entire system</em> — prompts, structure, feedback loops, constraints — as the product.</p>
+
+      <div class="comparison">
+        <div class="compare-col old">
+          <h4>Prompt Engineering</h4>
+          <ul>
+            <li>Focus on exact wording and formatting</li>
+            <li>Tricks, templates, and magic phrases</li>
+            <li>One prompt → one response</li>
+            <li>Hope the AI follows instructions</li>
+            <li>Retry with different words when it fails</li>
+            <li>All context in a single prompt</li>
+          </ul>
+        </div>
+        <div class="compare-col highlight">
+          <h4>Intent Engineering</h4>
+          <ul>
+            <li>Focus on goals, constraints, and success criteria</li>
+            <li>Structural enforcement through tooling</li>
+            <li>Multi-phase workflows with handoff artefacts</li>
+            <li>Make wrong behaviour structurally impossible</li>
+            <li>Feedback loops that teach the AI what failed</li>
+            <li>Information diets — right context at right time</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Layers</div>
+      <h2>Intent Operates at Multiple Levels</h2>
+      <p>A single prompt is just one layer. Intent engineering stacks mechanisms so each layer catches what the one above misses.</p>
+
+      <div class="funnel">
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>Vision</h4>
+            <p>North-star goal and measurable success criteria. What does "done" look like?</p>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>Strategy</h4>
+            <p>The reasoning behind your approach. Why this methodology? What trade-offs are you making?</p>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>Constraints</h4>
+            <p>Explicit boundaries — what the AI must not do. Negative instructions that define the safe operating space.</p>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>Execution</h4>
+            <p>Structured agent prompts with output shape, required sections, and detail level defined.</p>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>Feedback</h4>
+            <p>Harnesses (compiler, tests, linters) that enforce correctness and teach the AI what went wrong.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Key Insight</div>
+      <h2>Prompts Are Suggestions. Harnesses Are Guarantees.</h2>
+      <p>A prompt says "please don't break the cart." A test suite says "the cart works or you don't proceed." Both communicate intent, but only one enforces it.</p>
+      <p>The best intent engineering systems use prompts for guidance and harnesses for enforcement. The prompt sets direction; the harness sets boundaries.</p>
+
+      <div class="callout green">
+        <p><strong>Think of it this way:</strong> Prompt engineering is writing a good brief. Intent engineering is writing a good brief, hiring a QA team, setting up CI/CD, and defining acceptance criteria — all encoded into the system the AI operates within.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 3: METHODOLOGY ═══════════ -->
+<div id="methodology" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>The <span class="gradient">RPI</span> Methodology</h1>
+      <p class="subtitle">Research → Plan → Implement. Three phases, each in a fresh context, connected by dense handoff artefacts.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Why Phases?</div>
+      <h2>Decompose → Route → Recompose</h2>
+      <p>AI agents have limited context windows. If you ask one to research, plan, and implement all in the same session, the early context gets pushed out as implementation details pile up. RPI solves this by splitting the work into phases, each operating in a fresh context with only the artefacts it needs.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🔍</div>
+          <h4>Phase 1: Research</h4>
+          <p>The agent explores the codebase freely. No implementation, no planning — pure discovery. Produces a dense <code>research.md</code> with file paths, line numbers, and observations.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">📐</div>
+          <h4>Phase 2: Plan</h4>
+          <p>A fresh agent reads only <code>research.md</code>. It produces a step-by-step implementation plan with interface definitions, risk areas, and test strategies.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon pink">⚡</div>
+          <h4>Phase 3: Implement</h4>
+          <p>A fresh agent reads only <code>plan.md</code>. Executes each step, running the full test suite after every change. Doesn't proceed until green.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>Information diets:</strong> Each phase gets only what it needs. The Plan agent never sees raw code — only the compressed research. The Implement agent never sees the research — only the ordered plan. This prevents context waste and forces density.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">The Artefacts</div>
+      <h2>Handoff Documents Are the Connective Tissue</h2>
+      <p>Each phase produces a handoff artefact that carries intent forward. These aren't casual notes — they're dense, structured documents that compress hours of exploration into something a fresh agent can act on immediately.</p>
+
+      <div class="code-block">
+        <span class="label">research.md structure</span>
+<pre>
+<span class="keyword">## 1. Entry Point (UI)</span>
+<span class="comment">   File paths, button click handlers, form submissions</span>
+
+<span class="keyword">## 2. Controller Layer</span>
+<span class="comment">   Route → controller → method, with line numbers</span>
+
+<span class="keyword">## 3. Service Layer</span>
+<span class="comment">   Business logic, dependencies, cross-cutting concerns</span>
+
+<span class="keyword">## 4. Data Access Layer</span>
+<span class="comment">   Repository patterns, EF queries, stored procedures</span>
+
+<span class="keyword">## 5. Observations</span>
+<span class="highlight-line">   Refactoring opportunities, code smells, coupling points</span>
+</pre>
+      </div>
+
+      <div class="code-block">
+        <span class="label">plan.md structure</span>
+<pre>
+<span class="keyword">## Implementation Steps</span>
+<span class="comment">   Ordered, atomic steps — each one independently testable</span>
+
+<span class="keyword">## Interface Definitions</span>
+<span class="comment">   New interfaces and their method signatures</span>
+
+<span class="keyword">## DI Registration</span>
+<span class="comment">   Exactly what to register, in which order</span>
+
+<span class="keyword">## Risk Register</span>
+<span class="highlight-line">   Risk → Severity → Which harness catches it → Specific test</span>
+</pre>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Three Principles</div>
+      <h2>What Holds It Together</h2>
+
+      <div class="principle">
+        <div class="num">1</div>
+        <h3>Decompose-Route-Recompose</h3>
+        <p>Break complex work into phases, route each to a fresh context with exactly the artefacts it needs, then recompose the results. This works <em>with</em> context window limitations instead of fighting them.</p>
+      </div>
+
+      <div class="principle">
+        <div class="num">2</div>
+        <h3>Physics Thinking</h3>
+        <p>Don't tell the agent what to do — make wrong things impossible. A failing test is worth a thousand prompt instructions. Structural constraints are your most reliable form of intent communication.</p>
+      </div>
+
+      <div class="principle">
+        <div class="num">3</div>
+        <h3>Harnesses Matter More Than Models</h3>
+        <p>The test suite, the compiler, the linter — these are your real safety net. A mediocre model with a great harness outperforms a brilliant model with no guardrails. Invest in the harness first.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 4: PATTERNS ═══════════ -->
+<div id="patterns" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>Intent Engineering <span class="gradient">Patterns</span></h1>
+      <p class="subtitle">Concrete, reusable techniques for encoding intent into your AI workflows.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Pattern 1</div>
+      <h2>Intent Scaffolding</h2>
+      <p>Don't just tell the agent what to do. Define the <em>shape</em> of the output: required sections, detail level, format, and output location. The agent fills in the scaffold rather than guessing what you want.</p>
+
+      <div class="comparison">
+        <div class="compare-col old">
+          <h4>Vague</h4>
+          <ul>
+            <li>"Research how the shopping cart works in this codebase"</li>
+          </ul>
+        </div>
+        <div class="compare-col highlight">
+          <h4>Scaffolded</h4>
+          <ul>
+            <li>"Trace the add-to-cart flow from UI to database"</li>
+            <li>"For each layer, identify files, methods, and line numbers"</li>
+            <li>"Produce research.md with sections: Entry Point, Controller, Service, Data Access, Observations"</li>
+            <li>"Save to docs/adc/extract-cart-service/research.md"</li>
+          </ul>
+        </div>
+      </div>
+      <p>The scaffolded version communicates the same intent, but the agent knows exactly what shape the answer should take, what detail level is expected, and where to put the result.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Pattern 2</div>
+      <h2>Constraint Systems</h2>
+      <p>Explicit negative instructions that define the safe operating space. Constraints are often more useful than positive instructions because they prevent the most common failure modes.</p>
+
+      <div class="code-block">
+        <span class="label">Example constraints</span>
+<pre>
+<span class="keyword">## Constraints</span>
+<span class="highlight-line">- Do NOT modify the database schema</span>
+<span class="highlight-line">- Do NOT change the plugin architecture</span>
+<span class="highlight-line">- Do NOT proceed to the next step until all tests pass</span>
+<span class="highlight-line">- Focus only on the shopping cart steel thread</span>
+<span class="comment">
+Each constraint prevents a specific, known failure mode.
+They're action-negative: defining what NOT to do.</span>
+</pre>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Pattern 3</div>
+      <h2>Risk Registers as Intent</h2>
+      <p>Predict what could go wrong and map each risk to the specific harness that catches it. This transforms "be careful" into "here's exactly which test will fail if you deviate."</p>
+
+      <table class="law-physics">
+        <thead>
+          <tr>
+            <th>Risk</th>
+            <th>Severity</th>
+            <th>What Catches It</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--text-muted)">Circular DI dependency</td>
+            <td style="color:var(--accent-3)">Critical</td>
+            <td>App fails to start → all Playwright tests fail</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">Missing DI registration</td>
+            <td style="color:var(--accent-3)">Critical</td>
+            <td>InvalidOperationException → any E2E test</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">Cart total miscalculation</td>
+            <td style="color:var(--accent-light)">High</td>
+            <td>Unit test asserting cart math</td>
+          </tr>
+          <tr>
+            <td style="color:var(--text-muted)">Broken checkout button</td>
+            <td style="color:var(--accent-light)">High</td>
+            <td>Playwright test clicking "Add to cart"</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>The risk register is a form of intent: it tells the implementing agent where the danger zones are and gives it confidence that mistakes will be caught.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Pattern 4</div>
+      <h2>Feedback Loops as Self-Correction</h2>
+      <p>Instead of hoping the agent gets it right the first time, build mandatory checkpoints into the workflow. The error message itself becomes a remediation instruction.</p>
+
+      <div class="code-block">
+        <span class="label">Feedback loop</span>
+<pre>
+<span class="keyword">After EACH step:</span>
+<span class="highlight-line">  1. dotnet format --verify-no-changes</span>
+<span class="highlight-line">  2. dotnet test</span>
+<span class="highlight-line">  3. npx playwright test</span>
+
+<span class="keyword">If a test fails:</span>
+<span class="string">  → Read the full error output</span>
+<span class="string">  → Diagnose the root cause</span>
+<span class="string">  → Fix the issue</span>
+<span class="string">  → Re-run until green</span>
+<span class="string">  → Only then proceed to the next step</span>
+</pre>
+      </div>
+
+      <div class="callout green">
+        <p><strong>Why this works:</strong> Test failures are precise, specific feedback. "Expected 42.99, got 0" is infinitely more useful than "please make sure the cart logic is correct." The harness teaches the agent what's wrong in machine-readable terms.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Pattern 5</div>
+      <h2>Information Diets</h2>
+      <p>Give each agent phase only the information it needs — nothing more. This prevents context window waste and forces the output of each phase to be dense and self-contained.</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🔍</div>
+          <h4>Research Agent Sees</h4>
+          <p>Full codebase access. The goal is to explore freely and compress findings into research.md.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">📐</div>
+          <h4>Plan Agent Sees</h4>
+          <p>Only research.md. No raw code. Forces it to plan from the compressed summary, not get lost in details.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon pink">⚡</div>
+          <h4>Implement Agent Sees</h4>
+          <p>Only plan.md + codebase access. Follows the plan step-by-step. Doesn't re-research, doesn't re-plan.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 5: IN PRACTICE ═══════════ -->
+<div id="workshop" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>Intent Engineering <span class="gradient">In Practice</span></h1>
+      <p class="subtitle">A workshop applying these patterns to refactor a real-world .NET e-commerce codebase with AI agents.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">The Challenge</div>
+      <h2>Refactoring nopCommerce with AI</h2>
+      <p>nopCommerce is a large, real-world .NET e-commerce platform. The workshop demonstrates that AI coding agents can meaningfully refactor legacy code using a disciplined methodology — and that the methodology matters more than the model.</p>
+      <p>The "steel thread" is the shopping cart flow: from clicking "Add to cart" in the UI, through controllers and services, down to the database and back. One narrow, vertical slice through the entire architecture.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">The Exercises</div>
+      <h2>Five Steps, Building on Each Other</h2>
+
+      <div class="funnel">
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>0. Get Orientated</h4>
+            <p>Understand the codebase, the steel thread, and the key files. No AI agents yet — just context-setting for the humans.</p>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>1. Build the Harness</h4>
+            <p>Write Playwright E2E tests and unit tests <em>before any refactoring begins</em>. The harness defines "correct" structurally. This is the single most important step.</p>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>2. Research the Steel Thread</h4>
+            <p>Agent explores the add-to-cart flow end-to-end. Produces a dense research.md with every file, method, and connection point documented.</p>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>3. Plan the Refactoring</h4>
+            <p>Fresh agent reads only research.md. Produces an ordered implementation plan with interface definitions, DI registration, and a risk register.</p>
+          </div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-dot"></div>
+          <div class="funnel-content">
+            <h4>4. Implement with Feedback Loops</h4>
+            <p>Fresh agent follows the plan step-by-step, running the full test suite after each change. The harness catches mistakes; the agent learns from the errors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">The Wow Moments</div>
+      <h2>When Physics Thinking Pays Off</h2>
+      <p>Three moments in the workshop where you see intent engineering working in real time:</p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">🔴</div>
+          <h4>The Compiler Catches a Type Error</h4>
+          <p>The agent introduces a subtle type mismatch. The C# compiler refuses to build. The agent reads the error, fixes the type, and moves on. No human intervention. <strong style="color:var(--accent-light)">Physics thinking.</strong></p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">🧪</div>
+          <h4>A Unit Test Catches a Logic Regression</h4>
+          <p>The agent refactors the cart service and accidentally changes calculation order. The unit test fails with "Expected 42.99, got 38.50." The agent diagnoses and fixes. <strong style="color:var(--accent-2)">Harnesses over models.</strong></p>
+        </div>
+        <div class="card">
+          <div class="card-icon pink">🎭</div>
+          <h4>Playwright Catches a UI Regression</h4>
+          <p>The extracted service works, but a missing DI registration means the page throws a 500 error. Playwright catches it by trying to click "Add to cart." End-to-end verification. <strong style="color:var(--accent-3)">All three principles working together.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Success Criteria</div>
+      <h2>How We Know It Worked</h2>
+      <p>The vision document defines seven measurable success criteria. Intent engineering means defining these up front, not after the fact:</p>
+
+      <div class="code-block">
+<pre>
+<span class="string">✓</span> <span class="highlight-line">Research before code — agent explored before touching anything</span>
+<span class="string">✓</span> <span class="highlight-line">Plan before implementation — ordered steps with risk analysis</span>
+<span class="string">✓</span> <span class="highlight-line">Harnesses before refactoring — tests existed before changes</span>
+<span class="string">✓</span> <span class="highlight-line">Feedback loops — test suite ran after every change</span>
+<span class="string">✓</span> <span class="highlight-line">Dense handoffs — research.md and plan.md carried intent forward</span>
+<span class="string">✓</span> <span class="highlight-line">Physics enforcement — compiler + tests caught real errors</span>
+<span class="string">✓</span> <span class="highlight-line">No manual checking — if the harness is green, the refactoring is correct</span>
+</pre>
+      </div>
+
+      <div class="callout">
+        <p><strong>The takeaway:</strong> The model doesn't matter as much as the methodology. A well-structured intent engineering system — with phases, harnesses, and feedback loops — produces reliable results regardless of which AI model you use.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <div class="container">
+    Intent Engineering Workshop &middot; Built for workshop attendees
+  </div>
+</footer>
+
+<script>
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
