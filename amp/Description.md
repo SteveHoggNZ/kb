@@ -1,9 +1,3 @@
-Hayden mentioned, DSE - canned microsoft - gateway into Purview
-Helps with Copilot enablement too
-
-Need to assessment first, can't give a price range
-Charge for 1 week of discovery
-
 
 ```
 AMP is a real-time communication and orchestration platform for AI agents and humans: a secure, decoupled framework that serves as a central nervous system for automation.                                                                 
