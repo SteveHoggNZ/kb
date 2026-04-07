@@ -24,6 +24,13 @@
     --accent-2: #00d4aa;
     --accent-2-glow: rgba(0, 212, 170, 0.12);
     --accent-3: #ff6b8a;
+    --orange: #e8913a;
+    --orange-glow: rgba(232, 145, 58, 0.15);
+    --blue: #5b8def;
+    --teal: #3bbfa0;
+    --yellow: #f0c040;
+    --pink: #e85b8a;
+    --purple: #9b7fff;
     --gradient-1: linear-gradient(135deg, #7c5cfc 0%, #00d4aa 100%);
     --gradient-2: linear-gradient(135deg, #7c5cfc 0%, #ff6b8a 100%);
     --gradient-text: linear-gradient(135deg, #9b7fff 0%, #00d4aa 100%);
@@ -45,474 +52,499 @@
     overflow-x: hidden;
   }
 
-  /* ─── Background effects ─── */
   body::before {
     content: '';
     position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
     background: radial-gradient(ellipse at 30% 20%, rgba(124, 92, 252, 0.06) 0%, transparent 50%),
                 radial-gradient(ellipse at 70% 80%, rgba(0, 212, 170, 0.04) 0%, transparent 50%);
     z-index: -1;
     animation: bgShift 20s ease-in-out infinite alternate;
   }
-
-  @keyframes bgShift {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(-5%, 3%); }
-  }
+  @keyframes bgShift { 0% { transform: translate(0,0); } 100% { transform: translate(-5%,3%); } }
 
   /* ─── Header ─── */
   .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     background: rgba(10, 10, 15, 0.85);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
-
   .header-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between; height: 64px;
   }
-
   .logo {
-    font-weight: 700;
-    font-size: 1.1rem;
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 700; font-size: 1.1rem;
+    background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     letter-spacing: -0.02em;
   }
-
-  /* ─── Tab Navigation ─── */
-  .tab-nav {
-    display: flex;
-    gap: 2px;
-    background: var(--surface);
-    border-radius: 10px;
-    padding: 3px;
-  }
-
+  .tab-nav { display: flex; gap: 2px; background: var(--surface); border-radius: 10px; padding: 3px; }
   .tab-btn {
-    padding: 8px 18px;
-    border: none;
-    background: transparent;
-    color: var(--text-muted);
-    font-family: inherit;
-    font-size: 0.85rem;
-    font-weight: 500;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: var(--transition);
-    white-space: nowrap;
+    padding: 8px 18px; border: none; background: transparent; color: var(--text-muted);
+    font-family: inherit; font-size: 0.85rem; font-weight: 500; border-radius: 8px;
+    cursor: pointer; transition: var(--transition); white-space: nowrap;
   }
-
   .tab-btn:hover { color: var(--text); background: var(--surface-2); }
+  .tab-btn.active { color: #fff; background: var(--accent); box-shadow: 0 2px 12px rgba(124, 92, 252, 0.3); }
 
-  .tab-btn.active {
-    color: #fff;
-    background: var(--accent);
-    box-shadow: 0 2px 12px rgba(124, 92, 252, 0.3);
-  }
-
-  /* ─── Page sections ─── */
+  /* ─── Pages ─── */
   .page { display: none; animation: fadeIn 0.4s ease; }
   .page.active { display: block; }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
   /* ─── Hero ─── */
-  .hero {
-    padding: 5rem 0 4rem;
-    text-align: center;
-  }
-
+  .hero { padding: 5rem 0 4rem; text-align: center; }
   .hero-badge {
-    display: inline-block;
-    padding: 6px 16px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--accent-light);
-    font-size: 0.8rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    display: inline-block; padding: 6px 16px; border-radius: 20px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--accent-light); font-size: 0.8rem; font-weight: 500;
+    margin-bottom: 1.5rem; letter-spacing: 0.04em; text-transform: uppercase;
   }
-
   .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem;
   }
-
   .hero h1 .gradient {
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
-
   .hero .subtitle {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    max-width: 640px;
-    margin: 0 auto 2.5rem;
-    font-weight: 400;
-    line-height: 1.6;
+    font-size: 1.2rem; color: var(--text-muted); max-width: 640px;
+    margin: 0 auto 2.5rem; font-weight: 400; line-height: 1.6;
   }
 
   /* ─── Content sections ─── */
-  .content-section {
-    padding: 3rem 0;
-  }
-
-  .content-section + .content-section {
-    border-top: 1px solid var(--border);
-  }
-
+  .content-section { padding: 3rem 0; }
+  .content-section + .content-section { border-top: 1px solid var(--border); }
   .section-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent-light);
-    margin-bottom: 0.75rem;
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--accent-light); margin-bottom: 0.75rem;
   }
-
-  .content-section h2 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-
-  .content-section h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 2rem 0 0.75rem;
-    color: var(--text);
-  }
-
-  .content-section p {
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-    max-width: 720px;
-  }
-
+  .content-section h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.2; }
+  .content-section h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--text); }
+  .content-section p { color: var(--text-muted); margin-bottom: 1.25rem; max-width: 720px; }
   .content-section p.wide { max-width: none; }
+  .center-text { text-align: center; margin-left: auto; margin-right: auto; }
 
   /* ─── Cards ─── */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.25rem;
-    margin: 2rem 0;
-  }
-
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+  .card-grid.three { grid-template-columns: repeat(3, 1fr); }
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.75rem;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.75rem; transition: var(--transition); position: relative; overflow: hidden;
   }
-
   .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gradient-1);
-    opacity: 0;
-    transition: var(--transition);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gradient-1); opacity: 0; transition: var(--transition);
   }
-
-  .card:hover {
-    border-color: rgba(124, 92, 252, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(124, 92, 252, 0.08);
-  }
-
+  .card:hover { border-color: rgba(124, 92, 252, 0.3); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124, 92, 252, 0.08); }
   .card:hover::before { opacity: 1; }
-
   .card-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    background: var(--accent-glow);
-    border: 1px solid rgba(124, 92, 252, 0.2);
+    width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem; margin-bottom: 1rem; background: var(--accent-glow); border: 1px solid rgba(124, 92, 252, 0.2);
   }
-
   .card-icon.green { background: var(--accent-2-glow); border-color: rgba(0, 212, 170, 0.2); }
   .card-icon.pink { background: rgba(255, 107, 138, 0.1); border-color: rgba(255, 107, 138, 0.2); }
-
-  .card h4 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-  }
-
+  .card-icon.orange { background: var(--orange-glow); border-color: rgba(232, 145, 58, 0.2); }
+  .card h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
   .card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0; }
 
-  /* ─── Comparison table ─── */
-  .comparison {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-    margin: 2rem 0;
+  /* ─── Stacked Layers Diagram ─── */
+  .stack-diagram {
+    display: flex; align-items: center; justify-content: center; gap: 3rem;
+    margin: 3rem 0; padding: 2rem 0;
   }
+  .stack-visual { position: relative; width: 420px; height: 280px; perspective: 800px; }
+  .stack-layer {
+    position: absolute; left: 50%; border-radius: 10px;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) rotateX(25deg) rotateZ(-5deg);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    display: flex; align-items: center; padding-left: 24px;
+    font-weight: 600; font-size: 0.95rem; letter-spacing: 0.01em;
+    transition: all 0.4s ease;
+  }
+  .stack-layer:hover { transform: translateX(-50%) rotateX(25deg) rotateZ(-5deg) translateY(-6px); }
+  .stack-layer.prompting {
+    width: 320px; height: 55px; bottom: 10px;
+    background: linear-gradient(135deg, #3a3a52, #4a4a64); color: #b0b0c8;
+  }
+  .stack-layer.context {
+    width: 350px; height: 60px; bottom: 80px;
+    background: linear-gradient(135deg, #4a6ea8, #5b8def); color: #fff;
+  }
+  .stack-layer.intent {
+    width: 380px; height: 68px; bottom: 158px;
+    background: linear-gradient(135deg, #d07828, #e8913a); color: #fff; font-size: 1.05rem;
+  }
+  .stack-labels { display: flex; flex-direction: column; gap: 0.5rem; max-width: 340px; }
+  .stack-label-item { padding: 0.75rem 0; }
+  .stack-label-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .stack-label-item p { font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+  .stack-label-item.l-intent h4 { color: var(--orange); }
+  .stack-label-item.l-context h4 { color: var(--blue); }
+  .stack-label-item.l-prompting h4 { color: #8888a0; }
 
-  .compare-col {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+  .takeaway-banner {
+    text-align: center; padding: 2rem; margin: 1.5rem 0;
+    font-style: italic; font-size: 1.15rem; color: var(--text);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .takeaway-banner em { color: #fff; font-style: italic; }
+
+  /* ─── Framework Grid ─── */
+  .framework-wrap {
+    display: flex; gap: 2rem; margin: 2.5rem 0; align-items: stretch;
+  }
+  .fw-layers { display: flex; flex-direction: column; gap: 6px; min-width: 170px; }
+  .fw-layer-pill {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em; color: #fff;
+  }
+  .fw-layer-pill .fw-icon {
+    width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.15); font-size: 0.75rem;
+  }
+  .fw-layer-pill.vision { background: var(--blue); }
+  .fw-layer-pill.strategy { background: var(--teal); }
+  .fw-layer-pill.design { background: var(--teal); }
+  .fw-layer-pill.impl { background: var(--orange); }
+  .fw-layer-pill.verify { background: var(--pink); }
+  .fw-layer-pill.ops { background: var(--purple); }
+
+  .fw-grid-area {
+    flex: 1; display: grid;
+    grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(6, 1fr);
+    gap: 6px;
+  }
+  .fw-col-header {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; text-align: center; padding: 6px 4px; border-radius: 6px;
+    color: #fff; display: flex; align-items: center; justify-content: center;
+  }
+  .fw-col-header:nth-child(1) { background: var(--blue); }
+  .fw-col-header:nth-child(2) { background: var(--teal); }
+  .fw-col-header:nth-child(3) { background: var(--accent-light); }
+  .fw-col-header:nth-child(4) { background: var(--purple); }
+  .fw-cell {
+    background: rgba(59, 191, 160, 0.06); border: 1px solid rgba(59, 191, 160, 0.12);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  }
+  .fw-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 3px solid var(--teal); background: rgba(0,0,0,0.5);
+  }
+  .fw-cell:nth-child(4n+3) .fw-dot,
+  .fw-cell:nth-child(4n+4) .fw-dot { border-color: var(--purple); }
+
+  .fw-benefits {
+    min-width: 200px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+  }
+  .fw-benefits h4 {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent-light); margin-bottom: 1.25rem; font-weight: 700;
+  }
+  .fw-benefit-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .fw-benefit-icon {
+    width: 32px; height: 32px; min-width: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+  }
+  .fw-benefit-icon.b1 { background: rgba(91, 141, 239, 0.15); border: 1px solid rgba(91, 141, 239, 0.3); }
+  .fw-benefit-icon.b2 { background: var(--orange-glow); border: 1px solid rgba(232, 145, 58, 0.3); }
+  .fw-benefit-icon.b3 { background: var(--accent-2-glow); border: 1px solid rgba(0, 212, 170, 0.3); }
+  .fw-benefit-text { font-size: 0.8rem; font-weight: 600; color: var(--text); line-height: 1.4; }
+
+  /* ─── Physics vs Law Visual ─── */
+  .physics-visual {
+    display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0;
+    align-items: stretch; margin: 2.5rem 0;
+  }
+  .pv-side {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
     padding: 1.75rem;
   }
-
-  .compare-col.highlight {
-    border-color: rgba(124, 92, 252, 0.3);
-    background: linear-gradient(180deg, rgba(124, 92, 252, 0.05) 0%, var(--surface) 100%);
+  .pv-side.physics { border-color: rgba(0, 212, 170, 0.3); background: linear-gradient(180deg, rgba(0, 212, 170, 0.04), var(--surface)); }
+  .pv-side h4 {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 1.25rem; font-weight: 700;
   }
-
-  .compare-col h4 {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 1rem;
-    font-weight: 600;
+  .pv-side.law h4 { color: var(--text-dim); }
+  .pv-side.physics h4 { color: var(--accent-2); }
+  .pv-arrow-col {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
   }
-
-  .compare-col.old h4 { color: var(--text-dim); }
-  .compare-col.highlight h4 { color: var(--accent-light); }
-
-  .compare-col ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+  .pv-arrow {
+    font-size: 1.2rem; color: var(--accent-2); animation: arrowPulse 2s ease-in-out infinite;
   }
+  @keyframes arrowPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+  .pv-row {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+  }
+  .pv-row:last-child { border-bottom: none; }
+  .pv-icon-sm {
+    width: 28px; height: 28px; min-width: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  }
+  .pv-side.physics .pv-icon-sm { background: rgba(0, 212, 170, 0.08); border-color: rgba(0, 212, 170, 0.2); }
+  .pv-row-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+  .pv-side.physics .pv-row-text { color: var(--text); }
 
-  .compare-col li {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    padding-left: 1.4rem;
+  /* ─── RPI Flow Diagram ─── */
+  .rpi-flow {
+    display: flex; align-items: stretch; gap: 0; margin: 2.5rem 0;
     position: relative;
   }
+  .rpi-phase {
+    flex: 1; padding: 2rem 1.5rem; background: var(--surface);
+    border: 1px solid var(--border); position: relative;
+  }
+  .rpi-phase:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .rpi-phase:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+  .rpi-phase:not(:last-child) { border-right: none; }
+  .rpi-num {
+    font-size: 3rem; font-weight: 800; line-height: 1;
+    margin-bottom: 0.5rem; opacity: 0.15;
+  }
+  .rpi-phase:nth-child(1) .rpi-num { color: var(--blue); }
+  .rpi-phase:nth-child(2) .rpi-num { color: var(--accent-2); }
+  .rpi-phase:nth-child(3) .rpi-num { color: var(--orange); }
+  .rpi-phase h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .rpi-phase:nth-child(1) h4 { color: var(--blue); }
+  .rpi-phase:nth-child(2) h4 { color: var(--accent-2); }
+  .rpi-phase:nth-child(3) h4 { color: var(--orange); }
+  .rpi-phase p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
+  .rpi-artifact {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 10px; font-size: 0.75rem;
+    font-family: 'SF Mono', 'Fira Code', monospace; color: var(--text);
+  }
+  .rpi-connector {
+    position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+    z-index: 2; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--surface-2); border: 2px solid var(--accent-2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; color: var(--accent-2);
+  }
+  .rpi-phase:last-child .rpi-connector { display: none; }
 
-  .compare-col li::before {
-    position: absolute;
-    left: 0;
-    font-size: 0.85rem;
+  /* ─── Information Diet Visual ─── */
+  .diet-visual { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; }
+  .diet-row {
+    display: grid; grid-template-columns: 140px 1fr 140px; gap: 1rem; align-items: center;
+  }
+  .diet-agent {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 0.75rem; text-align: center; font-size: 0.85rem; font-weight: 600;
+  }
+  .diet-agent.research { border-color: rgba(91, 141, 239, 0.3); color: var(--blue); }
+  .diet-agent.plan { border-color: rgba(0, 212, 170, 0.3); color: var(--accent-2); }
+  .diet-agent.implement { border-color: rgba(232, 145, 58, 0.3); color: var(--orange); }
+  .diet-bar {
+    height: 40px; border-radius: 6px; position: relative;
+    display: flex; align-items: center; overflow: hidden;
+  }
+  .diet-fill {
+    height: 100%; border-radius: 6px; display: flex; align-items: center;
+    padding: 0 12px; font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.9);
+    white-space: nowrap;
+  }
+  .diet-row.research .diet-fill { width: 100%; background: linear-gradient(90deg, rgba(91, 141, 239, 0.2), rgba(91, 141, 239, 0.08)); border: 1px solid rgba(91, 141, 239, 0.2); }
+  .diet-row.plan .diet-fill { width: 30%; background: linear-gradient(90deg, rgba(0, 212, 170, 0.2), rgba(0, 212, 170, 0.08)); border: 1px solid rgba(0, 212, 170, 0.2); }
+  .diet-row.implement .diet-fill { width: 25%; background: linear-gradient(90deg, rgba(232, 145, 58, 0.2), rgba(232, 145, 58, 0.08)); border: 1px solid rgba(232, 145, 58, 0.2); }
+  .diet-output {
+    font-size: 0.75rem; font-family: 'SF Mono', monospace; color: var(--text-muted);
+    text-align: center;
   }
 
-  .compare-col.old li::before { content: '~'; color: var(--text-dim); }
-  .compare-col.highlight li::before { content: '→'; color: var(--accent-light); }
+  /* ─── Feedback Loop Diagram ─── */
+  .feedback-loop-diagram {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; margin: 2.5rem auto; max-width: 700px; position: relative;
+  }
+  .fl-step {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 1.25rem 1rem; flex: 1;
+  }
+  .fl-circle {
+    width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 0.75rem;
+    border: 2px solid var(--border); background: var(--surface);
+  }
+  .fl-step:nth-child(1) .fl-circle { border-color: var(--blue); background: rgba(91, 141, 239, 0.08); }
+  .fl-step:nth-child(2) .fl-circle { border-color: var(--accent-2); background: rgba(0, 212, 170, 0.08); }
+  .fl-step:nth-child(3) .fl-circle { border-color: var(--accent-3); background: rgba(255, 107, 138, 0.08); }
+  .fl-step:nth-child(4) .fl-circle { border-color: var(--orange); background: var(--orange-glow); }
+  .fl-step h5 { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+  .fl-step p { font-size: 0.72rem; color: var(--text-muted); margin: 0; }
+  .fl-arrow {
+    font-size: 1.2rem; color: var(--accent-2); margin: 0 -0.5rem; margin-top: -2rem;
+    flex-shrink: 0;
+  }
+  .fl-return-arrow {
+    position: absolute; bottom: -30px; left: 15%; right: 15%;
+    height: 24px; border: 2px solid var(--accent-3); border-top: none;
+    border-radius: 0 0 20px 20px; opacity: 0.4;
+  }
+  .fl-return-arrow::after {
+    content: ''; position: absolute; left: -6px; top: -2px;
+    border: 5px solid transparent; border-right-color: var(--accent-3);
+  }
+  .fl-return-label {
+    position: absolute; bottom: -52px; left: 50%; transform: translateX(-50%);
+    font-size: 0.7rem; color: var(--accent-3); white-space: nowrap; font-weight: 500;
+  }
+
+  /* ─── Wow Moments Visual ─── */
+  .wow-timeline {
+    display: flex; gap: 1.5rem; margin: 2rem 0;
+    position: relative;
+  }
+  .wow-timeline::before {
+    content: ''; position: absolute; top: 40px; left: 0; right: 0;
+    height: 2px; background: linear-gradient(90deg, var(--blue), var(--accent-2), var(--orange));
+    opacity: 0.3;
+  }
+  .wow-moment {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem; text-align: center;
+    position: relative; transition: var(--transition);
+  }
+  .wow-moment:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .wow-badge {
+    width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; position: relative; z-index: 1;
+  }
+  .wow-moment:nth-child(1) .wow-badge { background: rgba(91, 141, 239, 0.15); border: 2px solid var(--blue); }
+  .wow-moment:nth-child(2) .wow-badge { background: rgba(0, 212, 170, 0.15); border: 2px solid var(--accent-2); }
+  .wow-moment:nth-child(3) .wow-badge { background: rgba(232, 145, 58, 0.15); border: 2px solid var(--orange); }
+  .wow-moment h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .wow-moment p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+  .wow-principle {
+    display: inline-block; margin-top: 0.75rem; font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .wow-moment:nth-child(1) .wow-principle { color: var(--blue); background: rgba(91, 141, 239, 0.1); }
+  .wow-moment:nth-child(2) .wow-principle { color: var(--accent-2); background: rgba(0, 212, 170, 0.1); }
+  .wow-moment:nth-child(3) .wow-principle { color: var(--orange); background: var(--orange-glow); }
+
+  /* ─── Exercise Steps ─── */
+  .exercise-steps { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; position: relative; }
+  .exercise-steps::before {
+    content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, var(--blue), var(--accent-2), var(--orange));
+    opacity: 0.3;
+  }
+  .ex-step {
+    display: flex; gap: 1.5rem; padding: 1.25rem 0; position: relative;
+  }
+  .ex-num {
+    width: 56px; min-width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 800; z-index: 1;
+    background: var(--surface); border: 2px solid var(--border);
+  }
+  .ex-step:nth-child(1) .ex-num { border-color: var(--text-dim); color: var(--text-dim); }
+  .ex-step:nth-child(2) .ex-num { border-color: var(--pink); color: var(--pink); }
+  .ex-step:nth-child(3) .ex-num { border-color: var(--blue); color: var(--blue); }
+  .ex-step:nth-child(4) .ex-num { border-color: var(--accent-2); color: var(--accent-2); }
+  .ex-step:nth-child(5) .ex-num { border-color: var(--orange); color: var(--orange); }
+  .ex-body h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .ex-body p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+  .ex-tag {
+    display: inline-block; margin-top: 0.5rem; font-size: 0.65rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 4px;
+    color: var(--accent-light); background: var(--accent-glow);
+  }
+
+  /* ─── Callout ─── */
+  .callout {
+    background: var(--accent-glow); border: 1px solid rgba(124, 92, 252, 0.2);
+    border-radius: var(--radius); padding: 1.5rem 1.75rem; margin: 2rem 0;
+  }
+  .callout.green { background: var(--accent-2-glow); border-color: rgba(0, 212, 170, 0.2); }
+  .callout p { color: var(--text); margin: 0; font-size: 0.95rem; max-width: none; }
+  .callout strong { color: #fff; }
 
   /* ─── Code blocks ─── */
   .code-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    overflow-x: auto;
-    position: relative;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto; position: relative;
   }
-
   .code-block .label {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-dim);
-    background: var(--surface-2);
-    padding: 2px 8px;
-    border-radius: 4px;
+    position: absolute; top: 0.75rem; right: 0.75rem;
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-dim); background: var(--surface-2); padding: 2px 8px; border-radius: 4px;
   }
-
   .code-block pre {
     font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-    font-size: 0.85rem;
-    line-height: 1.7;
-    color: var(--text-muted);
+    font-size: 0.85rem; line-height: 1.7; color: var(--text-muted);
   }
-
   .code-block .comment { color: var(--text-dim); }
   .code-block .keyword { color: var(--accent-light); }
   .code-block .string { color: var(--accent-2); }
   .code-block .highlight-line { color: var(--text); }
 
-  /* ─── Funnel / Flow diagram ─── */
-  .funnel {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 2rem 0;
-    position: relative;
-  }
-
-  .funnel::before {
-    content: '';
-    position: absolute;
-    left: 24px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--accent), var(--accent-2));
-    opacity: 0.3;
-  }
-
-  .funnel-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
-    padding: 1.25rem 0;
-    position: relative;
-  }
-
-  .funnel-dot {
-    width: 14px;
-    height: 14px;
-    min-width: 14px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-top: 4px;
-    position: relative;
-    left: 18px;
-    z-index: 1;
-    box-shadow: 0 0 12px rgba(124, 92, 252, 0.4);
-  }
-
-  .funnel-step:nth-child(2) .funnel-dot { background: #6a8cfc; }
-  .funnel-step:nth-child(3) .funnel-dot { background: #3ab0e8; }
-  .funnel-step:nth-child(4) .funnel-dot { background: #1cc4b8; }
-  .funnel-step:nth-child(5) .funnel-dot { background: var(--accent-2); }
-
-  .funnel-content { padding-left: 1rem; }
-  .funnel-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
-  .funnel-content p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
-
-  /* ─── Principle cards (numbered) ─── */
+  /* ─── Principle cards ─── */
   .principle {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    margin: 1.5rem 0;
-    position: relative;
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2rem; margin: 1.5rem 0;
+    position: relative; overflow: hidden;
   }
-
   .principle .num {
-    position: absolute;
-    top: -10px;
-    right: 20px;
-    font-size: 5rem;
-    font-weight: 800;
-    color: rgba(124, 92, 252, 0.06);
-    line-height: 1;
+    position: absolute; top: -10px; right: 20px;
+    font-size: 5rem; font-weight: 800; color: rgba(124, 92, 252, 0.06); line-height: 1;
   }
-
-  .principle h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin: 0 0 0.75rem;
-    color: var(--text);
-  }
-
+  .principle h3 { font-size: 1.15rem; font-weight: 600; margin: 0 0 0.75rem; color: var(--text); }
   .principle p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.75rem; max-width: 640px; }
   .principle p:last-child { margin-bottom: 0; }
 
-  /* ─── Physics vs Law table ─── */
-  .law-physics {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-    font-size: 0.9rem;
-  }
-
-  .law-physics th {
-    text-align: left;
-    padding: 0.75rem 1rem;
-    border-bottom: 2px solid var(--border);
-    color: var(--text-dim);
-    font-weight: 600;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .law-physics th:last-child { color: var(--accent-light); }
-
-  .law-physics td {
-    padding: 0.85rem 1rem;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-muted);
-  }
-
-  .law-physics td:first-child { color: var(--text-dim); }
-  .law-physics td:last-child { color: var(--text); }
-
-  .law-physics tr:hover td { background: rgba(124, 92, 252, 0.03); }
-
-  /* ─── Callout ─── */
-  .callout {
-    background: var(--accent-glow);
-    border: 1px solid rgba(124, 92, 252, 0.2);
-    border-radius: var(--radius);
-    padding: 1.5rem 1.75rem;
-    margin: 2rem 0;
-  }
-
-  .callout.green {
-    background: var(--accent-2-glow);
-    border-color: rgba(0, 212, 170, 0.2);
-  }
-
-  .callout p { color: var(--text); margin: 0; font-size: 0.95rem; }
-  .callout strong { color: #fff; }
+  /* ─── Comparison ─── */
+  .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2rem 0; }
+  .compare-col { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; }
+  .compare-col.highlight { border-color: rgba(124, 92, 252, 0.3); background: linear-gradient(180deg, rgba(124, 92, 252, 0.05), var(--surface)); }
+  .compare-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; font-weight: 600; }
+  .compare-col.old h4 { color: var(--text-dim); }
+  .compare-col.highlight h4 { color: var(--accent-light); }
+  .compare-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .compare-col li { font-size: 0.9rem; color: var(--text-muted); padding-left: 1.4rem; position: relative; }
+  .compare-col li::before { position: absolute; left: 0; font-size: 0.85rem; }
+  .compare-col.old li::before { content: '~'; color: var(--text-dim); }
+  .compare-col.highlight li::before { content: '\2192'; color: var(--accent-light); }
 
   /* ─── Footer ─── */
-  .site-footer {
-    margin-top: 4rem;
-    padding: 2rem 0;
-    border-top: 1px solid var(--border);
-    text-align: center;
-    color: var(--text-dim);
-    font-size: 0.8rem;
-  }
+  .site-footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.8rem; }
 
   /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    .stack-diagram { flex-direction: column; gap: 2rem; }
+    .stack-visual { width: 320px; height: 220px; margin: 0 auto; }
+    .stack-layer.prompting { width: 240px; }
+    .stack-layer.context { width: 260px; }
+    .stack-layer.intent { width: 280px; }
+    .framework-wrap { flex-direction: column; }
+    .fw-grid-area { grid-template-columns: repeat(4, 1fr); }
+    .rpi-flow { flex-direction: column; }
+    .rpi-phase { border-radius: var(--radius) !important; border: 1px solid var(--border) !important; }
+    .rpi-connector { display: none !important; }
+    .physics-visual { grid-template-columns: 1fr; }
+    .pv-arrow-col { flex-direction: row; padding: 0.5rem 0; }
+    .wow-timeline { flex-direction: column; }
+    .wow-timeline::before { display: none; }
+    .diet-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .feedback-loop-diagram { flex-direction: column; gap: 0.5rem; }
+    .fl-arrow { transform: rotate(90deg); }
+    .fl-return-arrow { display: none; }
+    .fl-return-label { display: none; }
+  }
   @media (max-width: 768px) {
     .header-inner { flex-direction: column; height: auto; padding: 1rem 1.5rem; gap: 0.75rem; }
     .tab-nav { overflow-x: auto; width: 100%; justify-content: flex-start; }
@@ -520,6 +552,7 @@
     .hero { padding: 3rem 0 2rem; }
     .comparison { grid-template-columns: 1fr; }
     .card-grid { grid-template-columns: 1fr; }
+    .card-grid.three { grid-template-columns: 1fr; }
     .container { padding: 0 1.25rem; }
   }
 </style>
@@ -549,62 +582,91 @@
       <p class="subtitle">Prompt engineering asks "what words make the AI do the right thing?" Intent engineering asks "how do I make the right thing the only possible outcome?"</p>
     </section>
 
+    <!-- ── Stacked Layers Diagram ── -->
     <section class="content-section">
-      <div class="section-label">The Idea</div>
-      <h2>What is Intent Engineering?</h2>
-      <p>Intent engineering is the practice of communicating <em>what you want to achieve</em> — the goal, constraints, success criteria, and context — rather than obsessing over the exact phrasing of a prompt. It shifts the focus from words to outcomes.</p>
-      <p>As AI models have become more capable, the bottleneck is no longer "did I use the magic words?" It's "do I actually know what I want, and have I structured things so the AI can't get it wrong?"</p>
+      <div class="section-label">The Three Layers</div>
+      <h2>Intent Sits Above Everything Else</h2>
+      <p>Prompting is the execution layer. Context engineering is about what the agent knows. Intent engineering is about how the goal is structured — workflows, boundaries, and destinations.</p>
 
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-icon">🎯</div>
-          <h4>Goals, Not Scripts</h4>
-          <p>Define what success looks like — measurable criteria the AI can work toward — rather than scripting every step.</p>
+      <div class="stack-diagram">
+        <div class="stack-labels">
+          <div class="stack-label-item l-intent">
+            <h4>Intent Engineering</h4>
+            <p>How the goal is structured. Workflows, boundaries, destinations. Architecting the machine interaction.</p>
+          </div>
+          <div class="stack-label-item l-context">
+            <h4>Context Engineering</h4>
+            <p>What the agent knows. RAG, vector databases, memory. Supplying the raw material.</p>
+          </div>
+          <div class="stack-label-item l-prompting">
+            <h4>Prompting</h4>
+            <p>Execution layer. The words you write. Necessary but not sufficient.</p>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon green">🧱</div>
-          <h4>Structure, Not Hope</h4>
-          <p>Encode your intent into structural mechanisms (tests, types, linters) that make wrong behaviour impossible, not just discouraged.</p>
+        <div class="stack-visual">
+          <div class="stack-layer intent">Intent Engineering</div>
+          <div class="stack-layer context">Context Engineering</div>
+          <div class="stack-layer prompting">Prompting</div>
         </div>
-        <div class="card">
-          <div class="card-icon pink">📦</div>
-          <h4>Context, Not Repetition</h4>
-          <p>Give the AI the right information at the right time. Compress context into dense handoff artefacts rather than dumping everything.</p>
-        </div>
+      </div>
+
+      <div class="takeaway-banner">
+        <em>We must shift our mindset from text-crafters to systems architects.</em>
       </div>
     </section>
 
+    <!-- ── Physics vs Law Visual ── -->
     <section class="content-section">
       <div class="section-label">Core Insight</div>
-      <h2>Physics Thinking</h2>
-      <p>The central idea of intent engineering is distinguishing between <strong style="color:#fff">laws</strong> and <strong style="color:#fff">physics</strong>. Laws are instructions — they can be broken. Physics are structural constraints — they can't.</p>
+      <h2>Laws vs Physics</h2>
+      <p>Laws are instructions — they can be broken. Physics are structural constraints — they can't. Intent engineering encodes your goals as physics.</p>
 
-      <table class="law-physics">
-        <thead>
-          <tr>
-            <th>Law (Prompt Instruction)</th>
-            <th>Physics (Structural Enforcement)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>"Don't break existing behaviour"</td>
-            <td>Playwright E2E tests that fail if behaviour changes</td>
-          </tr>
-          <tr>
-            <td>"Follow the existing coding style"</td>
-            <td>Linter configured to enforce style rules</td>
-          </tr>
-          <tr>
-            <td>"Make sure the cart logic is correct"</td>
-            <td>Unit tests that assert cart calculations</td>
-          </tr>
-          <tr>
-            <td>"Don't introduce type errors"</td>
-            <td>Compiler that refuses to build</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="physics-visual">
+        <div class="pv-side law">
+          <h4>Law (Prompt Instructions)</h4>
+          <div class="pv-row">
+            <div class="pv-icon-sm">📝</div>
+            <div class="pv-row-text">"Don't break existing behaviour"</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🎨</div>
+            <div class="pv-row-text">"Follow the existing coding style"</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🧮</div>
+            <div class="pv-row-text">"Make sure the cart logic is correct"</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🔤</div>
+            <div class="pv-row-text">"Don't introduce type errors"</div>
+          </div>
+        </div>
+        <div class="pv-arrow-col">
+          <span class="pv-arrow">&rarr;</span>
+          <span class="pv-arrow">&rarr;</span>
+          <span class="pv-arrow">&rarr;</span>
+          <span class="pv-arrow">&rarr;</span>
+        </div>
+        <div class="pv-side physics">
+          <h4>Physics (Structural Enforcement)</h4>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🎭</div>
+            <div class="pv-row-text">Playwright E2E tests that fail if behaviour changes</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🔧</div>
+            <div class="pv-row-text">Linter configured to enforce style rules</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🧪</div>
+            <div class="pv-row-text">Unit tests that assert cart calculations</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">⚙️</div>
+            <div class="pv-row-text">C# compiler that refuses to build</div>
+          </div>
+        </div>
+      </div>
 
       <div class="callout">
         <p><strong>The rule:</strong> If a human has to manually check something, the harness is incomplete. Encode every compliance check as an automated constraint.</p>
@@ -632,7 +694,7 @@
           <ul>
             <li>Focus on exact wording and formatting</li>
             <li>Tricks, templates, and magic phrases</li>
-            <li>One prompt → one response</li>
+            <li>One prompt, one response</li>
             <li>Hope the AI follows instructions</li>
             <li>Retry with different words when it fails</li>
             <li>All context in a single prompt</li>
@@ -652,45 +714,60 @@
       </div>
     </section>
 
+    <!-- ── Framework Grid ── -->
     <section class="content-section">
-      <div class="section-label">Layers</div>
-      <h2>Intent Operates at Multiple Levels</h2>
-      <p>A single prompt is just one layer. Intent engineering stacks mechanisms so each layer catches what the one above misses.</p>
+      <div class="section-label">Framework</div>
+      <h2>Intent Across Layers and Workstreams</h2>
+      <p>Intent engineering applies at every level — from vision through to operations — and spans all your workstreams. Each layer encodes intent in a different way.</p>
 
-      <div class="funnel">
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>Vision</h4>
-            <p>North-star goal and measurable success criteria. What does "done" look like?</p>
-          </div>
+      <div class="framework-wrap">
+        <div class="fw-layers">
+          <div class="fw-layer-pill vision"><div class="fw-icon">&#9998;</div> Vision</div>
+          <div class="fw-layer-pill strategy"><div class="fw-icon">&#9678;</div> Strategy</div>
+          <div class="fw-layer-pill design"><div class="fw-icon">&#9635;</div> Design</div>
+          <div class="fw-layer-pill impl"><div class="fw-icon">&#9881;</div> Implementation</div>
+          <div class="fw-layer-pill verify"><div class="fw-icon">&#10003;</div> Verification</div>
+          <div class="fw-layer-pill ops"><div class="fw-icon">&#9730;</div> Operations</div>
         </div>
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>Strategy</h4>
-            <p>The reasoning behind your approach. Why this methodology? What trade-offs are you making?</p>
-          </div>
+        <div class="fw-grid-area">
+          <div class="fw-col-header">Stream A</div>
+          <div class="fw-col-header">Stream B</div>
+          <div class="fw-col-header">Stream C</div>
+          <div class="fw-col-header">Stream D</div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
         </div>
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>Constraints</h4>
-            <p>Explicit boundaries — what the AI must not do. Negative instructions that define the safe operating space.</p>
+        <div class="fw-benefits">
+          <h4>Core Benefits</h4>
+          <div class="fw-benefit-item">
+            <div class="fw-benefit-icon b1">&#9678;</div>
+            <div class="fw-benefit-text">Deep Context Alignment</div>
           </div>
-        </div>
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>Execution</h4>
-            <p>Structured agent prompts with output shape, required sections, and detail level defined.</p>
+          <div class="fw-benefit-item">
+            <div class="fw-benefit-icon b2">&#9889;</div>
+            <div class="fw-benefit-text">Streamlined Execution</div>
           </div>
-        </div>
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>Feedback</h4>
-            <p>Harnesses (compiler, tests, linters) that enforce correctness and teach the AI what went wrong.</p>
+          <div class="fw-benefit-item">
+            <div class="fw-benefit-icon b3">&#8593;</div>
+            <div class="fw-benefit-text">Continuous Improvement</div>
           </div>
         </div>
       </div>
@@ -700,7 +777,6 @@
       <div class="section-label">Key Insight</div>
       <h2>Prompts Are Suggestions. Harnesses Are Guarantees.</h2>
       <p>A prompt says "please don't break the cart." A test suite says "the cart works or you don't proceed." Both communicate intent, but only one enforces it.</p>
-      <p>The best intent engineering systems use prompts for guidance and harnesses for enforcement. The prompt sets direction; the harness sets boundaries.</p>
 
       <div class="callout green">
         <p><strong>Think of it this way:</strong> Prompt engineering is writing a good brief. Intent engineering is writing a good brief, hiring a QA team, setting up CI/CD, and defining acceptance criteria — all encoded into the system the AI operates within.</p>
@@ -714,80 +790,69 @@
   <div class="container">
     <section class="hero" style="padding-bottom: 2rem;">
       <h1>The <span class="gradient">RPI</span> Methodology</h1>
-      <p class="subtitle">Research → Plan → Implement. Three phases, each in a fresh context, connected by dense handoff artefacts.</p>
+      <p class="subtitle">Research, Plan, Implement. Three phases, each in a fresh context, connected by dense handoff artefacts.</p>
     </section>
 
+    <!-- ── RPI Flow Diagram ── -->
     <section class="content-section">
-      <div class="section-label">Why Phases?</div>
-      <h2>Decompose → Route → Recompose</h2>
-      <p>AI agents have limited context windows. If you ask one to research, plan, and implement all in the same session, the early context gets pushed out as implementation details pile up. RPI solves this by splitting the work into phases, each operating in a fresh context with only the artefacts it needs.</p>
+      <div class="section-label">The Flow</div>
+      <h2>Three Phases, Three Fresh Contexts</h2>
+      <p>AI agents have limited context windows. RPI splits work into phases, each operating in a fresh context with only the artefacts it needs.</p>
 
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-icon">🔍</div>
-          <h4>Phase 1: Research</h4>
-          <p>The agent explores the codebase freely. No implementation, no planning — pure discovery. Produces a dense <code>research.md</code> with file paths, line numbers, and observations.</p>
+      <div class="rpi-flow">
+        <div class="rpi-phase">
+          <div class="rpi-num">R</div>
+          <h4>Research</h4>
+          <p>Explore the codebase freely. No implementation, no planning — pure discovery. Trace flows, find files, document connections.</p>
+          <div class="rpi-artifact">&#128196; research.md</div>
+          <div class="rpi-connector">&rarr;</div>
         </div>
-        <div class="card">
-          <div class="card-icon green">📐</div>
-          <h4>Phase 2: Plan</h4>
-          <p>A fresh agent reads only <code>research.md</code>. It produces a step-by-step implementation plan with interface definitions, risk areas, and test strategies.</p>
+        <div class="rpi-phase">
+          <div class="rpi-num">P</div>
+          <h4>Plan</h4>
+          <p>Read only research.md. Produce ordered implementation steps, interface definitions, risk areas, and test strategies.</p>
+          <div class="rpi-artifact">&#128196; plan.md</div>
+          <div class="rpi-connector">&rarr;</div>
         </div>
-        <div class="card">
-          <div class="card-icon pink">⚡</div>
-          <h4>Phase 3: Implement</h4>
-          <p>A fresh agent reads only <code>plan.md</code>. Executes each step, running the full test suite after every change. Doesn't proceed until green.</p>
+        <div class="rpi-phase">
+          <div class="rpi-num">I</div>
+          <h4>Implement</h4>
+          <p>Read only plan.md. Execute each step, running the full test suite after every change. Don't proceed until green.</p>
+          <div class="rpi-artifact">&#9989; Working code</div>
         </div>
       </div>
 
-      <div class="callout">
-        <p><strong>Information diets:</strong> Each phase gets only what it needs. The Plan agent never sees raw code — only the compressed research. The Implement agent never sees the research — only the ordered plan. This prevents context waste and forces density.</p>
+      <div class="callout" style="margin-top: 2.5rem;">
+        <p><strong>Information diets:</strong> Each phase gets only what it needs. The Plan agent never sees raw code — only compressed research. The Implement agent never sees research — only the ordered plan. This prevents context waste and forces density.</p>
       </div>
     </section>
 
+    <!-- ── Information Diet Visualization ── -->
     <section class="content-section">
-      <div class="section-label">The Artefacts</div>
-      <h2>Handoff Documents Are the Connective Tissue</h2>
-      <p>Each phase produces a handoff artefact that carries intent forward. These aren't casual notes — they're dense, structured documents that compress hours of exploration into something a fresh agent can act on immediately.</p>
+      <div class="section-label">Information Diets</div>
+      <h2>What Each Agent Sees</h2>
+      <p>The width of each bar shows how much information each agent receives. Less is more — constrained input forces focused output.</p>
 
-      <div class="code-block">
-        <span class="label">research.md structure</span>
-<pre>
-<span class="keyword">## 1. Entry Point (UI)</span>
-<span class="comment">   File paths, button click handlers, form submissions</span>
-
-<span class="keyword">## 2. Controller Layer</span>
-<span class="comment">   Route → controller → method, with line numbers</span>
-
-<span class="keyword">## 3. Service Layer</span>
-<span class="comment">   Business logic, dependencies, cross-cutting concerns</span>
-
-<span class="keyword">## 4. Data Access Layer</span>
-<span class="comment">   Repository patterns, EF queries, stored procedures</span>
-
-<span class="keyword">## 5. Observations</span>
-<span class="highlight-line">   Refactoring opportunities, code smells, coupling points</span>
-</pre>
-      </div>
-
-      <div class="code-block">
-        <span class="label">plan.md structure</span>
-<pre>
-<span class="keyword">## Implementation Steps</span>
-<span class="comment">   Ordered, atomic steps — each one independently testable</span>
-
-<span class="keyword">## Interface Definitions</span>
-<span class="comment">   New interfaces and their method signatures</span>
-
-<span class="keyword">## DI Registration</span>
-<span class="comment">   Exactly what to register, in which order</span>
-
-<span class="keyword">## Risk Register</span>
-<span class="highlight-line">   Risk → Severity → Which harness catches it → Specific test</span>
-</pre>
+      <div class="diet-visual">
+        <div class="diet-row research">
+          <div class="diet-agent research">Research</div>
+          <div class="diet-bar"><div class="diet-fill">Full codebase access</div></div>
+          <div class="diet-output">&rarr; research.md</div>
+        </div>
+        <div class="diet-row plan">
+          <div class="diet-agent plan">Plan</div>
+          <div class="diet-bar"><div class="diet-fill">research.md</div></div>
+          <div class="diet-output">&rarr; plan.md</div>
+        </div>
+        <div class="diet-row implement">
+          <div class="diet-agent implement">Implement</div>
+          <div class="diet-bar"><div class="diet-fill">plan.md</div></div>
+          <div class="diet-output">&rarr; code</div>
+        </div>
       </div>
     </section>
 
+    <!-- ── Three Principles ── -->
     <section class="content-section">
       <div class="section-label">Three Principles</div>
       <h2>What Holds It Together</h2>
@@ -797,13 +862,11 @@
         <h3>Decompose-Route-Recompose</h3>
         <p>Break complex work into phases, route each to a fresh context with exactly the artefacts it needs, then recompose the results. This works <em>with</em> context window limitations instead of fighting them.</p>
       </div>
-
       <div class="principle">
         <div class="num">2</div>
         <h3>Physics Thinking</h3>
         <p>Don't tell the agent what to do — make wrong things impossible. A failing test is worth a thousand prompt instructions. Structural constraints are your most reliable form of intent communication.</p>
       </div>
-
       <div class="principle">
         <div class="num">3</div>
         <h3>Harnesses Matter More Than Models</h3>
@@ -824,7 +887,7 @@
     <section class="content-section">
       <div class="section-label">Pattern 1</div>
       <h2>Intent Scaffolding</h2>
-      <p>Don't just tell the agent what to do. Define the <em>shape</em> of the output: required sections, detail level, format, and output location. The agent fills in the scaffold rather than guessing what you want.</p>
+      <p>Define the <em>shape</em> of the output: required sections, detail level, format, and location. The agent fills in the scaffold.</p>
 
       <div class="comparison">
         <div class="compare-col old">
@@ -843,25 +906,21 @@
           </ul>
         </div>
       </div>
-      <p>The scaffolded version communicates the same intent, but the agent knows exactly what shape the answer should take, what detail level is expected, and where to put the result.</p>
     </section>
 
     <section class="content-section">
       <div class="section-label">Pattern 2</div>
       <h2>Constraint Systems</h2>
-      <p>Explicit negative instructions that define the safe operating space. Constraints are often more useful than positive instructions because they prevent the most common failure modes.</p>
+      <p>Explicit negative instructions define the safe operating space. They prevent the most common failure modes.</p>
 
       <div class="code-block">
-        <span class="label">Example constraints</span>
+        <span class="label">Example</span>
 <pre>
 <span class="keyword">## Constraints</span>
 <span class="highlight-line">- Do NOT modify the database schema</span>
 <span class="highlight-line">- Do NOT change the plugin architecture</span>
 <span class="highlight-line">- Do NOT proceed to the next step until all tests pass</span>
 <span class="highlight-line">- Focus only on the shopping cart steel thread</span>
-<span class="comment">
-Each constraint prevents a specific, known failure mode.
-They're action-negative: defining what NOT to do.</span>
 </pre>
       </div>
     </section>
@@ -869,89 +928,86 @@ They're action-negative: defining what NOT to do.</span>
     <section class="content-section">
       <div class="section-label">Pattern 3</div>
       <h2>Risk Registers as Intent</h2>
-      <p>Predict what could go wrong and map each risk to the specific harness that catches it. This transforms "be careful" into "here's exactly which test will fail if you deviate."</p>
+      <p>Predict what could go wrong and map each risk to the harness that catches it. This transforms "be careful" into "here's which test will fail."</p>
 
-      <table class="law-physics">
-        <thead>
-          <tr>
-            <th>Risk</th>
-            <th>Severity</th>
-            <th>What Catches It</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="color:var(--text-muted)">Circular DI dependency</td>
-            <td style="color:var(--accent-3)">Critical</td>
-            <td>App fails to start → all Playwright tests fail</td>
-          </tr>
-          <tr>
-            <td style="color:var(--text-muted)">Missing DI registration</td>
-            <td style="color:var(--accent-3)">Critical</td>
-            <td>InvalidOperationException → any E2E test</td>
-          </tr>
-          <tr>
-            <td style="color:var(--text-muted)">Cart total miscalculation</td>
-            <td style="color:var(--accent-light)">High</td>
-            <td>Unit test asserting cart math</td>
-          </tr>
-          <tr>
-            <td style="color:var(--text-muted)">Broken checkout button</td>
-            <td style="color:var(--accent-light)">High</td>
-            <td>Playwright test clicking "Add to cart"</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>The risk register is a form of intent: it tells the implementing agent where the danger zones are and gives it confidence that mistakes will be caught.</p>
+      <div class="card-grid three">
+        <div class="card">
+          <div class="card-icon pink">&#9888;</div>
+          <h4>Circular DI Dependency</h4>
+          <p><strong style="color:var(--accent-3)">Critical</strong> — App fails to start. All Playwright tests fail immediately.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon pink">&#9888;</div>
+          <h4>Missing DI Registration</h4>
+          <p><strong style="color:var(--accent-3)">Critical</strong> — InvalidOperationException. Caught by any E2E test.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon orange">&#9888;</div>
+          <h4>Cart Total Miscalculation</h4>
+          <p><strong style="color:var(--orange)">High</strong> — Unit test asserts "Expected 42.99, got 38.50."</p>
+        </div>
+      </div>
     </section>
 
+    <!-- ── Feedback Loop Diagram ── -->
     <section class="content-section">
       <div class="section-label">Pattern 4</div>
       <h2>Feedback Loops as Self-Correction</h2>
-      <p>Instead of hoping the agent gets it right the first time, build mandatory checkpoints into the workflow. The error message itself becomes a remediation instruction.</p>
+      <p>Build mandatory checkpoints into the workflow. The error message itself becomes a remediation instruction.</p>
 
-      <div class="code-block">
-        <span class="label">Feedback loop</span>
-<pre>
-<span class="keyword">After EACH step:</span>
-<span class="highlight-line">  1. dotnet format --verify-no-changes</span>
-<span class="highlight-line">  2. dotnet test</span>
-<span class="highlight-line">  3. npx playwright test</span>
-
-<span class="keyword">If a test fails:</span>
-<span class="string">  → Read the full error output</span>
-<span class="string">  → Diagnose the root cause</span>
-<span class="string">  → Fix the issue</span>
-<span class="string">  → Re-run until green</span>
-<span class="string">  → Only then proceed to the next step</span>
-</pre>
+      <div class="feedback-loop-diagram">
+        <div class="fl-step">
+          <div class="fl-circle">&#9998;</div>
+          <h5>Make Change</h5>
+          <p>Execute one step from the plan</p>
+        </div>
+        <div class="fl-arrow">&rarr;</div>
+        <div class="fl-step">
+          <div class="fl-circle">&#9881;</div>
+          <h5>Run Tests</h5>
+          <p>dotnet test + Playwright</p>
+        </div>
+        <div class="fl-arrow">&rarr;</div>
+        <div class="fl-step">
+          <div class="fl-circle">&#10060;</div>
+          <h5>Fail?</h5>
+          <p>Read error, diagnose, fix</p>
+        </div>
+        <div class="fl-arrow">&rarr;</div>
+        <div class="fl-step">
+          <div class="fl-circle">&#10003;</div>
+          <h5>Pass?</h5>
+          <p>Proceed to next step</p>
+        </div>
+        <div class="fl-return-arrow"></div>
+        <div class="fl-return-label">Retry until green</div>
       </div>
 
-      <div class="callout green">
-        <p><strong>Why this works:</strong> Test failures are precise, specific feedback. "Expected 42.99, got 0" is infinitely more useful than "please make sure the cart logic is correct." The harness teaches the agent what's wrong in machine-readable terms.</p>
+      <div class="callout green" style="margin-top: 4rem;">
+        <p><strong>Why this works:</strong> "Expected 42.99, got 0" is infinitely more useful than "please make sure the cart logic is correct." The harness teaches the agent what's wrong in machine-readable terms.</p>
       </div>
     </section>
 
     <section class="content-section">
       <div class="section-label">Pattern 5</div>
       <h2>Information Diets</h2>
-      <p>Give each agent phase only the information it needs — nothing more. This prevents context window waste and forces the output of each phase to be dense and self-contained.</p>
+      <p>Give each phase only what it needs. Constrained input forces focused output. See the Methodology tab for the full visualization.</p>
 
-      <div class="card-grid">
+      <div class="card-grid three">
         <div class="card">
-          <div class="card-icon">🔍</div>
-          <h4>Research Agent Sees</h4>
-          <p>Full codebase access. The goal is to explore freely and compress findings into research.md.</p>
+          <div class="card-icon">&#128270;</div>
+          <h4>Research Sees</h4>
+          <p>Full codebase access. Explore freely, compress findings into research.md.</p>
         </div>
         <div class="card">
-          <div class="card-icon green">📐</div>
-          <h4>Plan Agent Sees</h4>
-          <p>Only research.md. No raw code. Forces it to plan from the compressed summary, not get lost in details.</p>
+          <div class="card-icon green">&#128208;</div>
+          <h4>Plan Sees</h4>
+          <p>Only research.md. No raw code. Forces planning from compressed summary.</p>
         </div>
         <div class="card">
-          <div class="card-icon pink">⚡</div>
-          <h4>Implement Agent Sees</h4>
-          <p>Only plan.md + codebase access. Follows the plan step-by-step. Doesn't re-research, doesn't re-plan.</p>
+          <div class="card-icon orange">&#9889;</div>
+          <h4>Implement Sees</h4>
+          <p>Only plan.md + codebase. Follows the plan. Doesn't re-research or re-plan.</p>
         </div>
       </div>
     </section>
@@ -963,102 +1019,110 @@ They're action-negative: defining what NOT to do.</span>
   <div class="container">
     <section class="hero" style="padding-bottom: 2rem;">
       <h1>Intent Engineering <span class="gradient">In Practice</span></h1>
-      <p class="subtitle">A workshop applying these patterns to refactor a real-world .NET e-commerce codebase with AI agents.</p>
+      <p class="subtitle">Refactoring a real-world .NET e-commerce codebase with AI agents and a disciplined methodology.</p>
     </section>
 
     <section class="content-section">
       <div class="section-label">The Challenge</div>
       <h2>Refactoring nopCommerce with AI</h2>
-      <p>nopCommerce is a large, real-world .NET e-commerce platform. The workshop demonstrates that AI coding agents can meaningfully refactor legacy code using a disciplined methodology — and that the methodology matters more than the model.</p>
-      <p>The "steel thread" is the shopping cart flow: from clicking "Add to cart" in the UI, through controllers and services, down to the database and back. One narrow, vertical slice through the entire architecture.</p>
+      <p>nopCommerce is a large, real-world .NET e-commerce platform. The "steel thread" is the shopping cart flow: from clicking "Add to cart" in the UI, through controllers and services, to the database and back. One narrow, vertical slice through the entire architecture.</p>
     </section>
 
+    <!-- ── Exercise Steps ── -->
     <section class="content-section">
       <div class="section-label">The Exercises</div>
       <h2>Five Steps, Building on Each Other</h2>
 
-      <div class="funnel">
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>0. Get Orientated</h4>
-            <p>Understand the codebase, the steel thread, and the key files. No AI agents yet — just context-setting for the humans.</p>
+      <div class="exercise-steps">
+        <div class="ex-step">
+          <div class="ex-num">0</div>
+          <div class="ex-body">
+            <h4>Get Orientated</h4>
+            <p>Understand the codebase, the steel thread, and the key files. Context-setting for humans before agents enter the picture.</p>
           </div>
         </div>
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>1. Build the Harness</h4>
-            <p>Write Playwright E2E tests and unit tests <em>before any refactoring begins</em>. The harness defines "correct" structurally. This is the single most important step.</p>
+        <div class="ex-step">
+          <div class="ex-num">1</div>
+          <div class="ex-body">
+            <h4>Build the Harness</h4>
+            <p>Write Playwright E2E tests and unit tests <em>before any refactoring</em>. The harness defines "correct" structurally. This is the most important step.</p>
+            <span class="ex-tag">Harnesses &gt; Models</span>
           </div>
         </div>
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>2. Research the Steel Thread</h4>
-            <p>Agent explores the add-to-cart flow end-to-end. Produces a dense research.md with every file, method, and connection point documented.</p>
+        <div class="ex-step">
+          <div class="ex-num">2</div>
+          <div class="ex-body">
+            <h4>Research the Steel Thread</h4>
+            <p>Agent explores the add-to-cart flow end-to-end. Produces a dense research.md with every file, method, and connection documented.</p>
+            <span class="ex-tag">RPI: Research</span>
           </div>
         </div>
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>3. Plan the Refactoring</h4>
-            <p>Fresh agent reads only research.md. Produces an ordered implementation plan with interface definitions, DI registration, and a risk register.</p>
+        <div class="ex-step">
+          <div class="ex-num">3</div>
+          <div class="ex-body">
+            <h4>Plan the Refactoring</h4>
+            <p>Fresh agent reads only research.md. Produces an ordered plan with interface definitions, DI registration, and a risk register.</p>
+            <span class="ex-tag">RPI: Plan</span>
           </div>
         </div>
-        <div class="funnel-step">
-          <div class="funnel-dot"></div>
-          <div class="funnel-content">
-            <h4>4. Implement with Feedback Loops</h4>
-            <p>Fresh agent follows the plan step-by-step, running the full test suite after each change. The harness catches mistakes; the agent learns from the errors.</p>
+        <div class="ex-step">
+          <div class="ex-num">4</div>
+          <div class="ex-body">
+            <h4>Implement with Feedback Loops</h4>
+            <p>Fresh agent follows the plan step-by-step, running the full test suite after each change. The harness catches mistakes; the agent learns from errors.</p>
+            <span class="ex-tag">RPI: Implement + Physics</span>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ── Wow Moments ── -->
     <section class="content-section">
       <div class="section-label">The Wow Moments</div>
       <h2>When Physics Thinking Pays Off</h2>
-      <p>Three moments in the workshop where you see intent engineering working in real time:</p>
+      <p>Three moments where you see intent engineering working in real time:</p>
 
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-icon">🔴</div>
-          <h4>The Compiler Catches a Type Error</h4>
-          <p>The agent introduces a subtle type mismatch. The C# compiler refuses to build. The agent reads the error, fixes the type, and moves on. No human intervention. <strong style="color:var(--accent-light)">Physics thinking.</strong></p>
+      <div class="wow-timeline">
+        <div class="wow-moment">
+          <div class="wow-badge">&#128308;</div>
+          <h4>Compiler Catches a Type Error</h4>
+          <p>The agent introduces a subtle type mismatch. The C# compiler refuses to build. The agent reads the error, fixes the type, moves on. No human intervention.</p>
+          <span class="wow-principle">Physics Thinking</span>
         </div>
-        <div class="card">
-          <div class="card-icon green">🧪</div>
-          <h4>A Unit Test Catches a Logic Regression</h4>
-          <p>The agent refactors the cart service and accidentally changes calculation order. The unit test fails with "Expected 42.99, got 38.50." The agent diagnoses and fixes. <strong style="color:var(--accent-2)">Harnesses over models.</strong></p>
+        <div class="wow-moment">
+          <div class="wow-badge">&#129514;</div>
+          <h4>Unit Test Catches Logic Regression</h4>
+          <p>The agent refactors the cart service and accidentally changes calculation order. "Expected 42.99, got 38.50." Diagnosed and fixed.</p>
+          <span class="wow-principle">Harnesses &gt; Models</span>
         </div>
-        <div class="card">
-          <div class="card-icon pink">🎭</div>
-          <h4>Playwright Catches a UI Regression</h4>
-          <p>The extracted service works, but a missing DI registration means the page throws a 500 error. Playwright catches it by trying to click "Add to cart." End-to-end verification. <strong style="color:var(--accent-3)">All three principles working together.</strong></p>
+        <div class="wow-moment">
+          <div class="wow-badge">&#127917;</div>
+          <h4>Playwright Catches UI Regression</h4>
+          <p>The service works, but a missing DI registration throws a 500 error. Playwright catches it by clicking "Add to cart." End-to-end verification.</p>
+          <span class="wow-principle">All Three Together</span>
         </div>
       </div>
     </section>
 
+    <!-- ── Success Criteria ── -->
     <section class="content-section">
       <div class="section-label">Success Criteria</div>
       <h2>How We Know It Worked</h2>
-      <p>The vision document defines seven measurable success criteria. Intent engineering means defining these up front, not after the fact:</p>
 
       <div class="code-block">
 <pre>
-<span class="string">✓</span> <span class="highlight-line">Research before code — agent explored before touching anything</span>
-<span class="string">✓</span> <span class="highlight-line">Plan before implementation — ordered steps with risk analysis</span>
-<span class="string">✓</span> <span class="highlight-line">Harnesses before refactoring — tests existed before changes</span>
-<span class="string">✓</span> <span class="highlight-line">Feedback loops — test suite ran after every change</span>
-<span class="string">✓</span> <span class="highlight-line">Dense handoffs — research.md and plan.md carried intent forward</span>
-<span class="string">✓</span> <span class="highlight-line">Physics enforcement — compiler + tests caught real errors</span>
-<span class="string">✓</span> <span class="highlight-line">No manual checking — if the harness is green, the refactoring is correct</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Research before code — agent explored before touching anything</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Plan before implementation — ordered steps with risk analysis</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Harnesses before refactoring — tests existed before changes</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Feedback loops — test suite ran after every change</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Dense handoffs — research.md and plan.md carried intent forward</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Physics enforcement — compiler + tests caught real errors</span>
+<span class="string">&#10003;</span> <span class="highlight-line">No manual checking — if the harness is green, the refactoring is correct</span>
 </pre>
       </div>
 
       <div class="callout">
-        <p><strong>The takeaway:</strong> The model doesn't matter as much as the methodology. A well-structured intent engineering system — with phases, harnesses, and feedback loops — produces reliable results regardless of which AI model you use.</p>
+        <p><strong>The takeaway:</strong> The model doesn't matter as much as the methodology. A well-structured intent engineering system — with phases, harnesses, and feedback loops — produces reliable results regardless of which AI you use.</p>
       </div>
     </section>
   </div>
