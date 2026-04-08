@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>AI Across the SDLC — Where AI Fits Today</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f; --surface: #12121a; --surface-2: #1a1a26; --border: #2a2a3a;
+    --text: #e4e4ef; --text-muted: #8888a0; --text-dim: #5a5a72;
+    --accent: #7c5cfc; --accent-light: #9b7fff;
+    --accent-2: #00d4aa; --accent-3: #ff6b8a;
+    --orange: #e8913a; --blue: #5b8def; --teal: #3bbfa0; --yellow: #f0c040;
+    --radius: 12px; --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.7; font-size: 16px; min-height: 100vh; overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 20%, rgba(124,92,252,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(0,212,170,0.04) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+  .back-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--text-dim); text-decoration: none; font-size: 0.82rem; font-weight: 500; padding: 1.5rem 0 0.5rem; transition: color 0.3s; }
+  .back-link:hover { color: var(--accent-light); }
+
+  .hero { padding: 2.5rem 0 1.5rem; text-align: center; }
+  .hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 0.75rem; }
+  .hero .subtitle { font-size: 1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+  .gradient { background: linear-gradient(135deg, #9b7fff 0%, #00d4aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.3rem 0.9rem; border-radius: 20px; background: rgba(124,92,252,0.12); border: 1px solid rgba(124,92,252,0.25); color: var(--accent-light); margin-bottom: 1rem; }
+
+  /* ── Maturity pills ── */
+  .maturity { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.2rem 0.6rem; border-radius: 12px; }
+  .maturity.ready { background: rgba(0,212,170,0.15); color: var(--accent-2); border: 1px solid rgba(0,212,170,0.3); }
+  .maturity.emerging { background: rgba(232,145,58,0.15); color: var(--orange); border: 1px solid rgba(232,145,58,0.3); }
+  .maturity.preview { background: rgba(124,92,252,0.15); color: var(--accent-light); border: 1px solid rgba(124,92,252,0.3); }
+
+  /* ── Phase cards ── */
+  .phase-grid { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
+  .phase-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.75rem; position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .phase-card:hover { border-color: rgba(124,92,252,0.25); transform: translateY(-1px); }
+  .phase-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .phase-card.plan::before { background: var(--blue); }
+  .phase-card.design::before { background: var(--accent); }
+  .phase-card.code::before { background: var(--accent-2); }
+  .phase-card.test::before { background: var(--yellow); }
+  .phase-card.deploy::before { background: var(--orange); }
+  .phase-card.operate::before { background: var(--accent-3); }
+  .phase-card.maintain::before { background: var(--teal); }
+
+  .phase-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .phase-num { font-size: 2rem; font-weight: 800; line-height: 1; }
+  .phase-card.plan .phase-num { color: var(--blue); }
+  .phase-card.design .phase-num { color: var(--accent); }
+  .phase-card.code .phase-num { color: var(--accent-2); }
+  .phase-card.test .phase-num { color: var(--yellow); }
+  .phase-card.deploy .phase-num { color: var(--orange); }
+  .phase-card.operate .phase-num { color: var(--accent-3); }
+  .phase-card.maintain .phase-num { color: var(--teal); }
+  .phase-title { font-size: 1.15rem; font-weight: 700; }
+  .phase-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem; max-width: 700px; }
+
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; }
+  .tool-item {
+    background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.04); border-radius: var(--radius-sm);
+    padding: 0.85rem 1rem;
+  }
+  .tool-name { font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+  .tool-desc { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+  .tool-prompt {
+    font-size: 0.75rem; color: var(--accent-light); font-style: italic; margin-top: 0.4rem;
+    padding: 0.4rem 0.6rem; background: rgba(124,92,252,0.06); border-radius: 4px;
+    border-left: 2px solid rgba(124,92,252,0.3);
+  }
+
+  /* ── Print styles ── */
+  @media print {
+    body { background: #fff; color: #111; font-size: 11px; }
+    body::before { display: none; }
+    .back-link, .footer { display: none; }
+    .phase-card { break-inside: avoid; border: 1px solid #ccc; box-shadow: none; background: #fafafa; }
+    .tool-item { background: #f0f0f0; border: 1px solid #ddd; }
+    .maturity.ready { background: #e6fff7; color: #0a7; border-color: #0a7; }
+    .maturity.emerging { background: #fff5e6; color: #c70; border-color: #c70; }
+    .maturity.preview { background: #f0e8ff; color: #63c; border-color: #63c; }
+    .gradient { -webkit-text-fill-color: #333; background: none; }
+    .hero { padding: 1rem 0; }
+    .hero h1 { font-size: 1.6rem; }
+    .phase-grid { gap: 0.75rem; }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.7rem; }
+    .tools-grid { grid-template-columns: 1fr; }
+  }
+
+  .legend { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin: 1.5rem 0; }
+  .callout { background: rgba(124,92,252,0.08); border: 1px solid rgba(124,92,252,0.2); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+  .callout.green { background: rgba(0,212,170,0.08); border-color: rgba(0,212,170,0.2); }
+  .callout p { color: var(--text); margin: 0; font-size: 0.9rem; max-width: none; }
+  .callout strong { color: #fff; }
+
+  .footer { margin-top: 3rem; padding: 1.5rem 0; border-top: 1px solid var(--border); text-align: center; font-size: 0.75rem; color: var(--text-dim); }
+  .footer a { color: var(--accent-light); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <a href="index.html" class="back-link">&larr; Back to AI-SDLC main site</a>
+
+  <section class="hero">
+    <div class="hero-badge">Reference Map &mdash; Printable</div>
+    <h1>AI Across the <span class="gradient">SDLC</span></h1>
+    <p class="subtitle">Where AI fits at every stage of the software development lifecycle &mdash; what you can use today, what's emerging, and what to try on Monday morning. Focused on GitHub Copilot, but the patterns are transferable.</p>
+  </section>
+
+  <div class="legend">
+    <span class="maturity ready">&#9679; Ready &mdash; use today</span>
+    <span class="maturity emerging">&#9679; Emerging &mdash; maturing fast</span>
+    <span class="maturity preview">&#9679; Preview &mdash; early access</span>
+  </div>
+
+  <div class="phase-grid">
+
+    <!-- ════ 1. PLAN ════ -->
+    <div class="phase-card plan">
+      <div class="phase-header">
+        <div class="phase-num">01</div>
+        <div>
+          <div class="phase-title">Plan &amp; Requirements</div>
+          <span class="maturity emerging">Emerging</span>
+        </div>
+      </div>
+      <div class="phase-desc">Turn ideas into structured requirements. AI helps explore problem spaces, generate user stories, and build product specs &mdash; but humans own the strategic "why."</div>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <div class="tool-name">Spec Kit &mdash; /speckit.specify</div>
+          <div class="tool-desc">Generate a structured product specification from a high-level prompt. Living spec.md becomes the source of truth.</div>
+          <div class="tool-prompt">"Using Spec Kit, specify a caching layer for our API that supports Redis and in-memory fallback."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Copilot Chat &mdash; Requirements Exploration</div>
+          <div class="tool-desc">Use @workspace to explore an existing codebase before writing requirements. Ask Copilot to surface architecture, dependencies, and constraints.</div>
+          <div class="tool-prompt">"@workspace What authentication mechanisms exist in this project? List all auth-related files and their roles."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Azure Boards + Copilot</div>
+          <div class="tool-desc">Send Azure DevOps work items directly to GitHub Copilot's coding agent. The agent works on the task and generates a PR.</div>
+          <div class="tool-prompt">Assign a work item to Copilot from Azure Boards &rarr; agent creates branch, implements, opens PR.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Prompt For Questions (Tactic)</div>
+          <div class="tool-desc">Ask the AI to interview you before it starts work. Surfaces requirements and edge cases you hadn't considered.</div>
+          <div class="tool-prompt">"I need to add multi-tenancy. Please ask me 5 questions to understand what I need before suggesting an approach."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 2. DESIGN ════ -->
+    <div class="phase-card design">
+      <div class="phase-header">
+        <div class="phase-num">02</div>
+        <div>
+          <div class="phase-title">Design &amp; Architecture</div>
+          <span class="maturity emerging">Emerging</span>
+        </div>
+      </div>
+      <div class="phase-desc">Turn requirements into architecture decisions, domain models, and technical plans. AI generates options; you make the structural calls. This is where intent engineering starts &mdash; encode your decisions so agents can't deviate from them.</div>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <div class="tool-name">Spec Kit &mdash; /speckit.plan</div>
+          <div class="tool-desc">Generate a technical implementation plan from a spec. Defines architecture, tech stack, and implementation strategy.</div>
+          <div class="tool-prompt">"Using Spec Kit, create a plan for the caching layer spec. Use Redis Cluster with read replicas."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Copilot Chat &mdash; Mermaid Diagrams</div>
+          <div class="tool-desc">Generate architecture diagrams, sequence flows, and entity relationships as Mermaid code. Forces structural reasoning.</div>
+          <div class="tool-prompt">"Create a Mermaid C4 diagram showing the cache service's place in our architecture."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Group Simulation (Tactic)</div>
+          <div class="tool-desc">Ask Copilot to simulate a review panel &mdash; a security engineer, DBA, and platform engineer each critique the design.</div>
+          <div class="tool-prompt">"If I showed this design to a senior backend engineer, a security engineer, and a DBA &mdash; what would each say?"</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">ADC Records</div>
+          <div class="tool-desc">Use Agent Decision Context records to capture motivation, alternatives considered, and rollback strategy for every architectural decision.</div>
+          <div class="tool-prompt">Create adc/YYYY-MM-DD--decision-name/ with research.md, plan.md, handoff.md</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 3. CODE ════ -->
+    <div class="phase-card code">
+      <div class="phase-header">
+        <div class="phase-num">03</div>
+        <div>
+          <div class="phase-title">Code &amp; Implement</div>
+          <span class="maturity ready">Ready</span>
+        </div>
+      </div>
+      <div class="phase-desc">This is where AI is most mature. From inline completions to full multi-file agent mode, Copilot can implement features, refactor code, and generate documentation &mdash; all grounded by your copilot-instructions.md and custom skills.</div>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <div class="tool-name">Copilot Inline &amp; Chat</div>
+          <div class="tool-desc">Real-time code completions informed by open tabs. Use /explain, /fix, /doc, /tests for targeted actions.</div>
+          <div class="tool-prompt">Open types.ts + config.ts alongside your target file for best context (the "Surround" in 4S).</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Agent Mode (VS Code)</div>
+          <div class="tool-desc">Multi-file, agentic coding. Copilot analyses the codebase, edits across files, runs terminal commands, and iterates on errors autonomously.</div>
+          <div class="tool-prompt">"Extract the add-to-cart logic from ShoppingCartController into a CartService. Update all callers and add unit tests."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Coding Agent (GitHub.com)</div>
+          <div class="tool-desc">Assign a GitHub issue to Copilot. It works asynchronously in the cloud &mdash; creates a branch, implements, opens a PR for review.</div>
+          <div class="tool-prompt">Label an issue "copilot" or assign to @copilot &rarr; autonomous implementation in background.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">copilot-instructions.md</div>
+          <div class="tool-desc">Your project's "constitution." Coding standards, architecture constraints, naming conventions &mdash; applied to every Copilot suggestion.</div>
+          <div class="tool-prompt">.github/copilot-instructions.md: "Use repository pattern. Never call DbContext directly from controllers."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Custom Skills (SKILL.md)</div>
+          <div class="tool-desc">Encode repeatable patterns as reusable agent knowledge. A skill is a SKILL.md file plus optional scripts the agent can invoke.</div>
+          <div class="tool-prompt">.github/skills/extract-service/SKILL.md: Step-by-step pattern for brownfield service extraction.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">MCP Servers</div>
+          <div class="tool-desc">Connect Copilot to external tools and data sources. Database queries, API docs, monitoring dashboards &mdash; all available in context.</div>
+          <div class="tool-prompt">.vscode/mcp.json: Connect to Postgres, Jira, Confluence, or custom internal APIs.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 4. TEST ════ -->
+    <div class="phase-card test">
+      <div class="phase-header">
+        <div class="phase-num">04</div>
+        <div>
+          <div class="phase-title">Test &amp; Validate</div>
+          <span class="maturity ready">Ready</span>
+        </div>
+      </div>
+      <div class="phase-desc">AI generates tests, identifies edge cases, and improves coverage &mdash; but remember the Self-Rating Trap: the AI that wrote the code shouldn't be the only one validating it. Use physics (test runners, linters, type checkers) as your independent verification.</div>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <div class="tool-name">Copilot &mdash; /tests</div>
+          <div class="tool-desc">Generate unit tests for selected code. Copilot infers framework (Jest, pytest, xUnit) from project context.</div>
+          <div class="tool-prompt">"Generate unit tests for CartService.AddToCart. Include edge cases: empty cart, duplicate items, out-of-stock."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Agent Mode &mdash; Test-First Workflow</div>
+          <div class="tool-desc">Ask agent mode to list edge cases first, then write tests that would fail if the implementation is wrong. Safer than "write tests."</div>
+          <div class="tool-prompt">"List edge cases for the payment flow, then write tests that would fail if any edge case is mishandled."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">CodeQL &amp; Security Scanning</div>
+          <div class="tool-desc">Automatic SAST via CodeQL. Secret scanning via GitHub MCP Server. Catch vulnerabilities before the PR completes.</div>
+          <div class="tool-prompt">Enable in repo Settings &rarr; Code Security. Runs automatically on every push and PR.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">DAST via Custom Agents</div>
+          <div class="tool-desc">StackHawk and Aikido offer Copilot custom agents for dynamic security testing. Generate DAST configs from source code analysis.</div>
+          <div class="tool-prompt">Install StackHawk's .agent.md &rarr; generates CI workflow for dynamic scanning of your API endpoints.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 5. REVIEW ════ -->
+    <div class="phase-card deploy" style="--phase-color: var(--accent-3);">
+      <div class="phase-header">
+        <div class="phase-num" style="color: var(--accent-3);">05</div>
+        <div>
+          <div class="phase-title">Review &amp; Merge</div>
+          <span class="maturity ready">Ready</span>
+        </div>
+      </div>
+      <div class="phase-desc">AI-assisted code review catches issues before humans see them &mdash; freeing reviewers to focus on architecture and intent rather than style and bugs. Copilot reviews leave comments, never approvals &mdash; the human always has final say.</div>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <div class="tool-name">Copilot Code Review</div>
+          <div class="tool-desc">Add Copilot as a reviewer on any PR. It analyses the diff and leaves inline comments on potential issues, bugs, and improvements.</div>
+          <div class="tool-prompt">PR &rarr; Reviewers &rarr; Select "Copilot". Comments appear within minutes.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Coding Agent PRs</div>
+          <div class="tool-desc">When the coding agent opens a PR, it includes a summary of changes, reasoning, and test results. Review like any other PR.</div>
+          <div class="tool-prompt">Agent PRs include a Copilot session link showing the full reasoning trace.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Custom Review Agents</div>
+          <div class="tool-desc">Define .agent.md files for domain-specific review: accessibility checks, performance analysis, compliance validation.</div>
+          <div class="tool-prompt">.github/.agent.md: "Review all CSS changes for WCAG 2.1 AA compliance."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 6. DEPLOY ════ -->
+    <div class="phase-card deploy">
+      <div class="phase-header">
+        <div class="phase-num">06</div>
+        <div>
+          <div class="phase-title">Build, Deploy &amp; Release</div>
+          <span class="maturity emerging">Emerging</span>
+        </div>
+      </div>
+      <div class="phase-desc">AI generates and maintains CI/CD pipelines, suggests deployment strategies, and helps troubleshoot build failures. The automation is strong; the strategic decisions (canary vs blue-green, rollback criteria) still need human judgement.</div>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <div class="tool-name">Copilot &mdash; GitHub Actions</div>
+          <div class="tool-desc">Generate and modify workflow YAML files. Copilot understands Actions syntax and can add steps, fix failures, and optimise pipelines.</div>
+          <div class="tool-prompt">"Add a security scan step using CodeQL to our CI pipeline, running on every PR to main."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Agent Mode &mdash; Pipeline Updates</div>
+          <div class="tool-desc">Complex multi-file pipeline changes: add environments, configure secrets, set up matrix builds, integrate deployment gates.</div>
+          <div class="tool-prompt">"Update our CI pipeline to deploy to staging on PR merge, run smoke tests, then promote to production with manual approval."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Infrastructure as Code</div>
+          <div class="tool-desc">Copilot generates Terraform, Bicep, CloudFormation, and Kubernetes manifests. Custom agents can validate IaC against organisation policies.</div>
+          <div class="tool-prompt">"Generate a Terraform module for an Azure App Service with managed identity, connected to our existing Key Vault."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 7. OPERATE ════ -->
+    <div class="phase-card operate">
+      <div class="phase-header">
+        <div class="phase-num">07</div>
+        <div>
+          <div class="phase-title">Operate &amp; Monitor</div>
+          <span class="maturity preview">Preview</span>
+        </div>
+      </div>
+      <div class="phase-desc">The newest frontier. AI agents that monitor production, respond to incidents, and suggest optimisations. This is where the Copilot SDK and custom agents open up entirely new possibilities &mdash; but most teams are still in early experiments.</div>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <div class="tool-name">Azure SRE Agent</div>
+          <div class="tool-desc">AI agent that monitors production applications, detects anomalies, and suggests remediations. Integrates with Azure Monitor and Application Insights.</div>
+          <div class="tool-prompt">Connects via MCP &mdash; surfaces production telemetry directly in Copilot Chat context.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Copilot SDK &mdash; Custom Ops Agents</div>
+          <div class="tool-desc">Build custom agents for incident response, infrastructure validation, compliance checking, and resource optimisation using Python, TypeScript, Go, or .NET.</div>
+          <div class="tool-prompt">Embed the Copilot agent runtime into your own runbooks and incident response tooling.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">MCP for Observability</div>
+          <div class="tool-desc">Connect Copilot to Datadog, Grafana, PagerDuty, or custom dashboards. Query production metrics from within your IDE.</div>
+          <div class="tool-prompt">"@mcp-datadog What's the P99 latency for the /api/cart endpoint over the last 24 hours?"</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ 8. MAINTAIN ════ -->
+    <div class="phase-card maintain">
+      <div class="phase-header">
+        <div class="phase-num">08</div>
+        <div>
+          <div class="phase-title">Maintain &amp; Evolve</div>
+          <span class="maturity ready">Ready</span>
+        </div>
+      </div>
+      <div class="phase-desc">The ongoing cycle: refactoring, dependency updates, tech debt reduction, and feature evolution. This is where brownfield AI capabilities shine &mdash; understanding existing code well enough to change it safely.</div>
+      <div class="tools-grid">
+        <div class="tool-item">
+          <div class="tool-name">Agent Mode &mdash; Refactoring</div>
+          <div class="tool-desc">Multi-file refactoring with test preservation. Agent mode understands call hierarchies and updates all references.</div>
+          <div class="tool-prompt">"Refactor: extract the email notification logic from OrderController into a NotificationService. Update all callers. Don't change behaviour."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Copilot &mdash; /explain</div>
+          <div class="tool-desc">Understand unfamiliar or legacy code before modifying it. Essential for onboarding and knowledge transfer.</div>
+          <div class="tool-prompt">"Explain what this stored procedure does, what calls it, and what would break if I changed the return type."</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Dependabot + Copilot</div>
+          <div class="tool-desc">Dependabot opens PRs for dependency updates. Copilot reviews the changes for breaking API modifications and suggests migration steps.</div>
+          <div class="tool-prompt">Enable Dependabot &rarr; Copilot reviews each update PR automatically.</div>
+        </div>
+        <div class="tool-item">
+          <div class="tool-name">Steel Thread Extraction</div>
+          <div class="tool-desc">Pick one narrow vertical slice of a brownfield codebase, reverse-engineer the intent, extract it cleanly, and prove it works end-to-end. Then repeat.</div>
+          <div class="tool-prompt">RPI: Research the flow &rarr; Plan the extraction &rarr; Implement in a fresh context with the handoff artefact.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Monday Morning ── -->
+  <div class="callout green" style="margin-top: 2rem;">
+    <p><strong>Monday morning starter kit:</strong> You don't need all of this. Start with three things: (1) Create a <code style="font-size: 0.82rem;">.github/copilot-instructions.md</code> with your coding standards. (2) Try agent mode on one real task. (3) Ask Copilot to generate tests for code you wrote this week. That's enough to change how your team works.</p>
+  </div>
+
+  <!-- ── Footer ── -->
+  <div class="footer">
+    AI Across the SDLC &middot; <a href="index.html">Main site</a> &middot; <a href="cheat-sheet.html">Cheat Sheets</a> &middot; <a href="comparison.html">GitHub vs AWS</a>
+    <br><span style="margin-top: 0.5rem; display: inline-block;">Print this page (Ctrl+P / Cmd+P) for a wall reference.</span>
+  </div>
+</div>
+
+</body>
+</html>
