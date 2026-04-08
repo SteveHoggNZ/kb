@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intent Engineering — Beyond Prompt Engineering</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface-2: #1a1a26;
+    --surface-3: #22222f;
+    --border: #2a2a3a;
+    --text: #e4e4ef;
+    --text-muted: #8888a0;
+    --text-dim: #5a5a72;
+    --accent: #7c5cfc;
+    --accent-light: #9b7fff;
+    --accent-glow: rgba(124, 92, 252, 0.15);
+    --accent-2: #00d4aa;
+    --accent-2-glow: rgba(0, 212, 170, 0.12);
+    --accent-3: #ff6b8a;
+    --orange: #e8913a;
+    --orange-glow: rgba(232, 145, 58, 0.15);
+    --blue: #5b8def;
+    --teal: #3bbfa0;
+    --yellow: #f0c040;
+    --pink: #e85b8a;
+    --purple: #9b7fff;
+    --gradient-1: linear-gradient(135deg, #7c5cfc 0%, #00d4aa 100%);
+    --gradient-2: linear-gradient(135deg, #7c5cfc 0%, #ff6b8a 100%);
+    --gradient-text: linear-gradient(135deg, #9b7fff 0%, #00d4aa 100%);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 20%, rgba(124, 92, 252, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(0, 212, 170, 0.04) 0%, transparent 50%);
+    z-index: -1;
+    animation: bgShift 20s ease-in-out infinite alternate;
+  }
+  @keyframes bgShift { 0% { transform: translate(0,0); } 100% { transform: translate(-5%,3%); } }
+
+  /* ─── Header ─── */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .logo {
+    font-weight: 700; font-size: 1.1rem;
+    background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+  }
+  .tab-nav { display: flex; gap: 2px; background: var(--surface); border-radius: 10px; padding: 3px; }
+  .tab-btn {
+    padding: 8px 18px; border: none; background: transparent; color: var(--text-muted);
+    font-family: inherit; font-size: 0.85rem; font-weight: 500; border-radius: 8px;
+    cursor: pointer; transition: var(--transition); white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--text); background: var(--surface-2); }
+  .tab-btn.active { color: #fff; background: var(--accent); box-shadow: 0 2px 12px rgba(124, 92, 252, 0.3); }
+
+  /* ─── Pages ─── */
+  .page { display: none; animation: fadeIn 0.4s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ─── Hero ─── */
+  .hero { padding: 5rem 0 4rem; text-align: center; }
+  .hero-badge {
+    display: inline-block; padding: 6px 16px; border-radius: 20px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--accent-light); font-size: 0.8rem; font-weight: 500;
+    margin-bottom: 1.5rem; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .hero h1 .gradient {
+    background: var(--gradient-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero .subtitle {
+    font-size: 1.2rem; color: var(--text-muted); max-width: 640px;
+    margin: 0 auto 2.5rem; font-weight: 400; line-height: 1.6;
+  }
+
+  /* ─── Content sections ─── */
+  .content-section { padding: 3rem 0; }
+  .content-section + .content-section { border-top: 1px solid var(--border); }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--accent-light); margin-bottom: 0.75rem;
+  }
+  .content-section h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.2; }
+  .content-section h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; color: var(--text); }
+  .content-section p { color: var(--text-muted); margin-bottom: 1.25rem; max-width: 720px; }
+  .content-section p.wide { max-width: none; }
+  .center-text { text-align: center; margin-left: auto; margin-right: auto; }
+
+  /* ─── Cards ─── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+  .card-grid.three { grid-template-columns: repeat(3, 1fr); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.75rem; transition: var(--transition); position: relative; overflow: hidden;
+  }
+  .card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gradient-1); opacity: 0; transition: var(--transition);
+  }
+  .card:hover { border-color: rgba(124, 92, 252, 0.3); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124, 92, 252, 0.08); }
+  .card:hover::before { opacity: 1; }
+  .card-icon {
+    width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem; margin-bottom: 1rem; background: var(--accent-glow); border: 1px solid rgba(124, 92, 252, 0.2);
+  }
+  .card-icon.green { background: var(--accent-2-glow); border-color: rgba(0, 212, 170, 0.2); }
+  .card-icon.pink { background: rgba(255, 107, 138, 0.1); border-color: rgba(255, 107, 138, 0.2); }
+  .card-icon.orange { background: var(--orange-glow); border-color: rgba(232, 145, 58, 0.2); }
+  .card h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
+  .card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0; }
+
+  /* ─── Stacked Layers Diagram ─── */
+  .stack-diagram {
+    display: flex; align-items: center; justify-content: center; gap: 3rem;
+    margin: 3rem 0; padding: 2rem 0;
+  }
+  .stack-visual { position: relative; width: 420px; height: 280px; perspective: 800px; }
+  .stack-layer {
+    position: absolute; left: 50%; border-radius: 10px;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) rotateX(25deg) rotateZ(-5deg);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    display: flex; align-items: center; padding-left: 24px;
+    font-weight: 600; font-size: 0.95rem; letter-spacing: 0.01em;
+    transition: all 0.4s ease;
+  }
+  .stack-layer:hover { transform: translateX(-50%) rotateX(25deg) rotateZ(-5deg) translateY(-6px); }
+  .stack-layer.prompting {
+    width: 320px; height: 55px; bottom: 10px;
+    background: linear-gradient(135deg, #3a3a52, #4a4a64); color: #b0b0c8;
+  }
+  .stack-layer.context {
+    width: 350px; height: 60px; bottom: 80px;
+    background: linear-gradient(135deg, #4a6ea8, #5b8def); color: #fff;
+  }
+  .stack-layer.intent {
+    width: 380px; height: 68px; bottom: 158px;
+    background: linear-gradient(135deg, #d07828, #e8913a); color: #fff; font-size: 1.05rem;
+  }
+  .stack-labels { display: flex; flex-direction: column; gap: 0.5rem; max-width: 340px; }
+  .stack-label-item { padding: 0.75rem 0; }
+  .stack-label-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .stack-label-item p { font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+  .stack-label-item.l-intent h4 { color: var(--orange); }
+  .stack-label-item.l-context h4 { color: var(--blue); }
+  .stack-label-item.l-prompting h4 { color: #8888a0; }
+
+  .takeaway-banner {
+    text-align: center; padding: 2rem; margin: 1.5rem 0;
+    font-style: italic; font-size: 1.15rem; color: var(--text);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .takeaway-banner em { color: #fff; font-style: italic; }
+
+  /* ─── Framework Grid ─── */
+  .framework-wrap {
+    display: flex; gap: 2rem; margin: 2.5rem 0; align-items: stretch;
+  }
+  .fw-layers { display: flex; flex-direction: column; gap: 6px; min-width: 170px; }
+  .fw-layer-pill {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em; color: #fff;
+  }
+  .fw-layer-pill .fw-icon {
+    width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.15); font-size: 0.75rem;
+  }
+  .fw-layer-pill.vision { background: var(--blue); }
+  .fw-layer-pill.strategy { background: var(--teal); }
+  .fw-layer-pill.design { background: var(--teal); }
+  .fw-layer-pill.impl { background: var(--orange); }
+  .fw-layer-pill.verify { background: var(--pink); }
+  .fw-layer-pill.ops { background: var(--purple); }
+
+  .fw-grid-area {
+    flex: 1; display: grid;
+    grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(6, 1fr);
+    gap: 6px;
+  }
+  .fw-col-header {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; text-align: center; padding: 6px 4px; border-radius: 6px;
+    color: #fff; display: flex; align-items: center; justify-content: center;
+  }
+  .fw-col-header:nth-child(1) { background: var(--blue); }
+  .fw-col-header:nth-child(2) { background: var(--teal); }
+  .fw-col-header:nth-child(3) { background: var(--accent-light); }
+  .fw-col-header:nth-child(4) { background: var(--purple); }
+  .fw-cell {
+    background: rgba(59, 191, 160, 0.06); border: 1px solid rgba(59, 191, 160, 0.12);
+    border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  }
+  .fw-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 3px solid var(--teal); background: rgba(0,0,0,0.5);
+  }
+  .fw-cell:nth-child(4n+3) .fw-dot,
+  .fw-cell:nth-child(4n+4) .fw-dot { border-color: var(--purple); }
+
+  .fw-benefits {
+    min-width: 200px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+  }
+  .fw-benefits h4 {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent-light); margin-bottom: 1.25rem; font-weight: 700;
+  }
+  .fw-benefit-item { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .fw-benefit-icon {
+    width: 32px; height: 32px; min-width: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+  }
+  .fw-benefit-icon.b1 { background: rgba(91, 141, 239, 0.15); border: 1px solid rgba(91, 141, 239, 0.3); }
+  .fw-benefit-icon.b2 { background: var(--orange-glow); border: 1px solid rgba(232, 145, 58, 0.3); }
+  .fw-benefit-icon.b3 { background: var(--accent-2-glow); border: 1px solid rgba(0, 212, 170, 0.3); }
+  .fw-benefit-text { font-size: 0.8rem; font-weight: 600; color: var(--text); line-height: 1.4; }
+
+  /* ─── Physics vs Law Visual ─── */
+  .physics-visual {
+    display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0;
+    align-items: stretch; margin: 2.5rem 0;
+  }
+  .pv-side {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+  .pv-side.physics { border-color: rgba(0, 212, 170, 0.3); background: linear-gradient(180deg, rgba(0, 212, 170, 0.04), var(--surface)); }
+  .pv-side h4 {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 1.25rem; font-weight: 700;
+  }
+  .pv-side.law h4 { color: var(--text-dim); }
+  .pv-side.physics h4 { color: var(--accent-2); }
+  .pv-arrow-col {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
+  }
+  .pv-arrow {
+    font-size: 1.2rem; color: var(--accent-2); animation: arrowPulse 2s ease-in-out infinite;
+  }
+  @keyframes arrowPulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+  .pv-row {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+  }
+  .pv-row:last-child { border-bottom: none; }
+  .pv-icon-sm {
+    width: 28px; height: 28px; min-width: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  }
+  .pv-side.physics .pv-icon-sm { background: rgba(0, 212, 170, 0.08); border-color: rgba(0, 212, 170, 0.2); }
+  .pv-row-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+  .pv-side.physics .pv-row-text { color: var(--text); }
+
+  /* ─── RPI Flow Diagram ─── */
+  .rpi-flow {
+    display: flex; align-items: stretch; gap: 0; margin: 2.5rem 0;
+    position: relative;
+  }
+  .rpi-phase {
+    flex: 1; padding: 2rem 1.5rem; background: var(--surface);
+    border: 1px solid var(--border); position: relative;
+  }
+  .rpi-phase:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .rpi-phase:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+  .rpi-phase:not(:last-child) { border-right: none; }
+  .rpi-num {
+    font-size: 3rem; font-weight: 800; line-height: 1;
+    margin-bottom: 0.5rem; opacity: 0.15;
+  }
+  .rpi-phase:nth-child(1) .rpi-num { color: var(--blue); }
+  .rpi-phase:nth-child(2) .rpi-num { color: var(--accent-2); }
+  .rpi-phase:nth-child(3) .rpi-num { color: var(--orange); }
+  .rpi-phase h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .rpi-phase:nth-child(1) h4 { color: var(--blue); }
+  .rpi-phase:nth-child(2) h4 { color: var(--accent-2); }
+  .rpi-phase:nth-child(3) h4 { color: var(--orange); }
+  .rpi-phase p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; }
+  .rpi-artifact {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 10px; font-size: 0.75rem;
+    font-family: 'SF Mono', 'Fira Code', monospace; color: var(--text);
+  }
+  .rpi-connector {
+    position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+    z-index: 2; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--surface-2); border: 2px solid var(--accent-2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; color: var(--accent-2);
+  }
+  .rpi-phase:last-child .rpi-connector { display: none; }
+
+  /* ─── Information Diet Visual ─── */
+  .diet-visual { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; }
+  .diet-row {
+    display: grid; grid-template-columns: 140px 1fr 140px; gap: 1rem; align-items: center;
+  }
+  .diet-agent {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 0.75rem; text-align: center; font-size: 0.85rem; font-weight: 600;
+  }
+  .diet-agent.research { border-color: rgba(91, 141, 239, 0.3); color: var(--blue); }
+  .diet-agent.plan { border-color: rgba(0, 212, 170, 0.3); color: var(--accent-2); }
+  .diet-agent.implement { border-color: rgba(232, 145, 58, 0.3); color: var(--orange); }
+  .diet-bar {
+    height: 40px; border-radius: 6px; position: relative;
+    display: flex; align-items: center; overflow: hidden;
+  }
+  .diet-fill {
+    height: 100%; border-radius: 6px; display: flex; align-items: center;
+    padding: 0 12px; font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.9);
+    white-space: nowrap;
+  }
+  .diet-row.research .diet-fill { width: 100%; background: linear-gradient(90deg, rgba(91, 141, 239, 0.2), rgba(91, 141, 239, 0.08)); border: 1px solid rgba(91, 141, 239, 0.2); }
+  .diet-row.plan .diet-fill { width: 30%; background: linear-gradient(90deg, rgba(0, 212, 170, 0.2), rgba(0, 212, 170, 0.08)); border: 1px solid rgba(0, 212, 170, 0.2); }
+  .diet-row.implement .diet-fill { width: 25%; background: linear-gradient(90deg, rgba(232, 145, 58, 0.2), rgba(232, 145, 58, 0.08)); border: 1px solid rgba(232, 145, 58, 0.2); }
+  .diet-output {
+    font-size: 0.75rem; font-family: 'SF Mono', monospace; color: var(--text-muted);
+    text-align: center;
+  }
+
+  /* ─── Feedback Loop Diagram ─── */
+  .feedback-loop-diagram {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0; margin: 2.5rem auto; max-width: 700px; position: relative;
+  }
+  .fl-step {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 1.25rem 1rem; flex: 1;
+  }
+  .fl-circle {
+    width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 0.75rem;
+    border: 2px solid var(--border); background: var(--surface);
+  }
+  .fl-step:nth-child(1) .fl-circle { border-color: var(--blue); background: rgba(91, 141, 239, 0.08); }
+  .fl-step:nth-child(2) .fl-circle { border-color: var(--accent-2); background: rgba(0, 212, 170, 0.08); }
+  .fl-step:nth-child(3) .fl-circle { border-color: var(--accent-3); background: rgba(255, 107, 138, 0.08); }
+  .fl-step:nth-child(4) .fl-circle { border-color: var(--orange); background: var(--orange-glow); }
+  .fl-step h5 { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+  .fl-step p { font-size: 0.72rem; color: var(--text-muted); margin: 0; }
+  .fl-arrow {
+    font-size: 1.2rem; color: var(--accent-2); margin: 0 -0.5rem; margin-top: -2rem;
+    flex-shrink: 0;
+  }
+  .fl-return-arrow {
+    position: absolute; bottom: -30px; left: 15%; right: 15%;
+    height: 24px; border: 2px solid var(--accent-3); border-top: none;
+    border-radius: 0 0 20px 20px; opacity: 0.4;
+  }
+  .fl-return-arrow::after {
+    content: ''; position: absolute; left: -6px; top: -2px;
+    border: 5px solid transparent; border-right-color: var(--accent-3);
+  }
+  .fl-return-label {
+    position: absolute; bottom: -52px; left: 50%; transform: translateX(-50%);
+    font-size: 0.7rem; color: var(--accent-3); white-space: nowrap; font-weight: 500;
+  }
+
+  /* ─── Wow Moments Visual ─── */
+  .wow-timeline {
+    display: flex; gap: 1.5rem; margin: 2rem 0;
+    position: relative;
+  }
+  .wow-timeline::before {
+    content: ''; position: absolute; top: 40px; left: 0; right: 0;
+    height: 2px; background: linear-gradient(90deg, var(--blue), var(--accent-2), var(--orange));
+    opacity: 0.3;
+  }
+  .wow-moment {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem; text-align: center;
+    position: relative; transition: var(--transition);
+  }
+  .wow-moment:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .wow-badge {
+    width: 48px; height: 48px; border-radius: 50%; margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; position: relative; z-index: 1;
+  }
+  .wow-moment:nth-child(1) .wow-badge { background: rgba(91, 141, 239, 0.15); border: 2px solid var(--blue); }
+  .wow-moment:nth-child(2) .wow-badge { background: rgba(0, 212, 170, 0.15); border: 2px solid var(--accent-2); }
+  .wow-moment:nth-child(3) .wow-badge { background: rgba(232, 145, 58, 0.15); border: 2px solid var(--orange); }
+  .wow-moment h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .wow-moment p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+  .wow-principle {
+    display: inline-block; margin-top: 0.75rem; font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .wow-moment:nth-child(1) .wow-principle { color: var(--blue); background: rgba(91, 141, 239, 0.1); }
+  .wow-moment:nth-child(2) .wow-principle { color: var(--accent-2); background: rgba(0, 212, 170, 0.1); }
+  .wow-moment:nth-child(3) .wow-principle { color: var(--orange); background: var(--orange-glow); }
+
+  /* ─── Exercise Steps ─── */
+  .exercise-steps { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; position: relative; }
+  .exercise-steps::before {
+    content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(to bottom, var(--blue), var(--accent-2), var(--orange));
+    opacity: 0.3;
+  }
+  .ex-step {
+    display: flex; gap: 1.5rem; padding: 1.25rem 0; position: relative;
+  }
+  .ex-num {
+    width: 56px; min-width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 800; z-index: 1;
+    background: var(--surface); border: 2px solid var(--border);
+  }
+  .ex-step:nth-child(1) .ex-num { border-color: var(--text-dim); color: var(--text-dim); }
+  .ex-step:nth-child(2) .ex-num { border-color: var(--pink); color: var(--pink); }
+  .ex-step:nth-child(3) .ex-num { border-color: var(--blue); color: var(--blue); }
+  .ex-step:nth-child(4) .ex-num { border-color: var(--accent-2); color: var(--accent-2); }
+  .ex-step:nth-child(5) .ex-num { border-color: var(--orange); color: var(--orange); }
+  .ex-body h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .ex-body p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+  .ex-tag {
+    display: inline-block; margin-top: 0.5rem; font-size: 0.65rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; border-radius: 4px;
+    color: var(--accent-light); background: var(--accent-glow);
+  }
+
+  /* ─── Callout ─── */
+  .callout {
+    background: var(--accent-glow); border: 1px solid rgba(124, 92, 252, 0.2);
+    border-radius: var(--radius); padding: 1.5rem 1.75rem; margin: 2rem 0;
+  }
+  .callout.green { background: var(--accent-2-glow); border-color: rgba(0, 212, 170, 0.2); }
+  .callout p { color: var(--text); margin: 0; font-size: 0.95rem; max-width: none; }
+  .callout strong { color: #fff; }
+
+  /* ─── Code blocks ─── */
+  .code-block {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 1.5rem; margin: 1.5rem 0; overflow-x: auto; position: relative;
+  }
+  .code-block .label {
+    position: absolute; top: 0.75rem; right: 0.75rem;
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-dim); background: var(--surface-2); padding: 2px 8px; border-radius: 4px;
+  }
+  .code-block pre {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem; line-height: 1.7; color: var(--text-muted);
+  }
+  .code-block .comment { color: var(--text-dim); }
+  .code-block .keyword { color: var(--accent-light); }
+  .code-block .string { color: var(--accent-2); }
+  .code-block .highlight-line { color: var(--text); }
+
+  /* ─── Principle cards ─── */
+  .principle {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 2rem; margin: 1.5rem 0;
+    position: relative; overflow: hidden;
+  }
+  .principle .num {
+    position: absolute; top: -10px; right: 20px;
+    font-size: 5rem; font-weight: 800; color: rgba(124, 92, 252, 0.06); line-height: 1;
+  }
+  .principle h3 { font-size: 1.15rem; font-weight: 600; margin: 0 0 0.75rem; color: var(--text); }
+  .principle p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 0.75rem; max-width: 640px; }
+  .principle p:last-child { margin-bottom: 0; }
+
+  /* ─── Comparison ─── */
+  .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2rem 0; }
+  .compare-col { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; }
+  .compare-col.highlight { border-color: rgba(124, 92, 252, 0.3); background: linear-gradient(180deg, rgba(124, 92, 252, 0.05), var(--surface)); }
+  .compare-col h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; font-weight: 600; }
+  .compare-col.old h4 { color: var(--text-dim); }
+  .compare-col.highlight h4 { color: var(--accent-light); }
+  .compare-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .compare-col li { font-size: 0.9rem; color: var(--text-muted); padding-left: 1.4rem; position: relative; }
+  .compare-col li::before { position: absolute; left: 0; font-size: 0.85rem; }
+  .compare-col.old li::before { content: '~'; color: var(--text-dim); }
+  .compare-col.highlight li::before { content: '\2192'; color: var(--accent-light); }
+
+  /* ─── Footer ─── */
+  .site-footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.8rem; }
+
+  /* ─── Wave Timeline ─── */
+  .wave-timeline {
+    display: flex; align-items: flex-start; gap: 0; margin: 2.5rem 0;
+    position: relative; padding-top: 3rem;
+  }
+  .wave-timeline::before {
+    content: ''; position: absolute; top: calc(3rem + 24px); left: 5%; right: 5%;
+    height: 3px; background: linear-gradient(90deg, var(--accent-2), var(--blue), var(--accent-light), var(--accent));
+    border-radius: 2px; opacity: 0.4;
+  }
+  .wave-card {
+    flex: 1; display: flex; flex-direction: column; align-items: center;
+    position: relative; padding: 0 0.5rem;
+  }
+  .wave-pip {
+    width: 14px; height: 14px; border-radius: 50%; margin-bottom: 1.25rem;
+    position: relative; z-index: 2;
+  }
+  .wave-card:nth-child(1) .wave-pip { background: var(--accent-2); box-shadow: 0 0 12px rgba(0,212,170,0.4); }
+  .wave-card:nth-child(2) .wave-pip { background: var(--blue); box-shadow: 0 0 12px rgba(91,141,239,0.4); }
+  .wave-card:nth-child(3) .wave-pip { background: var(--accent-light); box-shadow: 0 0 12px rgba(155,127,255,0.4); }
+  .wave-card:nth-child(4) .wave-pip { background: var(--accent); box-shadow: 0 0 16px rgba(124,92,252,0.5); }
+  .wave-label {
+    font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 3px 10px; border-radius: 12px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--text-muted); position: absolute; top: 0; white-space: nowrap;
+  }
+  .wave-card:nth-child(1) .wave-label { color: var(--accent-2); border-color: rgba(0,212,170,0.3); }
+  .wave-card:nth-child(2) .wave-label { color: var(--blue); border-color: rgba(91,141,239,0.3); }
+  .wave-card:nth-child(3) .wave-label { color: var(--accent-light); border-color: rgba(155,127,255,0.3); }
+  .wave-card:nth-child(4) .wave-label { color: var(--accent); border-color: rgba(124,92,252,0.3); }
+  .wave-body {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.5rem; text-align: center; width: 100%; transition: var(--transition);
+    min-height: 280px; display: flex; flex-direction: column;
+  }
+  .wave-body:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .wave-card.current .wave-body {
+    border-color: rgba(91,141,239,0.4);
+    background: linear-gradient(180deg, rgba(91,141,239,0.06), var(--surface));
+  }
+  .wave-card.future .wave-body { opacity: 0.7; }
+  .wave-body h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .wave-card:nth-child(1) .wave-body h4 { color: var(--accent-2); }
+  .wave-card:nth-child(2) .wave-body h4 { color: var(--blue); }
+  .wave-card:nth-child(3) .wave-body h4 { color: var(--accent-light); }
+  .wave-card:nth-child(4) .wave-body h4 { color: var(--accent); }
+  .wave-body .wave-subtitle { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 1rem; }
+  .wave-body p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
+  .wave-icons {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    margin: 1rem 0; flex-wrap: wrap;
+  }
+  .wave-icon-person {
+    width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 0.85rem;
+  }
+  .wi-human { background: rgba(91,141,239,0.2); border: 2px solid var(--blue); }
+  .wi-agent { background: rgba(0,212,170,0.2); border: 2px solid var(--accent-2); }
+  .wi-agent-dark { background: rgba(100,100,120,0.2); border: 2px solid #555; }
+  .wi-plus { color: var(--text-dim); font-size: 1rem; font-weight: 300; }
+  .wave-today {
+    position: absolute; top: -0.5rem; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: #fff; font-size: 0.6rem; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  /* ─── Adoption Path ─── */
+  .adoption-path { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; position: relative; }
+  .adoption-path::before {
+    content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(to bottom, var(--accent-2), var(--blue), var(--accent-light), var(--accent));
+    border-radius: 2px; opacity: 0.3;
+  }
+  .adopt-step {
+    display: flex; gap: 1.5rem; padding: 1.5rem 0; position: relative;
+  }
+  .adopt-marker {
+    width: 56px; min-width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; z-index: 1; background: var(--surface); border: 2px solid var(--border);
+  }
+  .adopt-step:nth-child(1) .adopt-marker { border-color: var(--accent-2); color: var(--accent-2); }
+  .adopt-step:nth-child(2) .adopt-marker { border-color: var(--blue); color: var(--blue); }
+  .adopt-step:nth-child(3) .adopt-marker { border-color: var(--accent-light); color: var(--accent-light); }
+  .adopt-step:nth-child(4) .adopt-marker { border-color: var(--accent); color: var(--accent); }
+  .adopt-body { flex: 1; }
+  .adopt-body h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .adopt-body p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .adopt-examples {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem;
+  }
+  .adopt-chip {
+    font-size: 0.7rem; font-weight: 500; padding: 3px 10px; border-radius: 6px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text-muted);
+  }
+  .adopt-step:nth-child(1) .adopt-chip { border-color: rgba(0,212,170,0.2); color: var(--accent-2); }
+  .adopt-step:nth-child(2) .adopt-chip { border-color: rgba(91,141,239,0.2); color: var(--blue); }
+  .adopt-step:nth-child(3) .adopt-chip { border-color: rgba(155,127,255,0.2); color: var(--accent-light); }
+  .adopt-step:nth-child(4) .adopt-chip { border-color: rgba(124,92,252,0.2); color: var(--accent); }
+
+  /* ─── Maturity columns ─── */
+  .maturity-cols {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2rem 0;
+  }
+  .maturity-col {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.75rem; position: relative; overflow: hidden;
+  }
+  .maturity-col::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .maturity-col.individual::before { background: linear-gradient(90deg, var(--accent-2), var(--blue)); }
+  .maturity-col.team::before { background: linear-gradient(90deg, var(--accent-light), var(--accent)); }
+  .maturity-col h4 {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 1.25rem; font-weight: 700;
+  }
+  .maturity-col.individual h4 { color: var(--accent-2); }
+  .maturity-col.team h4 { color: var(--accent-light); }
+  .maturity-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+  }
+  .maturity-item:last-child { border-bottom: none; }
+  .maturity-item .mi-icon {
+    width: 28px; height: 28px; min-width: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+    background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  }
+  .maturity-col.individual .mi-icon { background: rgba(0,212,170,0.06); border-color: rgba(0,212,170,0.15); }
+  .maturity-col.team .mi-icon { background: rgba(155,127,255,0.06); border-color: rgba(155,127,255,0.15); }
+  .maturity-item .mi-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+  .maturity-item .mi-text strong { color: var(--text); }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    .stack-diagram { flex-direction: column; gap: 2rem; }
+    .stack-visual { width: 320px; height: 220px; margin: 0 auto; }
+    .stack-layer.prompting { width: 240px; }
+    .stack-layer.context { width: 260px; }
+    .stack-layer.intent { width: 280px; }
+    .framework-wrap { flex-direction: column; }
+    .fw-grid-area { grid-template-columns: repeat(4, 1fr); }
+    .rpi-flow { flex-direction: column; }
+    .rpi-phase { border-radius: var(--radius) !important; border: 1px solid var(--border) !important; }
+    .rpi-connector { display: none !important; }
+    .physics-visual { grid-template-columns: 1fr; }
+    .pv-arrow-col { flex-direction: row; padding: 0.5rem 0; }
+    .wow-timeline { flex-direction: column; }
+    .wow-timeline::before { display: none; }
+    .diet-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .wave-timeline { flex-direction: column; gap: 1.5rem; padding-top: 0; }
+    .wave-timeline::before { display: none; }
+    .wave-label { position: static; margin-bottom: 0.5rem; }
+    .wave-pip { display: none; }
+    .wave-body { min-height: auto; }
+    .wave-today { position: static; transform: none; margin-bottom: 0.5rem; }
+    .maturity-cols { grid-template-columns: 1fr; }
+    .feedback-loop-diagram { flex-direction: column; gap: 0.5rem; }
+    .fl-arrow { transform: rotate(90deg); }
+    .fl-return-arrow { display: none; }
+    .fl-return-label { display: none; }
+  }
+  @media (max-width: 768px) {
+    .header-inner { flex-direction: column; height: auto; padding: 1rem 1.5rem; gap: 0.75rem; }
+    .tab-nav { overflow-x: auto; width: 100%; justify-content: flex-start; }
+    .tab-btn { padding: 8px 14px; font-size: 0.8rem; }
+    .hero { padding: 3rem 0 2rem; }
+    .comparison { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr; }
+    .card-grid.three { grid-template-columns: 1fr; }
+    .container { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">Intent Engineering</div>
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn active" onclick="showPage('overview')" role="tab">Overview</button>
+      <button class="tab-btn" onclick="showPage('shift')" role="tab">The Shift</button>
+      <button class="tab-btn" onclick="showPage('methodology')" role="tab">Methodology</button>
+      <button class="tab-btn" onclick="showPage('patterns')" role="tab">Patterns</button>
+      <button class="tab-btn" onclick="showPage('workshop')" role="tab">In Practice</button>
+      <button class="tab-btn" onclick="showPage('tokens')" role="tab">Tokens</button>
+      <button class="tab-btn" onclick="showPage('aisdlc')" role="tab">AI-SDLC</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════ PAGE 1: OVERVIEW ═══════════ -->
+<div id="overview" class="page active">
+  <div class="container">
+    <section class="hero">
+      <div class="hero-badge">Workshop Guide</div>
+      <h1>Stop Crafting Prompts.<br>Start Engineering <span class="gradient">Intent.</span></h1>
+      <p class="subtitle">Prompt engineering asks "what words make the AI do the right thing?" Intent engineering asks "how do I make the right thing the only possible outcome?"</p>
+    </section>
+
+    <!-- ── Stacked Layers Diagram ── -->
+    <section class="content-section">
+      <div class="section-label">The Three Layers</div>
+      <h2>Intent Sits Above Everything Else</h2>
+      <p>Prompting is the execution layer. Context engineering is about what the agent knows. Intent engineering is about how the goal is structured — workflows, boundaries, and destinations.</p>
+
+      <div class="stack-diagram">
+        <div class="stack-labels">
+          <div class="stack-label-item l-intent">
+            <h4>Intent Engineering</h4>
+            <p>How the goal is structured. Workflows, boundaries, destinations. Architecting the machine interaction.</p>
+          </div>
+          <div class="stack-label-item l-context">
+            <h4>Context Engineering</h4>
+            <p>What the agent knows. RAG, vector databases, memory. Supplying the raw material.</p>
+          </div>
+          <div class="stack-label-item l-prompting">
+            <h4>Prompting</h4>
+            <p>Execution layer. The words you write. Necessary but not sufficient.</p>
+          </div>
+        </div>
+        <div class="stack-visual">
+          <div class="stack-layer intent">Intent Engineering</div>
+          <div class="stack-layer context">Context Engineering</div>
+          <div class="stack-layer prompting">Prompting</div>
+        </div>
+      </div>
+
+      <div class="takeaway-banner">
+        <em>We must shift our mindset from text-crafters to systems architects.</em>
+      </div>
+    </section>
+
+    <!-- ── Physics vs Law Visual ── -->
+    <section class="content-section">
+      <div class="section-label">Core Insight</div>
+      <h2>Laws vs Physics</h2>
+      <p>Laws are instructions — they can be broken. Physics are structural constraints — they can't. Intent engineering encodes your goals as physics.</p>
+
+      <div class="physics-visual">
+        <div class="pv-side law">
+          <h4>Law (Prompt Instructions)</h4>
+          <div class="pv-row">
+            <div class="pv-icon-sm">📝</div>
+            <div class="pv-row-text">"Don't break existing behaviour"</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🎨</div>
+            <div class="pv-row-text">"Follow the existing coding style"</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🧮</div>
+            <div class="pv-row-text">"Make sure the cart logic is correct"</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🔤</div>
+            <div class="pv-row-text">"Don't introduce type errors"</div>
+          </div>
+        </div>
+        <div class="pv-arrow-col">
+          <span class="pv-arrow">&rarr;</span>
+          <span class="pv-arrow">&rarr;</span>
+          <span class="pv-arrow">&rarr;</span>
+          <span class="pv-arrow">&rarr;</span>
+        </div>
+        <div class="pv-side physics">
+          <h4>Physics (Structural Enforcement)</h4>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🎭</div>
+            <div class="pv-row-text">Playwright E2E tests that fail if behaviour changes</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🔧</div>
+            <div class="pv-row-text">Linter configured to enforce style rules</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">🧪</div>
+            <div class="pv-row-text">Unit tests that assert cart calculations</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">⚙️</div>
+            <div class="pv-row-text">C# compiler that refuses to build</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>The rule:</strong> If a human has to manually check something, the harness is incomplete. Encode every compliance check as an automated constraint.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 2: THE SHIFT ═══════════ -->
+<div id="shift" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>From Prompts to <span class="gradient">Intent</span></h1>
+      <p class="subtitle">Prompt engineering is a subset of intent engineering. Here's what changes when you think bigger.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Comparison</div>
+      <h2>What's Actually Different?</h2>
+      <p>Prompt engineering treats the prompt as the product. Intent engineering treats the <em>entire system</em> — prompts, structure, feedback loops, constraints — as the product.</p>
+
+      <div class="comparison">
+        <div class="compare-col old">
+          <h4>Prompt Engineering</h4>
+          <ul>
+            <li>Focus on exact wording and formatting</li>
+            <li>Tricks, templates, and magic phrases</li>
+            <li>One prompt, one response</li>
+            <li>Hope the AI follows instructions</li>
+            <li>Retry with different words when it fails</li>
+            <li>All context in a single prompt</li>
+          </ul>
+        </div>
+        <div class="compare-col highlight">
+          <h4>Intent Engineering</h4>
+          <ul>
+            <li>Focus on goals, constraints, and success criteria</li>
+            <li>Structural enforcement through tooling</li>
+            <li>Multi-phase workflows with handoff artefacts</li>
+            <li>Make wrong behaviour structurally impossible</li>
+            <li>Feedback loops that teach the AI what failed</li>
+            <li>Information diets — right context at right time</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Framework Grid ── -->
+    <section class="content-section">
+      <div class="section-label">Framework</div>
+      <h2>Intent Across Layers and Workstreams</h2>
+      <p>Intent engineering applies at every level — from vision through to operations — and spans all your workstreams. Each layer encodes intent in a different way.</p>
+
+      <div class="framework-wrap">
+        <div class="fw-layers">
+          <div class="fw-layer-pill vision"><div class="fw-icon">&#9998;</div> Vision</div>
+          <div class="fw-layer-pill strategy"><div class="fw-icon">&#9678;</div> Strategy</div>
+          <div class="fw-layer-pill design"><div class="fw-icon">&#9635;</div> Design</div>
+          <div class="fw-layer-pill impl"><div class="fw-icon">&#9881;</div> Implementation</div>
+          <div class="fw-layer-pill verify"><div class="fw-icon">&#10003;</div> Verification</div>
+          <div class="fw-layer-pill ops"><div class="fw-icon">&#9730;</div> Operations</div>
+        </div>
+        <div class="fw-grid-area">
+          <div class="fw-col-header">Stream A</div>
+          <div class="fw-col-header">Stream B</div>
+          <div class="fw-col-header">Stream C</div>
+          <div class="fw-col-header">Stream D</div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot"></div></div>
+        </div>
+        <div class="fw-benefits">
+          <h4>Core Benefits</h4>
+          <div class="fw-benefit-item">
+            <div class="fw-benefit-icon b1">&#9678;</div>
+            <div class="fw-benefit-text">Deep Context Alignment</div>
+          </div>
+          <div class="fw-benefit-item">
+            <div class="fw-benefit-icon b2">&#9889;</div>
+            <div class="fw-benefit-text">Streamlined Execution</div>
+          </div>
+          <div class="fw-benefit-item">
+            <div class="fw-benefit-icon b3">&#8593;</div>
+            <div class="fw-benefit-text">Continuous Improvement</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Key Insight</div>
+      <h2>Prompts Are Suggestions. Harnesses Are Guarantees.</h2>
+      <p>A prompt says "please don't break the cart." A test suite says "the cart works or you don't proceed." Both communicate intent, but only one enforces it.</p>
+
+      <div class="callout green">
+        <p><strong>Think of it this way:</strong> Prompt engineering is writing a good brief. Intent engineering is writing a good brief, hiring a QA team, setting up CI/CD, and defining acceptance criteria — all encoded into the system the AI operates within.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 3: METHODOLOGY ═══════════ -->
+<div id="methodology" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>The <span class="gradient">RPI</span> Methodology</h1>
+      <p class="subtitle">Research, Plan, Implement. Three phases, each in a fresh context, connected by dense handoff artefacts.</p>
+    </section>
+
+    <!-- ── RPI Flow Diagram ── -->
+    <section class="content-section">
+      <div class="section-label">The Flow</div>
+      <h2>Three Phases, Three Fresh Contexts</h2>
+      <p>AI agents have limited context windows. RPI splits work into phases, each operating in a fresh context with only the artefacts it needs.</p>
+
+      <div class="rpi-flow">
+        <div class="rpi-phase">
+          <div class="rpi-num">R</div>
+          <h4>Research</h4>
+          <p>Explore the codebase freely. No implementation, no planning — pure discovery. Trace flows, find files, document connections.</p>
+          <div class="rpi-artifact">&#128196; research.md</div>
+          <div class="rpi-connector">&rarr;</div>
+        </div>
+        <div class="rpi-phase">
+          <div class="rpi-num">P</div>
+          <h4>Plan</h4>
+          <p>Read only research.md. Produce ordered implementation steps, interface definitions, risk areas, and test strategies.</p>
+          <div class="rpi-artifact">&#128196; plan.md</div>
+          <div class="rpi-connector">&rarr;</div>
+        </div>
+        <div class="rpi-phase">
+          <div class="rpi-num">I</div>
+          <h4>Implement</h4>
+          <p>Read only plan.md. Execute each step, running the full test suite after every change. Don't proceed until green.</p>
+          <div class="rpi-artifact">&#9989; Working code</div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top: 2.5rem;">
+        <p><strong>Information diets:</strong> Each phase gets only what it needs. The Plan agent never sees raw code — only compressed research. The Implement agent never sees research — only the ordered plan. This prevents context waste and forces density.</p>
+      </div>
+    </section>
+
+    <!-- ── Information Diet Visualization ── -->
+    <section class="content-section">
+      <div class="section-label">Information Diets</div>
+      <h2>What Each Agent Sees</h2>
+      <p>The width of each bar shows how much information each agent receives. Less is more — constrained input forces focused output.</p>
+
+      <div class="diet-visual">
+        <div class="diet-row research">
+          <div class="diet-agent research">Research</div>
+          <div class="diet-bar"><div class="diet-fill">Full codebase access</div></div>
+          <div class="diet-output">&rarr; research.md</div>
+        </div>
+        <div class="diet-row plan">
+          <div class="diet-agent plan">Plan</div>
+          <div class="diet-bar"><div class="diet-fill">research.md</div></div>
+          <div class="diet-output">&rarr; plan.md</div>
+        </div>
+        <div class="diet-row implement">
+          <div class="diet-agent implement">Implement</div>
+          <div class="diet-bar"><div class="diet-fill">plan.md</div></div>
+          <div class="diet-output">&rarr; code</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Three Principles ── -->
+    <section class="content-section">
+      <div class="section-label">Three Principles</div>
+      <h2>What Holds It Together</h2>
+
+      <div class="principle">
+        <div class="num">1</div>
+        <h3>Decompose-Route-Recompose</h3>
+        <p>Break complex work into phases, route each to a fresh context with exactly the artefacts it needs, then recompose the results. This works <em>with</em> context window limitations instead of fighting them.</p>
+      </div>
+      <div class="principle">
+        <div class="num">2</div>
+        <h3>Physics Thinking</h3>
+        <p>Don't tell the agent what to do — make wrong things impossible. A failing test is worth a thousand prompt instructions. Structural constraints are your most reliable form of intent communication.</p>
+      </div>
+      <div class="principle">
+        <div class="num">3</div>
+        <h3>Harnesses Matter More Than Models</h3>
+        <p>The test suite, the compiler, the linter — these are your real safety net. A mediocre model with a great harness outperforms a brilliant model with no guardrails. Invest in the harness first.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 4: PATTERNS ═══════════ -->
+<div id="patterns" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>Intent Engineering <span class="gradient">Patterns</span></h1>
+      <p class="subtitle">Concrete, reusable techniques for encoding intent into your AI workflows.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Pattern 1</div>
+      <h2>Intent Scaffolding</h2>
+      <p>Define the <em>shape</em> of the output: required sections, detail level, format, and location. The agent fills in the scaffold.</p>
+
+      <div class="comparison">
+        <div class="compare-col old">
+          <h4>Vague</h4>
+          <ul>
+            <li>"Research how the shopping cart works in this codebase"</li>
+          </ul>
+        </div>
+        <div class="compare-col highlight">
+          <h4>Scaffolded</h4>
+          <ul>
+            <li>"Trace the add-to-cart flow from UI to database"</li>
+            <li>"For each layer, identify files, methods, and line numbers"</li>
+            <li>"Produce research.md with sections: Entry Point, Controller, Service, Data Access, Observations"</li>
+            <li>"Save to docs/adc/extract-cart-service/research.md"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Pattern 2</div>
+      <h2>Constraint Systems</h2>
+      <p>Explicit negative instructions define the safe operating space. They prevent the most common failure modes.</p>
+
+      <div class="code-block">
+        <span class="label">Example</span>
+<pre>
+<span class="keyword">## Constraints</span>
+<span class="highlight-line">- Do NOT modify the database schema</span>
+<span class="highlight-line">- Do NOT change the plugin architecture</span>
+<span class="highlight-line">- Do NOT proceed to the next step until all tests pass</span>
+<span class="highlight-line">- Focus only on the shopping cart steel thread</span>
+</pre>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Pattern 3</div>
+      <h2>Risk Registers as Intent</h2>
+      <p>Predict what could go wrong and map each risk to the harness that catches it. This transforms "be careful" into "here's which test will fail."</p>
+
+      <div class="card-grid three">
+        <div class="card">
+          <div class="card-icon pink">&#9888;</div>
+          <h4>Circular DI Dependency</h4>
+          <p><strong style="color:var(--accent-3)">Critical</strong> — App fails to start. All Playwright tests fail immediately.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon pink">&#9888;</div>
+          <h4>Missing DI Registration</h4>
+          <p><strong style="color:var(--accent-3)">Critical</strong> — InvalidOperationException. Caught by any E2E test.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon orange">&#9888;</div>
+          <h4>Cart Total Miscalculation</h4>
+          <p><strong style="color:var(--orange)">High</strong> — Unit test asserts "Expected 42.99, got 38.50."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Feedback Loop Diagram ── -->
+    <section class="content-section">
+      <div class="section-label">Pattern 4</div>
+      <h2>Feedback Loops as Self-Correction</h2>
+      <p>Build mandatory checkpoints into the workflow. The error message itself becomes a remediation instruction.</p>
+
+      <div class="feedback-loop-diagram">
+        <div class="fl-step">
+          <div class="fl-circle">&#9998;</div>
+          <h5>Make Change</h5>
+          <p>Execute one step from the plan</p>
+        </div>
+        <div class="fl-arrow">&rarr;</div>
+        <div class="fl-step">
+          <div class="fl-circle">&#9881;</div>
+          <h5>Run Tests</h5>
+          <p>dotnet test + Playwright</p>
+        </div>
+        <div class="fl-arrow">&rarr;</div>
+        <div class="fl-step">
+          <div class="fl-circle">&#10060;</div>
+          <h5>Fail?</h5>
+          <p>Read error, diagnose, fix</p>
+        </div>
+        <div class="fl-arrow">&rarr;</div>
+        <div class="fl-step">
+          <div class="fl-circle">&#10003;</div>
+          <h5>Pass?</h5>
+          <p>Proceed to next step</p>
+        </div>
+        <div class="fl-return-arrow"></div>
+        <div class="fl-return-label">Retry until green</div>
+      </div>
+
+      <div class="callout green" style="margin-top: 4rem;">
+        <p><strong>Why this works:</strong> "Expected 42.99, got 0" is infinitely more useful than "please make sure the cart logic is correct." The harness teaches the agent what's wrong in machine-readable terms.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">Pattern 5</div>
+      <h2>Information Diets</h2>
+      <p>Give each phase only what it needs. Constrained input forces focused output. See the Methodology tab for the full visualization.</p>
+
+      <div class="card-grid three">
+        <div class="card">
+          <div class="card-icon">&#128270;</div>
+          <h4>Research Sees</h4>
+          <p>Full codebase access. Explore freely, compress findings into research.md.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">&#128208;</div>
+          <h4>Plan Sees</h4>
+          <p>Only research.md. No raw code. Forces planning from compressed summary.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon orange">&#9889;</div>
+          <h4>Implement Sees</h4>
+          <p>Only plan.md + codebase. Follows the plan. Doesn't re-research or re-plan.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 5: IN PRACTICE ═══════════ -->
+<div id="workshop" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>Intent Engineering <span class="gradient">In Practice</span></h1>
+      <p class="subtitle">Refactoring a real-world .NET e-commerce codebase with AI agents and a disciplined methodology.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">The Challenge</div>
+      <h2>Refactoring nopCommerce with AI</h2>
+      <p>nopCommerce is a large, real-world .NET e-commerce platform. The "steel thread" is the shopping cart flow: from clicking "Add to cart" in the UI, through controllers and services, to the database and back. One narrow, vertical slice through the entire architecture.</p>
+    </section>
+
+    <!-- ── Exercise Steps ── -->
+    <section class="content-section">
+      <div class="section-label">The Exercises</div>
+      <h2>Five Steps, Building on Each Other</h2>
+
+      <div class="exercise-steps">
+        <div class="ex-step">
+          <div class="ex-num">0</div>
+          <div class="ex-body">
+            <h4>Get Orientated</h4>
+            <p>Understand the codebase, the steel thread, and the key files. Context-setting for humans before agents enter the picture.</p>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">1</div>
+          <div class="ex-body">
+            <h4>Build the Harness</h4>
+            <p>Write Playwright E2E tests and unit tests <em>before any refactoring</em>. The harness defines "correct" structurally. This is the most important step.</p>
+            <span class="ex-tag">Harnesses &gt; Models</span>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">2</div>
+          <div class="ex-body">
+            <h4>Research the Steel Thread</h4>
+            <p>Agent explores the add-to-cart flow end-to-end. Produces a dense research.md with every file, method, and connection documented.</p>
+            <span class="ex-tag">RPI: Research</span>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">3</div>
+          <div class="ex-body">
+            <h4>Plan the Refactoring</h4>
+            <p>Fresh agent reads only research.md. Produces an ordered plan with interface definitions, DI registration, and a risk register.</p>
+            <span class="ex-tag">RPI: Plan</span>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">4</div>
+          <div class="ex-body">
+            <h4>Implement with Feedback Loops</h4>
+            <p>Fresh agent follows the plan step-by-step, running the full test suite after each change. The harness catches mistakes; the agent learns from errors.</p>
+            <span class="ex-tag">RPI: Implement + Physics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Wow Moments ── -->
+    <section class="content-section">
+      <div class="section-label">The Wow Moments</div>
+      <h2>When Physics Thinking Pays Off</h2>
+      <p>Three moments where you see intent engineering working in real time:</p>
+
+      <div class="wow-timeline">
+        <div class="wow-moment">
+          <div class="wow-badge">&#128308;</div>
+          <h4>Compiler Catches a Type Error</h4>
+          <p>The agent introduces a subtle type mismatch. The C# compiler refuses to build. The agent reads the error, fixes the type, moves on. No human intervention.</p>
+          <span class="wow-principle">Physics Thinking</span>
+        </div>
+        <div class="wow-moment">
+          <div class="wow-badge">&#129514;</div>
+          <h4>Unit Test Catches Logic Regression</h4>
+          <p>The agent refactors the cart service and accidentally changes calculation order. "Expected 42.99, got 38.50." Diagnosed and fixed.</p>
+          <span class="wow-principle">Harnesses &gt; Models</span>
+        </div>
+        <div class="wow-moment">
+          <div class="wow-badge">&#127917;</div>
+          <h4>Playwright Catches UI Regression</h4>
+          <p>The service works, but a missing DI registration throws a 500 error. Playwright catches it by clicking "Add to cart." End-to-end verification.</p>
+          <span class="wow-principle">All Three Together</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Success Criteria ── -->
+    <section class="content-section">
+      <div class="section-label">Success Criteria</div>
+      <h2>How We Know It Worked</h2>
+
+      <div class="code-block">
+<pre>
+<span class="string">&#10003;</span> <span class="highlight-line">Research before code — agent explored before touching anything</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Plan before implementation — ordered steps with risk analysis</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Harnesses before refactoring — tests existed before changes</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Feedback loops — test suite ran after every change</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Dense handoffs — research.md and plan.md carried intent forward</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Physics enforcement — compiler + tests caught real errors</span>
+<span class="string">&#10003;</span> <span class="highlight-line">No manual checking — if the harness is green, the refactoring is correct</span>
+</pre>
+      </div>
+
+      <div class="callout">
+        <p><strong>The takeaway:</strong> The model doesn't matter as much as the methodology. A well-structured intent engineering system — with phases, harnesses, and feedback loops — produces reliable results regardless of which AI you use.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 7: AI-SDLC ═══════════ -->
+<div id="aisdlc" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>The <span class="gradient">AI-SDLC</span></h1>
+      <p class="subtitle">Intent engineering doesn't just change how you prompt. It changes how you build software. Here's the adoption path — from your machine to your team's pipeline.</p>
+    </section>
+
+    <!-- ── Four Waves ── -->
+    <section class="content-section">
+      <div class="section-label">The Four Waves</div>
+      <h2>From Assistance to Autonomy</h2>
+      <p>AI adoption in software development follows a progression. Each wave changes the ratio of humans to agents — and the kind of intent engineering required.</p>
+
+      <div class="wave-timeline">
+        <div class="wave-card">
+          <div class="wave-label">Wave 1</div>
+          <div class="wave-pip"></div>
+          <div class="wave-body">
+            <h4>Assistance</h4>
+            <div class="wave-subtitle">Human + Copilot</div>
+            <div class="wave-icons">
+              <div class="wave-icon-person wi-human">&#128100;</div>
+              <span class="wi-plus">+</span>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+            </div>
+            <p>AI as autocomplete. You drive, it suggests. Code completion, inline help, simple Q&A. The human does all the thinking.</p>
+          </div>
+        </div>
+        <div class="wave-card current">
+          <div class="wave-label">Wave 2</div>
+          <div class="wave-pip"><div class="wave-today">Today</div></div>
+          <div class="wave-body">
+            <h4>Augmentation</h4>
+            <div class="wave-subtitle">Human-directed agents</div>
+            <div class="wave-icons">
+              <div class="wave-icon-person wi-human">&#128100;</div>
+              <div style="display:flex; gap:4px;">
+                <div class="wave-icon-person wi-agent">&#9881;</div>
+                <div class="wave-icon-person wi-agent">&#9881;</div>
+                <div class="wave-icon-person wi-agent">&#9881;</div>
+              </div>
+            </div>
+            <p>You direct agents to do whole tasks. Local skills, RPI methodology, personal agent workflows. <strong style="color:var(--blue)">This is where intent engineering begins.</strong></p>
+          </div>
+        </div>
+        <div class="wave-card">
+          <div class="wave-label">Wave 3</div>
+          <div class="wave-pip"></div>
+          <div class="wave-body">
+            <h4>Orchestration</h4>
+            <div class="wave-subtitle">Team-wide agent workflows</div>
+            <div class="wave-icons">
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-human">&#128100;</div>
+            </div>
+            <div class="wave-icons" style="margin-top: 0;">
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-human">&#128100;</div>
+            </div>
+            <p>Shared skills repos, pipeline agents, PR review bots. Agents become team infrastructure. Humans supervise.</p>
+          </div>
+        </div>
+        <div class="wave-card future">
+          <div class="wave-label">Wave 4</div>
+          <div class="wave-pip"></div>
+          <div class="wave-body">
+            <h4>Autonomy</h4>
+            <div class="wave-subtitle">Agent-orchestrated systems</div>
+            <div class="wave-icons">
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+            </div>
+            <div class="wave-icons" style="margin-top:0;">
+              <div class="wave-icon-person wi-agent-dark">&#9881;</div>
+              <div class="wave-icon-person wi-human">&#128100;</div>
+              <div class="wave-icon-person wi-agent-dark">&#9881;</div>
+            </div>
+            <div class="wave-icons" style="margin-top:0;">
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+              <div class="wave-icon-person wi-agent">&#9881;</div>
+            </div>
+            <p>Agents coordinating agents at scale. Humans set intent and review outcomes. The SDLC runs itself.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="takeaway-banner">
+        <em>We must shift our mindset from text-crafters to systems architects.</em>
+      </div>
+    </section>
+
+    <!-- ── The Adoption Path ── -->
+    <section class="content-section">
+      <div class="section-label">The Path</div>
+      <h2>Getting There: Individual First, Then Team</h2>
+      <p>You don't jump straight to pipeline agents. The adoption path starts with you — proving the patterns locally — then graduating them to shared infrastructure.</p>
+
+      <div class="adoption-path">
+        <div class="adopt-step">
+          <div class="adopt-marker">&#9998;</div>
+          <div class="adopt-body">
+            <h4>1. Get It Working Locally</h4>
+            <p>Build your own skills, refine your own agent workflows, prove the RPI methodology on real tasks. This is your lab — experiment, iterate, learn what works. You're building muscle memory for intent engineering.</p>
+            <div class="adopt-examples">
+              <span class="adopt-chip">Personal CLAUDE.md</span>
+              <span class="adopt-chip">Local skills</span>
+              <span class="adopt-chip">RPI on your own PRs</span>
+              <span class="adopt-chip">Custom agent prompts</span>
+              <span class="adopt-chip">ADC decision records</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-step">
+          <div class="adopt-marker">&#128101;</div>
+          <div class="adopt-body">
+            <h4>2. Share Patterns with Your Team</h4>
+            <p>Once your skills and workflows are proven, promote them to shared infrastructure. A team skills repo means everyone benefits from your hard-won patterns. Shared CLAUDE.md files encode team conventions as agent-readable intent.</p>
+            <div class="adopt-examples">
+              <span class="adopt-chip">Shared skills repo</span>
+              <span class="adopt-chip">Team CLAUDE.md</span>
+              <span class="adopt-chip">Documented agent workflows</span>
+              <span class="adopt-chip">Pair-programming with agents</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-step">
+          <div class="adopt-marker">&#9881;</div>
+          <div class="adopt-body">
+            <h4>3. Agents in the Pipeline</h4>
+            <p>Agents move from your terminal into the CI/CD pipeline. PR review agents check for style, test coverage, and architectural compliance. Research agents pre-analyse tickets. Plan agents draft implementation approaches before a human even starts.</p>
+            <div class="adopt-examples">
+              <span class="adopt-chip">PR review agents</span>
+              <span class="adopt-chip">CI/CD pipeline agents</span>
+              <span class="adopt-chip">Ticket pre-analysis</span>
+              <span class="adopt-chip">Automated research phase</span>
+              <span class="adopt-chip">Architecture compliance</span>
+            </div>
+          </div>
+        </div>
+        <div class="adopt-step">
+          <div class="adopt-marker">&#127758;</div>
+          <div class="adopt-body">
+            <h4>4. Agentic Workflows at Scale</h4>
+            <p>The full AI-SDLC: agents that research, plan, implement, and verify — with humans setting intent and reviewing outcomes. The RPI methodology you proved locally is now an organisational capability. Custom Skills encode your org's patterns as portable, reusable knowledge.</p>
+            <div class="adopt-examples">
+              <span class="adopt-chip">Agent-to-agent handoffs</span>
+              <span class="adopt-chip">Org-wide skills marketplace</span>
+              <span class="adopt-chip">Autonomous RPI pipelines</span>
+              <span class="adopt-chip">Intent-driven backlog</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Individual vs Team ── -->
+    <section class="content-section">
+      <div class="section-label">Two Phases</div>
+      <h2>What Changes When You Go from You to Us</h2>
+
+      <div class="maturity-cols">
+        <div class="maturity-col individual">
+          <h4>Individual (Waves 1-2)</h4>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128196;</div>
+            <div class="mi-text"><strong>Personal CLAUDE.md</strong> — your coding conventions, preferences, and project-specific rules</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#9881;</div>
+            <div class="mi-text"><strong>Local skills</strong> — custom skills in your own .claude/skills/ folder, iterated until they work</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128270;</div>
+            <div class="mi-text"><strong>Manual RPI</strong> — you trigger each phase, review each artefact, guide each agent</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128203;</div>
+            <div class="mi-text"><strong>ADC records</strong> — your own decision contexts, learning what to capture</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128736;</div>
+            <div class="mi-text"><strong>Local harnesses</strong> — tests and linters on your machine, run by your agents</div>
+          </div>
+        </div>
+        <div class="maturity-col team">
+          <h4>Team &amp; Organisation (Waves 3-4)</h4>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128196;</div>
+            <div class="mi-text"><strong>Shared CLAUDE.md</strong> — team conventions, architecture decisions, and coding standards as agent-readable intent</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#9881;</div>
+            <div class="mi-text"><strong>Shared skills repo</strong> — proven skills promoted from individual to team, versioned and reviewed like code</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128270;</div>
+            <div class="mi-text"><strong>Pipeline RPI</strong> — agents triggered by events (new PR, ticket assignment), phased workflows automated</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128203;</div>
+            <div class="mi-text"><strong>Org-wide ADCs</strong> — decision contexts become institutional memory, searchable by future agents</div>
+          </div>
+          <div class="maturity-item">
+            <div class="mi-icon">&#128736;</div>
+            <div class="mi-text"><strong>CI/CD harnesses</strong> — the same physics-based enforcement, now running in pipelines with agent reviewers</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skills as the Bridge ── -->
+    <section class="content-section">
+      <div class="section-label">The Bridge</div>
+      <h2>Skills Are the Unit of Adoption</h2>
+      <p>A skill is a self-contained folder — a SKILL.md plus any bundled scripts, references, and examples. Skills are how individual knowledge becomes team capability.</p>
+
+      <!-- Visual: skill lifecycle -->
+      <div style="display: flex; align-items: center; gap: 0; margin: 2.5rem 0; justify-content: center; flex-wrap: wrap;">
+        <div style="text-align: center; padding: 1rem;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius); background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.8rem;">&#128161;</div>
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-2); margin-top: 0.5rem;">Create</div>
+          <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem;">Build locally,<br>iterate until proven</div>
+        </div>
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.25rem;">&rarr;</div>
+        <div style="text-align: center; padding: 1rem;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius); background: rgba(91,141,239,0.06); border: 1px solid rgba(91,141,239,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.8rem;">&#128269;</div>
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--blue); margin-top: 0.5rem;">Prove</div>
+          <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem;">Use on real tasks,<br>refine the SKILL.md</div>
+        </div>
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.25rem;">&rarr;</div>
+        <div style="text-align: center; padding: 1rem;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius); background: rgba(155,127,255,0.06); border: 1px solid rgba(155,127,255,0.15); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.8rem;">&#128101;</div>
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent-light); margin-top: 0.5rem;">Share</div>
+          <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem;">Promote to shared<br>skills repo via PR</div>
+        </div>
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.25rem;">&rarr;</div>
+        <div style="text-align: center; padding: 1rem;">
+          <div style="width: 80px; height: 80px; border-radius: var(--radius); background: rgba(124,92,252,0.08); border: 1px solid rgba(124,92,252,0.2); display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 1.8rem;">&#127758;</div>
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--accent); margin-top: 0.5rem;">Scale</div>
+          <div style="font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem;">Agents use skills<br>in pipelines at scale</div>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <p><strong>The industry is converging.</strong> GitHub's Custom Skills, Copilot's Modernization Agent, the Agentic Context Framework — they all use the same pattern: self-contained skill folders with documentation, scripts, and examples. Your RPI methodology can be packaged as a skill. Your ADC pattern can be a skill. This is how methodology becomes infrastructure.</p>
+      </div>
+    </section>
+
+    <!-- ── What the AI-SDLC Looks Like ── -->
+    <section class="content-section">
+      <div class="section-label">The Vision</div>
+      <h2>The AI-Native SDLC</h2>
+      <p>In the AI-SDLC, every stage of the development lifecycle has agent participation — guided by intent, constrained by harnesses, connected by dense artefacts.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 4px; margin: 2rem 0;">
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.2); font-size: 0.78rem; font-weight: 600; color: var(--accent-2);">&#128196; Ticket Created</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--accent-2)">Research agent</strong> analyses the ticket, maps affected files, produces research.md</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(91,141,239,0.1); border: 1px solid rgba(91,141,239,0.2); font-size: 0.78rem; font-weight: 600; color: var(--blue);">&#128208; Research Ready</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--blue)">Plan agent</strong> reads research.md, drafts implementation plan with risk register</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(155,127,255,0.1); border: 1px solid rgba(155,127,255,0.2); font-size: 0.78rem; font-weight: 600; color: var(--accent-light);">&#9745; Human Review</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--accent-light)">Developer</strong> reviews the plan, adjusts intent, approves or redirects</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(232,145,58,0.1); border: 1px solid rgba(232,145,58,0.2); font-size: 0.78rem; font-weight: 600; color: var(--orange);">&#9889; Plan Approved</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--orange)">Implement agent</strong> follows plan step-by-step, self-corrects from harness output</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 160px; min-width: 160px; padding: 10px 14px; border-radius: 8px; background: rgba(124,92,252,0.1); border: 1px solid rgba(124,92,252,0.2); font-size: 0.78rem; font-weight: 600; color: var(--accent);">&#128640; PR Created</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.78rem; color: var(--text-muted);"><strong style="color:var(--accent)">Review agent</strong> checks architecture, test coverage, style &mdash; human does final approval</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>The key insight:</strong> The same intent engineering patterns that make agents reliable on your machine — phased workflows, dense artefacts, physics-based enforcement — are exactly what make them reliable in a pipeline. The AI-SDLC isn't a different methodology. It's the same methodology, graduated from individual to infrastructure.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 6: TOKENS ═══════════ -->
+<div id="tokens" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>Minimising <span class="gradient">Token Usage</span></h1>
+      <p class="subtitle">Every token you waste is a token the agent can't use for reasoning. Curated context beats raw context every time.</p>
+    </section>
+
+    <!-- ── The Dumb Zone ── -->
+    <section class="content-section">
+      <div class="section-label">The Problem</div>
+      <h2>The Dumb Zone</h2>
+      <p>AI agents don't degrade gracefully as context fills up. Past roughly 40% context usage, reasoning quality drops sharply — the model becomes confident but wrong. This is the Dumb Zone.</p>
+
+      <div style="margin: 2.5rem 0;">
+        <div style="display: flex; align-items: flex-end; height: 200px; gap: 2px; position: relative; padding-bottom: 2rem;">
+          <!-- Y axis label -->
+          <div style="position: absolute; left: -10px; top: 0; bottom: 2rem; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.65rem; color: var(--text-dim); text-align: right; width: 60px;">
+            <span>Excellent</span>
+            <span>Good</span>
+            <span>Poor</span>
+          </div>
+          <!-- Bars -->
+          <div style="display: flex; align-items: flex-end; gap: 3px; flex: 1; height: 100%; margin-left: 70px;">
+            <div style="flex:1; height: 95%; background: linear-gradient(to top, rgba(0,212,170,0.3), rgba(0,212,170,0.08)); border-radius: 4px 4px 0 0; border: 1px solid rgba(0,212,170,0.2); border-bottom: none;"></div>
+            <div style="flex:1; height: 90%; background: linear-gradient(to top, rgba(0,212,170,0.3), rgba(0,212,170,0.08)); border-radius: 4px 4px 0 0; border: 1px solid rgba(0,212,170,0.2); border-bottom: none;"></div>
+            <div style="flex:1; height: 85%; background: linear-gradient(to top, rgba(0,212,170,0.25), rgba(0,212,170,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(0,212,170,0.15); border-bottom: none;"></div>
+            <div style="flex:1; height: 78%; background: linear-gradient(to top, rgba(91,141,239,0.25), rgba(91,141,239,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(91,141,239,0.2); border-bottom: none;"></div>
+            <!-- The 40% mark -->
+            <div style="flex:1; height: 60%; background: linear-gradient(to top, rgba(232,145,58,0.3), rgba(232,145,58,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(232,145,58,0.2); border-bottom: none; position: relative;">
+              <div style="position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-size: 0.6rem; color: var(--orange); white-space: nowrap; font-weight: 600;">~40%</div>
+            </div>
+            <div style="flex:1; height: 42%; background: linear-gradient(to top, rgba(255,107,138,0.3), rgba(255,107,138,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.2); border-bottom: none;"></div>
+            <div style="flex:1; height: 30%; background: linear-gradient(to top, rgba(255,107,138,0.3), rgba(255,107,138,0.06)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.2); border-bottom: none;"></div>
+            <div style="flex:1; height: 22%; background: linear-gradient(to top, rgba(255,107,138,0.35), rgba(255,107,138,0.08)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.25); border-bottom: none;"></div>
+            <div style="flex:1; height: 18%; background: linear-gradient(to top, rgba(255,107,138,0.35), rgba(255,107,138,0.08)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.25); border-bottom: none;"></div>
+            <div style="flex:1; height: 15%; background: linear-gradient(to top, rgba(255,107,138,0.4), rgba(255,107,138,0.1)); border-radius: 4px 4px 0 0; border: 1px solid rgba(255,107,138,0.3); border-bottom: none;"></div>
+          </div>
+        </div>
+        <!-- X axis -->
+        <div style="display: flex; margin-left: 70px; justify-content: space-between; font-size: 0.65rem; color: var(--text-dim);">
+          <span>0%</span><span>20%</span><span>40%</span><span>60%</span><span>80%</span><span>100%</span>
+        </div>
+        <div style="text-align: center; margin-top: 0.75rem;">
+          <span style="font-size: 0.72rem; color: var(--text-muted);">Context Window Usage &rarr;</span>
+        </div>
+        <!-- Legend -->
+        <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; font-size: 0.72rem;">
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 10px; height: 10px; border-radius: 2px; background: rgba(0,212,170,0.3); border: 1px solid rgba(0,212,170,0.3);"></span><span style="color: var(--accent-2);">Strong reasoning</span></span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 10px; height: 10px; border-radius: 2px; background: rgba(232,145,58,0.3); border: 1px solid rgba(232,145,58,0.3);"></span><span style="color: var(--orange);">Degrading</span></span>
+          <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 10px; height: 10px; border-radius: 2px; background: rgba(255,107,138,0.3); border: 1px solid rgba(255,107,138,0.3);"></span><span style="color: var(--accent-3);">Dumb Zone</span></span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>200k+ lines can't fit in a window.</strong> nopCommerce's ShoppingCartService alone is 1,976 lines with 31 dependencies. Dumping files into context doesn't work — you need curated context, not raw context.</p>
+      </div>
+    </section>
+
+    <!-- ── Three Strategies ── -->
+    <section class="content-section">
+      <div class="section-label">Strategies</div>
+      <h2>Three Ways to Minimise Token Waste</h2>
+
+      <div class="card-grid three">
+        <div class="card">
+          <div class="card-icon">&#128270;</div>
+          <h4>1. Precise Tools</h4>
+          <p>Use LSP, AST queries, and structured APIs instead of grep and file reads. Get exactly the data you need, not pages of approximate matches.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">&#128230;</div>
+          <h4>2. Dense Artefacts</h4>
+          <p>Compress hours of exploration into structured documents. Handoff artefacts carry intent forward without carrying raw context.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon orange">&#9986;</div>
+          <h4>3. Fresh Context Windows</h4>
+          <p>Start each phase clean. Don't accumulate stale tokens from earlier exploration. The RPI methodology bakes this in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LSP vs Grep ── -->
+    <section class="content-section">
+      <div class="section-label">Precise Tools</div>
+      <h2>LSP Changes Everything</h2>
+      <p>The same research task — mapping the shopping cart steel thread — was run twice. Once with grep and manual file reads, once with Language Server Protocol. The difference isn't subtle.</p>
+
+      <div class="physics-visual">
+        <div class="pv-side law">
+          <h4>Without LSP (grep)</h4>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128196;</div>
+            <div class="pv-row-text"><strong style="color:var(--text)">6</strong> methods identified for extraction</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#9888;</div>
+            <div class="pv-row-text"><strong style="color:var(--text)">10</strong> risks in register</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128269;</div>
+            <div class="pv-row-text">Caller counts <strong style="color:var(--text)">estimated</strong>, not verified</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128203;</div>
+            <div class="pv-row-text">Reads many files to find partial matches</div>
+          </div>
+        </div>
+        <div class="pv-arrow-col">
+          <span class="pv-arrow">vs</span>
+        </div>
+        <div class="pv-side physics">
+          <h4>With LSP</h4>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128196;</div>
+            <div class="pv-row-text"><strong style="color:#fff">10</strong> methods identified for extraction</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#9888;</div>
+            <div class="pv-row-text"><strong style="color:#fff">12</strong> risks in register (+2 critical)</div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128269;</div>
+            <div class="pv-row-text">Precise caller counts: <strong style="color:#fff">30+ consumers by layer</strong></div>
+          </div>
+          <div class="pv-row">
+            <div class="pv-icon-sm">&#128203;</div>
+            <div class="pv-row-text">Structured queries return <strong style="color:#fff">only what's needed</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Three critical gaps -->
+      <h3 style="margin-top: 2.5rem;">Three Critical Gaps Grep Missed</h3>
+      <div class="wow-timeline" style="margin-top: 1.5rem;">
+        <div class="wow-moment">
+          <div class="wow-badge" style="font-size: 1.2rem; background: rgba(255,107,138,0.15); border: 2px solid var(--accent-3);">1</div>
+          <h4>Test DI Registration</h4>
+          <p><code style="font-size:0.75rem; color:var(--accent-2)">BaseNopTest.cs</code> needs CartService registered too — not just <code style="font-size:0.75rem; color:var(--accent-2)">NopStartup.cs</code>. Without this, all unit tests fail.</p>
+          <span class="wow-principle" style="color:var(--accent-3); background:rgba(255,107,138,0.1);">Would break all tests</span>
+        </div>
+        <div class="wow-moment">
+          <div class="wow-badge" style="font-size: 1.2rem; background: rgba(255,107,138,0.15); border: 2px solid var(--accent-3);">2</div>
+          <h4>Bidirectional Coupling</h4>
+          <p>Delete and Update call each other. Moving one without the other creates a circular dependency that the compiler rejects.</p>
+          <span class="wow-principle" style="color:var(--accent-3); background:rgba(255,107,138,0.1);">Would block compilation</span>
+        </div>
+        <div class="wow-moment">
+          <div class="wow-badge" style="font-size: 1.2rem; background: rgba(255,107,138,0.15); border: 2px solid var(--accent-3);">3</div>
+          <h4>Hidden External Callers</h4>
+          <p>8 callers on <code style="font-size:0.75rem; color:var(--accent-2)">GetStandardWarningsAsync</code> from outside the service. Grep found 0 — treated as internal only.</p>
+          <span class="wow-principle" style="color:var(--accent-3); background:rgba(255,107,138,0.1);">Would break 8 callers</span>
+        </div>
+      </div>
+
+      <div class="callout green" style="margin-top: 2rem;">
+        <p><strong>LSP-verified research is physics for planning.</strong> Any of these three gaps would have caused the implementation to fail. LSP answers precise questions with precise data — no wasted tokens on scanning files for approximate matches.</p>
+      </div>
+    </section>
+
+    <!-- ── Context Compression ── -->
+    <section class="content-section">
+      <div class="section-label">Dense Artefacts</div>
+      <h2>Compression, Not Accumulation</h2>
+      <p>Each RPI phase compresses its findings into a dense handoff document. The next phase gets curated knowledge, not raw exploration. This is how you stay out of the Dumb Zone.</p>
+
+      <!-- Compression funnel visual -->
+      <div style="display: flex; align-items: center; gap: 0; margin: 2.5rem 0; justify-content: center;">
+        <!-- Full codebase -->
+        <div style="text-align: center; width: 160px;">
+          <div style="width: 140px; height: 140px; border-radius: var(--radius); background: rgba(91,141,239,0.06); border: 1px solid rgba(91,141,239,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+            <div style="font-size: 2rem; font-weight: 800; color: var(--blue);">200k</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">lines of code</div>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem;">Full codebase</div>
+        </div>
+
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.5rem;">&rarr;</div>
+
+        <!-- Research output -->
+        <div style="text-align: center; width: 140px;">
+          <div style="width: 110px; height: 110px; border-radius: var(--radius); background: rgba(0,212,170,0.06); border: 1px solid rgba(0,212,170,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--accent-2);">~2k</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">lines</div>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem;">research.md</div>
+        </div>
+
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.5rem;">&rarr;</div>
+
+        <!-- Plan output -->
+        <div style="text-align: center; width: 130px;">
+          <div style="width: 90px; height: 90px; border-radius: var(--radius); background: rgba(232,145,58,0.06); border: 1px solid rgba(232,145,58,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+            <div style="font-size: 1.3rem; font-weight: 800; color: var(--orange);">~350</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">lines</div>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem;">plan.md</div>
+        </div>
+
+        <div style="font-size: 1.5rem; color: var(--text-dim); padding: 0 0.5rem;">&rarr;</div>
+
+        <!-- Focused action -->
+        <div style="text-align: center; width: 110px;">
+          <div style="width: 64px; height: 64px; border-radius: var(--radius); background: rgba(124,92,252,0.08); border: 1px solid rgba(124,92,252,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto;">
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent-light);">6</div>
+            <div style="font-size: 0.65rem; color: var(--text-muted);">steps</div>
+          </div>
+          <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem;">Focused action</div>
+        </div>
+      </div>
+
+      <p class="center-text" style="max-width: 600px;">Each stage compresses by roughly 100x. The implementing agent works with a plan, not a codebase. It stays well under the 40% threshold where reasoning degrades.</p>
+    </section>
+
+    <!-- ── Context Dump: Selective Extraction ── -->
+    <section class="content-section">
+      <div class="section-label">Selective Extraction</div>
+      <h2>Context Dumps: Curated, Not Complete</h2>
+      <p>When you need to seed a fresh agent with project context, don't dump everything. Extract only the paths and artefacts relevant to the task at hand — a targeted context dump.</p>
+
+      <div style="margin: 2rem 0;">
+        <div class="code-block">
+          <span class="label">Targeted context dump</span>
+<pre>
+<span class="comment"># Instead of giving the agent the entire repo...</span>
+<span class="keyword">/context-dump</span> <span class="string">\
+  src/Services/ShoppingCartService.cs  \
+  src/Interfaces/ICartService.cs       \
+  docs/adc/extract-cart-service/       \
+  docs/01_strategy/                    \
+  .ai/plans/current-plan.md</span>
+
+<span class="comment"># The agent gets ~500 lines of curated context</span>
+<span class="comment"># instead of 200k lines of raw codebase</span>
+</pre>
+        </div>
+      </div>
+
+      <div class="comparison">
+        <div class="compare-col old">
+          <h4>Raw Context Dump</h4>
+          <ul>
+            <li>Entire repo loaded into context</li>
+            <li>Agent must sift through irrelevant files</li>
+            <li>Hits context window limits quickly</li>
+            <li>Falls into the Dumb Zone</li>
+          </ul>
+        </div>
+        <div class="compare-col highlight">
+          <h4>Curated Context Dump</h4>
+          <ul>
+            <li>Specific paths and artefacts selected</li>
+            <li>Agent starts with focused, relevant context</li>
+            <li>Stays well under context limits</li>
+            <li>Maximum reasoning quality preserved</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>This applies beyond initial seeding. Any time you're passing context to an agent — whether through files, tool outputs, or system prompts — ask: <em>is every token here earning its place?</em></p>
+    </section>
+
+    <!-- ── Token Budget Mental Model ── -->
+    <section class="content-section">
+      <div class="section-label">Mental Model</div>
+      <h2>Think in Token Budgets</h2>
+      <p>Every token in the context window has an opportunity cost. Tokens spent on irrelevant context are tokens the agent can't use for reasoning about the actual problem.</p>
+
+      <!-- Stacked bar visual -->
+      <div style="margin: 2.5rem 0;">
+        <!-- Bad example -->
+        <div style="margin-bottom: 1.5rem;">
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">Naive approach: dump everything</div>
+          <div style="display: flex; height: 44px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
+            <div style="width: 65%; background: rgba(255,107,138,0.15); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 12px; font-size: 0.72rem; color: var(--accent-3); font-weight: 500;">Raw files (65%)</div>
+            <div style="width: 20%; background: rgba(232,145,58,0.1); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 8px; font-size: 0.72rem; color: var(--orange); font-weight: 500;">Prompts (20%)</div>
+            <div style="width: 15%; background: rgba(91,141,239,0.08); display: flex; align-items: center; padding-left: 8px; font-size: 0.72rem; color: var(--blue); font-weight: 500;">Reasoning</div>
+          </div>
+        </div>
+        <!-- Good example -->
+        <div>
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">Intent-engineered: curated context</div>
+          <div style="display: flex; height: 44px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,212,170,0.2);">
+            <div style="width: 15%; background: rgba(0,212,170,0.1); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 10px; font-size: 0.72rem; color: var(--accent-2); font-weight: 500;">Artefact</div>
+            <div style="width: 20%; background: rgba(124,92,252,0.08); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 8px; font-size: 0.72rem; color: var(--accent-light); font-weight: 500;">Prompts (20%)</div>
+            <div style="width: 65%; background: rgba(0,212,170,0.05); display: flex; align-items: center; padding-left: 12px; font-size: 0.72rem; color: var(--accent-2); font-weight: 500;">Reasoning (65%) &larr; this is what you want</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Putting It All Together ── -->
+    <section class="content-section">
+      <div class="section-label">Summary</div>
+      <h2>The Token Minimisation Toolkit</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">&#9881;</div>
+          <h4>LSP Over Grep</h4>
+          <p>Structured queries return precise answers. <code>find-references</code> gives you exact callers; grep gives you every line containing a string. One is signal, the other is noise.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon green">&#128230;</div>
+          <h4>Dense Handoff Artefacts</h4>
+          <p>Compress exploration into structured documents. 200k lines &rarr; 2k line research.md &rarr; 350 line plan.md. Each step is ~100x compression.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon orange">&#9986;</div>
+          <h4>Targeted Context Dumps</h4>
+          <p>Select specific paths and artefacts for fresh agents. Every token should earn its place in the context window.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon pink">&#128260;</div>
+          <h4>Fresh Context Windows</h4>
+          <p>Start each RPI phase clean. Don't accumulate stale exploration tokens. Dense artefacts bridge the gap between phases.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>The principle:</strong> Legacy systems require curated context, not raw context dumps. Adding more files to context does not automatically solve the problem — it usually makes it worse.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <div class="container">
+    Intent Engineering Workshop &middot; Built for workshop attendees
+  </div>
+</footer>
+
+<script>
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
