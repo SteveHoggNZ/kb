@@ -151,6 +151,35 @@
   .card h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
   .card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0; }
 
+  /* ─── Tactic Cards ─── */
+  .tactic-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 2rem; transition: var(--transition); position: relative; overflow: hidden;
+  }
+  .tactic-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    opacity: 0; transition: var(--transition);
+  }
+  .tactic-card:hover { border-color: rgba(124, 92, 252, 0.3); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124, 92, 252, 0.08); }
+  .tactic-card:hover::before { opacity: 1; }
+  .tactic-card .tactic-icon {
+    width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.25rem;
+  }
+  .tactic-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+  .tactic-card .tactic-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .tactic-card .tactic-prompt {
+    font-size: 0.82rem; color: var(--text); line-height: 1.5;
+    padding: 1rem 1.25rem; border-radius: var(--radius-sm);
+    background: rgba(124, 92, 252, 0.04); border: 1px solid rgba(124, 92, 252, 0.12);
+    font-style: italic;
+  }
+  .tactic-card .tactic-why {
+    font-size: 0.78rem; color: var(--text-dim); margin-top: 1rem; line-height: 1.5;
+    padding-top: 0.75rem; border-top: 1px solid var(--border);
+  }
+  .tactic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+
   /* ─── Stacked Layers Diagram ─── */
   .stack-diagram {
     display: flex; align-items: center; justify-content: center; gap: 3rem;
@@ -237,6 +266,9 @@
     width: 14px; height: 14px; border-radius: 50%;
     border: 3px solid var(--teal); background: rgba(0,0,0,0.5);
   }
+  .fw-dot.filled { background: var(--teal); }
+  .fw-dot.purple-border { border-color: var(--purple); }
+  .fw-dot.purple-filled { border-color: var(--purple); background: var(--purple); }
   .fw-cell:nth-child(4n+3) .fw-dot,
   .fw-cell:nth-child(4n+4) .fw-dot { border-color: var(--purple); }
 
@@ -849,8 +881,10 @@
   <div class="header-inner">
     <div class="logo">AI-SDLC</div>
     <nav class="tab-nav" role="tablist">
-      <button class="tab-btn active" onclick="showPage('roadmap')" role="tab">Roadmap</button>
+      <button class="tab-btn active" onclick="showPage('vision')" role="tab">Vision</button>
+      <button class="tab-btn" onclick="showPage('roadmap')" role="tab">Roadmap</button>
       <button class="tab-btn" onclick="showPage('overview')" role="tab">Foundations</button>
+      <button class="tab-btn" onclick="showPage('tactics')" role="tab">Prompt Tactics</button>
       <button class="tab-btn" onclick="showPage('shift')" role="tab">Intent &amp; Context</button>
       <button class="tab-btn" onclick="showPage('patterns')" role="tab">Physics</button>
       <button class="tab-btn" onclick="showPage('methodology')" role="tab">Steel Thread</button>
@@ -858,6 +892,192 @@
     </nav>
   </div>
 </header>
+
+<!-- ═══════════ PAGE: VISION ═══════════ -->
+<div id="vision" class="page active">
+  <div class="container">
+    <section class="hero">
+      <div class="hero-badge">The Destination</div>
+      <h1>Where We're <span class="gradient">Heading</span></h1>
+      <p class="subtitle">Before the how, the why. AI isn't replacing developers — it's changing what developers do. The destination is a world where you define intent, and agents handle execution.</p>
+    </section>
+
+    <!-- ── The Shift ── -->
+    <section class="content-section">
+      <div class="section-label">The Big Picture</div>
+      <h2>From Writing Code to Defining "Correct"</h2>
+      <p>The core shift in AI-assisted development isn't about typing faster. It's about moving from <em>maker</em> to <em>architect of intent</em>. You stop writing every line and start defining what right looks like — then letting agents execute against that definition.</p>
+
+      <div style="display: flex; gap: 3px; margin: 2.5rem 0;">
+        <div style="flex: 1; padding: 1.75rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius) 0 0 var(--radius);">
+          <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 0.75rem;">Today</div>
+          <div style="font-size: 1.15rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.5rem;">You write code</div>
+          <div style="font-size: 0.85rem; color: var(--text-dim); line-height: 1.6;">Human reads ticket. Human researches codebase. Human writes implementation. Human writes tests. Human reviews their own work. AI occasionally autocompletes a line.</div>
+        </div>
+        <div style="flex: 1; padding: 1.75rem; background: linear-gradient(180deg, rgba(124,92,252,0.06), var(--surface)); border: 1px solid rgba(124,92,252,0.25); border-radius: 0 var(--radius) var(--radius) 0; position: relative;">
+          <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-light); margin-bottom: 0.75rem;">The Vision</div>
+          <div style="font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem;">You define what correct looks like</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">You set intent: goals, constraints, success criteria, structural enforcement. Agents research, plan, and implement. Harnesses verify. You review outcomes, not code.</div>
+        </div>
+      </div>
+
+      <div class="takeaway-banner">
+        <em>Execution is becoming cheap. Clarity and verification are the new bottlenecks.</em>
+      </div>
+    </section>
+
+    <!-- ── What Does It Look Like? ── -->
+    <section class="content-section">
+      <div class="section-label">The AI-Native SDLC</div>
+      <h2>What You're Building Towards</h2>
+      <p>In the AI-SDLC, every stage of the development lifecycle has agent participation — guided by intent, constrained by harnesses, connected by dense handoff artefacts. Here's what a single ticket looks like at maturity:</p>
+
+      <div style="display: flex; flex-direction: column; gap: 4px; margin: 2rem 0;">
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 150px; min-width: 150px; padding: 10px 14px; border-radius: 8px; background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.2); font-size: 0.78rem; font-weight: 600; color: var(--accent-2);">&#128196; Ticket Created</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted);"><strong style="color:var(--accent-2)">Research agent</strong> analyses the ticket, maps affected files, produces research.md</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 150px; min-width: 150px; padding: 10px 14px; border-radius: 8px; background: rgba(91,141,239,0.1); border: 1px solid rgba(91,141,239,0.2); font-size: 0.78rem; font-weight: 600; color: var(--blue);">&#128208; Research Ready</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted);"><strong style="color:var(--blue)">Plan agent</strong> reads research.md, drafts implementation plan with risk register</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 150px; min-width: 150px; padding: 10px 14px; border-radius: 8px; background: rgba(155,127,255,0.1); border: 1px solid rgba(155,127,255,0.2); font-size: 0.78rem; font-weight: 600; color: var(--accent-light);">&#9745; Human Review</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted);"><strong style="color:var(--accent-light)">You</strong> review the plan, adjust intent, approve or redirect</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 150px; min-width: 150px; padding: 10px 14px; border-radius: 8px; background: rgba(232,145,58,0.1); border: 1px solid rgba(232,145,58,0.2); font-size: 0.78rem; font-weight: 600; color: var(--orange);">&#9889; Plan Approved</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted);"><strong style="color:var(--orange)">Implement agent</strong> follows plan step-by-step, self-corrects from test output</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <div style="width: 150px; min-width: 150px; padding: 10px 14px; border-radius: 8px; background: rgba(124,92,252,0.1); border: 1px solid rgba(124,92,252,0.2); font-size: 0.78rem; font-weight: 600; color: var(--accent);">&#128640; PR Created</div>
+          <div style="color: var(--text-dim);">&rarr;</div>
+          <div style="flex: 1; padding: 10px 14px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted);"><strong style="color:var(--accent)">Review agent</strong> checks architecture, tests, style &mdash; you give final approval</div>
+        </div>
+      </div>
+
+      <p>Notice: you're involved at <em>one</em> step &mdash; reviewing the plan. Everything else is agents operating within the guardrails you've built. That's the destination.</p>
+    </section>
+
+    <!-- ── Three Pillars ── -->
+    <section class="content-section">
+      <div class="section-label">Three Pillars</div>
+      <h2>What Makes This Work</h2>
+      <p>The vision rests on three ideas. Every tab on this site teaches you how to build one of them.</p>
+
+      <div class="card-grid three">
+        <div class="card" style="border-top: 2px solid var(--orange);">
+          <div class="card-icon orange">&#127919;</div>
+          <h4>Intent Engineering</h4>
+          <p>Communicate goals, constraints, and success criteria &mdash; not exact words. Define the <em>shape</em> of the output, not the output itself. Move from crafting prompts to architecting agent interactions.</p>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--accent-2);">
+          <div class="card-icon green">&#128737;</div>
+          <h4>Physics over Law</h4>
+          <p>Don't tell agents what to do &mdash; make wrong things impossible. Tests, compilers, and linters are <em>physics</em>: structural constraints the agent can't ignore. Prompts are <em>law</em>: suggestions it might break.</p>
+        </div>
+        <div class="card" style="border-top: 2px solid var(--blue);">
+          <div class="card-icon">&#128196;</div>
+          <h4>Dense Handoff Artefacts</h4>
+          <p>Compress hours of exploration into structured documents that carry intent forward. research.md, plan.md, handoff.md &mdash; each phase produces an artefact that feeds the next, so no context is wasted.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── The Wow Moment ── -->
+    <section class="content-section">
+      <div class="section-label">The Moment It Clicks</div>
+      <h2>When You'll Know It's Working</h2>
+      <p>There's a specific moment in the journey where everything comes together. It looks like this:</p>
+
+      <div style="padding: 2rem; background: linear-gradient(135deg, rgba(0,212,170,0.04), rgba(124,92,252,0.04)); border: 1px solid rgba(0,212,170,0.15); border-radius: var(--radius); margin: 2rem 0;">
+        <div style="font-size: 1rem; color: var(--text); line-height: 1.8;">
+          An agent is refactoring a service class. It introduces a subtle type mismatch. The <strong style="color: var(--accent-3);">compiler refuses to build</strong>. The agent reads the error, fixes the type. It continues. A few steps later, it accidentally changes calculation order. A <strong style="color: var(--orange);">unit test fails</strong>: "Expected 42.99, got 38.50." The agent diagnoses the issue and fixes it. Finally, a missing DI registration throws a 500 error &mdash; caught by <strong style="color: var(--accent-2);">Playwright clicking "Add to Cart."</strong> Fixed. All green. No human touched the code.
+        </div>
+      </div>
+
+      <p>That's three layers of physics catching three different classes of error. The harness is the teacher, not you. <em>That's</em> what you're building towards.</p>
+    </section>
+
+    <!-- ── Your Role Evolves ── -->
+    <section class="content-section">
+      <div class="section-label">Your Journey</div>
+      <h2>How Your Role Changes</h2>
+      <p>This isn't about AI taking your job. It's about your job becoming more impactful. The progression looks like this:</p>
+
+      <div style="display: flex; gap: 3px; margin: 2rem 0;">
+        <div style="flex: 1; padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius) 0 0 var(--radius);">
+          <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 0.5rem;">Where you start</div>
+          <div style="font-size: 1.1rem; font-weight: 700; color: var(--accent-2); margin-bottom: 0.5rem;">Maker</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">You write code. AI suggests lines. You accept or reject. The human does all the thinking and all the typing.</div>
+        </div>
+        <div style="flex: 1; padding: 1.5rem; background: var(--surface); border: 1px solid var(--border);">
+          <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 0.5rem;">Where you grow</div>
+          <div style="font-size: 1.1rem; font-weight: 700; color: var(--orange); margin-bottom: 0.5rem;">Engineering Manager</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">You define the Definition of Done. You build the harnesses. Agents implement. You review outcomes, not individual lines.</div>
+        </div>
+        <div style="flex: 1; padding: 1.5rem; background: linear-gradient(180deg, rgba(124,92,252,0.04), var(--surface)); border: 1px solid rgba(124,92,252,0.2); border-radius: 0 var(--radius) var(--radius) 0;">
+          <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-light); margin-bottom: 0.5rem;">Where you're heading</div>
+          <div style="font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">Architect of Intent</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">You design the system of systems. Intent flows through docs, skills, harnesses, and pipelines. Agents coordinate agents. You set direction.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── What's Ahead ── -->
+    <section class="content-section">
+      <div class="section-label">The Path</div>
+      <h2>How We Get There</h2>
+      <p>The rest of this site is a progressive guide from where you are now to the vision above. Each tab builds on the last:</p>
+
+      <div style="display: flex; align-items: stretch; gap: 3px; margin: 2rem 0; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 120px; padding: 1.25rem 1rem; border-radius: var(--radius) 0 0 var(--radius); background: linear-gradient(180deg, rgba(232,145,58,0.08), var(--surface)); border: 1px solid rgba(232,145,58,0.15); text-align: center; cursor: pointer;" onclick="showPage('roadmap'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-btn')[1].classList.add('active');">
+          <div style="font-size: 1.3rem; margin-bottom: 0.3rem;">&#128506;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--orange); margin-bottom: 0.2rem;">Roadmap</div>
+          <div style="font-size: 0.62rem; color: var(--text-dim);">Your checklist</div>
+        </div>
+        <div style="flex: 1; min-width: 120px; padding: 1.25rem 1rem; background: linear-gradient(180deg, rgba(0,212,170,0.08), var(--surface)); border: 1px solid rgba(0,212,170,0.15); text-align: center; cursor: pointer;" onclick="showPage('overview'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-btn')[2].classList.add('active');">
+          <div style="font-size: 1.3rem; margin-bottom: 0.3rem;">&#128218;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--accent-2); margin-bottom: 0.2rem;">Foundations</div>
+          <div style="font-size: 0.62rem; color: var(--text-dim);">Core concepts</div>
+        </div>
+        <div style="flex: 1; min-width: 120px; padding: 1.25rem 1rem; background: linear-gradient(180deg, rgba(240,192,64,0.08), var(--surface)); border: 1px solid rgba(240,192,64,0.15); text-align: center; cursor: pointer;" onclick="showPage('tactics'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-btn')[3].classList.add('active');">
+          <div style="font-size: 1.3rem; margin-bottom: 0.3rem;">&#9889;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--yellow); margin-bottom: 0.2rem;">Prompt Tactics</div>
+          <div style="font-size: 0.62rem; color: var(--text-dim);">Hands-on techniques</div>
+        </div>
+        <div style="flex: 1; min-width: 120px; padding: 1.25rem 1rem; background: linear-gradient(180deg, rgba(91,141,239,0.08), var(--surface)); border: 1px solid rgba(91,141,239,0.15); text-align: center; cursor: pointer;" onclick="showPage('shift'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-btn')[4].classList.add('active');">
+          <div style="font-size: 1.3rem; margin-bottom: 0.3rem;">&#128196;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--blue); margin-bottom: 0.2rem;">Intent &amp; Context</div>
+          <div style="font-size: 0.62rem; color: var(--text-dim);">Capture &amp; curate</div>
+        </div>
+        <div style="flex: 1; min-width: 120px; padding: 1.25rem 1rem; background: linear-gradient(180deg, rgba(155,127,255,0.08), var(--surface)); border: 1px solid rgba(155,127,255,0.15); text-align: center; cursor: pointer;" onclick="showPage('patterns'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-btn')[5].classList.add('active');">
+          <div style="font-size: 1.3rem; margin-bottom: 0.3rem;">&#128737;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--accent-light); margin-bottom: 0.2rem;">Physics</div>
+          <div style="font-size: 0.62rem; color: var(--text-dim);">Structural enforcement</div>
+        </div>
+        <div style="flex: 1; min-width: 120px; padding: 1.25rem 1rem; background: linear-gradient(180deg, rgba(232,145,58,0.08), var(--surface)); border: 1px solid rgba(232,145,58,0.15); text-align: center; cursor: pointer;" onclick="showPage('methodology'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-btn')[6].classList.add('active');">
+          <div style="font-size: 1.3rem; margin-bottom: 0.3rem;">&#128640;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--orange); margin-bottom: 0.2rem;">Steel Thread</div>
+          <div style="font-size: 0.62rem; color: var(--text-dim);">Prove it end-to-end</div>
+        </div>
+        <div style="flex: 1; min-width: 120px; padding: 1.25rem 1rem; border-radius: 0 var(--radius) var(--radius) 0; background: linear-gradient(180deg, rgba(124,92,252,0.08), var(--surface)); border: 1px solid rgba(124,92,252,0.15); text-align: center; cursor: pointer;" onclick="showPage('aisdlc'); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-btn')[7].classList.add('active');">
+          <div style="font-size: 1.3rem; margin-bottom: 0.3rem;">&#127758;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--accent); margin-bottom: 0.2rem;">Scale</div>
+          <div style="font-size: 0.62rem; color: var(--text-dim);">Team &amp; org</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>Start with the Roadmap</strong> to see the full journey at a glance with interactive checklists, or jump to any tab that matches where you are right now. Every stage delivers value on its own — you don't need to reach Stage 5 to benefit.</p>
+      </div>
+    </section>
+  </div>
+</div>
 
 <!-- ═══════════ PAGE: FOUNDATIONS ═══════════ -->
 <div id="overview" class="page">
@@ -961,6 +1181,177 @@
   </div>
 </div>
 
+<!-- ═══════════ PAGE: PROMPT TACTICS ═══════════ -->
+<div id="tactics" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <div class="hero-badge">Getting Started &mdash; Hands On</div>
+      <h1>Prompt <span class="gradient">Tactics</span></h1>
+      <p class="subtitle">Six techniques that make your interactions with AI agents dramatically more effective. Try them, then ask yourself: <em>why does this work?</em> Understanding the mechanism matters more than memorising the trick.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">The Tactics</div>
+      <h2>Your Prompting Toolkit</h2>
+      <p>These aren't magic incantations &mdash; they're structural patterns that exploit how language models reason. Each one changes the <em>shape</em> of the agent's thinking, not just the words you feed it. Once you see the pattern, you'll start combining them instinctively.</p>
+
+      <div class="tactic-grid">
+
+        <!-- Tactic 1: Visualisation -->
+        <div class="tactic-card" style="border-top: 2px solid var(--blue);">
+          <div class="tactic-icon" style="background: rgba(91,141,239,0.1); border: 1px solid rgba(91,141,239,0.2); color: var(--blue);">&#128202;</div>
+          <h4>Visualisation</h4>
+          <div class="tactic-desc">Agents can do more than text. Tables, Mermaid diagrams, flowcharts, and architecture maps are often clearer than paragraphs &mdash; and they force the agent to think structurally about relationships.</div>
+          <div class="tactic-prompt">"Please create a Mermaid diagram to help me understand how the shopping cart flow works from UI to database."</div>
+          <div class="tactic-why"><strong>Why it works:</strong> Generating a diagram requires the agent to identify entities, relationships, and flow direction &mdash; a deeper analysis than prose. The structured output format constrains the reasoning into something verifiable.</div>
+        </div>
+
+        <!-- Tactic 2: Prompt For Questions -->
+        <div class="tactic-card" style="border-top: 2px solid var(--accent-2);">
+          <div class="tactic-icon" style="background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.2); color: var(--accent-2);">&#10067;</div>
+          <h4>Prompt For Questions</h4>
+          <div class="tactic-desc">When you're uncertain, don't guess at a prompt. Instead, ask the agent to interview you. It will surface requirements and edge cases you hadn't considered &mdash; before any work begins.</div>
+          <div class="tactic-prompt">"I don't know how to get started on this project. Please ask me some questions to help clarify things."</div>
+          <div class="tactic-why"><strong>Why it works:</strong> This flips the interaction from "you guess what the agent needs" to "the agent tells you what it needs." It's requirements gathering &mdash; the same thing a good consultant does in a first meeting.</div>
+        </div>
+
+        <!-- Tactic 3: Reflection -->
+        <div class="tactic-card" style="border-top: 2px solid var(--orange);">
+          <div class="tactic-icon" style="background: rgba(232,145,58,0.1); border: 1px solid rgba(232,145,58,0.2); color: var(--orange);">&#128640;</div>
+          <h4>Reflection</h4>
+          <div class="tactic-desc">After an agent gives you a response, ask it to self-evaluate. If it rates itself below 10, ask it to do better. The gap between its first attempt and its "try harder" attempt is often surprising.</div>
+          <div class="tactic-prompt">"Rate your response out of 10. If it isn't a 10, please generate an improved version."</div>
+          <div class="tactic-why"><strong>Why it works:</strong> Self-evaluation activates a different reasoning mode. The agent compares its output against an implicit quality standard, identifies gaps, and produces a revised version that addresses them. It's a one-step feedback loop.</div>
+        </div>
+
+        <!-- Tactic 4: Group Simulation -->
+        <div class="tactic-card" style="border-top: 2px solid var(--accent-light);">
+          <div class="tactic-icon" style="background: rgba(155,127,255,0.1); border: 1px solid rgba(155,127,255,0.2); color: var(--accent-light);">&#128101;</div>
+          <h4>Group Simulation</h4>
+          <div class="tactic-desc">Explain a problem, then ask the agent to simulate a panel of experts. You'll get multiple perspectives, trade-offs, and dissenting views that a single-perspective answer would miss.</div>
+          <div class="tactic-prompt">"Who would be a good group of people to ask about this and what would they say?"</div>
+          <div class="tactic-why"><strong>Why it works:</strong> Assigning distinct personas forces the agent to consider the problem from multiple angles. A security engineer, a UX designer, and a product manager would each flag different risks. The simulation surfaces that diversity in a single response.</div>
+        </div>
+
+        <!-- Tactic 5: Ask For References -->
+        <div class="tactic-card" style="border-top: 2px solid var(--accent-3);">
+          <div class="tactic-icon" style="background: rgba(255,107,138,0.1); border: 1px solid rgba(255,107,138,0.2); color: var(--accent-3);">&#128214;</div>
+          <h4>Ask For References</h4>
+          <div class="tactic-desc">After an agent responds, ask it to support its claims with documentation. This forces it to distinguish between confident knowledge and speculation &mdash; and makes hallucinations visible.</div>
+          <div class="tactic-prompt">"Please explain your conclusion, referencing documentation to support your claims."</div>
+          <div class="tactic-why"><strong>Why it works:</strong> Asking for evidence forces the agent to ground its reasoning. If it can't cite a source, that's a signal the claim needs verification. This is the <em>provenance tagging</em> concept in action &mdash; EXTRACTED (from docs) vs INFERRED (AI reasoning).</div>
+        </div>
+
+        <!-- Tactic 6: Synthesis & Selective Amnesia -->
+        <div class="tactic-card" style="border-top: 2px solid var(--accent);">
+          <div class="tactic-icon" style="background: rgba(124,92,252,0.1); border: 1px solid rgba(124,92,252,0.2); color: var(--accent);">&#129504;</div>
+          <h4>Synthesis &amp; Selective Amnesia</h4>
+          <div class="tactic-desc">After a long conversation, ask the agent to summarise the <em>problem</em> while deliberately excluding all solutions discussed. Copy that summary into a fresh session. The new agent attacks the problem without anchoring bias.</div>
+          <div class="tactic-prompt">"Please thoroughly summarise the problem we've been discussing in such a way that a third party can take over. Do not include any solutions we've covered."</div>
+          <div class="tactic-why"><strong>Why it works:</strong> This is <em>information diets</em> applied to conversations. A long session accumulates stale context and anchoring effects &mdash; the same "Dumb Zone" problem that plagues code context. A fresh agent with a clean problem statement reasons from first principles.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── The Pattern Behind the Tactics ── -->
+    <section class="content-section">
+      <div class="section-label">The Deeper Pattern</div>
+      <h2>Why These Work: Structural Thinking</h2>
+      <p>Notice the common thread across all six tactics. Each one changes the <em>structure</em> of the interaction, not just the words. They shape what the agent pays attention to, how it reasons, and what it produces.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 4px; margin: 2rem 0;">
+        <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 4px; align-items: center;">
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--text-dim); text-align: right; padding-right: 0.5rem;">Tactic</div>
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--text-dim);">What It Changes</div>
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--text-dim);">Intent Engineering Parallel</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--blue);">Visualisation</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Output format &rarr; forces structural reasoning</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Intent scaffolding &mdash; defining the shape</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--accent-2);">Questions</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Direction of flow &rarr; agent leads discovery</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Research phase &mdash; explore before acting</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--orange);">Reflection</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Self-evaluation loop &rarr; iterative improvement</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Feedback loops &mdash; the harness teaches</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--accent-light);">Group Sim</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Perspective diversity &rarr; surfaces trade-offs</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Risk registers &mdash; predict what could go wrong</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--accent-3);">References</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Evidence grounding &rarr; reveals hallucinations</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Provenance tagging &mdash; EXTRACTED vs INFERRED</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 160px 1fr 1fr; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--accent);">Sel. Amnesia</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Context reset &rarr; removes anchoring bias</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Information diets &mdash; fresh context windows</div>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <p><strong>This is the bridge to intent engineering.</strong> These tactics work because they change the structure of the interaction. Intent engineering takes the same idea further &mdash; encoding structure into workflows, harnesses, and artefacts rather than individual prompts. Start here, then level up on the next tabs.</p>
+      </div>
+    </section>
+
+    <!-- ── Try It Now ── -->
+    <section class="content-section">
+      <div class="section-label">Exercise</div>
+      <h2>Try It Right Now</h2>
+      <p>Open Copilot Chat in your IDE and try this sequence. It combines three tactics in one interaction:</p>
+
+      <div class="exercise-steps">
+        <div class="ex-step">
+          <div class="ex-num">1</div>
+          <div class="ex-body">
+            <h4>Start with Questions</h4>
+            <p>"I need to add a caching layer to our API. Please ask me 5 questions to understand what I need before suggesting an approach."</p>
+            <span class="ex-tag">Prompt For Questions</span>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">2</div>
+          <div class="ex-body">
+            <h4>Visualise the Design</h4>
+            <p>After answering the questions, ask: "Now create a Mermaid sequence diagram showing the cache hit and cache miss flows."</p>
+            <span class="ex-tag">Visualisation</span>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">3</div>
+          <div class="ex-body">
+            <h4>Simulate a Review</h4>
+            <p>"If I showed this design to a senior backend engineer, a security engineer, and a DBA &mdash; what would each of them say?"</p>
+            <span class="ex-tag">Group Simulation</span>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">4</div>
+          <div class="ex-body">
+            <h4>Reflect and Improve</h4>
+            <p>"Rate the design out of 10 based on their feedback. If it isn't a 10, revise it."</p>
+            <span class="ex-tag">Reflection</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="takeaway-banner" style="margin-top: 2rem;">
+        <em>Four tactics, one conversation, better outcome than any single prompt could produce.</em><br>
+        <span style="font-size: 0.85rem; color: var(--text-dim); font-style: normal;">This is prompt-level intent engineering. The next tabs show how to encode it into systems.</span>
+      </div>
+    </section>
+  </div>
+</div>
+
 <!-- ═══════════ PAGE: INTENT & CONTEXT ═══════════ -->
 <div id="shift" class="page">
   <div class="container">
@@ -1017,30 +1408,40 @@
           <div class="fw-layer-pill ops"><div class="fw-icon">&#9730;</div> Operations</div>
         </div>
         <div class="fw-grid-area">
-          <div class="fw-col-header">Stream A</div>
-          <div class="fw-col-header">Stream B</div>
-          <div class="fw-col-header">Stream C</div>
-          <div class="fw-col-header">Stream D</div>
+          <div class="fw-col-header">Docs</div>
+          <div class="fw-col-header">Harnesses</div>
+          <div class="fw-col-header">Agent Skills</div>
+          <div class="fw-col-header">Pipelines</div>
+          <!-- Vision: docs=filled, harnesses=hollow, skills=hollow, pipelines=hollow -->
+          <div class="fw-cell"><div class="fw-dot filled"></div></div>
           <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-border"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-border"></div></div>
+          <!-- Strategy: docs=filled, harnesses=filled, skills=hollow, pipelines=hollow -->
+          <div class="fw-cell"><div class="fw-dot filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-border"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-border"></div></div>
+          <!-- Design: docs=filled, harnesses=filled, skills=filled, pipelines=hollow -->
+          <div class="fw-cell"><div class="fw-dot filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-border"></div></div>
+          <!-- Impl: docs=filled, harnesses=filled, skills=filled, pipelines=hollow -->
+          <div class="fw-cell"><div class="fw-dot filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-border"></div></div>
+          <!-- Verify: docs=hollow, harnesses=filled, skills=filled, pipelines=filled -->
           <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-filled"></div></div>
+          <!-- Ops: docs=hollow, harnesses=filled, skills=filled, pipelines=filled -->
           <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
-          <div class="fw-cell"><div class="fw-dot"></div></div>
+          <div class="fw-cell"><div class="fw-dot filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-filled"></div></div>
+          <div class="fw-cell"><div class="fw-dot purple-filled"></div></div>
         </div>
         <div class="fw-benefits">
           <h4>Core Benefits</h4>
@@ -1057,6 +1458,11 @@
             <div class="fw-benefit-text">Continuous Improvement</div>
           </div>
         </div>
+      </div>
+      <!-- Grid Legend -->
+      <div style="display: flex; gap: 2rem; margin-top: 1rem; font-size: 0.72rem; flex-wrap: wrap;">
+        <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 12px; height: 12px; border-radius: 50%; background: var(--teal); display: inline-block;"></span><span style="color: var(--text-muted);">Active — intent encoded here</span></span>
+        <span style="display: flex; align-items: center; gap: 0.4rem;"><span style="width: 12px; height: 12px; border-radius: 50%; border: 3px solid var(--teal); background: rgba(0,0,0,0.5); display: inline-block;"></span><span style="color: var(--text-muted);">Possible — not yet adopted</span></span>
       </div>
     </section>
 
@@ -1097,6 +1503,56 @@
       </div>
 
       <p>Use LSP over grep for precise queries. Compress findings into dense artefacts. Start each RPI phase in a fresh context window. Every token should earn its place.</p>
+
+      <!-- LSP How-To: Practical Examples -->
+      <h3 style="margin-top: 2.5rem;">LSP in Practice: Queries That Change Everything</h3>
+      <p>Here's what "use LSP over grep" actually looks like. These are real queries from the nopCommerce steel thread — the same ones that found critical gaps grep missed.</p>
+
+      <div class="code-block" style="margin-top: 1.5rem;">
+        <span class="label">Find References — Who calls this method?</span>
+<pre>
+<span class="comment">// LSP: textDocument/references on AddToCartAsync</span>
+<span class="comment">// Returns: 14 callers across 8 files, with exact locations</span>
+
+<span class="keyword">ShoppingCartController.cs</span>:<span class="string">617</span>  AddProductToCart_Catalog()
+<span class="keyword">ShoppingCartController.cs</span>:<span class="string">680</span>  AddProductToCart_Details()
+<span class="keyword">CheckoutController.cs</span>:<span class="string">243</span>     MigrateCart()
+<span class="keyword">OrderProcessingService.cs</span>:<span class="string">891</span> ReOrder()
+<span class="comment">// ... 10 more — grep found only 6 of these</span>
+</pre>
+      </div>
+
+      <div class="code-block" style="margin-top: 1rem;">
+        <span class="label">Document Symbols — Full map of a class</span>
+<pre>
+<span class="comment">// LSP: textDocument/documentSymbol on ShoppingCartService.cs</span>
+<span class="comment">// Returns: 62 symbols — 31 fields, 1 constructor, 27 methods</span>
+
+<span class="keyword">Fields (31):</span>  _catalogSettings, _aclService, _customerService ...
+<span class="keyword">Methods (27):</span> AddToCartAsync, GetShoppingCartAsync,
+              DeleteShoppingCartItemAsync, <span class="string">FindShoppingCartItemInTheCartAsync</span> ...
+<span class="comment">// One query = complete class anatomy. No file-reading tokens spent.</span>
+</pre>
+      </div>
+
+      <div class="code-block" style="margin-top: 1rem;">
+        <span class="label">Type Hierarchy — What implements this interface?</span>
+<pre>
+<span class="comment">// LSP: typeHierarchy/subtypes on IShoppingCartService</span>
+<span class="comment">// Returns: implementation chain with exact locations</span>
+
+<span class="keyword">IShoppingCartService</span> <span class="comment">(interface, 22 methods)</span>
+  └─ <span class="string">ShoppingCartService</span> <span class="comment">(src/Libraries/Nop.Services/Orders/)</span>
+      <span class="comment">// Confirms: single implementation, safe to extract subset</span>
+
+<span class="comment">// Compare: grep for "IShoppingCartService" returns 47 matches</span>
+<span class="comment">// including imports, comments, and XML docs — all noise</span>
+</pre>
+      </div>
+
+      <div class="callout" style="margin-top: 1.5rem;">
+        <p><strong>How to enable LSP:</strong> In VS Code, the language server runs automatically. In agent workflows (Claude Code, Copilot agent mode), use MCP servers like <code style="font-size: 0.82rem;">@anthropic/lsp-mcp</code> to give agents LSP access. The key queries are <code style="font-size: 0.82rem;">find-references</code>, <code style="font-size: 0.82rem;">document-symbols</code>, and <code style="font-size: 0.82rem;">type-hierarchy</code> — these three cover 90% of research needs.</p>
+      </div>
     </section>
   </div>
 </div>
@@ -1196,6 +1652,51 @@
       <div class="section-label">Case Study</div>
       <h2>The nopCommerce Steel Thread</h2>
       <p>nopCommerce is a 200k+ line .NET e-commerce platform. The steel thread: the shopping cart flow from "Add to cart" through controllers and services to the database. One vertical slice through the entire architecture.</p>
+
+      <h3 style="margin-top: 2rem;">Brownfield Extraction: The Step-by-Step Process</h3>
+      <p>Reverse-engineering documentation from an existing codebase is the most common starting point for teams adopting AI-SDLC. Here's the methodology, using the nopCommerce cart flow as a worked example.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 3px; margin: 2rem 0;">
+        <div style="display: flex; gap: 12px; padding: 1.25rem; background: var(--surface); border: 1px solid rgba(0,212,170,0.15); border-radius: var(--radius-sm);">
+          <div style="min-width: 36px; height: 36px; border-radius: 50%; background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.2); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent-2); font-size: 0.85rem;">1</div>
+          <div>
+            <div style="font-weight: 600; color: var(--text); margin-bottom: 0.3rem;">Identify the Steel Thread</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Pick the narrowest user flow that touches every layer. For nopCommerce: "click Add to Cart on a product page." This touches UI (Razor view) → JavaScript (AJAX handler) → Controller → Service → Repository → Database. <em>Don't try to document the whole system — one thread is enough.</em></div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; padding: 1.25rem; background: var(--surface); border: 1px solid rgba(91,141,239,0.15); border-radius: var(--radius-sm);">
+          <div style="min-width: 36px; height: 36px; border-radius: 50%; background: rgba(91,141,239,0.1); border: 1px solid rgba(91,141,239,0.2); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--blue); font-size: 0.85rem;">2</div>
+          <div>
+            <div style="font-weight: 600; color: var(--text); margin-bottom: 0.3rem;">Trace with LSP, Not Grep</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Use <code style="font-size:0.8rem">find-references</code> on the controller action to discover every caller. Use <code style="font-size:0.8rem">document-symbols</code> to map the service class (e.g., 62 symbols in ShoppingCartService.cs — 31 fields, 27 methods). Use <code style="font-size:0.8rem">type-hierarchy</code> to find all implementations. Record exact file paths and line numbers.</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; padding: 1.25rem; background: var(--surface); border: 1px solid rgba(155,127,255,0.15); border-radius: var(--radius-sm);">
+          <div style="min-width: 36px; height: 36px; border-radius: 50%; background: rgba(155,127,255,0.1); border: 1px solid rgba(155,127,255,0.2); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent-light); font-size: 0.85rem;">3</div>
+          <div>
+            <div style="font-weight: 600; color: var(--text); margin-bottom: 0.3rem;">Produce Dense Research</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Compress the trace into a structured <code style="font-size:0.8rem">research.md</code>: Entry Point → Controller Layer → Service Layer → Data Access → Observations. Include caller counts, dependency lists, and blocking conditions. The nopCommerce research.md maps the full add-to-cart flow in ~2k lines — down from 200k.</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; padding: 1.25rem; background: var(--surface); border: 1px solid rgba(232,145,58,0.15); border-radius: var(--radius-sm);">
+          <div style="min-width: 36px; height: 36px; border-radius: 50%; background: rgba(232,145,58,0.1); border: 1px solid rgba(232,145,58,0.2); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--orange); font-size: 0.85rem;">4</div>
+          <div>
+            <div style="font-weight: 600; color: var(--text); margin-bottom: 0.3rem;">Plan the Extraction</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Fresh agent reads only <code style="font-size:0.8rem">research.md</code>. Produces ordered steps: create interface → create implementation (copy, don't move) → register in DI → delegate from original → update controller. Each step ends with a verification command (<code style="font-size:0.8rem">dotnet build</code>, <code style="font-size:0.8rem">dotnet test</code>, <code style="font-size:0.8rem">npx playwright test</code>).</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; padding: 1.25rem; background: var(--surface); border: 1px solid rgba(124,92,252,0.15); border-radius: var(--radius-sm);">
+          <div style="min-width: 36px; height: 36px; border-radius: 50%; background: rgba(124,92,252,0.1); border: 1px solid rgba(124,92,252,0.2); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--accent); font-size: 0.85rem;">5</div>
+          <div>
+            <div style="font-weight: 600; color: var(--text); margin-bottom: 0.3rem;">Implement with the Harness Running</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">Fresh agent follows the plan. After every change: <code style="font-size:0.8rem">dotnet format --verify-no-changes && dotnet test && npx playwright test</code>. The harness catches type errors (compiler), logic regressions (unit tests), and broken UI flows (Playwright). The agent self-corrects from error messages. <em>No human code review needed during implementation.</em></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <p><strong>Why this works for brownfields:</strong> You're not asking AI to understand your whole codebase. You're giving it a compressed, verified map of one narrow flow — and a harness that catches mistakes structurally. The steel thread proves the methodology; then you repeat it for the next flow.</p>
+      </div>
     </section>
 
     <!-- ── Exercise Steps ── -->
@@ -1438,12 +1939,21 @@
 </div>
 
 <!-- ═══════════ PAGE: ROADMAP ═══════════ -->
-<div id="roadmap" class="page active">
+<div id="roadmap" class="page">
   <div class="container">
     <section class="hero" style="padding-bottom: 1.5rem;">
       <div class="hero-badge">Enablement Roadmap</div>
       <h1>Your AI <span class="gradient">Enablement Journey</span></h1>
       <p class="subtitle">A progressive roadmap from first Copilot prompt to fully agentic workflows. Each stage builds on the last — check the boxes as you go.</p>
+    </section>
+
+    <!-- ── What is AI-SDLC? ── -->
+    <section class="content-section" style="padding-top: 1.5rem; padding-bottom: 0;">
+      <div class="callout green" style="border-left: 3px solid var(--accent-2); padding: 1.75rem 2rem;">
+        <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-2); margin-bottom: 0.75rem;">Definition</div>
+        <p style="font-size: 1.05rem; color: var(--text); margin-bottom: 0.75rem;"><strong>The AI-SDLC</strong> is a software development lifecycle where AI agents participate at every stage — from discovery through deployment — guided by <em>intent engineering</em>, constrained by <em>structural enforcement</em> (physics), and connected by <em>dense handoff artefacts</em>.</p>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">It isn't a new process bolted onto what you already do. It's a progressive evolution of your existing SDLC: first AI assists you, then augments you, then orchestrates alongside you, and eventually runs autonomously with you setting intent and reviewing outcomes. The five stages below map this journey.</p>
+      </div>
     </section>
 
     <!-- ── Interactive Progress Bar ── -->
@@ -1578,6 +2088,67 @@
             <div class="rm-checkbox">&#10003;</div>
             <div class="rm-check-text"><strong>Agent Mode basics</strong> — use Copilot's agent mode for multi-file exploration and documentation tasks</div>
           </div>
+        </div>
+
+        <!-- copilot-instructions.md / CLAUDE.md Starter Template -->
+        <div style="margin: 1.5rem 0; padding: 1.5rem; background: var(--surface); border: 1px solid rgba(91,141,239,0.2); border-radius: var(--radius);">
+          <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); margin-bottom: 1rem;">Starter Template — copilot-instructions.md / CLAUDE.md</div>
+          <div class="code-block" style="margin: 0;">
+<pre>
+<span class="keyword"># Project: [Your Project Name]</span>
+
+<span class="keyword">## Architecture</span>
+<span class="highlight-line">- Framework: .NET 10 / React / [yours]</span>
+<span class="highlight-line">- Pattern: N-tier with service layer</span>
+<span class="highlight-line">- Key entry points: Controllers → Services → Repositories</span>
+
+<span class="keyword">## Coding Standards</span>
+<span class="highlight-line">- Async/await throughout; suffix Async on async methods</span>
+<span class="highlight-line">- Interfaces for all services; register in DI container</span>
+<span class="highlight-line">- No magic strings — use constants or enums</span>
+
+<span class="keyword">## Constraints</span>
+<span class="highlight-line">- Do NOT modify the database schema</span>
+<span class="highlight-line">- Do NOT change public API contracts</span>
+<span class="highlight-line">- Do NOT proceed until all tests pass</span>
+
+<span class="keyword">## Verification Commands</span>
+<span class="string">dotnet format --verify-no-changes</span>   <span class="comment"># Style</span>
+<span class="string">dotnet test</span>                           <span class="comment"># Unit + integration</span>
+<span class="string">npx playwright test</span>                   <span class="comment"># E2E</span>
+
+<span class="keyword">## Steel Thread</span>
+<span class="highlight-line">The add-to-cart flow: Browse → Product → Add → View Cart</span>
+<span class="highlight-line">Files: ShoppingCartController.cs, ShoppingCartService.cs</span>
+</pre>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.5;">Save as <code style="font-size: 0.78rem;">.github/copilot-instructions.md</code> for Copilot or <code style="font-size: 0.78rem;">CLAUDE.md</code> at the repo root for Claude. This file is the single most impactful thing you can create — it turns every agent interaction from cold-start to context-aware.</div>
+        </div>
+
+        <!-- ADC Template -->
+        <div style="margin: 1.5rem 0; padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);">
+          <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); margin-bottom: 1rem;">Agent Decision Context — Template</div>
+          <div class="code-block" style="margin: 0;">
+<pre>
+<span class="keyword">docs/adc/</span>
+├── <span class="string">YYYY-MM-DD--decision-name.md</span>     <span class="comment">← Decision record</span>
+└── <span class="string">YYYY-MM-DD--decision-name/</span>      <span class="comment">← RPI artefacts</span>
+    ├── research.md                    <span class="comment">← Phase 1 output</span>
+    ├── plan.md                        <span class="comment">← Phase 2 output</span>
+    └── handoff.md                     <span class="comment">← Agent context for Phase 3</span>
+
+<span class="keyword">## Decision Record Template</span>
+<span class="highlight-line">Title:       Extract CartService from ShoppingCartService</span>
+<span class="highlight-line">Date:        2026-03-31</span>
+<span class="highlight-line">Status:      Proposed | Accepted | Implemented | Rejected</span>
+<span class="highlight-line">Motivation:  ShoppingCartService is 1,976 lines with 31 deps</span>
+<span class="highlight-line">Approach:    Extract steel thread methods into focused service</span>
+<span class="highlight-line">Rejected:    Split by CRUD (too granular), rewrite (too risky)</span>
+<span class="highlight-line">Rollback:    Delete CartService, revert delegation in original</span>
+<span class="highlight-line">Harness:     dotnet build + dotnet test + npx playwright test</span>
+</pre>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.5;"><strong style="color: var(--text);">Real example:</strong> The nopCommerce workshop uses this exact pattern. The <code style="font-size: 0.78rem;">research.md</code> maps the full add-to-cart flow (UI → Controller → Service → Data) with precise file paths and line numbers. The <code style="font-size: 0.78rem;">plan.md</code> contains 7 ordered steps, each with a verification command. The <code style="font-size: 0.78rem;">handoff.md</code> gives the implement agent just enough context — steel thread scope, key selectors, and harness commands — without re-explaining the research.</div>
         </div>
 
         <div class="rm-resources">
@@ -2238,8 +2809,8 @@
   </div>
 </div>
 
-<!-- ═══════════ TOKENS CONTENT (appended to Intent & Context via scroll) ═══════════ -->
-<div id="tokens" class="page" style="display:none !important">
+<!-- Tokens content merged into Intent & Context page above. Full detail preserved in intent-engineering-backup.html -->
+<div style="display:none">
 
     <!-- ── The Dumb Zone ── -->
     <section class="content-section">
