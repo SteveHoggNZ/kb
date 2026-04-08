@@ -523,6 +523,143 @@
   /* ─── Footer ─── */
   .site-footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 0.8rem; }
 
+  /* ─── Roadmap Stage ─── */
+  .rm-stage {
+    margin: 2.5rem 0; position: relative; padding-left: 4rem;
+  }
+  .rm-stage::before {
+    content: ''; position: absolute; left: 22px; top: 0; bottom: 0; width: 3px;
+    border-radius: 2px;
+  }
+  .rm-stage.s1::before { background: linear-gradient(to bottom, var(--accent-2), rgba(0,212,170,0.1)); }
+  .rm-stage.s2::before { background: linear-gradient(to bottom, var(--blue), rgba(91,141,239,0.1)); }
+  .rm-stage.s3::before { background: linear-gradient(to bottom, var(--accent-light), rgba(155,127,255,0.1)); }
+  .rm-stage.s4::before { background: linear-gradient(to bottom, var(--orange), rgba(232,145,58,0.1)); }
+  .rm-stage.s5::before { background: linear-gradient(to bottom, var(--accent), rgba(124,92,252,0.1)); }
+  .rm-stage-marker {
+    position: absolute; left: 0; top: 0;
+    width: 46px; height: 46px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 800; z-index: 1;
+    background: var(--surface); border: 3px solid var(--border);
+  }
+  .rm-stage.s1 .rm-stage-marker { border-color: var(--accent-2); color: var(--accent-2); }
+  .rm-stage.s2 .rm-stage-marker { border-color: var(--blue); color: var(--blue); }
+  .rm-stage.s3 .rm-stage-marker { border-color: var(--accent-light); color: var(--accent-light); }
+  .rm-stage.s4 .rm-stage-marker { border-color: var(--orange); color: var(--orange); }
+  .rm-stage.s5 .rm-stage-marker { border-color: var(--accent); color: var(--accent); }
+  .rm-stage-header { margin-bottom: 1.5rem; }
+  .rm-stage-header .rm-wave-tag {
+    font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 0.4rem;
+  }
+  .rm-stage.s1 .rm-wave-tag { color: var(--accent-2); background: rgba(0,212,170,0.1); }
+  .rm-stage.s2 .rm-wave-tag { color: var(--blue); background: rgba(91,141,239,0.1); }
+  .rm-stage.s3 .rm-wave-tag { color: var(--accent-light); background: rgba(155,127,255,0.1); }
+  .rm-stage.s4 .rm-wave-tag { color: var(--orange); background: rgba(232,145,58,0.1); }
+  .rm-stage.s5 .rm-wave-tag { color: var(--accent); background: rgba(124,92,252,0.1); }
+  .rm-stage-header h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .rm-stage.s1 .rm-stage-header h3 { color: var(--accent-2); }
+  .rm-stage.s2 .rm-stage-header h3 { color: var(--blue); }
+  .rm-stage.s3 .rm-stage-header h3 { color: var(--accent-light); }
+  .rm-stage.s4 .rm-stage-header h3 { color: var(--orange); }
+  .rm-stage.s5 .rm-stage-header h3 { color: var(--accent); }
+  .rm-stage-header p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+  .rm-checklist {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.6rem; margin: 1rem 0;
+  }
+  .rm-check {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    padding: 0.6rem 0.75rem; border-radius: var(--radius-sm);
+    background: var(--surface); border: 1px solid var(--border);
+    transition: var(--transition); cursor: default;
+  }
+  .rm-check:hover { border-color: rgba(255,255,255,0.1); background: var(--surface-2); }
+  .rm-checkbox {
+    width: 18px; height: 18px; min-width: 18px; border-radius: 4px;
+    border: 2px solid var(--border); margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; color: transparent; transition: var(--transition);
+    cursor: pointer;
+  }
+  .rm-check.checked .rm-checkbox {
+    border-color: var(--accent-2); background: var(--accent-2); color: #000;
+  }
+  .rm-check-text { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; }
+  .rm-check.checked .rm-check-text { color: var(--text-dim); text-decoration: line-through; text-decoration-color: var(--text-dim); }
+  .rm-check-text strong { color: var(--text); font-weight: 600; }
+  .rm-check.checked .rm-check-text strong { color: var(--text-dim); }
+  .rm-outcome {
+    margin: 1.25rem 0 0.5rem; padding: 1rem 1.25rem;
+    background: var(--surface); border-left: 3px solid var(--border);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .rm-stage.s1 .rm-outcome { border-left-color: var(--accent-2); }
+  .rm-stage.s2 .rm-outcome { border-left-color: var(--blue); }
+  .rm-stage.s3 .rm-outcome { border-left-color: var(--accent-light); }
+  .rm-stage.s4 .rm-outcome { border-left-color: var(--orange); }
+  .rm-stage.s5 .rm-outcome { border-left-color: var(--accent); }
+  /* ─── Resource links ─── */
+  .rm-resources {
+    margin: 1.25rem 0; display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .rm-resources-title {
+    font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 0.25rem;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  .rm-resource-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.5rem 0.75rem; border-radius: var(--radius-sm);
+    background: var(--surface); border: 1px solid var(--border);
+    text-decoration: none; transition: var(--transition);
+    font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;
+  }
+  .rm-resource-link:hover {
+    border-color: rgba(124, 92, 252, 0.3); background: var(--surface-2);
+    color: var(--text);
+  }
+  .rm-resource-badge {
+    font-size: 0.55rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.04em; padding: 2px 6px; border-radius: 3px;
+    white-space: nowrap; min-width: fit-content;
+  }
+  .rm-resource-badge.gh-skill { background: rgba(0,212,170,0.1); color: var(--accent-2); border: 1px solid rgba(0,212,170,0.2); }
+  .rm-resource-badge.ms-learn { background: rgba(91,141,239,0.1); color: var(--blue); border: 1px solid rgba(91,141,239,0.2); }
+  .rm-resource-badge.cert { background: rgba(232,145,58,0.1); color: var(--orange); border: 1px solid rgba(232,145,58,0.2); }
+
+  .rm-outcome-label {
+    font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 0.3rem;
+  }
+  .rm-outcome p { font-size: 0.85rem; color: var(--text); margin: 0; }
+
+  /* ─── Progress bar ─── */
+  .rm-progress-wrap { margin: 2rem 0 3rem; }
+  .rm-progress-labels {
+    display: flex; justify-content: space-between; margin-bottom: 0.5rem;
+  }
+  .rm-progress-label {
+    font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .rm-progress-track {
+    height: 8px; border-radius: 4px; background: var(--surface-2);
+    overflow: hidden; position: relative;
+  }
+  .rm-progress-segments { display: flex; height: 100%; }
+  .rm-seg {
+    height: 100%; transition: width 0.6s ease;
+  }
+  .rm-seg:first-child { border-radius: 4px 0 0 4px; }
+  .rm-seg:last-child { border-radius: 0 4px 4px 0; }
+  .rm-seg.s1 { background: var(--accent-2); }
+  .rm-seg.s2 { background: var(--blue); }
+  .rm-seg.s3 { background: var(--accent-light); }
+  .rm-seg.s4 { background: var(--orange); }
+  .rm-seg.s5 { background: var(--accent); }
+
   /* ─── Wave Timeline ─── */
   .wave-timeline {
     display: flex; align-items: flex-start; gap: 0; margin: 2.5rem 0;
@@ -684,6 +821,10 @@
     .wave-body { min-height: auto; }
     .wave-today { position: static; transform: none; margin-bottom: 0.5rem; }
     .maturity-cols { grid-template-columns: 1fr; }
+    .rm-stage { padding-left: 3rem; }
+    .rm-stage-marker { width: 38px; height: 38px; font-size: 0.9rem; }
+    .rm-checklist { grid-template-columns: 1fr; }
+    .rm-progress-labels { font-size: 0.55rem; }
     .feedback-loop-diagram { flex-direction: column; gap: 0.5rem; }
     .fl-arrow { transform: rotate(90deg); }
     .fl-return-arrow { display: none; }
@@ -715,6 +856,7 @@
       <button class="tab-btn" onclick="showPage('workshop')" role="tab">In Practice</button>
       <button class="tab-btn" onclick="showPage('tokens')" role="tab">Tokens</button>
       <button class="tab-btn" onclick="showPage('aisdlc')" role="tab">AI-SDLC</button>
+      <button class="tab-btn" onclick="showPage('roadmap')" role="tab">Roadmap</button>
     </nav>
   </div>
 </header>
@@ -1269,6 +1411,510 @@
 
       <div class="callout">
         <p><strong>The takeaway:</strong> The model doesn't matter as much as the methodology. A well-structured intent engineering system — with phases, harnesses, and feedback loops — produces reliable results regardless of which AI you use.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 8: ROADMAP ═══════════ -->
+<div id="roadmap" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 1.5rem;">
+      <div class="hero-badge">Enablement Roadmap</div>
+      <h1>Your AI <span class="gradient">Enablement Journey</span></h1>
+      <p class="subtitle">A progressive roadmap from first Copilot prompt to fully agentic workflows. Each stage builds on the last — check the boxes as you go.</p>
+    </section>
+
+    <!-- ── Interactive Progress Bar ── -->
+    <section class="content-section" style="padding-top: 1rem;">
+      <div class="rm-progress-wrap">
+        <div class="rm-progress-labels">
+          <span class="rm-progress-label" style="color: var(--accent-2);">Foundations</span>
+          <span class="rm-progress-label" style="color: var(--blue);">Capture Intent</span>
+          <span class="rm-progress-label" style="color: var(--accent-light);">Build Physics</span>
+          <span class="rm-progress-label" style="color: var(--orange);">Steel Thread</span>
+          <span class="rm-progress-label" style="color: var(--accent);">Scale</span>
+        </div>
+        <div class="rm-progress-track">
+          <div class="rm-progress-segments" id="progressSegments">
+            <div class="rm-seg s1" style="width: 20%;"></div>
+            <div class="rm-seg s2" style="width: 20%;"></div>
+            <div class="rm-seg s3" style="width: 20%;"></div>
+            <div class="rm-seg s4" style="width: 20%;"></div>
+            <div class="rm-seg s5" style="width: 20%;"></div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 0.5rem; font-size: 0.72rem; color: var(--text-dim);">
+          Click checkboxes below to track your progress &mdash; <span id="progressCount">0</span> / <span id="progressTotal">0</span> complete
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ STAGE 1: FOUNDATIONS ═══════ -->
+    <section class="content-section" style="padding-top: 0;">
+      <div class="rm-stage s1">
+        <div class="rm-stage-marker">1</div>
+        <div class="rm-stage-header">
+          <span class="rm-wave-tag">Wave 1 &mdash; Assistance</span>
+          <h3>Foundations: Learn the Tools</h3>
+          <p>Get comfortable with Copilot's core features. Build muscle memory for the basics before adding complexity. This is where everyone starts.</p>
+        </div>
+
+        <div class="rm-checklist">
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Copilot in your IDE</strong> — tab completions, inline chat (Ctrl+I), chat panel working</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>4S Framework</strong> — Single, Specific, Short, Surround applied to prompts</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Slash commands</strong> — /explain, /fix, /tests, /doc used fluently</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Context variables</strong> — #file, #selection, #codebase to focus Copilot</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Chat participants</strong> — @workspace, @terminal, @github for domain context</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Prompt patterns</strong> — zero-shot, few-shot, role prompts, chain-of-thought</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Safety habits</strong> — always review output, run tests on generated code, never paste secrets</div>
+          </div>
+        </div>
+
+        <div class="rm-resources">
+          <div class="rm-resources-title">&#128218; Learning Resources</div>
+          <a class="rm-resource-link" href="https://github.com/skills/getting-started-with-github-copilot" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Getting Started with GitHub Copilot
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/copilot-codespaces-vscode" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Copilot in Codespaces &amp; VS Code
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/create-applications-with-the-copilot-cli" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Create Applications with the Copilot CLI
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-prompt-engineering-with-github-copilot/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> Prompt Engineering with GitHub Copilot
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-github-copilot/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> Introduction to GitHub Copilot
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/responsible-ai-with-github-copilot/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> Responsible AI with GitHub Copilot
+          </a>
+        </div>
+
+        <div class="rm-outcome">
+          <div class="rm-outcome-label">Stage 1 outcome</div>
+          <p>You can use Copilot as a fast, reliable code companion. You know how to ask good questions and you always verify the answers.</p>
+        </div>
+      </div>
+
+      <!-- ═══════ STAGE 2: CAPTURE INTENT ═══════ -->
+      <div class="rm-stage s2">
+        <div class="rm-stage-marker">2</div>
+        <div class="rm-stage-header">
+          <span class="rm-wave-tag">Wave 2 &mdash; Augmentation</span>
+          <h3>Capture Intent: Document What Exists</h3>
+          <p>Before AI can help you change a codebase, it needs to understand it. This stage is about reverse-engineering the intent that was never written down — architecture, conventions, business rules, decisions.</p>
+        </div>
+
+        <div class="rm-checklist">
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>copilot-instructions.md</strong> — repo-level AI instructions in .github/ capturing coding standards</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Architecture documented</strong> — use Copilot to reverse-engineer and document your system's structure</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Agent Decision Context</strong> — start recording decisions: what, why, alternatives rejected, rollback strategy</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Strategic vs Tactical docs</strong> — separate the Why (human-authored) from the How (agent-generated)</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Source Packs</strong> — bundle context (docs, code excerpts, known facts) for reliable AI summaries</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Provenance tagging</strong> — require AI output labelled EXTRACTED (from source) or INFERRED (AI derivation)</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Agent Mode basics</strong> — use Copilot's agent mode for multi-file exploration and documentation tasks</div>
+          </div>
+        </div>
+
+        <div class="rm-resources">
+          <div class="rm-resources-title">&#128218; Learning Resources</div>
+          <a class="rm-resource-link" href="https://github.com/skills/customize-your-github-copilot-experience" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Customize Your GitHub Copilot Experience — copilot-instructions.md, custom instructions, prompt files
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/scale-institutional-knowledge-using-copilot-spaces" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Scale Institutional Knowledge Using Copilot Spaces — curate context for your team
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/expand-your-team-with-copilot" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Expand Your Team with Copilot — multi-file tasks, agent-assisted documentation
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/introduction-to-copilot-spaces/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> Introduction to Copilot Spaces
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/management-and-customization-of-github-copilot/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> Management and Customization of GitHub Copilot
+          </a>
+        </div>
+
+        <div class="rm-outcome">
+          <div class="rm-outcome-label">Stage 2 outcome</div>
+          <p>Your codebase has agent-readable context. Copilot understands your conventions, architecture, and constraints. You're no longer starting from zero every prompt.</p>
+        </div>
+      </div>
+
+      <!-- ═══════ STAGE 3: BUILD PHYSICS ═══════ -->
+      <div class="rm-stage s3">
+        <div class="rm-stage-marker">3</div>
+        <div class="rm-stage-header">
+          <span class="rm-wave-tag">Wave 2 &mdash; Augmentation</span>
+          <h3>Build Physics: Add Tests and Harnesses</h3>
+          <p>This is where you stop relying on prompts and start building structural enforcement. Tests, linters, and CI pipelines become the physics that make wrong agent behaviour impossible. You're closing the gaps in code coverage that make AI unreliable.</p>
+        </div>
+
+        <div class="rm-checklist">
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Unit test coverage</strong> — use Copilot /tests to generate tests for critical paths you lack coverage on</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>E2E tests</strong> — Playwright or equivalent covering your core user flows (the steel thread)</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Linter configured</strong> — style rules enforced automatically, not by convention</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>CI pipeline running</strong> — build + lint + test on every PR, failures block merge</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>The Code Quality Loop</strong> — Explore &rarr; Plan &rarr; Code &rarr; Validate &rarr; Repeat, with AI accelerating each step</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Force Blanks rule</strong> — AI leaves gaps when unsure, with a "Reason for Blank" field</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Verification mindset</strong> — every risk maps to a harness; if a human has to check, the harness is incomplete</div>
+          </div>
+        </div>
+
+        <div class="rm-resources">
+          <div class="rm-resources-title">&#128218; Learning Resources</div>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/create-unit-tests-using-github-copilot-tools/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> Create Unit Tests Using GitHub Copilot Tools
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/copilot-code-review" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Copilot Code Review — automated quality checks on PRs
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/hello-github-actions" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Hello GitHub Actions — set up CI pipelines that enforce harnesses
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/secure-code-game" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Secure Code Game — security-first testing mindset
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/github-copilot-across-environments/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> GitHub Copilot Across Environments — IDE, CLI, and CI/CD
+          </a>
+        </div>
+
+        <div class="rm-outcome">
+          <div class="rm-outcome-label">Stage 3 outcome</div>
+          <p>Your codebase has physics. AI agents can make changes and get immediate, structural feedback. Wrong behaviour is caught automatically, not by code review.</p>
+        </div>
+      </div>
+
+      <!-- ═══════ STAGE 4: STEEL THREAD ═══════ -->
+      <div class="rm-stage s4">
+        <div class="rm-stage-marker">4</div>
+        <div class="rm-stage-header">
+          <span class="rm-wave-tag">Wave 2&ndash;3 &mdash; Augmentation &rarr; Orchestration</span>
+          <h3>Steel Thread: Prove It End-to-End</h3>
+          <p>Pick one narrow, vertical slice through your entire architecture — a "steel thread." Apply the full RPI methodology: Research with LSP, Plan with risk registers, Implement with feedback loops. This is your proof-of-concept that the methodology works on your codebase.</p>
+        </div>
+
+        <div class="rm-checklist">
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Steel thread identified</strong> — one end-to-end user flow touching every layer (UI, controller, service, data)</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Research phase (R)</strong> — agent explores the steel thread with LSP, produces dense research.md</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Plan phase (P)</strong> — fresh agent reads only research.md, produces plan.md with risk register</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Implement phase (I)</strong> — fresh agent follows plan step-by-step, all harnesses green after every change</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>ADC artefacts saved</strong> — research.md, plan.md, handoff.md stored in docs/adc/ for future reference</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Custom Skills created</strong> — your proven patterns encoded as reusable .github/skills/ or .claude/skills/</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>MCP servers configured</strong> — GitHub, Playwright, or domain-specific servers connected to your agent workflow</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Results demonstrated</strong> — show the team what worked, what the harnesses caught, what the agent self-corrected</div>
+          </div>
+        </div>
+
+        <div class="rm-resources">
+          <div class="rm-resources-title">&#128218; Learning Resources</div>
+          <a class="rm-resource-link" href="https://github.com/skills/build-applications-w-copilot-agent-mode" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Build Applications with Copilot Agent Mode — multi-file agentic workflows
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/integrate-mcp-with-copilot" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Integrate MCP with Copilot — connect agents to external tools and data
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/modernize-your-legacy-code-with-github-copilot" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Modernize Your Legacy Code with GitHub Copilot — brownfield refactoring
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/github-copilot-coding-agent/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> GitHub Copilot Coding Agent — autonomous task execution
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/github-mcp-server/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> GitHub MCP Server — connecting AI to GitHub's API
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/perform-code-maintenance-with-copilot-agent/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> Perform Code Maintenance with Copilot Agent
+          </a>
+        </div>
+
+        <div class="rm-outcome">
+          <div class="rm-outcome-label">Stage 4 outcome</div>
+          <p>You've proven the methodology works on your actual codebase. You have a repeatable playbook, reusable skills, and concrete results to share with your team.</p>
+        </div>
+      </div>
+
+      <!-- ═══════ STAGE 5: SCALE ═══════ -->
+      <div class="rm-stage s5">
+        <div class="rm-stage-marker">5</div>
+        <div class="rm-stage-header">
+          <span class="rm-wave-tag">Wave 3&ndash;4 &mdash; Orchestration &rarr; Autonomy</span>
+          <h3>Scale: From You to the Organisation</h3>
+          <p>Graduate your proven patterns from individual to team infrastructure. Shared skills repos, pipeline agents, PR review bots, automated research phases. The methodology that worked on your machine now runs in your CI/CD pipeline.</p>
+        </div>
+
+        <div class="rm-checklist">
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Shared skills repo</strong> — proven skills promoted from personal to team, versioned and reviewed like code</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Team copilot-instructions.md</strong> — org conventions as agent-readable intent, maintained by the team</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>PR review agent</strong> — Copilot code review on every PR, checking architecture, style, and test coverage</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Dependabot + Copilot</strong> — automated dependency self-healing: alert &rarr; analysis &rarr; fix PR &rarr; merge</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Coding agent for issues</strong> — assign tickets to Copilot, it creates draft PRs asynchronously</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Security integration</strong> — Defender/GHAS alerts trigger agent-generated remediation PRs</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Modernization pipelines</strong> — Assess &rarr; Plan &rarr; Execute &rarr; Validate agent workflows for upgrades</div>
+          </div>
+          <div class="rm-check" onclick="toggleCheck(this)">
+            <div class="rm-checkbox">&#10003;</div>
+            <div class="rm-check-text"><strong>Org-wide ADCs</strong> — decision contexts become institutional memory, searchable by future agents and humans</div>
+          </div>
+        </div>
+
+        <div class="rm-resources">
+          <div class="rm-resources-title">&#128218; Learning Resources</div>
+          <a class="rm-resource-link" href="https://github.com/skills/create-ai-powered-actions" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Create AI-Powered Actions — build intelligent GitHub Actions with AI models
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/reusable-workflows" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Reusable Workflows — DRY CI/CD pipelines shared across repos
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/secure-repository-supply-chain" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Secure Repository Supply Chain — Dependabot, dependency review, GHAS
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/your-first-extension-for-github-copilot" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Your First Extension for GitHub Copilot — build custom chat participants
+          </a>
+          <a class="rm-resource-link" href="https://github.com/skills/introduction-to-codeql" target="_blank">
+            <span class="rm-resource-badge gh-skill">GH Skill</span> Introduction to CodeQL — automated security analysis at scale
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/training/modules/code-review-with-copilot/" target="_blank">
+            <span class="rm-resource-badge ms-learn">MS Learn</span> Code Review with GitHub Copilot
+          </a>
+          <a class="rm-resource-link" href="https://learn.microsoft.com/en-us/credentials/certifications/github-copilot/" target="_blank">
+            <span class="rm-resource-badge cert">Cert</span> GitHub Copilot Certification — validate your AI-assisted development skills
+          </a>
+        </div>
+
+        <div class="rm-outcome">
+          <div class="rm-outcome-label">Stage 5 outcome</div>
+          <p>AI agents are team infrastructure. Your pipeline researches, plans, implements, and verifies — with humans setting intent and reviewing outcomes. The AI-SDLC is operational.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── The Journey Visual ── -->
+    <section class="content-section">
+      <div class="section-label">The Big Picture</div>
+      <h2>One Journey, Five Stages</h2>
+      <p>Each stage unlocks the next. You can't build physics without capturing intent first. You can't run a steel thread without physics. And you can't scale what you haven't proven. The progression is deliberate.</p>
+
+      <!-- Horizontal journey -->
+      <div style="display: flex; align-items: stretch; gap: 3px; margin: 2.5rem 0;">
+        <div style="flex: 1; padding: 1.25rem 1rem; border-radius: var(--radius) 0 0 var(--radius); background: linear-gradient(180deg, rgba(0,212,170,0.08), var(--surface)); border: 1px solid rgba(0,212,170,0.15); text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">&#128218;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--accent-2); margin-bottom: 0.25rem;">Learn</div>
+          <div style="font-size: 0.65rem; color: var(--text-dim);">Tools &amp; prompts</div>
+        </div>
+        <div style="flex: 1; padding: 1.25rem 1rem; background: linear-gradient(180deg, rgba(91,141,239,0.08), var(--surface)); border: 1px solid rgba(91,141,239,0.15); text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">&#128196;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--blue); margin-bottom: 0.25rem;">Document</div>
+          <div style="font-size: 0.65rem; color: var(--text-dim);">Capture intent</div>
+        </div>
+        <div style="flex: 1; padding: 1.25rem 1rem; background: linear-gradient(180deg, rgba(155,127,255,0.08), var(--surface)); border: 1px solid rgba(155,127,255,0.15); text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">&#128737;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--accent-light); margin-bottom: 0.25rem;">Enforce</div>
+          <div style="font-size: 0.65rem; color: var(--text-dim);">Build physics</div>
+        </div>
+        <div style="flex: 1; padding: 1.25rem 1rem; background: linear-gradient(180deg, rgba(232,145,58,0.08), var(--surface)); border: 1px solid rgba(232,145,58,0.15); text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">&#128640;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--orange); margin-bottom: 0.25rem;">Prove</div>
+          <div style="font-size: 0.65rem; color: var(--text-dim);">Steel thread</div>
+        </div>
+        <div style="flex: 1; padding: 1.25rem 1rem; border-radius: 0 var(--radius) var(--radius) 0; background: linear-gradient(180deg, rgba(124,92,252,0.08), var(--surface)); border: 1px solid rgba(124,92,252,0.15); text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 0.4rem;">&#127758;</div>
+          <div style="font-size: 0.72rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem;">Scale</div>
+          <div style="font-size: 0.65rem; color: var(--text-dim);">Team &amp; org</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p><strong>Start where you are.</strong> Most teams are somewhere between Stage 1 and Stage 2. That's fine. The roadmap isn't a race — it's a progression. Each stage makes the next one possible, and each stage delivers value on its own.</p>
+      </div>
+    </section>
+
+    <!-- ── What AI Touches ── -->
+    <section class="content-section">
+      <div class="section-label">AI at Every Stage</div>
+      <h2>Where AI Fits in the Development Lifecycle</h2>
+      <p>By Stage 5, AI participates in every phase of the SDLC. But even at Stage 1, it's accelerating your work. The difference is scope and trust.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 4px; margin: 2rem 0;">
+        <div style="display: grid; grid-template-columns: 140px 1fr 60px; gap: 4px; align-items: center;">
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--text-dim); text-align: right; padding-right: 0.5rem;">SDLC Phase</div>
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--text-dim);">How AI Helps</div>
+          <div style="font-size: 0.72rem; font-weight: 600; color: var(--text-dim); text-align: center;">Stage</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 140px 1fr 60px; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--accent-2);">Discovery</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Reverse-engineer architecture, generate system docs, map dependencies with LSP</div>
+          <div style="text-align: center; font-size: 0.72rem; color: var(--accent-2); font-weight: 600;">2+</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 140px 1fr 60px; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--blue);">Planning</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Draft implementation plans, risk registers, migration strategies from research artefacts</div>
+          <div style="text-align: center; font-size: 0.72rem; color: var(--blue); font-weight: 600;">4+</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 140px 1fr 60px; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--accent-light);">Coding</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Completions, inline chat, agent-mode multi-file edits, vibe coding for prototypes</div>
+          <div style="text-align: center; font-size: 0.72rem; color: var(--accent-light); font-weight: 600;">1+</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 140px 1fr 60px; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--accent-light);">Testing</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Generate unit tests, E2E tests, edge cases. Copilot as the harness-builder, not just the coder</div>
+          <div style="text-align: center; font-size: 0.72rem; color: var(--accent-light); font-weight: 600;">1+</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 140px 1fr 60px; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--orange);">Code Review</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Copilot PR reviews for architecture, style, security. Human final approval</div>
+          <div style="text-align: center; font-size: 0.72rem; color: var(--orange); font-weight: 600;">5</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 140px 1fr 60px; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--accent);">Security</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Defender &rarr; GHAS &rarr; agent remediation. Runtime threats trigger source-level fixes</div>
+          <div style="text-align: center; font-size: 0.72rem; color: var(--accent); font-weight: 600;">5</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 140px 1fr 60px; gap: 4px; align-items: center;">
+          <div style="padding: 8px 12px; text-align: right; font-size: 0.8rem; font-weight: 600; color: var(--accent);">Maintenance</div>
+          <div style="padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">Dependabot + Copilot self-healing, modernization agents for framework upgrades</div>
+          <div style="text-align: center; font-size: 0.72rem; color: var(--accent); font-weight: 600;">5</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Mindset shift ── -->
+    <section class="content-section">
+      <div class="section-label">The Shift</div>
+      <h2>From Maker to Architect of Intent</h2>
+      <p>The deepest change isn't in tooling — it's in mindset. As you progress through the stages, your role evolves from writing code to defining what correct looks like.</p>
+
+      <!-- Role evolution -->
+      <div style="display: flex; gap: 3px; margin: 2rem 0;">
+        <div style="flex: 1; padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius) 0 0 var(--radius);">
+          <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 0.75rem;">Stages 1&ndash;2</div>
+          <div style="font-size: 1rem; font-weight: 700; color: var(--accent-2); margin-bottom: 0.5rem;">Maker</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">You write code with AI assistance. Copilot suggests, you accept or reject. The human does the thinking.</div>
+        </div>
+        <div style="flex: 1; padding: 1.5rem; background: var(--surface); border: 1px solid var(--border);">
+          <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 0.75rem;">Stages 3&ndash;4</div>
+          <div style="font-size: 1rem; font-weight: 700; color: var(--orange); margin-bottom: 0.5rem;">Engineering Manager</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">You define the Definition of Done and the physics. Agents do the implementation. You review outcomes, not code.</div>
+        </div>
+        <div style="flex: 1; padding: 1.5rem; background: linear-gradient(180deg, rgba(124,92,252,0.04), var(--surface)); border: 1px solid rgba(124,92,252,0.2); border-radius: 0 var(--radius) var(--radius) 0;">
+          <div style="font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); margin-bottom: 0.75rem;">Stage 5</div>
+          <div style="font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">Architect of Intent</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">You define the system of systems. Intent flows through docs, skills, harnesses, and pipelines. Agents coordinate agents.</div>
+        </div>
+      </div>
+
+      <div class="takeaway-banner">
+        <em>Execution is now cheap. Verification and clarity are the new bottlenecks.</em><br>
+        <span style="font-size: 0.85rem; color: var(--text-dim); font-style: normal;">Not vibe coding. Intent specification.</span>
       </div>
     </section>
   </div>
@@ -1912,6 +2558,38 @@
     event.currentTarget.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // Interactive checklist
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('#roadmap .rm-check');
+    const checked = document.querySelectorAll('#roadmap .rm-check.checked');
+    const total = all.length;
+    const done = checked.length;
+    const countEl = document.getElementById('progressCount');
+    const totalEl = document.getElementById('progressTotal');
+    if (countEl) countEl.textContent = done;
+    if (totalEl) totalEl.textContent = total;
+
+    // Count per stage
+    const stages = ['s1','s2','s3','s4','s5'];
+    stages.forEach((s, i) => {
+      const stageEl = document.querySelectorAll('.rm-stage.' + s + ' .rm-check');
+      const stageChecked = document.querySelectorAll('.rm-stage.' + s + ' .rm-check.checked');
+      const seg = document.querySelectorAll('.rm-seg.' + s)[0];
+      if (seg && stageEl.length > 0) {
+        const pct = stageChecked.length / stageEl.length;
+        seg.style.opacity = 0.15 + (pct * 0.85);
+      }
+    });
+  }
+
+  // Init on load
+  document.addEventListener('DOMContentLoaded', updateProgress);
 </script>
 </body>
 </html>
