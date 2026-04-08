@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI-SDLC — From Copilot to Agentic Workflows</title>
+<title>Intent Engineering — Beyond Prompt Engineering</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -847,25 +847,27 @@
 <!-- ═══════════ HEADER ═══════════ -->
 <header class="site-header">
   <div class="header-inner">
-    <div class="logo">AI-SDLC</div>
+    <div class="logo">Intent Engineering</div>
     <nav class="tab-nav" role="tablist">
-      <button class="tab-btn active" onclick="showPage('roadmap')" role="tab">Roadmap</button>
-      <button class="tab-btn" onclick="showPage('overview')" role="tab">Foundations</button>
-      <button class="tab-btn" onclick="showPage('shift')" role="tab">Intent &amp; Context</button>
-      <button class="tab-btn" onclick="showPage('patterns')" role="tab">Physics</button>
-      <button class="tab-btn" onclick="showPage('methodology')" role="tab">Steel Thread</button>
-      <button class="tab-btn" onclick="showPage('aisdlc')" role="tab">Scale</button>
+      <button class="tab-btn active" onclick="showPage('overview')" role="tab">Overview</button>
+      <button class="tab-btn" onclick="showPage('shift')" role="tab">The Shift</button>
+      <button class="tab-btn" onclick="showPage('methodology')" role="tab">Methodology</button>
+      <button class="tab-btn" onclick="showPage('patterns')" role="tab">Patterns</button>
+      <button class="tab-btn" onclick="showPage('workshop')" role="tab">In Practice</button>
+      <button class="tab-btn" onclick="showPage('tokens')" role="tab">Tokens</button>
+      <button class="tab-btn" onclick="showPage('aisdlc')" role="tab">AI-SDLC</button>
+      <button class="tab-btn" onclick="showPage('roadmap')" role="tab">Roadmap</button>
     </nav>
   </div>
 </header>
 
-<!-- ═══════════ PAGE: FOUNDATIONS ═══════════ -->
-<div id="overview" class="page">
+<!-- ═══════════ PAGE 1: OVERVIEW ═══════════ -->
+<div id="overview" class="page active">
   <div class="container">
     <section class="hero">
-      <div class="hero-badge">Stage 1 &mdash; Foundations</div>
-      <h1>The <span class="gradient">Building Blocks</span></h1>
-      <p class="subtitle">From prompting to intent engineering to physics thinking — the three layers that make AI agents reliable. This is the conceptual foundation everything else builds on.</p>
+      <div class="hero-badge">Workshop Guide</div>
+      <h1>Stop Crafting Prompts.<br>Start Engineering <span class="gradient">Intent.</span></h1>
+      <p class="subtitle">Prompt engineering asks "what words make the AI do the right thing?" Intent engineering asks "how do I make the right thing the only possible outcome?"</p>
     </section>
 
     <!-- ── Stacked Layers Diagram ── -->
@@ -961,13 +963,12 @@
   </div>
 </div>
 
-<!-- ═══════════ PAGE: INTENT & CONTEXT ═══════════ -->
+<!-- ═══════════ PAGE 2: THE SHIFT ═══════════ -->
 <div id="shift" class="page">
   <div class="container">
     <section class="hero" style="padding-bottom: 2rem;">
-      <div class="hero-badge">Stages 2&ndash;3 &mdash; Capture Intent</div>
-      <h1>Intent &amp; <span class="gradient">Context</span></h1>
-      <p class="subtitle">Document what exists. Reverse-engineer the intent that was never written down. Engineer the context so agents get curated knowledge, not raw dumps.</p>
+      <h1>From Prompts to <span class="gradient">Intent</span></h1>
+      <p class="subtitle">Prompt engineering is a subset of intent engineering. Here's what changes when you think bigger.</p>
     </section>
 
     <section class="content-section">
@@ -1069,45 +1070,15 @@
         <p><strong>Think of it this way:</strong> Prompt engineering is writing a good brief. Intent engineering is writing a good brief, hiring a QA team, setting up CI/CD, and defining acceptance criteria — all encoded into the system the AI operates within.</p>
       </div>
     </section>
-
-    <!-- ── Token Management (from Tokens page) ── -->
-    <section class="content-section">
-      <div class="section-label">Token Management</div>
-      <h2>The Dumb Zone &amp; Why Tokens Matter</h2>
-      <p>Past roughly 40% context usage, AI reasoning degrades sharply — the model becomes confident but wrong. Every token you waste on irrelevant context is a token the agent can't use for thinking. This is why curated context beats raw dumps.</p>
-
-      <!-- Token budget bars -->
-      <div style="margin: 2rem 0;">
-        <div style="margin-bottom: 1.5rem;">
-          <div style="font-size: 0.72rem; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">Naive approach: dump everything</div>
-          <div style="display: flex; height: 44px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
-            <div style="width: 65%; background: rgba(255,107,138,0.15); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 12px; font-size: 0.72rem; color: var(--accent-3); font-weight: 500;">Raw files (65%)</div>
-            <div style="width: 20%; background: rgba(232,145,58,0.1); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 8px; font-size: 0.72rem; color: var(--orange); font-weight: 500;">Prompts (20%)</div>
-            <div style="width: 15%; background: rgba(91,141,239,0.08); display: flex; align-items: center; padding-left: 8px; font-size: 0.72rem; color: var(--blue); font-weight: 500;">Reasoning</div>
-          </div>
-        </div>
-        <div>
-          <div style="font-size: 0.72rem; font-weight: 600; color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem;">Intent-engineered: curated context</div>
-          <div style="display: flex; height: 44px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,212,170,0.2);">
-            <div style="width: 15%; background: rgba(0,212,170,0.1); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 10px; font-size: 0.72rem; color: var(--accent-2); font-weight: 500;">Artefact</div>
-            <div style="width: 20%; background: rgba(124,92,252,0.08); border-right: 1px solid var(--border); display: flex; align-items: center; padding-left: 8px; font-size: 0.72rem; color: var(--accent-light); font-weight: 500;">Prompts (20%)</div>
-            <div style="width: 65%; background: rgba(0,212,170,0.05); display: flex; align-items: center; padding-left: 12px; font-size: 0.72rem; color: var(--accent-2); font-weight: 500;">Reasoning (65%) &larr; this is what you want</div>
-          </div>
-        </div>
-      </div>
-
-      <p>Use LSP over grep for precise queries. Compress findings into dense artefacts. Start each RPI phase in a fresh context window. Every token should earn its place.</p>
-    </section>
   </div>
 </div>
 
-<!-- ═══════════ PAGE: STEEL THREAD ═══════════ -->
+<!-- ═══════════ PAGE 3: METHODOLOGY ═══════════ -->
 <div id="methodology" class="page">
   <div class="container">
     <section class="hero" style="padding-bottom: 2rem;">
-      <div class="hero-badge">Stage 4 &mdash; Steel Thread</div>
-      <h1>The <span class="gradient">Steel Thread</span></h1>
-      <p class="subtitle">Pick one vertical slice. Apply RPI: Research with LSP, Plan with risk registers, Implement with feedback loops. Prove the methodology on your codebase.</p>
+      <h1>The <span class="gradient">RPI</span> Methodology</h1>
+      <p class="subtitle">Research, Plan, Implement. Three phases, each in a fresh context, connected by dense handoff artefacts.</p>
     </section>
 
     <!-- ── RPI Flow Diagram ── -->
@@ -1190,121 +1161,15 @@
         <p>The test suite, the compiler, the linter — these are your real safety net. A mediocre model with a great harness outperforms a brilliant model with no guardrails. Invest in the harness first.</p>
       </div>
     </section>
-
-    <!-- ── Case Study: nopCommerce (merged from In Practice) ── -->
-    <section class="content-section">
-      <div class="section-label">Case Study</div>
-      <h2>The nopCommerce Steel Thread</h2>
-      <p>nopCommerce is a 200k+ line .NET e-commerce platform. The steel thread: the shopping cart flow from "Add to cart" through controllers and services to the database. One vertical slice through the entire architecture.</p>
-    </section>
-
-    <!-- ── Exercise Steps ── -->
-    <section class="content-section">
-      <div class="section-label">The Exercises</div>
-      <h2>Five Steps, Building on Each Other</h2>
-
-      <div class="exercise-steps">
-        <div class="ex-step">
-          <div class="ex-num">0</div>
-          <div class="ex-body">
-            <h4>Get Orientated</h4>
-            <p>Understand the codebase, the steel thread, and the key files. Context-setting for humans before agents enter the picture.</p>
-          </div>
-        </div>
-        <div class="ex-step">
-          <div class="ex-num">1</div>
-          <div class="ex-body">
-            <h4>Build the Harness</h4>
-            <p>Write Playwright E2E tests and unit tests <em>before any refactoring</em>. The harness defines "correct" structurally. This is the most important step.</p>
-            <span class="ex-tag">Harnesses &gt; Models</span>
-          </div>
-        </div>
-        <div class="ex-step">
-          <div class="ex-num">2</div>
-          <div class="ex-body">
-            <h4>Research the Steel Thread</h4>
-            <p>Agent explores the add-to-cart flow end-to-end. Produces a dense research.md with every file, method, and connection documented.</p>
-            <span class="ex-tag">RPI: Research</span>
-          </div>
-        </div>
-        <div class="ex-step">
-          <div class="ex-num">3</div>
-          <div class="ex-body">
-            <h4>Plan the Refactoring</h4>
-            <p>Fresh agent reads only research.md. Produces an ordered plan with interface definitions, DI registration, and a risk register.</p>
-            <span class="ex-tag">RPI: Plan</span>
-          </div>
-        </div>
-        <div class="ex-step">
-          <div class="ex-num">4</div>
-          <div class="ex-body">
-            <h4>Implement with Feedback Loops</h4>
-            <p>Fresh agent follows the plan step-by-step, running the full test suite after each change. The harness catches mistakes; the agent learns from errors.</p>
-            <span class="ex-tag">RPI: Implement + Physics</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Wow Moments ── -->
-    <section class="content-section">
-      <div class="section-label">The Wow Moments</div>
-      <h2>When Physics Thinking Pays Off</h2>
-      <p>Three moments where you see the methodology working in real time:</p>
-
-      <div class="wow-timeline">
-        <div class="wow-moment">
-          <div class="wow-badge">&#128308;</div>
-          <h4>Compiler Catches a Type Error</h4>
-          <p>The agent introduces a subtle type mismatch. The C# compiler refuses to build. The agent reads the error, fixes the type, moves on. No human intervention.</p>
-          <span class="wow-principle">Physics Thinking</span>
-        </div>
-        <div class="wow-moment">
-          <div class="wow-badge">&#129514;</div>
-          <h4>Unit Test Catches Logic Regression</h4>
-          <p>The agent refactors the cart service and accidentally changes calculation order. "Expected 42.99, got 38.50." Diagnosed and fixed.</p>
-          <span class="wow-principle">Harnesses &gt; Models</span>
-        </div>
-        <div class="wow-moment">
-          <div class="wow-badge">&#127917;</div>
-          <h4>Playwright Catches UI Regression</h4>
-          <p>The service works, but a missing DI registration throws a 500 error. Playwright catches it by clicking "Add to cart." End-to-end verification.</p>
-          <span class="wow-principle">All Three Together</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Success Criteria ── -->
-    <section class="content-section">
-      <div class="section-label">Success Criteria</div>
-      <h2>How We Know It Worked</h2>
-
-      <div class="code-block">
-<pre>
-<span class="string">&#10003;</span> <span class="highlight-line">Research before code — agent explored before touching anything</span>
-<span class="string">&#10003;</span> <span class="highlight-line">Plan before implementation — ordered steps with risk analysis</span>
-<span class="string">&#10003;</span> <span class="highlight-line">Harnesses before refactoring — tests existed before changes</span>
-<span class="string">&#10003;</span> <span class="highlight-line">Feedback loops — test suite ran after every change</span>
-<span class="string">&#10003;</span> <span class="highlight-line">Dense handoffs — research.md and plan.md carried intent forward</span>
-<span class="string">&#10003;</span> <span class="highlight-line">Physics enforcement — compiler + tests caught real errors</span>
-<span class="string">&#10003;</span> <span class="highlight-line">No manual checking — if the harness is green, the refactoring is correct</span>
-</pre>
-      </div>
-
-      <div class="callout">
-        <p><strong>The takeaway:</strong> The model doesn't matter as much as the methodology. A well-structured system — with phases, harnesses, and feedback loops — produces reliable results regardless of which AI you use.</p>
-      </div>
-    </section>
   </div>
 </div>
 
-<!-- ═══════════ PAGE: PHYSICS ═══════════ -->
+<!-- ═══════════ PAGE 4: PATTERNS ═══════════ -->
 <div id="patterns" class="page">
   <div class="container">
     <section class="hero" style="padding-bottom: 2rem;">
-      <div class="hero-badge">Stage 3 &mdash; Build Physics</div>
-      <h1>Physics &amp; <span class="gradient">Harnesses</span></h1>
-      <p class="subtitle">Stop relying on prompts. Build structural enforcement — tests, linters, compilers — that make wrong agent behaviour impossible. These are the patterns that encode intent as physics.</p>
+      <h1>Intent Engineering <span class="gradient">Patterns</span></h1>
+      <p class="subtitle">Concrete, reusable techniques for encoding intent into your AI workflows.</p>
     </section>
 
     <section class="content-section">
@@ -1437,8 +1302,122 @@
   </div>
 </div>
 
-<!-- ═══════════ PAGE: ROADMAP ═══════════ -->
-<div id="roadmap" class="page active">
+<!-- ═══════════ PAGE 5: IN PRACTICE ═══════════ -->
+<div id="workshop" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>Intent Engineering <span class="gradient">In Practice</span></h1>
+      <p class="subtitle">Refactoring a real-world .NET e-commerce codebase with AI agents and a disciplined methodology.</p>
+    </section>
+
+    <section class="content-section">
+      <div class="section-label">The Challenge</div>
+      <h2>Refactoring nopCommerce with AI</h2>
+      <p>nopCommerce is a large, real-world .NET e-commerce platform. The "steel thread" is the shopping cart flow: from clicking "Add to cart" in the UI, through controllers and services, to the database and back. One narrow, vertical slice through the entire architecture.</p>
+    </section>
+
+    <!-- ── Exercise Steps ── -->
+    <section class="content-section">
+      <div class="section-label">The Exercises</div>
+      <h2>Five Steps, Building on Each Other</h2>
+
+      <div class="exercise-steps">
+        <div class="ex-step">
+          <div class="ex-num">0</div>
+          <div class="ex-body">
+            <h4>Get Orientated</h4>
+            <p>Understand the codebase, the steel thread, and the key files. Context-setting for humans before agents enter the picture.</p>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">1</div>
+          <div class="ex-body">
+            <h4>Build the Harness</h4>
+            <p>Write Playwright E2E tests and unit tests <em>before any refactoring</em>. The harness defines "correct" structurally. This is the most important step.</p>
+            <span class="ex-tag">Harnesses &gt; Models</span>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">2</div>
+          <div class="ex-body">
+            <h4>Research the Steel Thread</h4>
+            <p>Agent explores the add-to-cart flow end-to-end. Produces a dense research.md with every file, method, and connection documented.</p>
+            <span class="ex-tag">RPI: Research</span>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">3</div>
+          <div class="ex-body">
+            <h4>Plan the Refactoring</h4>
+            <p>Fresh agent reads only research.md. Produces an ordered plan with interface definitions, DI registration, and a risk register.</p>
+            <span class="ex-tag">RPI: Plan</span>
+          </div>
+        </div>
+        <div class="ex-step">
+          <div class="ex-num">4</div>
+          <div class="ex-body">
+            <h4>Implement with Feedback Loops</h4>
+            <p>Fresh agent follows the plan step-by-step, running the full test suite after each change. The harness catches mistakes; the agent learns from errors.</p>
+            <span class="ex-tag">RPI: Implement + Physics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Wow Moments ── -->
+    <section class="content-section">
+      <div class="section-label">The Wow Moments</div>
+      <h2>When Physics Thinking Pays Off</h2>
+      <p>Three moments where you see intent engineering working in real time:</p>
+
+      <div class="wow-timeline">
+        <div class="wow-moment">
+          <div class="wow-badge">&#128308;</div>
+          <h4>Compiler Catches a Type Error</h4>
+          <p>The agent introduces a subtle type mismatch. The C# compiler refuses to build. The agent reads the error, fixes the type, moves on. No human intervention.</p>
+          <span class="wow-principle">Physics Thinking</span>
+        </div>
+        <div class="wow-moment">
+          <div class="wow-badge">&#129514;</div>
+          <h4>Unit Test Catches Logic Regression</h4>
+          <p>The agent refactors the cart service and accidentally changes calculation order. "Expected 42.99, got 38.50." Diagnosed and fixed.</p>
+          <span class="wow-principle">Harnesses &gt; Models</span>
+        </div>
+        <div class="wow-moment">
+          <div class="wow-badge">&#127917;</div>
+          <h4>Playwright Catches UI Regression</h4>
+          <p>The service works, but a missing DI registration throws a 500 error. Playwright catches it by clicking "Add to cart." End-to-end verification.</p>
+          <span class="wow-principle">All Three Together</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Success Criteria ── -->
+    <section class="content-section">
+      <div class="section-label">Success Criteria</div>
+      <h2>How We Know It Worked</h2>
+
+      <div class="code-block">
+<pre>
+<span class="string">&#10003;</span> <span class="highlight-line">Research before code — agent explored before touching anything</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Plan before implementation — ordered steps with risk analysis</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Harnesses before refactoring — tests existed before changes</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Feedback loops — test suite ran after every change</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Dense handoffs — research.md and plan.md carried intent forward</span>
+<span class="string">&#10003;</span> <span class="highlight-line">Physics enforcement — compiler + tests caught real errors</span>
+<span class="string">&#10003;</span> <span class="highlight-line">No manual checking — if the harness is green, the refactoring is correct</span>
+</pre>
+      </div>
+
+      <div class="callout">
+        <p><strong>The takeaway:</strong> The model doesn't matter as much as the methodology. A well-structured intent engineering system — with phases, harnesses, and feedback loops — produces reliable results regardless of which AI you use.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 8: ROADMAP ═══════════ -->
+<div id="roadmap" class="page">
   <div class="container">
     <section class="hero" style="padding-bottom: 1.5rem;">
       <div class="hero-badge">Enablement Roadmap</div>
@@ -1941,13 +1920,12 @@
   </div>
 </div>
 
-<!-- ═══════════ PAGE: SCALE ═══════════ -->
+<!-- ═══════════ PAGE 7: AI-SDLC ═══════════ -->
 <div id="aisdlc" class="page">
   <div class="container">
     <section class="hero" style="padding-bottom: 2rem;">
-      <div class="hero-badge">Stage 5 &mdash; Scale</div>
-      <h1>Scale to <span class="gradient">Your Organisation</span></h1>
-      <p class="subtitle">Graduate your proven patterns from individual to team infrastructure. Shared skills, pipeline agents, and the AI-native SDLC.</p>
+      <h1>The <span class="gradient">AI-SDLC</span></h1>
+      <p class="subtitle">Intent engineering doesn't just change how you prompt. It changes how you build software. Here's the adoption path — from your machine to your team's pipeline.</p>
     </section>
 
     <!-- ── Four Waves ── -->
@@ -2238,8 +2216,13 @@
   </div>
 </div>
 
-<!-- ═══════════ TOKENS CONTENT (appended to Intent & Context via scroll) ═══════════ -->
-<div id="tokens" class="page" style="display:none !important">
+<!-- ═══════════ PAGE 6: TOKENS ═══════════ -->
+<div id="tokens" class="page">
+  <div class="container">
+    <section class="hero" style="padding-bottom: 2rem;">
+      <h1>Minimising <span class="gradient">Token Usage</span></h1>
+      <p class="subtitle">Every token you waste is a token the agent can't use for reasoning. Curated context beats raw context every time.</p>
+    </section>
 
     <!-- ── The Dumb Zone ── -->
     <section class="content-section">
@@ -2563,7 +2546,7 @@
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="site-footer">
   <div class="container">
-    AI-SDLC Enablement &middot; From Copilot to Agentic Workflows
+    Intent Engineering Workshop &middot; Built for workshop attendees
   </div>
 </footer>
 
