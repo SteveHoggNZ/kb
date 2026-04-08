@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>GitHub AI-SDLC vs AWS AI-DLC — Framework Comparison</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface-2: #1a1a26;
+    --surface-3: #22222f;
+    --border: #2a2a3a;
+    --text: #e4e4ef;
+    --text-muted: #8888a0;
+    --text-dim: #5a5a72;
+    --accent: #7c5cfc;
+    --accent-light: #9b7fff;
+    --accent-glow: rgba(124, 92, 252, 0.15);
+    --accent-2: #00d4aa;
+    --accent-2-glow: rgba(0, 212, 170, 0.12);
+    --accent-3: #ff6b8a;
+    --orange: #e8913a;
+    --orange-glow: rgba(232, 145, 58, 0.15);
+    --blue: #5b8def;
+    --teal: #3bbfa0;
+    --yellow: #f0c040;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --gh: #5b8def;
+    --aws: #e8913a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 30% 20%, rgba(124, 92, 252, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(0, 212, 170, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+  /* ── Header ── */
+  .back-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    color: var(--text-dim); text-decoration: none; font-size: 0.82rem; font-weight: 500;
+    padding: 1.5rem 0 0.5rem; transition: color var(--transition);
+  }
+  .back-link:hover { color: var(--accent-light); }
+
+  /* ── Hero ── */
+  .hero { padding: 3rem 0 2rem; text-align: center; }
+  .hero h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; }
+  .hero .subtitle { font-size: 1.05rem; color: var(--text-muted); max-width: 680px; margin: 0 auto; line-height: 1.7; }
+  .gradient { background: linear-gradient(135deg, #9b7fff 0%, #00d4aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+  .hero-badges { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .hero-badge {
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 0.35rem 1rem; border-radius: 20px;
+  }
+  .badge-gh { background: rgba(91,141,239,0.15); border: 1px solid rgba(91,141,239,0.3); color: var(--gh); }
+  .badge-aws { background: rgba(232,145,58,0.15); border: 1px solid rgba(232,145,58,0.3); color: var(--aws); }
+
+  /* ── Sections ── */
+  .content-section { margin: 2.5rem 0; }
+  .section-label {
+    font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--accent-2); margin-bottom: 0.5rem;
+  }
+  .content-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+  .content-section p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; max-width: 720px; }
+
+  /* ── Comparison Grid ── */
+  .compare-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2rem 0;
+  }
+  .compare-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.5rem; position: relative; overflow: hidden;
+    transition: border-color var(--transition), transform var(--transition);
+  }
+  .compare-card:hover { transform: translateY(-2px); }
+  .compare-card.gh { border-top: 3px solid var(--gh); }
+  .compare-card.aws { border-top: 3px solid var(--aws); }
+  .compare-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .compare-card.gh h3 { color: var(--gh); }
+  .compare-card.aws h3 { color: var(--aws); }
+  .compare-card p, .compare-card li { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+  .compare-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem; }
+  .compare-card li { padding-left: 1.2rem; position: relative; }
+  .compare-card.gh li::before { content: '\2192'; position: absolute; left: 0; color: var(--gh); font-size: 0.85rem; }
+  .compare-card.aws li::before { content: '\2192'; position: absolute; left: 0; color: var(--aws); font-size: 0.85rem; }
+
+  /* ── Feature Table ── */
+  .feature-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.85rem; }
+  .feature-table th, .feature-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+  .feature-table th { font-weight: 700; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); background: var(--surface); }
+  .feature-table th:nth-child(2) { color: var(--gh); }
+  .feature-table th:nth-child(3) { color: var(--aws); }
+  .feature-table td { color: var(--text-muted); }
+  .feature-table td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+  .feature-table tr:hover td { background: rgba(124, 92, 252, 0.03); }
+  .ft-strong { color: var(--accent-2) !important; font-weight: 600 !important; }
+  .ft-weak { color: var(--text-dim) !important; }
+
+  /* ── Callout ── */
+  .callout {
+    background: var(--accent-glow); border: 1px solid rgba(124, 92, 252, 0.2);
+    border-radius: var(--radius); padding: 1.25rem 1.5rem; margin: 1.5rem 0;
+  }
+  .callout.green { background: var(--accent-2-glow); border-color: rgba(0, 212, 170, 0.2); }
+  .callout.orange { background: var(--orange-glow); border-color: rgba(232, 145, 58, 0.2); }
+  .callout p { color: var(--text); margin: 0; font-size: 0.92rem; max-width: none; }
+  .callout strong { color: #fff; }
+
+  /* ── Workflow Visual ── */
+  .workflow-row {
+    display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+    margin: 0.75rem 0; justify-content: center;
+  }
+  .wf-step {
+    padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+    white-space: nowrap;
+  }
+  .wf-arrow { color: var(--text-dim); font-size: 0.8rem; }
+  .wf-step.gh-step { background: rgba(91,141,239,0.15); color: var(--gh); }
+  .wf-step.aws-step { background: rgba(232,145,58,0.15); color: var(--aws); }
+  .wf-step.shared { background: rgba(0,212,170,0.12); color: var(--accent-2); }
+  .wf-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; text-align: center; }
+
+  /* ── Verdict Cards ── */
+  .verdict-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+  .verdict-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.5rem; border-left: 3px solid var(--accent-2);
+  }
+  .verdict-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+  .verdict-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 4rem; padding: 1.5rem 0; border-top: 1px solid var(--border);
+    text-align: center; font-size: 0.75rem; color: var(--text-dim);
+  }
+  .footer a { color: var(--accent-light); text-decoration: none; }
+
+  /* ── Sources ── */
+  .sources { margin: 2rem 0; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  .sources h3 { font-size: 0.85rem; font-weight: 700; color: var(--text-dim); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .sources a { color: var(--accent-light); text-decoration: none; font-size: 0.82rem; display: block; margin-bottom: 0.4rem; line-height: 1.5; }
+  .sources a:hover { text-decoration: underline; }
+  .sources .src-group { margin-bottom: 0.75rem; }
+  .sources .src-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+  .sources .src-label.gh-label { color: var(--gh); }
+  .sources .src-label.aws-label { color: var(--aws); }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.8rem; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .feature-table { font-size: 0.78rem; }
+    .feature-table th, .feature-table td { padding: 0.5rem 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <a href="index.html" class="back-link">&larr; Back to AI-SDLC main site</a>
+
+  <section class="hero">
+    <div class="hero-badges">
+      <span class="hero-badge badge-gh">GitHub / Microsoft</span>
+      <span class="hero-badge badge-aws">AWS</span>
+    </div>
+    <h1>GitHub AI-SDLC vs<br>AWS <span class="gradient">AI-DLC</span></h1>
+    <p class="subtitle">Two approaches to AI-assisted software development. Same problem, different philosophies. This page explains what each one is, where they overlap, and which suits your team.</p>
+  </section>
+
+  <!-- ── The Core Difference ── -->
+  <section class="content-section">
+    <div class="section-label">The Core Difference</div>
+    <h2>Composable Ecosystem vs Prescriptive Workflow</h2>
+    <p>The fundamental distinction isn't about features &mdash; it's about philosophy. GitHub gives you building blocks and principles; you assemble the workflow. AWS gives you the workflow pre-assembled; you follow the phases.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card gh">
+        <h3>GitHub AI-SDLC</h3>
+        <p>A <strong style="color: var(--gh);">composable ecosystem</strong> of tools, conventions, and principles. You choose which pieces to adopt &mdash; Copilot agent mode, Spec Kit, copilot-instructions.md, custom skills, MCP servers &mdash; and assemble them into a workflow that fits your team. The concepts (intent engineering, physics over law, information diets) are transferable across any AI tool.</p>
+        <ul>
+          <li>Principle-driven: learn the "why", build your own "how"</li>
+          <li>Tool-agnostic concepts that survive when tooling changes</li>
+          <li>Adopt incrementally &mdash; each piece adds value alone</li>
+          <li>Lighter ceremony, more flexibility</li>
+          <li>Developer assembles the workflow</li>
+        </ul>
+      </div>
+      <div class="compare-card aws">
+        <h3>AWS AI-DLC</h3>
+        <p>A <strong style="color: var(--aws);">productised, end-to-end workflow</strong> enforced by steering files (markdown rules) that the AI agent must follow. Three mandatory phases &mdash; Inception, Construction, Operations &mdash; with the agent itself determining which stages apply. Human-in-the-loop checkpoints are baked in, not optional.</p>
+        <ul>
+          <li>Process-driven: follow the phases, the rules enforce quality</li>
+          <li>Brownfield-first with automatic reverse engineering</li>
+          <li>Adopt all-or-nothing &mdash; the workflow is the value</li>
+          <li>Heavier ceremony, more governance</li>
+          <li>Steering files assemble the workflow for you</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How Each Works ── -->
+  <section class="content-section">
+    <div class="section-label">Workflows</div>
+    <h2>How Each Approach Works</h2>
+
+    <div style="margin: 2rem 0;">
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.25rem;">
+        <div class="wf-label" style="color: var(--gh);">GitHub AI-SDLC &mdash; Spec-Driven Development</div>
+        <div class="workflow-row">
+          <span class="wf-step gh-step">Constitution</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step gh-step">Specify</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step gh-step">Plan</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step gh-step">Tasks</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step gh-step">Implement</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step gh-step">Review</span>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-dim); text-align: center; margin-top: 0.75rem;">
+          Via <a href="https://github.com/github/spec-kit" style="color: var(--gh);">Spec Kit</a> &mdash; agent-agnostic, opt-in phases, specs are living artefacts
+        </p>
+      </div>
+
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+        <div class="wf-label" style="color: var(--aws);">AWS AI-DLC &mdash; Adaptive Steering Workflow</div>
+        <div class="workflow-row">
+          <span class="wf-step aws-step">Workspace Detection</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step aws-step">Reverse Eng.</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step aws-step">Requirements</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step aws-step">User Stories</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step aws-step">Design</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step aws-step">Units</span>
+        </div>
+        <div style="font-size: 0.7rem; color: var(--aws); font-weight: 600; text-align: center; margin: 0.5rem 0 0.25rem;">Inception &uarr; &nbsp;&nbsp;&nbsp; Construction &darr;</div>
+        <div class="workflow-row">
+          <span class="wf-step aws-step">Func. Design</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step aws-step">NFR Design</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step aws-step">Code Gen</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step aws-step">Build &amp; Test</span>
+          <span class="wf-arrow">&rarr;</span>
+          <span class="wf-step aws-step" style="opacity: 0.4;">Operations</span>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-dim); text-align: center; margin-top: 0.75rem;">
+          Via <a href="https://github.com/awslabs/aidlc-workflows" style="color: var(--aws);">aidlc-workflows</a> &mdash; 20+ steering files, adaptive stage selection, mandatory checkpoints
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Feature-by-Feature ── -->
+  <section class="content-section">
+    <div class="section-label">Feature Comparison</div>
+    <h2>Side-by-Side</h2>
+
+    <table class="feature-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>GitHub AI-SDLC</th>
+          <th>AWS AI-DLC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Philosophy</td>
+          <td>Composable ecosystem of tools &amp; principles</td>
+          <td>Prescriptive, enforced workflow via steering files</td>
+        </tr>
+        <tr>
+          <td>Brownfield Support</td>
+          <td>Steel Thread methodology + brownfield extraction guide; manual</td>
+          <td class="ft-strong">Automatic workspace detection &amp; reverse engineering stage</td>
+        </tr>
+        <tr>
+          <td>Greenfield Support</td>
+          <td class="ft-strong">Spec Kit: constitution &rarr; specify &rarr; plan &rarr; tasks &rarr; implement</td>
+          <td>Requirements Analysis &rarr; User Stories &rarr; Application Design &rarr; Units</td>
+        </tr>
+        <tr>
+          <td>Workflow Enforcement</td>
+          <td>Conventions (copilot-instructions.md, SKILL.md) &mdash; advisory</td>
+          <td class="ft-strong">Steering files the agent must follow &mdash; mandatory</td>
+        </tr>
+        <tr>
+          <td>Human Checkpoints</td>
+          <td>PR review, code review &mdash; developer-initiated</td>
+          <td class="ft-strong">Mob Elaboration &amp; Mob Construction &mdash; mandatory ceremonies</td>
+        </tr>
+        <tr>
+          <td>Agent Support</td>
+          <td class="ft-strong">Copilot, Claude Code, Gemini, Cursor, Windsurf, Amp, Qoder + others</td>
+          <td>Amazon Q, Kiro, Cursor, Cline, Claude Code, Copilot</td>
+        </tr>
+        <tr>
+          <td>Primary AI Tool</td>
+          <td>GitHub Copilot (but tool-agnostic concepts)</td>
+          <td>Amazon Q Developer &amp; Kiro</td>
+        </tr>
+        <tr>
+          <td>Spec/Requirements</td>
+          <td class="ft-strong">Spec Kit: living spec.md, plan.md, tasks.md, constitution.md</td>
+          <td>requirements.md, design docs, audit logs &mdash; generated per phase</td>
+        </tr>
+        <tr>
+          <td>Extensibility</td>
+          <td class="ft-strong">50+ community extensions (MAQA, FixIt, Fleet, integrations)</td>
+          <td>Custom extensions via .opt-in.md files</td>
+        </tr>
+        <tr>
+          <td>Artefact Generation</td>
+          <td>Opt-in: spec.md, plan.md, tasks.md</td>
+          <td>Mandatory at every phase: requirements, designs, audit logs</td>
+        </tr>
+        <tr>
+          <td>Process Overhead</td>
+          <td class="ft-strong">Light &mdash; adopt what you need</td>
+          <td>Heavy &mdash; 20+ rule files, folder hierarchy, trigger phrases</td>
+        </tr>
+        <tr>
+          <td>Adaptiveness</td>
+          <td>Developer decides which tools/phases to use</td>
+          <td class="ft-strong">Agent decides which stages apply based on context</td>
+        </tr>
+        <tr>
+          <td>Quality Philosophy</td>
+          <td>"Physics over Law" &mdash; structural enforcement via tests, linters, CI</td>
+          <td>Steering files + mandatory phase gates + audit logging</td>
+        </tr>
+        <tr>
+          <td>Context Management</td>
+          <td>"Information diets" &mdash; curate what the agent sees per phase</td>
+          <td>"Semantic context building" &mdash; agent builds context from codebase</td>
+        </tr>
+        <tr>
+          <td>Trust Model</td>
+          <td>Provenance tagging (EXTRACTED vs INFERRED), 3&times; Penalty, Force Blanks</td>
+          <td>Mandatory human approval at phase gates, audit trails</td>
+        </tr>
+        <tr>
+          <td>Licence</td>
+          <td>Spec Kit: MIT</td>
+          <td>MIT-0 (No Attribution)</td>
+        </tr>
+        <tr>
+          <td>Operations Phase</td>
+          <td>GitHub Actions, Copilot for Azure (separate tooling)</td>
+          <td class="ft-weak">Placeholder &mdash; not yet implemented</td>
+        </tr>
+        <tr>
+          <td>Maturity</td>
+          <td>Copilot: established since 2022; Spec Kit: 2025</td>
+          <td>Introduced re:Invent 2025; open-sourced late 2025</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Where They Agree ── -->
+  <section class="content-section">
+    <div class="section-label">Common Ground</div>
+    <h2>Where They Agree</h2>
+    <p>Despite different approaches, both frameworks share the same core insight: <em>unstructured AI assistance makes developers slower, not faster.</em> The interesting overlap:</p>
+
+    <div class="verdict-grid" style="margin-top: 1.5rem;">
+      <div class="verdict-card">
+        <h4>Specs Before Code</h4>
+        <p>Both require structured requirements before implementation. GitHub calls it spec-driven development. AWS calls it Inception. Neither lets the agent jump straight to code generation.</p>
+      </div>
+      <div class="verdict-card">
+        <h4>Rules Files Are the Mechanism</h4>
+        <p>Both use markdown files to steer agent behaviour. GitHub: <code style="font-size: 0.8rem;">copilot-instructions.md</code>, <code style="font-size: 0.8rem;">SKILL.md</code>, <code style="font-size: 0.8rem;">constitution.md</code>. AWS: steering rules in <code style="font-size: 0.8rem;">.amazonq/rules/</code>. Same idea, different packaging.</p>
+      </div>
+      <div class="verdict-card">
+        <h4>Human-in-the-Loop</h4>
+        <p>Neither advocates for fully autonomous AI. Both insist on human review &mdash; GitHub through PR review and spec validation, AWS through Mob Elaboration and Mob Construction ceremonies.</p>
+      </div>
+      <div class="verdict-card">
+        <h4>Agent-Agnostic Aspirations</h4>
+        <p>Both claim to work across multiple AI tools. In practice, GitHub's ecosystem centres on Copilot and AWS's on Amazon Q &mdash; but the open-source artefacts from both are portable.</p>
+      </div>
+      <div class="verdict-card">
+        <h4>Phased Workflows</h4>
+        <p>Both break development into distinct phases with artefact handoffs. GitHub: Constitution &rarr; Specify &rarr; Plan &rarr; Tasks &rarr; Implement. AWS: Inception &rarr; Construction &rarr; Operations. The mapping is remarkably close.</p>
+      </div>
+      <div class="verdict-card">
+        <h4>Open Source</h4>
+        <p>Both have released their frameworks as open-source toolkits. Spec Kit under MIT, AI-DLC under MIT-0. Both are on GitHub. Both can be inspected, forked, and adapted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Where They Diverge ── -->
+  <section class="content-section">
+    <div class="section-label">Key Differences</div>
+    <h2>Where They Actually Diverge</h2>
+
+    <div class="compare-grid">
+      <div class="compare-card gh">
+        <h3>Brownfield: Manual Strategy</h3>
+        <p>GitHub's approach teaches you to extract features from existing codebases using the Steel Thread methodology &mdash; pick one narrow vertical slice, reverse-engineer the intent, extract the service, prove it end-to-end. The <em>developer</em> drives the strategy; the AI executes within your constraints.</p>
+      </div>
+      <div class="compare-card aws">
+        <h3>Brownfield: Automatic Detection</h3>
+        <p>AI-DLC's agent inspects the workspace, determines it's brownfield, and automatically runs a Reverse Engineering stage to build a semantic model of the existing architecture. The <em>agent</em> drives the analysis; the developer validates at checkpoints.</p>
+      </div>
+
+      <div class="compare-card gh">
+        <h3>Enforcement: Trust the Developer</h3>
+        <p>Convention-based. <code style="font-size: 0.82rem;">copilot-instructions.md</code> and <code style="font-size: 0.82rem;">SKILL.md</code> files <em>guide</em> the agent but don't prevent it from deviating. Structural enforcement comes from external physics &mdash; tests, linters, CI pipelines &mdash; not from the AI's workflow rules.</p>
+      </div>
+      <div class="compare-card aws">
+        <h3>Enforcement: Trust the Process</h3>
+        <p>Steering files are mandatory. The agent cannot skip phases, must use standardised completion messages, and is explicitly forbidden from "emergent behaviour." The workflow itself is the enforcement mechanism, not external tooling.</p>
+      </div>
+
+      <div class="compare-card gh">
+        <h3>Adoption: Incremental</h3>
+        <p>Start with <code style="font-size: 0.82rem;">copilot-instructions.md</code> on Monday. Add Spec Kit next week. Try agent mode the week after. Each piece delivers value independently. You never have to adopt the whole framework.</p>
+      </div>
+      <div class="compare-card aws">
+        <h3>Adoption: All-in</h3>
+        <p>The value comes from the enforced workflow. Adopting half the steering files defeats the purpose &mdash; the phases depend on each other. You either run the full Inception&ndash;Construction pipeline or you're just using Amazon Q ad hoc.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Which One ── -->
+  <section class="content-section">
+    <div class="section-label">Decision Guide</div>
+    <h2>Which Approach Suits Your Team?</h2>
+
+    <div class="compare-grid">
+      <div class="compare-card gh" style="border-top: 3px solid var(--gh);">
+        <h3>GitHub AI-SDLC is better when&hellip;</h3>
+        <ul>
+          <li>Your team has strong engineering discipline already</li>
+          <li>You want tool-agnostic principles that outlast any vendor</li>
+          <li>You need to adopt incrementally alongside existing processes</li>
+          <li>You value flexibility over governance</li>
+          <li>You're working across multiple AI tools (Copilot, Claude, Gemini)</li>
+          <li>You want a rich extension ecosystem (50+ community plugins)</li>
+          <li>You're doing rapid prototyping or spike work</li>
+        </ul>
+      </div>
+      <div class="compare-card aws" style="border-top: 3px solid var(--aws);">
+        <h3>AWS AI-DLC is better when&hellip;</h3>
+        <ul>
+          <li>Your team needs a prescribed process to follow from day one</li>
+          <li>You're working on a large brownfield codebase and want automated analysis</li>
+          <li>Enterprise governance and audit trails are non-negotiable</li>
+          <li>You want the AI agent to enforce the workflow, not developers</li>
+          <li>Your organisation is already invested in the AWS ecosystem</li>
+          <li>You need mandatory human-review ceremonies with formal sign-off</li>
+          <li>Predictability matters more than flexibility</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <p><strong>They're not mutually exclusive.</strong> The concepts from GitHub's AI-SDLC (intent engineering, physics over law, information diets, provenance tagging) apply regardless of which workflow you use. You could adopt AI-DLC's phased structure <em>and</em> use GitHub's trust concepts within it. The principles are transferable; the tooling is not.</p>
+    </div>
+  </section>
+
+  <!-- ── The Piecemeal Critique ── -->
+  <section class="content-section">
+    <div class="section-label">Addressing the Critique</div>
+    <h2>Is GitHub's Approach "Piecemeal"?</h2>
+
+    <p>The critique that GitHub's AI-SDLC is more piecemeal while AWS's AI-DLC is a proven framework has a kernel of truth &mdash; and a blindspot.</p>
+
+    <div class="callout orange">
+      <p><strong>Where the critique is fair:</strong> AI-DLC gives teams a single, enforceable workflow they can adopt on Monday morning. Steering files mean the AI agent itself prevents shortcuts. For a team that needs structure imposed externally (rather than built internally), that's immediately valuable &mdash; especially for brownfield codebases where the reverse engineering stage removes a significant manual burden.</p>
+    </div>
+
+    <div class="callout">
+      <p><strong>Where the critique misses:</strong> GitHub's "piecemeal" nature is actually its strength for teams with engineering maturity. The concepts &mdash; intent engineering, physics vs law, information diets, the Dumb Zone, provenance tagging &mdash; are <em>deeper and more transferable</em> than any single workflow. Someone who understands these principles can <em>build</em> AI-DLC's workflow (or any future one). Someone who only knows AI-DLC's phases cannot easily adapt when the tooling changes. And with <a href="https://github.com/github/spec-kit" style="color: var(--accent-light);">Spec Kit</a>, GitHub now has a structured workflow too &mdash; it's just opt-in rather than enforced.</p>
+    </div>
+
+    <p>The real question isn't "which is better" &mdash; it's "what does your team need right now?" If the answer is "we need guardrails imposed on us," AI-DLC. If the answer is "we need to understand how to think about AI-assisted development," GitHub AI-SDLC.</p>
+  </section>
+
+  <!-- ── Sources ── -->
+  <div class="sources">
+    <h3>Sources &amp; Further Reading</h3>
+    <div class="src-group">
+      <div class="src-label gh-label">GitHub / Microsoft</div>
+      <a href="https://github.com/github/spec-kit">Spec Kit &mdash; Toolkit for Spec-Driven Development (GitHub)</a>
+      <a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/">Spec-Driven Development with AI &mdash; GitHub Blog</a>
+      <a href="https://developer.microsoft.com/blog/spec-driven-development-spec-kit">Diving Into Spec-Driven Development &mdash; Microsoft for Developers</a>
+      <a href="https://learn.microsoft.com/en-us/training/modules/spec-driven-development-github-spec-kit-enterprise-developers/">Implement Spec-Driven Development using GitHub Spec Kit &mdash; Microsoft Learn</a>
+      <a href="https://techcommunity.microsoft.com/blog/appsonazureblog/an-ai-led-sdlc-building-an-end-to-end-agentic-software-development-lifecycle-wit/4491896">An AI-Led SDLC: End-to-End Agentic Development &mdash; Microsoft Community Hub</a>
+    </div>
+    <div class="src-group">
+      <div class="src-label aws-label">AWS</div>
+      <a href="https://github.com/awslabs/aidlc-workflows">AI-DLC Adaptive Workflows &mdash; GitHub (awslabs)</a>
+      <a href="https://github.com/awslabs/aidlc-workflows/blob/main/aidlc-rules/aws-aidlc-rules/core-workflow.md">AI-DLC Core Workflow Definition &mdash; GitHub</a>
+      <a href="https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/">AI-Driven Development Life Cycle &mdash; AWS DevOps Blog</a>
+      <a href="https://aws.amazon.com/blogs/devops/building-with-ai-dlc-using-amazon-q-developer/">Building with AI-DLC using Amazon Q Developer &mdash; AWS DevOps Blog</a>
+      <a href="https://aws.amazon.com/blogs/devops/open-sourcing-adaptive-workflows-for-ai-driven-development-life-cycle-ai-dlc/">Open-Sourcing Adaptive Workflows for AI-DLC &mdash; AWS DevOps Blog</a>
+    </div>
+    <div class="src-group">
+      <div class="src-label" style="color: var(--text-dim);">Independent Analysis</div>
+      <a href="https://eleks.com/blog/aws-ai-dlc-explained/">AI-DLC Explained: How AWS Labs Brings Structure to AI Coding &mdash; ELEKS</a>
+      <a href="https://medium.com/data-science-collective/the-ai-driven-development-lifecycle-ai-dlc-a-critical-yet-hopeful-view-edc966173f2f">The AI-DLC: A Critical Yet Hopeful View &mdash; Medium</a>
+      <a href="https://blog.logrocket.com/github-spec-kit/">Exploring Spec-Driven Development with GitHub Spec Kit &mdash; LogRocket</a>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <div class="footer">
+    GitHub AI-SDLC vs AWS AI-DLC &middot; <a href="index.html">Back to main site</a> &middot; <a href="cheat-sheet.html">Cheat Sheets</a>
+  </div>
+</div>
+
+</body>
+</html>

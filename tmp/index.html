@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
 <title>AI-SDLC — From Copilot to Agentic Workflows</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -1075,6 +1076,11 @@
       <div class="callout">
         <p><strong>Start with the Roadmap</strong> to see the full journey at a glance with interactive checklists, or jump to any tab that matches where you are right now. Every stage delivers value on its own — you don't need to reach Stage 5 to benefit.</p>
       </div>
+
+      <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href="cheat-sheet.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: rgba(124,92,252,0.1); border: 1px solid rgba(124,92,252,0.3); border-radius: var(--radius); color: var(--accent-light); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: all 0.2s;">&#128203; Cheat Sheets &amp; Bingo Card</a>
+        <a href="comparison.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: rgba(232,145,58,0.1); border: 1px solid rgba(232,145,58,0.3); border-radius: var(--radius); color: var(--orange); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: all 0.2s;">&#9878; GitHub AI-SDLC vs AWS AI-DLC</a>
+      </div>
     </section>
   </div>
 </div>
@@ -1347,6 +1353,318 @@
       <div class="takeaway-banner" style="margin-top: 2rem;">
         <em>Four tactics, one conversation, better outcome than any single prompt could produce.</em><br>
         <span style="font-size: 0.85rem; color: var(--text-dim); font-style: normal;">This is prompt-level intent engineering. The next tabs show how to encode it into systems.</span>
+      </div>
+    </section>
+
+    <!-- ── Structured Prompting Frameworks ── -->
+    <section class="content-section">
+      <div class="section-label">Frameworks</div>
+      <h2>Structured Prompting <span class="gradient">Frameworks</span></h2>
+      <p>The six tactics above are intuitive moves. These four frameworks give you <em>repeatable scaffolding</em> for prompts &mdash; each one builds on the last. Start with APE for quick tasks, graduate to COAST for complex scenarios. The <a href="cheat-sheet.html" style="color: var(--accent-2);">4S Framework</a> (Single, Specific, Short, Surround) underpins all of them.</p>
+
+      <!-- APE -->
+      <div style="margin: 2rem 0;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: rgba(91,141,239,0.15); border: 1px solid rgba(91,141,239,0.3); color: var(--blue); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.08em;">Zone 2 &mdash; Structured</span>
+          <h3 style="margin: 0; font-size: 1.2rem;">A.P.E &mdash; Action, Purpose, Expectation</h3>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">The simplest structured framework. Three components that turn a vague ask into a targeted prompt. Use this when you know what you want but need to be precise about it.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--blue);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); font-weight: 700; margin-bottom: 0.5rem;">01 Action</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">State the specific task you need performed.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Help me with my code"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "Write a Python function that validates email addresses using regex"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--blue);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); font-weight: 700; margin-bottom: 0.5rem;">02 Purpose</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Give context about the goal behind the action.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Make a chart"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "Create a bar chart comparing Q1-Q4 revenue for the board deck"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--blue);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); font-weight: 700; margin-bottom: 0.5rem;">03 Expectation</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Define format, length, style, or constraints.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Give me some test cases"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "Generate 5 pytest unit tests with edge cases, using AAA pattern"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RACE -->
+      <div style="margin: 2rem 0;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: rgba(0,212,170,0.15); border: 1px solid rgba(0,212,170,0.3); color: var(--accent-2); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.08em;">Zone 3 &mdash; Advanced</span>
+          <h3 style="margin: 0; font-size: 1.2rem;">R.A.C.E &mdash; Role, Action, Context, Expectation</h3>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Adds a <strong style="color: var(--accent-2);">Role</strong> dimension &mdash; assigning an expertise persona activates domain-specific vocabulary and patterns. Use when the task benefits from a specialist&rsquo;s perspective.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--accent-2);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-2); font-weight: 700; margin-bottom: 0.5rem;">01 Role</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Assign a specific expertise.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Help me review this code"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "As a senior security engineer, review this auth module"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--accent-2);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-2); font-weight: 700; margin-bottom: 0.5rem;">02 Action</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Specify exactly what to produce.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Make this better"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "Refactor to extract a reusable validation middleware"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--accent-2);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-2); font-weight: 700; margin-bottom: 0.5rem;">03 Context</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Tech stack, constraints, dependencies.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Fix the login bug"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "Fix OAuth callback &mdash; Express 4, passport-google, session store in Redis"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--accent-2);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-2); font-weight: 700; margin-bottom: 0.5rem;">04 Expectation</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Quality standards and deliverables.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Write some tests"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "Integration tests: 80% coverage, mock DB, test happy + error paths"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COAST -->
+      <div style="margin: 2rem 0;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: rgba(232,145,58,0.15); border: 1px solid rgba(232,145,58,0.3); color: var(--orange); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.08em;">Zone 4 &mdash; Comprehensive</span>
+          <h3 style="margin: 0; font-size: 1.2rem;">C.O.A.S.T &mdash; Context, Objective, Actions, Scenario, Task</h3>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Five components for complex, multi-step work. COAST forces you to think about <strong style="color: var(--orange);">edge cases</strong> and <strong style="color: var(--orange);">acceptance criteria</strong> up front &mdash; it maps directly to Agent Mode task decomposition.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem;">
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; border-left: 3px solid var(--orange);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); font-weight: 700; margin-bottom: 0.4rem;">Context</div>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Help with my app"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "React 18 + TypeScript, Next.js 14 App Router"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; border-left: 3px solid var(--orange);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); font-weight: 700; margin-bottom: 0.4rem;">Objective</div>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Improve performance"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "Reduce initial bundle below 200KB with code splitting"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; border-left: 3px solid var(--orange);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); font-weight: 700; margin-bottom: 0.4rem;">Actions</div>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Set up the project"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "1) Lazy routes 2) Split vendor chunks 3) Tree-shake utils"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; border-left: 3px solid var(--orange);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); font-weight: 700; margin-bottom: 0.4rem;">Scenario</div>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Handle errors"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "If Redis disconnects, fall back to in-memory; alert via PagerDuty"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; border-left: 3px solid var(--orange);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); font-weight: 700; margin-bottom: 0.4rem;">Task</div>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Create a component"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "DataGrid: sortable columns, virtual scroll, CSV export"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GCSE -->
+      <div style="margin: 2rem 0;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: rgba(124,92,252,0.15); border: 1px solid rgba(124,92,252,0.3); color: var(--accent); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.08em;">Zone 5 &mdash; Goal-Oriented</span>
+          <h3 style="margin: 0; font-size: 1.2rem;">G.C.S.E &mdash; Goal, Context, Source, Expectations</h3>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">The most intent-aligned framework. Start with the <strong style="color: var(--accent);">end state</strong>, provide the landscape, point to <strong style="color: var(--accent);">authoritative sources</strong>, and define quality standards. Maps directly to <code style="font-size: 0.8rem;">copilot-instructions.md</code> and Copilot Workspace goals.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--accent);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">01 Goal</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Start with the end state, not the process.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Help me with authentication"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "Implement SSO so users log in once across all three microservices"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--accent);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">02 Context</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Architecture, dependencies, constraints.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "We use microservices"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "3 Node.js services behind Kong, shared Redis session store"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--accent);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">03 Source</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Reference authoritative material for grounding.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Follow best practices"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "Follow OWASP Top 10 and our internal auth-sdk v3.2 API contract"</div>
+          </div>
+          <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; border-top: 2px solid var(--accent);">
+            <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">04 Expectations</div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">Quality and format standards.</p>
+            <div style="font-size: 0.8rem; color: var(--accent-3);">&cross; "Make it production ready"</div>
+            <div style="font-size: 0.8rem; color: var(--accent-2);">&check; "TypeScript strict, 90% coverage, OpenAPI 3.1 spec included"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <p><strong>Progression, not competition.</strong> APE &rarr; RACE &rarr; COAST &rarr; GCSE isn't about picking the "best" framework. It's about escalating precision as complexity increases. A quick utility function? APE. A cross-service architectural change? GCSE. Match the framework to the task.</p>
+      </div>
+    </section>
+
+    <!-- ── Source Packs & Diagnosing Failures ── -->
+    <section class="content-section">
+      <div class="section-label">Operational</div>
+      <h2>Source Packs &amp; Diagnosing Failures</h2>
+      <p>Good frameworks get you close. These two operational patterns close the remaining gap &mdash; grounding the AI with curated inputs and systematically fixing broken outputs.</p>
+
+      <div class="comparison" style="margin: 2rem 0;">
+        <div class="compare-col highlight" style="border-color: rgba(0,212,170,0.3);">
+          <h4 style="color: var(--accent-2);">Source Packs</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">A short, explicit bundle of information given to an AI <em>before</em> asking it to summarise, plan, refactor, or make decisions. Reduce hallucinations by constraining what the AI works with.</p>
+          <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 1rem; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            <div style="font-weight: 600; color: var(--accent-2); margin-bottom: 0.5rem;">A Source Pack contains:</div>
+            <div>&bull; Source material (meeting notes, docs, code excerpts)</div>
+            <div>&bull; Facts you're confident are true</div>
+            <div>&bull; Open questions or unknowns</div>
+            <div>&bull; Clear boundaries on what the AI may assume</div>
+          </div>
+          <div style="font-size: 0.85rem; padding: 0.75rem; background: rgba(0,212,170,0.08); border-radius: 6px; border-left: 3px solid var(--accent-2);">
+            <strong style="color: var(--accent-2);">The rule:</strong> <em>"If something is not supported by the provided source material, omit it or label it as 'not found in source'."</em>
+          </div>
+        </div>
+        <div class="compare-col" style="border-color: rgba(232,145,58,0.3);">
+          <h4 style="color: var(--orange);">Diagnosing Failures</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">When AI output is poor, don't restart from scratch &mdash; diagnose the failure mode and apply the targeted fix.</p>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 0.75rem;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: var(--orange);">Missing Information</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">The prompt lacks context. &rarr; Ask the AI to request missing info before answering.</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 0.75rem;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: var(--orange);">Wrong Structure</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Correct answer, unusable format. &rarr; Enforce a specific output structure (table, JSON, etc.).</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 0.75rem;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: var(--orange);">Wrong Level or Tone</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Too technical or too vague. &rarr; Specify audience explicitly ("explain for a senior PM").</div>
+            </div>
+            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 0.75rem;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: var(--orange);">Untrusted Claims</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Claims can't be traced to a source. &rarr; Require a source quote per claim; use a Source Pack.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Trusting AI Output ── -->
+    <section class="content-section">
+      <div class="section-label">Trust &amp; Verification</div>
+      <h2>Trusting AI Output: From Hallucination to <span class="gradient">Verification</span></h2>
+      <p>As models get smarter, they prioritise helpfulness (guessing) over truthfulness (admitting ignorance). The output is fluent, so we stop checking. This is <strong>automation bias</strong> &mdash; and it's the single biggest risk in AI-assisted development. These structural rules make hallucinations visible.</p>
+
+      <!-- Code Quality Loop -->
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0;">
+        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: var(--text);">The Code Quality Loop</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: center;">
+          <span style="background: rgba(91,141,239,0.15); color: var(--blue); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Explore</span>
+          <span style="color: var(--text-dim);">&rarr;</span>
+          <span style="background: rgba(124,92,252,0.15); color: var(--accent); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Plan</span>
+          <span style="color: var(--text-dim);">&rarr;</span>
+          <span style="background: rgba(0,212,170,0.15); color: var(--accent-2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Code</span>
+          <span style="color: var(--text-dim);">&rarr;</span>
+          <span style="background: rgba(232,145,58,0.15); color: var(--orange); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Validate</span>
+          <span style="color: var(--text-dim);">&rarr;</span>
+          <span style="background: rgba(255,107,138,0.15); color: var(--accent-3); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">Repeat</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-dim); text-align: center; margin-top: 1rem;">AI accelerates each step, but humans control correctness. Same loop good engineers already follow &mdash; AI changes the speed, not the discipline.</p>
+      </div>
+
+      <!-- The Honesty Gap -->
+      <div style="background: linear-gradient(135deg, rgba(255,107,138,0.08), rgba(232,145,58,0.08)); border: 1px solid rgba(255,107,138,0.2); border-radius: var(--radius); padding: 1.5rem; margin: 1.5rem 0;">
+        <h3 style="font-size: 1rem; margin-bottom: 0.75rem; color: var(--accent-3);">The Honesty Gap</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">For <strong>developers</strong>, hallucination manifests as code that looks idiomatic but calls non-existent APIs, uses deprecated patterns, or introduces subtle logic bugs. For <strong>product managers</strong>, it manifests as plausible-sounding but incorrect feature specs. It <em>reads</em> like expertise.</p>
+        <p style="font-size: 0.85rem; color: var(--accent-3); font-weight: 600;">The risk: because the output is fluent, we stop checking. Trust is lost the moment a hallucination breaks a build or ships a wrong spec.</p>
+      </div>
+
+      <!-- Three Structural Rules -->
+      <h3 style="font-size: 1.1rem; margin: 2rem 0 1rem;">Three Structural Rules &mdash; Physics in Practice</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Don't rely on the agent's "morals" or instructions &mdash; that's Law. Build the interaction's architecture so inaccuracy is structurally difficult &mdash; that's Physics.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+        <!-- Force Blanks -->
+        <div class="tactic-card" style="border-top: 2px solid var(--blue);">
+          <div class="tactic-icon" style="background: rgba(91,141,239,0.1); border: 1px solid rgba(91,141,239,0.2); color: var(--blue);">&#9744;</div>
+          <h4>Force Blanks</h4>
+          <div class="tactic-desc">In your SKILL.md or Custom Instructions, require the agent to leave code comments or fields blank if logic is ambiguous &mdash; with a mandatory "Reason for Blank" field. This makes uncertainty visible instead of hiding it behind a confident guess.</div>
+          <div class="tactic-prompt">copilot-instructions.md: "If any business rule is ambiguous, leave a TODO comment with the reasoning instead of guessing."</div>
+        </div>
+
+        <!-- 3× Penalty -->
+        <div class="tactic-card" style="border-top: 2px solid var(--orange);">
+          <div class="tactic-icon" style="background: rgba(232,145,58,0.1); border: 1px solid rgba(232,145,58,0.2); color: var(--orange);">3&times;</div>
+          <h4>The 3&times; Penalty</h4>
+          <div class="tactic-desc">Explicitly weight the distribution: <em>"A wrong answer is 3&times; worse than a blank."</em> This recalibrates the model's helpfulness bias toward caution. When in doubt, it leaves a blank rather than guessing &mdash; which is exactly what you want.</div>
+          <div class="tactic-prompt">"When in doubt between guessing and leaving a TODO, always leave the TODO. A wrong answer costs 3&times; more than a blank."</div>
+        </div>
+
+        <!-- Label Sources -->
+        <div class="tactic-card" style="border-top: 2px solid var(--accent-2);">
+          <div class="tactic-icon" style="background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.2); color: var(--accent-2);">&#128278;</div>
+          <h4>Label Sources (Provenance)</h4>
+          <div class="tactic-desc">Every output tagged with provenance: <strong style="color: var(--accent-2);">EXTRACTED</strong> (exact match from docs/codebase) or <strong style="color: var(--orange);">INFERRED</strong> (AI's derivation, with a one-sentence logic explanation). This makes the boundary between fact and guess instantly visible.</div>
+          <div class="tactic-prompt">"Tag each claim: [EXTRACTED] with source reference, or [INFERRED] with your reasoning in one sentence."</div>
+        </div>
+      </div>
+
+      <!-- The Self-Rating Trap -->
+      <div style="background: var(--surface); border: 1px solid rgba(232,145,58,0.3); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: rgba(232,145,58,0.15); color: var(--orange); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.08em;">Watch Out</span>
+          <h3 style="margin: 0; font-size: 1.1rem;">The Self-Rating Trap</h3>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">Remember the <em>Reflection</em> tactic &mdash; "rate your response out of 10"? It works brilliantly for <strong>creative drafts</strong> where the rating triggers an improvement loop. The model can genuinely improve a poem on its second pass.</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">But for <strong>extraction, logic, and code correctness</strong>, the confidence score comes from the same process that produced the error. If a model hallucinates a variable name, it will confidently rate itself "9/10" on that answer.</p>
+        <div style="font-size: 0.85rem; padding: 0.75rem; background: rgba(232,145,58,0.08); border-radius: 6px; border-left: 3px solid var(--orange);">
+          <strong style="color: var(--orange);">Key insight:</strong> Self-assessment works for generation. It fails for verification. You cannot ask the AI to be its own independent auditor &mdash; the verification must come from outside the system. That's why we use <em>Physics</em> (tests, linters, compilers) not <em>Law</em> (instructions).
+        </div>
+      </div>
+
+      <!-- Inverted Causality -->
+      <div style="background: var(--surface); border: 1px solid rgba(124,92,252,0.3); border-radius: var(--radius); padding: 1.5rem; margin: 2rem 0;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <span style="background: rgba(124,92,252,0.15); color: var(--accent); font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.08em;">Key Insight</span>
+          <h3 style="margin: 0; font-size: 1.1rem;">Inverted Causality &mdash; Why This Works</h3>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem;">In humans, expertise produces expert language. In LLMs, <strong style="color: var(--accent);">expert language produces expertise</strong>. Forcing vocabulary like EXTRACTED and INFERRED isn't just metadata &mdash; it restricts predictions to expert regions of the training data, shifting the mean toward quality and reducing variance.</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">This is the fundamental mechanism behind all structural rules: by constraining the <em>form</em> of the output, you constrain the <em>quality</em> of the reasoning.</p>
+      </div>
+
+      <!-- Safer Prompts -->
+      <h3 style="font-size: 1.1rem; margin: 2rem 0 1rem;">Safer Prompts for Common Tasks</h3>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; margin: 1rem 0;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div style="background: rgba(255,107,138,0.08); border: 1px solid rgba(255,107,138,0.2); border-radius: var(--radius); padding: 1rem;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-3); margin-bottom: 0.5rem;">Instead of &ldquo;Refactor this code&rdquo;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">"Explain current behaviour, list risks, confirm tests exist, <em>then</em> refactor without changing behaviour."</div>
+          </div>
+          <div style="background: rgba(255,107,138,0.08); border: 1px solid rgba(255,107,138,0.2); border-radius: var(--radius); padding: 1rem;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-3); margin-bottom: 0.5rem;">Instead of &ldquo;Write tests&rdquo;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">"List edge cases first, then write tests that would fail if the implementation is wrong."</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+          <div style="background: rgba(255,107,138,0.08); border: 1px solid rgba(255,107,138,0.2); border-radius: var(--radius); padding: 1rem;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-3); margin-bottom: 0.5rem;">Instead of &ldquo;Fix this bug&rdquo;</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">"Describe the root cause, show what the correct behaviour should be, then propose the smallest safe fix."</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Your Checklist -->
+      <div class="takeaway-banner" style="margin-top: 2rem;">
+        <em>Your verification checklist:</em><br>
+        <span style="font-size: 0.9rem; color: var(--text-muted); font-style: normal;">
+          &#9744; Can the agent say "I don't know" in your workflow?<br>
+          &#9744; Does every output carry provenance (EXTRACTED / INFERRED)?<br>
+          &#9744; Is a wrong answer penalised more than a blank?<br>
+          &#9744; Are you building with Law or Physics?
+        </span>
+      </div>
+
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <a href="cheat-sheet.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.25rem; background: rgba(124,92,252,0.1); border: 1px solid rgba(124,92,252,0.3); border-radius: var(--radius); color: var(--accent-light); text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all 0.2s;">&#128203; Cheat Sheets &amp; Bingo Card &rarr;</a>
       </div>
     </section>
   </div>
