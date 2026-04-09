@@ -168,3 +168,4 @@ Is "correct" well-defined?
 ---
 
 *Updated [[2026-02-24]] — Added Agentic Primitives cross-reference*
+*Updated [[2026-04-09]] — [[Conway and Intelligence Portability]]: Conway as Level 5 autonomy in practice — webhook triggers mean the agent acts without human initiation*

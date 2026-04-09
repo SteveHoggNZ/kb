@@ -133,6 +133,7 @@ The speaker is building **Open Brain**, an open-source project using this three-
 - [[Commitment Loops]] — Why artifacts matter: close loops, don't add reading
 - [[Context Distillation Loop - amnesia as a feature|Context Distillation Loops]] — Session boundaries as compounding mechanism
 - [[Agentic Harness Primitives]] — Infrastructure that sustains all three layers in production
+- [[Conway and Intelligence Portability]] — Anthropic's enterprise implementation of this architecture (locked inside their stack)
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
 
 ## Sources

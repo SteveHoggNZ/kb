@@ -241,3 +241,4 @@ The leak itself illustrates the tension: when AI writes 90% of your code and eng
 ---
 
 *Created [[2026-02-24]] — Extracted from Nate B. Jones analysis of the Claude Code source leak*
+*Updated [[2026-04-09]] — [[Conway and Intelligence Portability]]: Conway is the user-facing product these 12 primitives sustain in production*
