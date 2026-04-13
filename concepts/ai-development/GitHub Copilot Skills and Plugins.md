@@ -32,6 +32,14 @@ An open-source project called **Sensei** automates skill refinement using the Ra
 
 This aligns with [[Law vs Physics in Agent Design|Physics over Law]]: instead of telling the agent how to behave (law), you build a skill that structurally ensures the right behaviour (physics). Sensei makes the skill itself the unit of quality, not the conversation.
 
+### Skills Reduce Model Cost
+
+A well-built skill encodes domain knowledge, step-by-step procedures, and decision logic that would otherwise need to live in the model's reasoning. This means a smaller, cheaper model can execute reliably — it doesn't need to *figure out* the approach, it just needs to *follow* it. The skill carries the intelligence, not the model.
+
+This is a direct economic lever: organisations can drop from frontier models to mid-tier or even small models for routine tasks, as long as the skill is good enough. The cost savings compound across an organisation running thousands of agent invocations daily. It also reduces latency and context window pressure, since the skill provides focused instructions rather than relying on the model's general knowledge.
+
+This reinforces [[concepts/ai-development/Agentic Harness Primitives|Harnesses Matter More Than Models]] from a cost perspective — investing in the harness (the skill) lets you spend less on the model.
+
 ## Plugins
 
 A plugin is a **packaged collection** of skills, agents, MCP servers, and instructions — bundled together as a deployable unit. Where a skill is a single capability, a plugin is a coherent product that can be:
