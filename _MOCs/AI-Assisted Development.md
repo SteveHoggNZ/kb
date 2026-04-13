@@ -95,6 +95,9 @@ Six practices that separate the top 1% of builders: Engineering Manager Mindset 
 ### [[concepts/ai-development/Agentation - UI Element Annotation|Agentation (UI Element Annotation)]]
 Visual feedback instrument for AI coding agents. Click page elements, annotate them, and generate structured markdown with CSS selectors that help AI agents locate corresponding code. Bridges the gap between "that button" (visual) and grep-searchable selectors (code). A tool for High-Quality Intent Specification.
 
+### [[concepts/ai-development/GitHub Copilot Skills and Plugins|GitHub Copilot Skills and Plugins]]
+GitHub's extensibility model for Copilot agents. Skills (`.github/skills/SKILL.md`) are agent-discoverable, agent-executable behaviours — the key distinction from prompts. Plugins bundle skills, agents, MCPs, and instructions as deployable units via a GitHub repo marketplace. The reactive-to-agentic progression (Zone 1 → Zone 2 → Zone 3) maps adoption maturity: ghost text → workspace chat → autonomous workflows. Sensei (open-source) automates skill refinement via the Ralph loop. Our ADC artefacts are structurally equivalent to Custom Skills; our RPI methodology could be packaged as a `.github/skills/brownfield-refactoring/` skill.
+
 ### [[concepts/ai-development/Reductions Not Projections|Reductions, Not Projections]]
 *(Coming soon)*
 
