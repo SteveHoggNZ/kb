@@ -192,6 +192,80 @@ resolver 127.0.0.11;
 
 ---
 
+## Dockerfile Opinions That Actually Work
+
+Practical Dockerfile wisdom from [dockerfile-roast](https://github.com/immanuwell/dockerfile-roast). No "best practice in a vacuum" — know your workload, then choose.
+
+### Base Image Selection
+
+| Workload | Use | Why |
+|----------|-----|-----|
+| Python / Node | **`-slim` (debian-slim)** | musl libc (Alpine) ≠ glibc — native deps rebuild from scratch or silently run slower. Slim gives the same size win with zero grief |
+| Go binaries | **Alpine** | Static binaries don't care about libc |
+| Static binaries | **`scratch`** | Nothing but your binary |
+
+**Pin by digest, not tag.** `node:20` today ≠ `node:20` in 6 months. If prod broke because of a tag float, pin the digest:
+```dockerfile
+FROM node:20@sha256:abc123...
+```
+
+### Layer Order Is Your Cache Strategy
+
+Copy the lockfile first, run install, *then* copy source. Invalidating the install layer on every code change is avoidable:
+
+```dockerfile
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+```
+
+### Multi-Stage Builds
+
+Not just "best practice" — it's the reason your prod image doesn't ship gcc and 400MB of build tools:
+
+```dockerfile
+FROM node:20-slim AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:20-slim
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+CMD ["node", "dist/index.js"]
+```
+
+### COPY . . Is Fine — If Your .dockerignore Is Correct
+
+Most pain comes from forgetting to ignore `node_modules/`, `.git`, `*.log`. Fix the ignore file, not the COPY:
+
+```gitignore
+# .dockerignore
+node_modules/
+.git/
+*.log
+.env
+dist/
+```
+
+### One Process Per Container Is a Vibe, Not a Law
+
+If your app needs nginx + app server and you're not at k8s scale — `supervisord` is fine. The "one process" dogma costs more complexity than it saves at small scale.
+
+### BuildKit Cache Mounts
+
+`--mount=type=cache` keeps pip/apt/cargo caches between builds without them ending up in the final layer:
+
+```dockerfile
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -r requirements.txt
+```
+
+---
+
 ## Related
 
 - [[Kubernetes Snippets]] - Container orchestration
