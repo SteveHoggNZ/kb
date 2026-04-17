@@ -21,6 +21,8 @@ python run-all-agents.py --platform-sse
 ```
 
 
+kaxs.io kaxs.ai
+saxs.io
 SCHRA.ai
 APNEU.ai
 VARTEN.ai - vrtn.ai and vrtn.io are available
