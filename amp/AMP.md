@@ -1,10 +1,13 @@
 
 ```
-We should create a plan for the .ai/plans/__p0-add-mcp-auth.md changes. I think we need to document these auth flows in the appropriate
-  places. That could be docs/ and/or the examples/*/README.md somewhere. \                                                                     
-  \                                                                                                                                            
-  We should also make the plans aim to get everything working in Claude Cowork. The auth used will likely be one of the 3 options mentioned,   
-  so we need to go through and get it working and document what works and what doesn't, and what the future state could be e.g. OAUTH2 
+  Over the course of the last day the workflow nodes Herb stopped showing useful information for the most part. I think the changes in our game
+  state and data frames, etc., makes this information no longer available, so we need to go through and figure this out. The ideal I'd like to aim
+  for is that every message and event that appear in the main channel has a home in the state machine, so that I can see the natural progression of
+  the game dynamics. I think the aim should be that every node and event has a home and only one home in the state machine. The other thing is the
+  collection of votes seems to have failed, so please investigate that. Also, one little quirk is the first state machine in the done node has the
+  game's result there. From a timeline point of view, this happens after the second state machine's collection of votes so it feels a little bit
+  weird having the first state machine have that but perhaps that's just the best way to do it anyway, I'm not sure, and that's maybe it's not a big
+  deal.
 ```
 
 ```bash
