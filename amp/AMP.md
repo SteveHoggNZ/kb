@@ -24,6 +24,9 @@ python run-all-agents.py --platform-sse
 ```
 
 
+hemeis.ai hemeis.io - greek for we
+kiwx.io
+assx.io
 kaxs.io kaxs.ai
 saxs.io
 SCHRA.ai
