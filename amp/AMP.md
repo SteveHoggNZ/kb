@@ -29,7 +29,7 @@ cvic.ai and cvic.io - civic
 xpra.ai
 avnc.ai - Avenic
 hemeis.ai hemeis.io - greek for we
-kiwx.io
+kiwx.io kiwx.ai - Kiwx AI
 assx.io
 kaxs.io kaxs.ai
 saxs.io
