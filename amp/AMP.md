@@ -24,6 +24,8 @@ python run-all-agents.py --platform-sse
 ```
 
 
+cvic.ai and cvic.io - civic
+
 hemeis.ai hemeis.io - greek for we
 kiwx.io
 assx.io
