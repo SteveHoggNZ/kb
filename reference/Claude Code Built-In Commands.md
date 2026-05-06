@@ -67,3 +67,5 @@ See [[claude-insights-2026-04-12]] for a live example from our own usage.
 ---
 
 *Created [[2026-04-14]] — Documented /powerup and /insights as Claude Code's built-in self-improvement commands*
+
+> For community plugins, see [[Claude Code Plugins]].
