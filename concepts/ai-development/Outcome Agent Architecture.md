@@ -143,3 +143,4 @@ The speaker is building **Open Brain**, an open-source project using this three-
 ---
 
 *Created [[2026-04-05]] — Captured three-layer architecture for outcome-focused AI agents*
+*Updated [[2026-04-14]] — [[Agent Memory Architecture]] specifies how to structure Layer 1 internally: bundles shaped to match business data, not raw text chunks*

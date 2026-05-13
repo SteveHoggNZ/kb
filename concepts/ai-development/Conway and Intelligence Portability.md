@@ -184,3 +184,4 @@ Conway suggests your job choice becomes your agent choice. AMP's Control Room Pa
 ---
 
 *Created [[2026-04-09]] — Captured Conway leak analysis: always-on agents, the Google Play strategy for MCP, and intelligence portability as the new lock-in*
+*Updated [[2026-04-14]] — [[Agent Memory Architecture]]: structured bundles as portable memory vs opaque behavioural lock-in — if memory is explicit contracts, it becomes exportable*
