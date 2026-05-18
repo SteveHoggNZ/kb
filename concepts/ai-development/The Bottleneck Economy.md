@@ -223,6 +223,7 @@ Success in the next decade:
 
 ## Related Concepts
 
+- [[The Implementation Layer]] — The Integration Gap made concrete: six enterprise components, four competitive axes squeezing the market
 - [[The Barbell Economy]] — Layer 1 vs Layer 2 value split
 - [[Scarcity to Abundance - A Unifying Lens]] — The broader transformation pattern
 - [[The Great Inversion]] — Execution cheap, clarity expensive
