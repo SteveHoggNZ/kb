@@ -1,5 +1,5 @@
 ```
-Due to the desire to useThe most practical path is probably a hybrid:
+Due to the desire to use the internal project budget, the most practical path is probably a hybrid of EA and Azure PAYG.
 
    - EA for GitHub Enterprise: satisfies the budget commitment mechanism, locks in the GHE spend formally
    - Azure PAYG for Copilot Enterprise: the only available route until Jenelle confirms whether Copilot is on the EA pricebook
