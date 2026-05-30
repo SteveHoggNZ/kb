@@ -56,6 +56,41 @@ See [[claude-insights-2026-04-12]] for a live example from our own usage.
 
 ---
 
+## /terminal-setup
+
+Automatically installs the VS Code keybinding for Shift+Enter newlines in the Claude Code terminal. Run this if you want Claude Code to manage the binding for you.
+
+If you prefer to set it up manually, add the following to your VS Code `keybindings.json`:
+
+| Platform | Location |
+|----------|----------|
+| **macOS** | `~/Library/Application Support/Code/User/keybindings.json` |
+| **macOS (Insiders)** | `~/Library/Application Support/Code - Insiders/User/keybindings.json` |
+| **Linux** | `~/.config/Code/User/keybindings.json` |
+| **Windows** | `%APPDATA%\Code\User\keybindings.json` |
+
+```json
+{
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+        "text": "\r"
+    },
+    "when": "terminalFocus"
+}
+```
+
+**Why this specific sequence:** Option+Enter inserts a newline in Claude Code because macOS Option-as-Meta sends ESC + carriage return (`\r`). Claude Code's input reader treats that two-byte sequence as "insert newline." This binding makes Shift+Enter emit the exact same bytes.
+
+**What doesn't work:**
+- `\n` or `\\n` → sends a bare line feed or the literal characters `\n`
+- A bare `\r` → same as plain Enter, which submits the prompt
+- The missing piece is the leading **ESC** (``), which distinguishes "newline" from "submit"
+
+VS Code picks up `keybindings.json` changes live — no restart needed.
+
+---
+
 ## See Also
 
 - [[AI & LLM Tools]] — Broader AI tooling reference
