@@ -1,5 +1,6 @@
 
 copilot exclude repos
+coplilot ignore .gitignore
 
 ```
 Due to the desire to use the internal project budget, the most practical path is probably a hybrid of EA and Azure PAYG.
