@@ -72,6 +72,13 @@ Amazon's framework:
 
 ---
 
+## Levels of Analysis
+
+### [[concepts/decision-frameworks/Strategy vs Tactics vs Operations|Strategy vs Tactics vs Operations]]
+Three levels for any complex endeavour: **Strategic** (the "why" — ultimate objectives, long-term consequences), **Operational** (the "how" — campaigns, logistics, structural capability), **Tactical** (the "what" — immediate actions). The critical lesson: tactical or operational brilliance means nothing if it serves a disastrous strategy. Pearl Harbor — operationally flawless, strategically catastrophic. The "pivotal error": a decision that permanently degrades future choices, connecting to [[Two-Way Doors|One-Way vs Two-Way Doors]]. Maps to AI agent architecture: strategy = [[Intent Engineering]], operations = [[Agentic Harness Primitives]], tactics = daily prompt engineering.
+
+---
+
 ## Applied Frameworks
 
 ### For Technical Decisions
