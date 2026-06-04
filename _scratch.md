@@ -1,4 +1,10 @@
 
+* P3 pricing
+	* 
+
+
+
+
 copilot exclude repos
 coplilot ignore .gitignore
 
