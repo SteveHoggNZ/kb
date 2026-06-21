@@ -1,4 +1,12 @@
 
+2 archetypes
+* Code
+* Data
+
+AI working group will be steering group
+
+
+
 * P3 pricing
 	* Consumption
 
