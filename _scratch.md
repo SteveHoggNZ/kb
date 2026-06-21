@@ -1,7 +1,10 @@
 
-2 archetypes
+RBNZ 2 archetypes
 * Code
-* Data
+* Data - no pipelines, so maybe multi-org makes sense?
+	* Will not separate from day one
+	* No different from ADO repos, so is there any issue using GitHub repos instead?
+
 
 AI working group will be steering group
 
