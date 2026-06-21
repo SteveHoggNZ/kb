@@ -1,7 +1,7 @@
 
 RBNZ 2 archetypes
 * Code
-* Data - no pipelines, so maybe multi-org makes sense?
+* Data - no pipelines, so maybe multi-org makes sense? Avoid reliance on tagging correctly
 	* Will not separate from day one
 	* No different from ADO repos, so is there any issue using GitHub repos instead?
 
