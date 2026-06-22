@@ -9,6 +9,7 @@ Stats NZ - Next steps
 
 How does self-service work? "Landing zone"
 Use naming convention?
+Prototype 1 vs 2 orgs
 
 
 
