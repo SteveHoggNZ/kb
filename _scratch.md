@@ -7,6 +7,11 @@ Stats NZ - Next steps
 
 
 
+How does self-service work? "Landing zone"
+Use naming convention?
+
+
+
 
 RBNZ 2 archetypes
 * Code
