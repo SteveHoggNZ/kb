@@ -7,11 +7,20 @@ Stats NZ - Next steps
 
 
 
-How does self-service work? "Landing zone"
-Use naming convention?
-Prototype 1 vs 2 orgs
-What to do about external party access?
-What about agent access to repos, how does RBAC work for agents? Does this get impacted if we use 1 or 2 orgs?
+* How does self-service work? "Landing zone"
+	* e.g. Terraform Cloud form or ServiceNow or GitHub direct etc.
+	* Provision within a hour at high standard is better than self-service
+	* How do we enforce a naming pattern and/or custom attributes?
+* Operations
+	* How do we give people access to a set of repos, or just one repo?
+* How do we limit mistakes, but allow self-service?
+	* Lightweight where it can be, strict where is should be
+* How do we have sane defaults?
+	* Tier 1 production, must use PR etc
+* 
+* Prototype 1 vs 2 orgs
+* What to do about external party access?
+* What about agent access to repos, how does RBAC work for agents? Does this get impacted if we use 1 or 2 orgs?
 
 
 
