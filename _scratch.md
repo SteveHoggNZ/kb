@@ -10,6 +10,8 @@ Stats NZ - Next steps
 How does self-service work? "Landing zone"
 Use naming convention?
 Prototype 1 vs 2 orgs
+What to do about external party access?
+What about agent access to repos, how does RBAC work for agents? Does this get impacted if we use 1 or 2 orgs?
 
 
 
