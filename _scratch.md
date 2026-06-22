@@ -1,4 +1,13 @@
 
+Stats NZ - Next steps
+* Governance - prevent user using all the tokens
+* SDLC help
+* Token Economics
+	* How do you measure bang-for-buck?
+
+
+
+
 RBNZ 2 archetypes
 * Code
 * Data - no pipelines, so maybe multi-org makes sense? Avoid reliance on tagging correctly
