@@ -1,4 +1,10 @@
 
+claude --resume dca2cf49-480c-45c4-bf50-36ec743ddb0c
+
+
+
+
+
 ```
   Over the course of the last day the workflow nodes Herb stopped showing useful information for the most part. I think the changes in our game
   state and data frames, etc., makes this information no longer available, so we need to go through and figure this out. The ideal I'd like to aim
