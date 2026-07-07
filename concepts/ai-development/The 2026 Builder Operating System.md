@@ -139,6 +139,7 @@ Construction debt is cheap. Comprehension debt ("Archaeological Programming") is
 
 ## Related Concepts
 
+- [[The New SDLC with Vibe Coding]] — The conductor↔orchestrator role and factory model operationalise the manager mindset for software work
 - [[Taste in Software]] — Deep dive on "Quality Without a Name"
 - [[The Great Inversion]] — Execution is cheap; clarity is the bottleneck
 - [[The Collapse of Roles and Time]] — Horizontal (roles converge) and temporal (timelines compress) collapse
@@ -154,3 +155,7 @@ Construction debt is cheap. Comprehension debt ("Archaeological Programming") is
 ## Sources
 
 - [The 2026 Builder Operating System (YouTube)](https://www.youtube.com/watch?v=5Di6o6zuMLc)
+
+---
+
+*Updated [[2026-06-27]] — Linked to [[The New SDLC with Vibe Coding]] (conductor/orchestrator roles, factory model).*

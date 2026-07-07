@@ -35,6 +35,9 @@ Since execution is no longer the bottleneck, efficiency is no longer the goal. T
 
 ## Strategies & Techniques
 
+### [[concepts/ai-development/The New SDLC with Vibe Coding|The New SDLC with Vibe Coding]]
+Google whitepaper (Osmani, Saboo, Kartakis, May 2026) mapping the move from ad-hoc prompting to **agentic engineering**. Frames vibe coding ↔ agentic engineering as a *spectrum* whose differentiator is how outputs get verified (tests + evals, not "does it seem to work?"). Core models: **context engineering** (six context types; static vs dynamic; Agent Skills), the **factory model** (your output is the system that produces code), the harness equation **Agent = Model + Harness**, and the **conductor ↔ orchestrator** developer role. Closes with CapEx/OpEx economics of the token economy and a where-to-start checklist for individuals, leaders, and orgs. Source PDF in vault. *"Generation is solved. Verification, judgment, and direction are the new craft."*
+
 ### [[concepts/ai-development/AI Second Brain Architecture|AI Second Brain Architecture]]
 Move from passive note storage to active AI loops. The system classifies, routes, summarizes, and surfaces information without you having to remember to do so. Eight building blocks + 12 engineering principles for non-engineers.
 
@@ -174,3 +177,4 @@ The Great Inversion isn't just about AI — it's a lens that reframes Leadership
 - [The Agent Memory Problem: Why RAG Isn't Enough (YouTube)](https://www.youtube.com/watch?v=lqiwQiDglGk)
 - [The Trillion Dollar Agentic Workflow Opportunity (YouTube)](https://www.youtube.com/watch?v=jwtpMSRAPAQ)
 - [Building an AI Layer for Large Codebases (YouTube)](https://www.youtube.com/watch?v=efRIrLXoOVA)
+- *The New SDLC with Vibe Coding* — Osmani, Saboo, Kartakis, Google (May 2026). PDF: [[The New SDLC with Vibe Coding.pdf]]

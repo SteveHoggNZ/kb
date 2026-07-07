@@ -1,5 +1,29 @@
 
+TODO
+* Amp Expert
+	* Law, Ergonomics, Physics
+	* CQRS - why?
+* Telemetry
+* Example queries for the new message pane
+
+
+
+feature/cross-org-read-isolation
+feature/agent-prompts-and-skills
+
+
 claude --resume dca2cf49-480c-45c4-bf50-36ec743ddb0c
+
+whatif
+claude --resume 9d602830-ae68-4cc8-b0f2-361e733702ad
+
+
+
+feature/update-ui-with-shadcn
+
+
+plan/data-source-secrets-strategy
+feature/improve-feature-config
 
 
 

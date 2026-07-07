@@ -106,6 +106,7 @@ The chaos isn't going away. The winners won't be those with the best tools (ever
 
 ## Related Concepts
 
+- [[The New SDLC with Vibe Coding]] — The inversion applied to software engineering: "Generation is solved. Verification, judgment, and direction are the new craft."
 - [[Scarcity to Abundance - A Unifying Lens]] — This theme applied across Leadership & Teams
 - [[Eight Habits to Break]] — Specific habits to unlearn
 - [[⚠️ Lean Startup]] — "Build-measure-learn" was pointing here, but got cargo-culted
@@ -119,3 +120,7 @@ The chaos isn't going away. The winners won't be those with the best tools (ever
 ## Sources
 
 - [The Great Inversion (YouTube)](https://youtu.be/hpDC29JdgjI)
+
+---
+
+*Updated [[2026-06-27]] — Linked to [[The New SDLC with Vibe Coding]], the inversion applied to the SDLC.*
