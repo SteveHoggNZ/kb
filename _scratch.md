@@ -1,4 +1,8 @@
 
+claude --resume 6fd31a6d-4147-4f33-94a4-f74d762d3372
+
+
+
 Stats NZ - Next steps
 * Governance - prevent user using all the tokens
 * SDLC help
