@@ -1,0 +1,3 @@
+* Ask agents to talk with each other
+	* Please ...
+* 
