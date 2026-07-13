@@ -140,6 +140,7 @@ Construction debt is cheap. Comprehension debt ("Archaeological Programming") is
 ## Related Concepts
 
 - [[The New SDLC with Vibe Coding]] — The conductor↔orchestrator role and factory model operationalise the manager mindset for software work
+- [[The 15 AI Commandments]] — The organisational operating system to this note's individual one; go-fast culture, writing, and product-in-code
 - [[Taste in Software]] — Deep dive on "Quality Without a Name"
 - [[The Great Inversion]] — Execution is cheap; clarity is the bottleneck
 - [[The Collapse of Roles and Time]] — Horizontal (roles converge) and temporal (timelines compress) collapse
@@ -159,3 +160,5 @@ Construction debt is cheap. Comprehension debt ("Archaeological Programming") is
 ---
 
 *Updated [[2026-06-27]] — Linked to [[The New SDLC with Vibe Coding]] (conductor/orchestrator roles, factory model).*
+
+*Updated [[2026-06-27]] — Linked to [[The 15 AI Commandments]] as the organisational-layer companion.*

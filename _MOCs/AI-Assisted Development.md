@@ -107,6 +107,9 @@ Choose AI shape based on task clarity: Colleague (Claude) = active collaborator,
 ### [[concepts/ai-development/The 2026 Builder Operating System|The 2026 Builder Operating System]]
 Six practices that separate the top 1% of builders: Engineering Manager Mindset (manage AI like a team), Kill the Contribution Badge (measure by impact not LOC), Altitude Shifting (zoom in/out fluidly), Temporal Separation (deep work vs shallow), Two Types of Architecture (Type 1 delegatable, Type 2 taste is not), Experience Not Compressible (judgment can't be fast-forwarded). The bottleneck has moved from AI capability to human cognitive architecture.
 
+### [[concepts/ai-development/The 15 AI Commandments|The 15 AI Commandments]]
+An *organisational* operating system for shipping at AI-native startup pace: push repeatable human coordination into code so humans focus on judgment, taste, and speed. Fifteen rules grouped into three interlocking systems — **Product in Code** (PMs/designers work in the terminal daily; no roadmaps; protect engineering time), **Writing** (replace standing meetings with rigorous docs because agents need precise written intent), and **Human Culture** (assume best intent, bring complete fixes not complaints, build as a team, imitate the faster / teach the slower). The key insight: it's a system, not a menu — adopt the permissions (fewer meetings, no roadmaps) without the disciplines (writing, terminal presence, culture) and it collapses. Org-layer companion to the [[concepts/ai-development/The 2026 Builder Operating System|Builder OS]].
+
 ### [[concepts/ai-development/Agentation - UI Element Annotation|Agentation (UI Element Annotation)]]
 Visual feedback instrument for AI coding agents. Click page elements, annotate them, and generate structured markdown with CSS selectors that help AI agents locate corresponding code. Bridges the gap between "that button" (visual) and grep-searchable selectors (code). A tool for High-Quality Intent Specification.
 
@@ -178,3 +181,4 @@ The Great Inversion isn't just about AI — it's a lens that reframes Leadership
 - [The Trillion Dollar Agentic Workflow Opportunity (YouTube)](https://www.youtube.com/watch?v=jwtpMSRAPAQ)
 - [Building an AI Layer for Large Codebases (YouTube)](https://www.youtube.com/watch?v=efRIrLXoOVA)
 - *The New SDLC with Vibe Coding* — Osmani, Saboo, Kartakis, Google (May 2026). PDF: [[The New SDLC with Vibe Coding.pdf]]
+- [The 15 AI Commandments (YouTube)](https://www.youtube.com/watch?v=hYcOFTMesGc&t=60s)
