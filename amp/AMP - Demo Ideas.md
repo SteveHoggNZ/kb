@@ -11,7 +11,8 @@ claude --resume aee74424-33f5-4bd0-9916-0b8a95f2e7a9
 	* Optional: get them to create a FAQ tab
 
 * Show marketplace
-	* Search for Python development
+	* 
+	* dashboard and kanban
 
 * Ask agents to talk with each other
 	* Please ...
