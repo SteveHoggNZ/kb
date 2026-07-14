@@ -125,6 +125,7 @@ The natural next step: package our RPI methodology as a `.github/skills/brownfie
 - [[concepts/ai-development/Law vs Physics in Agent Design|Law vs Physics in Agent Design]] — Skills are physics; prompts are law
 - [[concepts/ai-development/Agentic Harness Primitives|Agentic Harness Primitives]] — Deferred tool loading parallels skill discovery
 - [[concepts/ai-development/Decompose-Route-Recompose|Decompose-Route-Recompose]] — RPI phases as potential Custom Skills
+- [[Writing Great Skills]] — Pocock's Trigger/Structure/Steering/Pruning rubric for authoring a *good* skill
 
 ## Sources
 
@@ -137,3 +138,5 @@ The natural next step: package our RPI methodology as a `.github/skills/brownfie
 *Created [[2026-04-13]] — New note capturing GitHub Copilot's skill/plugin extensibility model, the reactive-to-agentic progression, and connection to our brownfield methodology.*
 
 *Updated [[2026-04-14]] — Added 7-layer extensibility stack, skills vs prompts analysis (deterministic/portable/discoverable), agentskills.io open standard, the meta-insight on building the process not the code, and the 100x pattern.*
+
+*Updated [[2026-06-27]] — Linked to [[Writing Great Skills]] (how to author a good skill: Trigger, Structure, Steering, Pruning).*

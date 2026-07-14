@@ -38,6 +38,9 @@ Since execution is no longer the bottleneck, efficiency is no longer the goal. T
 ### [[concepts/ai-development/The New SDLC with Vibe Coding|The New SDLC with Vibe Coding]]
 Google whitepaper (Osmani, Saboo, Kartakis, May 2026) mapping the move from ad-hoc prompting to **agentic engineering**. Frames vibe coding ↔ agentic engineering as a *spectrum* whose differentiator is how outputs get verified (tests + evals, not "does it seem to work?"). Core models: **context engineering** (six context types; static vs dynamic; Agent Skills), the **factory model** (your output is the system that produces code), the harness equation **Agent = Model + Harness**, and the **conductor ↔ orchestrator** developer role. Closes with CapEx/OpEx economics of the token economy and a where-to-start checklist for individuals, leaders, and orgs. Source PDF in vault. *"Generation is solved. Verification, judgment, and direction are the new craft."*
 
+### [[concepts/ai-development/Writing Great Skills|Writing Great Skills]]
+Matt Pocock's "missing manual" — a shared rubric for escaping **"Skill Hell"** (lots of skills, no way to judge quality). Four checks: **Trigger** (prefer user-invoked over probabilistic model-invoked), **Structure** (split Steps vs Reference, keep `SKILL.md` minimal, hide branch templates behind context pointers = progressive disclosure), **Steering** ("leading words"/lightvert to seed a phrase the agent must repeat; split a skill in two to force legwork by hiding future steps), and **Pruning** (DRY, clear the "sediment", apply the deletion test to no-ops). The authoring-craft layer beneath [[concepts/ai-development/GitHub Copilot Skills and Plugins|GitHub Copilot Skills and Plugins]].
+
 ### [[concepts/ai-development/AI Second Brain Architecture|AI Second Brain Architecture]]
 Move from passive note storage to active AI loops. The system classifies, routes, summarizes, and surfaces information without you having to remember to do so. Eight building blocks + 12 engineering principles for non-engineers.
 
@@ -182,3 +185,4 @@ The Great Inversion isn't just about AI — it's a lens that reframes Leadership
 - [Building an AI Layer for Large Codebases (YouTube)](https://www.youtube.com/watch?v=efRIrLXoOVA)
 - *The New SDLC with Vibe Coding* — Osmani, Saboo, Kartakis, Google (May 2026). PDF: [[The New SDLC with Vibe Coding.pdf]]
 - [The 15 AI Commandments (YouTube)](https://www.youtube.com/watch?v=hYcOFTMesGc&t=60s)
+- [The Missing Manual: How To Write Great Skills — Matt Pocock (YouTube)](https://www.youtube.com/watch?v=UNzCG3lw6O0)
