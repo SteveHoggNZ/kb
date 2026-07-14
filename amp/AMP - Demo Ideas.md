@@ -7,7 +7,7 @@ claude --resume aee74424-33f5-4bd0-9916-0b8a95f2e7a9
 	* Ask that the UI Designer get added
 	* Ask the UI Designer to read the pitch in the channel, and summarise it as an application tab using markdown and diagrams
 * New channel
-	* Add a couple of agents and have them talk to each other
+	* Add concierge and system expert, and get the concierge to interview the expert over multiple rounds
 
 ```bash
 pkill -f "claude_agent.main"
