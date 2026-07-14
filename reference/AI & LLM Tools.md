@@ -32,6 +32,18 @@ Curated list of useful AI development tools, frameworks, and services.
 
 ---
 
+## Code Knowledge Graphs
+
+Structural maps of a codebase for AI agents (via MCP) — see [[Code Knowledge Graphs for Agents]].
+
+| Tool | Description | License |
+|------|-------------|---------|
+| **Graphify** | Multi-modal graph (code + docs/PDFs/media); best visualization, 7 export formats | MIT |
+| **GitNexus** | Cross-repo/microservice architecture; 17 specialized MCP tools | PolyForm Noncommercial |
+| **CodeGraph** | Zero-maintenance auto-sync; strong on dynamic code; 1 MCP tool | MIT |
+
+---
+
 ## Document Processing
 
 | Tool | Description | URL |

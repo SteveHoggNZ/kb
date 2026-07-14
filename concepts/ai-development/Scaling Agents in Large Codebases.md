@@ -141,3 +141,5 @@ This is the practical manifestation of [[Agentic Harness Primitives|Primitive 10
 ---
 
 *Created [[2026-04-14]] — Seven tactics for scaling coding agents: lean rules, scoped directories, hooks, path-scoped skills, LSP via MCP, sub-agents, organisational adoption*
+
+*Updated [[2026-06-27]] — Linked to [[Code Knowledge Graphs for Agents]] — precomputed graphs as the "symbol navigation over grep" tactic in tool form.*

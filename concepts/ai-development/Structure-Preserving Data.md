@@ -113,3 +113,5 @@ AMP's frame system is structure-preserving by design. When an agent patches a da
 ---
 
 *Created [[2026-04-14]] — Extracted from Agent Memory Architecture as a first-class principle: the structure of a document is information, and flattening it is lossy compression*
+
+*Updated [[2026-06-27]] — Linked to [[Code Knowledge Graphs for Agents]] — a concrete case: code graphs preserve traversal paths grep destroys.*
