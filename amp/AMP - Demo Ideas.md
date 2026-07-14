@@ -4,7 +4,8 @@ claude --resume aee74424-33f5-4bd0-9916-0b8a95f2e7a9
 
 * Hello World
 	* Ask System Expert to give an elevator pitch for AMP
-	* Ask to add the UI Designer and have them generate a report
+	* Ask that the UI Designer get added
+	* Ask the UI Designer to read the pitch in the channel, and summarise it as an application tab using markdown and diagrams
 * New channel
 	* Add a couple of agents and have them talk to each other
 
