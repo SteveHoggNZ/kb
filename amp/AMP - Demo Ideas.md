@@ -10,9 +10,14 @@ claude --resume aee74424-33f5-4bd0-9916-0b8a95f2e7a9
 	* Add concierge and system expert, and get the concierge to interview the expert over multiple rounds
 	* Optional: get them to create a FAQ tab
 
-* Show marketplace
-	* 
-	* dashboard and kanban
+* Show experimental workspace
+	* Marketplace search and shopping cart
+	* Applications
+	* Application installs
+		* Thanks tracker & factory
+		* Joke rating
+	* Event - dinner RFP
+
 
 * Ask agents to talk with each other
 	* Please ...
