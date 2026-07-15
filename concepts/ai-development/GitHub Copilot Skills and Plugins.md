@@ -126,6 +126,7 @@ The natural next step: package our RPI methodology as a `.github/skills/brownfie
 - [[concepts/ai-development/Agentic Harness Primitives|Agentic Harness Primitives]] — Deferred tool loading parallels skill discovery
 - [[concepts/ai-development/Decompose-Route-Recompose|Decompose-Route-Recompose]] — RPI phases as potential Custom Skills
 - [[Writing Great Skills]] — Pocock's Trigger/Structure/Steering/Pruning rubric for authoring a *good* skill
+- [[Optimizing GitHub Copilot Cost]] — Skills-reduce-model-cost as a billing lever under usage-based pricing
 
 ## Sources
 
@@ -140,3 +141,5 @@ The natural next step: package our RPI methodology as a `.github/skills/brownfie
 *Updated [[2026-04-14]] — Added 7-layer extensibility stack, skills vs prompts analysis (deterministic/portable/discoverable), agentskills.io open standard, the meta-insight on building the process not the code, and the 100x pattern.*
 
 *Updated [[2026-06-27]] — Linked to [[Writing Great Skills]] (how to author a good skill: Trigger, Structure, Steering, Pruning).*
+
+*Updated [[2026-06-27]] — Linked to [[Optimizing GitHub Copilot Cost]] (skills let cheaper models execute reliably — a cost lever under usage-based billing).*

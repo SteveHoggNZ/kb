@@ -150,6 +150,7 @@ Tests + evals are the contract with the agent — the verification discipline th
 - [[Scarcity to Abundance - A Unifying Lens]] — The broader scarcity→abundance lens
 - [[Eight Habits to Break]] — The discipline traps AI amplifies
 - [[Writing Great Skills]] — How to author the Agent Skills this paper relies on (progressive disclosure in practice)
+- [[Optimizing GitHub Copilot Cost]] — The economics section (token economy, model routing) applied to one tool
 
 ## Sources
 
@@ -161,3 +162,5 @@ Tests + evals are the contract with the agent — the verification discipline th
 *Added [[2026-06-27]] — Imported and summarised the Google "New SDLC with Vibe Coding" whitepaper; stored source PDF in the vault.*
 
 *Updated [[2026-06-27]] — Linked to [[Writing Great Skills]] (authoring craft for the Agent Skills pattern).*
+
+*Updated [[2026-06-27]] — Linked to [[Optimizing GitHub Copilot Cost]] (the economics section applied in practice).*
