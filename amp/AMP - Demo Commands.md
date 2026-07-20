@@ -14,5 +14,6 @@ bash examples/dinner_rfp/launch-agents.sh
 ```
 
 ```bash
-./examples/agents/tanstack-ai-code-mode/run-agents.sh
+cd examples/agents/tanstack-ai-code-mode
+./run-agents.sh
 ```
