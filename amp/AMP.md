@@ -1,4 +1,9 @@
 
+nsec1yvaacpfutd2pv62xj9qc5dl5pt3jslhqxzse05e0wz4w3ueeusfs93349h
+
+Boss: nsec1fxd9qev6wzrzhn8etcryxgerat47r5hg6knr6svgxw8awszhfjvqjaxjh2
+
+
 TODO
 * Amp Expert
 	* Law, Ergonomics, Physics
