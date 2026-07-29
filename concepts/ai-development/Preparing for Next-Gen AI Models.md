@@ -98,3 +98,5 @@ The risk is clinging to complexity that was once necessary, making it the new ve
 ---
 
 *Created [[2026-04-02]]*
+
+*Updated [[2026-06-27]] — Linked to [[Evaluating Skills]] — ablation-test and retire "capability skills" once the base model has caught up.*

@@ -128,3 +128,5 @@ This sequence prevents the most common mistake: starting with a database vendor 
 ---
 
 *Created [[2026-04-14]] — Agent memory as structured bundles, not text chunks: contract → bundle → infrastructure*
+
+*Updated [[2026-06-27]] — Linked to [[Ontology-Based Semantic Layer]] — structured operating context as a shared enterprise substrate (business + technical ontology + execution traces).*

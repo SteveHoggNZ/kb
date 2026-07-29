@@ -147,3 +147,5 @@ When in doubt about where to put logic:
 ---
 
 *Created [[2026-02-17]] — Extracted from AMP Goldilocks Layering architecture*
+
+*Updated [[2026-06-27]] — Linked to [[Ontologies as Agent Guardrails]] — Goldilocks Layering applied to correctness (two validation gates; hard axioms in a layer the agent can't bypass).*

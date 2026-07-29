@@ -75,6 +75,9 @@ Architecture mirrors organization. Design your teams to match desired architectu
 ### [[concepts/leadership/DevOps vs SRE vs Platform Engineering|DevOps → SRE → Platform Engineering]]
 The evolution of "who runs production." DevOps is a formation, not a position. SRE adds engineering discipline. Platform Engineering provides self-service golden paths.
 
+### [[concepts/leadership/Small Teams|Small Teams]]
+PostHog's model for keeping startup speed at scale: organise everyone into autonomous 2–6 person teams that own their product area end-to-end (roadmap, pricing, support) with no sign-off. Four rules — keep them small (split, don't grow), own everything end-to-end, everyone's a driver (lead is an IC, not an HR manager), stay easy to restructure (days, not quarters). Three trade-offs — fuzzy ownership (managed with radical public ownership lists), speed over seamlessness (few "glue teams"), and hiring for high-ownership/low-ego people. The org-design counterpart to [[concepts/ai-development/The 15 AI Commandments|the 15 AI Commandments]] and a human mirror of [[concepts/ai-development/Scalable Multi-Agent Architecture|Scalable Multi-Agent Architecture]].
+
 ### [[concepts/leadership/The Process Is Not The Product|Process vs. Product Thinking]]
 Don't confuse following a process with delivering value.
 

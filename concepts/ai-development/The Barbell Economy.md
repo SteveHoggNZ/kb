@@ -127,3 +127,5 @@ The Great Inversion focuses on *how to work*. The Barbell Economy focuses on *wh
 ---
 
 *Updated [[2026-02-24]] — Added Intent Engineering cross-reference*
+
+*Updated [[2026-06-27]] — Linked to [[Will AI Kill SaaS]] — the same value migration told as a founder's opportunity (simple-objective SaaS dies; taste/empathy/distribution become the premium).*

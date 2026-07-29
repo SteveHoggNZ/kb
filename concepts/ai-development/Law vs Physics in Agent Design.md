@@ -177,3 +177,5 @@ The goal isn't perfect compliance. It's **bounded failure** — when things go w
 ---
 
 *Updated [[2026-02-16]] — Added Trinity Protocol as concrete implementation example*
+
+*Updated [[2026-06-27]] — Linked to [[Ontologies as Agent Guardrails]] — OWL/ontologies as Physics with a formal reasoner ("OWL catches what prose cannot").*

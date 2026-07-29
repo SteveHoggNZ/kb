@@ -76,6 +76,7 @@ System 2 (Writing) and the anti-meeting commandments directly counter the "meeti
 
 - [[AI-Assisted Development]] — Back to the MOC
 - [[Trust]] — The cultural bedrock under System 3
+- [[Small Teams]] — The org-structure companion: autonomous 2–6 person teams that make this culture possible
 - [[Scarcity to Abundance - A Unifying Lens]] — The broader shift these rules operationalise
 
 ## Sources
@@ -85,3 +86,5 @@ System 2 (Writing) and the anti-meeting commandments directly counter the "meeti
 ---
 
 *Added [[2026-06-27]] — Recorded the "15 AI Commandments" org operating system (three systems: Product in Code, Writing, Human Culture).*
+
+*Updated [[2026-06-27]] — Linked to [[Small Teams]], the org-structure companion (PostHog's autonomous small-teams model).*

@@ -39,6 +39,7 @@ Trigger and Structure decide *what the agent sees and when*; Steering decides *w
 ## See Also
 
 - [[AI-Assisted Development]] — Back to the MOC
+- [[Evaluating Skills]] — The testing companion: don't ship a skill without evals (ablation tests, LLM-as-judge)
 - [[GitHub Copilot Skills and Plugins]] — What skills are and how they're packaged/distributed
 - [[Agentic Harness Primitives]] — Skills as one primitive in the broader harness
 
@@ -51,3 +52,5 @@ Trigger and Structure decide *what the agent sees and when*; Steering decides *w
 ---
 
 *Added [[2026-06-27]] — Recorded Matt Pocock's "How To Write Great Skills" rubric (Trigger, Structure, Steering, Pruning).*
+
+*Updated [[2026-06-27]] — Linked to [[Evaluating Skills]], the testing companion (Schmid's "Don't Ship Skills Without Evals").*

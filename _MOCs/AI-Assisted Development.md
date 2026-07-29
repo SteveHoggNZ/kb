@@ -18,6 +18,9 @@ The meeting to discuss the work now costs more than doing the work. The PRD take
 ### [[concepts/ai-development/The Barbell Economy|The Barbell Economy]]
 AI creates a bifurcated economy: digital/contestable markets get crushed (mid-tier agencies, software shops), while physical/local markets are protected (trades, healthcare). Three layers of value: Layer 1 (tokenizable cognition) → collapsing to zero. Layer 2 (judgment/accountability) → the new bottleneck. Layer 3 (physical execution) → protected by atoms.
 
+### [[concepts/ai-development/Will AI Kill SaaS|Will AI Kill SaaS?]]
+Einar Vollset's thesis (via Tracy Osborn, MicroConf): AI kills SaaS with **simple objective functions**, but not most of it. Bear case = "invisible software" in 3–5 years; four counters = (1) scaling gains are decelerating (neural power law, data running out), (2) democratizing production ≠ automating taste (masterpieces violate expectations perfectly), (3) **software complexity mirrors societal complexity and human desire has no upper bound — Jevon's Paradox means cheaper software expands demand**, (4) we're not building God (most problems lack a computable objective function). Payoff: incumbents are vulnerable, human creativity/empathy/connection become the premium, and **5–10 person teams hit $100M ARR**. The entrepreneurial framing of [[concepts/ai-development/The Barbell Economy|The Barbell Economy]] + [[concepts/ai-development/The Great Inversion|The Great Inversion]].
+
 ---
 
 ## The New Bottlenecks
@@ -38,6 +41,12 @@ Since execution is no longer the bottleneck, efficiency is no longer the goal. T
 ### [[concepts/ai-development/The New SDLC with Vibe Coding|The New SDLC with Vibe Coding]]
 Google whitepaper (Osmani, Saboo, Kartakis, May 2026) mapping the move from ad-hoc prompting to **agentic engineering**. Frames vibe coding ↔ agentic engineering as a *spectrum* whose differentiator is how outputs get verified (tests + evals, not "does it seem to work?"). Core models: **context engineering** (six context types; static vs dynamic; Agent Skills), the **factory model** (your output is the system that produces code), the harness equation **Agent = Model + Harness**, and the **conductor ↔ orchestrator** developer role. Closes with CapEx/OpEx economics of the token economy and a where-to-start checklist for individuals, leaders, and orgs. Source PDF in vault. *"Generation is solved. Verification, judgment, and direction are the new craft."*
 
+### [[concepts/ai-development/Ontology-Based Semantic Layer|Ontology-Based Semantic Layer]]
+Emil Eifrem's (Neo4j) blueprint for enterprise agent data: replace "thick" agents with hardwired data connections with **thin agents on a smarter shared substrate**. Three pillars — a **business-facing ontology** (concepts in plain language: "First Name" not `f_name`), a **technical ontology** (metadata of where all data lives), and **execution traces** (map business→technical columns + record runtime success to score data-source reliability). Solves discovery, trust, DRY (change data once, cascades to all agents), and no-learning (traces compound across the whole agent fleet). The *data-substrate* sense of ontology — complements the *constraint* sense in [[concepts/ai-development/Ontologies as Agent Guardrails|Ontologies as Agent Guardrails]].
+
+### [[concepts/ai-development/Ontologies as Agent Guardrails|Ontologies as Agent Guardrails]]
+Frank Coyle's **neurosymbolic** argument: pair a probabilistic LLM (creative engine) with a symbolic **ontology** (logical boundary) — the agent proposes, the ontology permits or rejects. Ontologies are graphs (build bottom-up from real data; reuse schema.org/FOAF/DBpedia); **RDFS** infers types, **OWL** enforces constraints (transitive, functional "at most one"). Unbounded probabilistic loops are dangerous, so keep the agent *pure* behind **two gates**: **Pydantic** validates output *shape* (pre-tool), the **ontology** validates *meaning* and state coherence (post-tool). "OWL catches what prose cannot" — the formal, reasoner-backed form of [[concepts/ai-development/Law vs Physics in Agent Design|Physics over Law]] and our Goldilocks Layering ([[concepts/design-principles/Dumb Pipe Smart Edge|Dumb Pipe Smart Edge]]).
+
 ### [[concepts/ai-development/Optimizing GitHub Copilot Cost|Optimizing GitHub Copilot Cost]]
 Practitioner's guide to Copilot spend under **usage-based billing** (Premium Request Units → **GitHub AI Credits** as of June 2026, billed on input/output/cached tokens). Core reframe: *"the right model, context, and automation for this task."* Levers: **right-size the model** (start cheap, escalate only for deep reasoning), **scope context** (name files/ranges, don't paste whole logs), **lean on inline completions** (not billed against AI credits on paid plans), and keep agent sessions short (history re-sends every turn). Cost control and quality are the same lever — the tool-level version of [[concepts/ai-development/The New SDLC with Vibe Coding|context engineering as a financial lever + intelligent model routing]].
 
@@ -46,6 +55,9 @@ Tools that pre-map a codebase (functions, classes, modules + relationships) so a
 
 ### [[concepts/ai-development/Writing Great Skills|Writing Great Skills]]
 Matt Pocock's "missing manual" — a shared rubric for escaping **"Skill Hell"** (lots of skills, no way to judge quality). Four checks: **Trigger** (prefer user-invoked over probabilistic model-invoked), **Structure** (split Steps vs Reference, keep `SKILL.md` minimal, hide branch templates behind context pointers = progressive disclosure), **Steering** ("leading words"/lightvert to seed a phrase the agent must repeat; split a skill in two to force legwork by hiding future steps), and **Pruning** (DRY, clear the "sediment", apply the deletion test to no-ops). The authoring-craft layer beneath [[concepts/ai-development/GitHub Copilot Skills and Plugins|GitHub Copilot Skills and Plugins]].
+
+### [[concepts/ai-development/Evaluating Skills|Evaluating Skills]]
+Philipp Schmid (Google DeepMind): **don't ship skills on vibe checks — ship them with evals.** Distinguishes *agents we use* (human in the loop) from *agents we build* (no safety net → reliability paramount), and **capability skills** (temporary patches, retire as models improve) from **preference skills** (durable conventions). Nine practices: nail the trigger description, directives not essays, keep it lean, right level of freedom (need an exact sequence? write a script), test negative cases, test early with 10–20 real prompts, kill no-ops, LLM-as-judge with a strict rubric, and **ablation-test** to retire skills the base model has outgrown. Case study: a Gemini Interactions API skill went **19.6% → ~90%** with an eval suite. The testing companion to [[concepts/ai-development/Writing Great Skills|Writing Great Skills]].
 
 ### [[concepts/ai-development/AI Second Brain Architecture|AI Second Brain Architecture]]
 Move from passive note storage to active AI loops. The system classifies, routes, summarizes, and surfaces information without you having to remember to do so. Eight building blocks + 12 engineering principles for non-engineers.
@@ -192,3 +204,7 @@ The Great Inversion isn't just about AI — it's a lens that reframes Leadership
 - *The New SDLC with Vibe Coding* — Osmani, Saboo, Kartakis, Google (May 2026). PDF: [[The New SDLC with Vibe Coding.pdf]]
 - [The 15 AI Commandments (YouTube)](https://www.youtube.com/watch?v=hYcOFTMesGc&t=60s)
 - [The Missing Manual: How To Write Great Skills — Matt Pocock (YouTube)](https://www.youtube.com/watch?v=UNzCG3lw6O0)
+- [Why Agentic Systems Need Ontologies — Frank P. Coyle (YouTube)](https://youtu.be/Sir59K8ZDPU)
+- [Preparing Enterprise Data for AI Agents — Emil Eifrem, Neo4j (YouTube)](https://www.youtube.com/watch?v=VGN22pPpb-8&t=492s)
+- [Don't Ship Skills Without Evals — Philipp Schmid, Google DeepMind (YouTube)](https://www.youtube.com/watch?v=0vphxNt4wyk)
+- [Will AI Kill SaaS? — Einar Vollset / Tracy Osborn, MicroConf (YouTube)](https://www.youtube.com/watch?v=KxgomEbhWu0)
