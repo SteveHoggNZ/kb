@@ -2,7 +2,7 @@
 RBNZ cohorts
 
 SREs
-Devs
+Devs - every 2nd wednesday - hackathon - 2 hours
 Data
 
 
