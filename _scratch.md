@@ -5,6 +5,7 @@ SREs
 Devs - every 2nd wednesday - hackathon - 2 hours
 Data
 
+Copilot license rollout, and cost controls x 2
 
 
 
