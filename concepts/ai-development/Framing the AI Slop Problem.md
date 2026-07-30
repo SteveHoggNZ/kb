@@ -64,7 +64,10 @@ Humans are hungry for real stories and real dense content. The slop era is a tra
 ## See Also
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
+- [[Simplified Technical English (STE)]] — A concrete tool for the *form* of slop (fixes surface, not the substance this note argues for)
 
 ---
 
 *Created [[2026-02-16]]*
+
+*Updated [[2026-06-27]] — Linked to [[Simplified Technical English (STE)]] as the form-level cure (STE fixes posture; this note is about substance/systems).*

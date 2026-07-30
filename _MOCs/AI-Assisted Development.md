@@ -144,6 +144,9 @@ GitHub's extensibility model for Copilot agents. Skills (`.github/skills/SKILL.m
 
 ## Anti-Patterns to Break
 
+### [[concepts/ai-development/Simplified Technical English (STE)|Simplified Technical English (STE)]]
+Tests whether a 1986 aerospace controlled-language standard (ASD-STE100) cures **AI slop**. Decomposes "sounds like AI" into six machine-checkable habits (synonym rotation, hedging, frozen verbs, marketing adjectives, run-ons, phrasal verbs). STE = a ~900-word dictionary (one word, one meaning) + strict rules (≤20-word sentences, no semicolons/phrasal verbs). Built a **linter** and ran prompt ablations: the **STE-skill prompt cut slop 74% on Claude / 50% on GPT-5.5**, while a banned-words list barely moved Claude (3%) — you can't fix writing with a blocklist, you need a structured system. Caveats: fixes **form not substance**, kills voice; use for docs/PRs/errors only. The concrete cure paired with [[concepts/ai-development/Framing the AI Slop Problem|Framing the AI Slop Problem]].
+
 ### [[concepts/ai-development/Eight Habits to Break|Eight "Risk Management" Habits to Break]]
 Habits we cling to that now slow us down:
 
@@ -208,3 +211,4 @@ The Great Inversion isn't just about AI — it's a lens that reframes Leadership
 - [Preparing Enterprise Data for AI Agents — Emil Eifrem, Neo4j (YouTube)](https://www.youtube.com/watch?v=VGN22pPpb-8&t=492s)
 - [Don't Ship Skills Without Evals — Philipp Schmid, Google DeepMind (YouTube)](https://www.youtube.com/watch?v=0vphxNt4wyk)
 - [Will AI Kill SaaS? — Einar Vollset / Tracy Osborn, MicroConf (YouTube)](https://www.youtube.com/watch?v=KxgomEbhWu0)
+- [Is Simplified Technical English the cure for AI slop? (YouTube)](https://youtu.be/uJblcC4lKYw)

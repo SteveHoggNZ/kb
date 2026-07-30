@@ -170,3 +170,8 @@ For rendering this concept visually (e.g., in documentation or presentations):
 ## See Also
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
+- [[Simplified Technical English (STE)]] — A structured writing system beats a blocklist because it shifts the distribution, not just forbids points in it
+
+---
+
+*Updated [[2026-06-27]] — Linked to [[Simplified Technical English (STE)]] — controlled language as distribution conditioning for prose.*
