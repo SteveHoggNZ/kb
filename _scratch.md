@@ -1,9 +1,8 @@
 
 RBNZ
-* Email pack: 1, 2, & 3
+* ~~Email pack: 1, 2, & 3~~
 * Survey questions - TODO
 * Limits on usage x 2
-* PDFs
 * 
 
 
