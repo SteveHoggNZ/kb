@@ -4,6 +4,8 @@ RBNZ
 * Survey questions - TODO
 * Limits on usage x 2
 
+* AMP - Subscribe to AI shadow with weekly blog
+
 
 * Jira planning
 * Solution design changes and notifications
