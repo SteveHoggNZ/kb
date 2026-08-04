@@ -5,7 +5,10 @@ RBNZ
 * Limits on usage x 2
 
 
-
+* Jira planning
+* Solution design changes and notifications
+* Weekly report
+* 
 
 
 
