@@ -8,7 +8,9 @@ RBNZ
 * Jira planning
 * Solution design changes and notifications
 * Weekly report
-* 
+* Per-group token limits?
+	* standard user, power user
+* Finops docs for devs - 
 
 
 
