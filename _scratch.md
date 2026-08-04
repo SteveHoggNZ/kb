@@ -15,7 +15,7 @@ RBNZ
 * Governed vs ungoverned repos -> setup via workflow?
 * DO personal repos require org tags, and will policies be applied?
 * Mark all repos as experimental
-* 
+* Caveman mode & tokenisation view
 
 
 
