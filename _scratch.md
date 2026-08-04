@@ -11,6 +11,9 @@ RBNZ
 * Per-group token limits?
 	* standard user, power user
 * Finops docs for devs - 
+* Access packages for user groups, managers approve users going into groups. Handles lifecycle.
+* Governed vs ungoverned repos -> setup via workflow?
+* DO personal repos require org tags, and will policies be applied?
 
 
 
