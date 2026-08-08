@@ -36,6 +36,26 @@ Since execution is no longer the bottleneck, efficiency is no longer the goal. T
 
 ---
 
+## Thematic Index
+
+Quick navigation by cluster. Not exhaustive — full annotated entries follow below.
+
+**Skills** — [[Writing Great Skills]] · [[Evaluating Skills]] · [[GitHub Copilot Skills and Plugins]] · [[Agentic Harness Primitives]]
+
+**Graphs & Ontologies** — [[Ontology-Based Semantic Layer]] · [[Ontologies as Agent Guardrails]] · [[Structure-Preserving Data]] · [[Code Knowledge Graphs for Agents]]
+
+**Memory & Context** — [[Four-Tier Memory Model]] · [[Agent Memory Architecture]] · [[Contextual Breadcrumbs]] · [[Context Distillation Loop - amnesia as a feature]] · [[Strategic vs Tactical Documentation]]
+
+**Harness & Reliability** — [[Harnesses Matter More Than Models]] · [[Law vs Physics in Agent Design]] · [[Twelve-Factor Agents]] · [[Trinity Protocol]] · [[Scalable Multi-Agent Architecture]] · [[Decompose-Route-Recompose]]
+
+**Economics & Strategy** — [[The Great Inversion]] · [[The Barbell Economy]] · [[Will AI Kill SaaS]] · [[The Implementation Layer]] · [[The Inference Crunch]] · [[Optimizing GitHub Copilot Cost]] · [[Scarcity to Abundance - A Unifying Lens]]
+
+**Org & Ways-of-Working** — [[The 15 AI Commandments]] · [[The 2026 Builder Operating System]] · [[Small Teams]] · [[Agent-First Operating Model]]
+
+**Quality & Slop** — [[Framing the AI Slop Problem]] · [[Simplified Technical English (STE)]] · [[Conditioning the Distribution]] · [[The Inverted Causality of Language]]
+
+---
+
 ## Strategies & Techniques
 
 ### [[concepts/ai-development/The New SDLC with Vibe Coding|The New SDLC with Vibe Coding]]
@@ -204,7 +224,7 @@ The Great Inversion isn't just about AI — it's a lens that reframes Leadership
 - [The Agent Memory Problem: Why RAG Isn't Enough (YouTube)](https://www.youtube.com/watch?v=lqiwQiDglGk)
 - [The Trillion Dollar Agentic Workflow Opportunity (YouTube)](https://www.youtube.com/watch?v=jwtpMSRAPAQ)
 - [Building an AI Layer for Large Codebases (YouTube)](https://www.youtube.com/watch?v=efRIrLXoOVA)
-- *The New SDLC with Vibe Coding* — Osmani, Saboo, Kartakis, Google (May 2026). PDF: [[The New SDLC with Vibe Coding.pdf]]
+- *The New SDLC with Vibe Coding* — Osmani, Saboo, Kartakis, Google (May 2026). PDF: [[The New SDLC with Vibe Coding.pdf]] *(pending import)*
 - [The 15 AI Commandments (YouTube)](https://www.youtube.com/watch?v=hYcOFTMesGc&t=60s)
 - [The Missing Manual: How To Write Great Skills — Matt Pocock (YouTube)](https://www.youtube.com/watch?v=UNzCG3lw6O0)
 - [Why Agentic Systems Need Ontologies — Frank P. Coyle (YouTube)](https://youtu.be/Sir59K8ZDPU)

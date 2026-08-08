@@ -13,7 +13,7 @@ The Japanese concept of "reason for being"—the intersection of:
 - What the world needs
 - What you can be paid for
 
-### [[concepts/philosophy/Mastery|The Path to Mastery]]
+### [[concepts/philosophy/Mastery|The Path to Mastery]] *(planned)*
 Long-term thinking about skill development and expertise.
 
 ---
@@ -25,10 +25,10 @@ Long-term thinking about skill development and expertise.
 
 We don't control opportunity, but we control preparation.
 
-### [[concepts/philosophy/Running Towards|Run Towards Something, Not Away]]
+### [[concepts/philosophy/Running Towards|Run Towards Something, Not Away]] *(planned)*
 Career moves should be driven by attraction to something better, not escape from something bad.
 
-### [[concepts/philosophy/Family First|Family First, Work Next]]
+### [[concepts/philosophy/Family First|Family First, Work Next]] *(planned)*
 > We are replaceable when it comes to work, but there's no replacement for family lost.
 
 Prioritize accordingly.
@@ -43,7 +43,7 @@ Prioritize accordingly.
 
 Two-way doors vs. one-way doors (Amazon's framework).
 
-### [[concepts/philosophy/Plan vs Execute|Plan with Patience, Execute with Impatience]]
+### [[concepts/philosophy/Plan vs Execute|Plan with Patience, Execute with Impatience]] *(planned)*
 Take time to think, but act decisively once committed.
 
 ---
@@ -65,7 +65,7 @@ Tiago Forte's system for organizing knowledge:
 - **R**esources - Topics of interest
 - **A**rchives - Completed/inactive
 
-### [[concepts/philosophy/Productivity Framework|Productivity Framework]]
+### [[concepts/philosophy/Productivity Framework|Productivity Framework]] *(planned)*
 Principles for getting meaningful work done.
 
 ---
@@ -76,10 +76,10 @@ Principles for getting meaningful work done.
 > You ought not to be perceived "the most talented person" in the room.
 > You ought to be perceived "the most helpful person" in the room.
 
-### [[concepts/philosophy/Memorable Not Smart|Be Memorable, Not Just Smart]]
+### [[concepts/philosophy/Memorable Not Smart|Be Memorable, Not Just Smart]] *(planned)*
 In interviews and relationships, connection beats credentials.
 
-### [[concepts/philosophy/Conversation Not Interrogation|Have Conversations, Not Interrogations]]
+### [[concepts/philosophy/Conversation Not Interrogation|Have Conversations, Not Interrogations]] *(planned)*
 Applies to interviews, meetings, and relationships.
 
 ---
