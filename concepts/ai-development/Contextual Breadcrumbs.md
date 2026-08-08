@@ -174,3 +174,5 @@ This is [[Agent Ergonomics]] for the Human→Agent interface: the instruction ar
 ---
 
 *Created [[2026-02-17]] — Extracted from AMP contextual breadcrumbs strategy document*
+
+*Updated [[2026-06-27]] — Linked to [[Four-Tier Memory Model]] — this note is the "working memory (no store)" tier.*
