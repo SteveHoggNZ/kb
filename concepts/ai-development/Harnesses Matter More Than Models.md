@@ -10,7 +10,7 @@ If the model is a "brain in a jar," the harness is the body.
 
 The most powerful pattern from this analysis: **linters where the error messages double as remediation instructions.**
 
-Part of why this beats prompting is that a linter is a verification signal the model can't argue with — see [[Self-Report Is Not Verification]] for why any check the model generates about its own output inherits that output's errors.
+Part of why this beats prompting is that a linter is a verification signal the model can't argue with — see [[Self-Report Is Not Verification]] for why any check the model generates about its own output inherits that output's errors. [[Simplified Technical English (STE)]] puts a number on the gap: the *same* rules cut slop 74% when enforced by a mechanical linter and 3% when stated as a banned-words list in the prompt. Same model, same rules — the only variable was whether the rules lived in the harness or in the context window.
 
 When OpenAI used Codex to write a million lines of code, agents initially struggled because the environment was under-specified. The fix wasn't better prompting — it was implementing rigid, layered architectural rules enforced by linters. When an agent violates an architectural boundary, the linter catches it and feeds back not just what went wrong, but *how to fix it*.
 
@@ -84,4 +84,4 @@ Choosing an AI coding tool is no longer just a technical decision — it's a str
 *Updated [[2026-04-09]] — [[Conway and Intelligence Portability]] confirms at the strategy level: the moat isn't model intelligence (models converge) — it's the harness + accumulated behavioural context that creates switching costs*
 *Updated [[2026-04-14]] — [[The Implementation Layer]] scales this argument to enterprise strategy: the four-sided competitive squeeze confirms everyone is fighting over the harness layer, not the model layer*
 
-*Updated [[2026-08-09]] — Linked the linter feedback loop to [[Self-Report Is Not Verification]]: a linter is a signal the model can't argue with.*
+*Updated [[2026-08-09]] — Linked the linter feedback loop to [[Self-Report Is Not Verification]] (a linter is a signal the model can't argue with) and added [[Simplified Technical English (STE)]]'s 74%-vs-3% result as the cleanest measurement of the harness-over-model claim.*

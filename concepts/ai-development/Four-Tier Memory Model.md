@@ -14,7 +14,7 @@ The four tiers: **Working → Episodic → Semantic → Procedural.**
 
 **Semantic — durable facts that outlive the episode.** The tier everyone *means* when they say "memory," and where the **invalidation problem** lives: a fact isn't wrong, it's *superseded at a time*. This is where structure and constraints matter — [[Ontologies as Agent Guardrails]] (OWL/RDFS keep facts consistent), [[Structure-Preserving Data]] (keep facts in graph shape), and at enterprise scale [[Ontology-Based Semantic Layer]] (a shared, curated fact substrate). Open gap worth noting: OWL enforces *consistency* but not *temporal supersession* — versioning "true as of when" is still a design problem.
 
-**Procedural — how the work gets done, learned from correction.** "Always cite the entry ID." "This reviewer wants the schema diff first." **Highest ROI, almost universally neglected, and the cheapest to build — because the corrections are already in your transcript.** In this KB, procedural memory is [[Writing Great Skills|Agent Skills]] ("portable packages of *procedural* knowledge") plus the correction-capture loop of [[Contextual Breadcrumbs]]. Proving a procedural skill works is [[Evaluating Skills]].
+**Procedural — how the work gets done, learned from correction.** "Always cite the entry ID." "This reviewer wants the schema diff first." **Highest ROI, almost universally neglected, and the cheapest to build — because the corrections are already in your transcript.** In this KB, procedural memory is [[Writing Great Skills|Agent Skills]] ("portable packages of *procedural* knowledge") plus the correction-capture loop of [[Contextual Breadcrumbs]]. Proving a procedural skill works is [[Evaluating Skills]]. Why *corrections* specifically, rather than the agent's own notes on how it did? [[Self-Report Is Not Verification]] — a correction is a moment where something outside the model disagreed with it, which is the only kind of signal that carries information the model didn't already have.
 
 ---
 
@@ -31,6 +31,8 @@ Each tier fails differently, so each needs a different tool:
 
 The common mistake is treating all four as one "RAG + vector DB" problem. Working memory needs no store; episodic is a query; semantic needs structure and invalidation; procedural is corrections turned into skills. The highest-leverage, cheapest win is usually **procedural** — the corrections are already sitting in your transcripts.
 
+The split also explains where vendor lock-in bites. [[Conway and Intelligence Portability]] argues the next lock-in is behavioural, not data — and in these terms it is specifically the **semantic** and **procedural** tiers that are trapped. Working memory is disposable and episodic memory is logs you can export; the two tiers built slowly by accumulation are the ones with no export format. "Intelligence portability" is really the question of whether those two tiers have one.
+
 ## See Also
 
 - [[AI-Assisted Development]] — Back to the MOC
@@ -46,3 +48,5 @@ The common mistake is treating all four as one "RAG + vector DB" problem. Workin
 ---
 
 *Added [[2026-06-27]] — Synthesis note: the four memory tiers (working/episodic/semantic/procedural) mapped to Contextual Breadcrumbs, Agent Memory Architecture, Ontologies, and Skills.*
+
+*Updated [[2026-08-09]] — Linked the procedural tier to [[Self-Report Is Not Verification]] (why corrections are the raw material) and the semantic/procedural tiers to [[Conway and Intelligence Portability]] (which tiers lock-in actually traps).*

@@ -40,6 +40,8 @@ The banned-words list barely worked on Claude (3%): blocking "delve" or em dashe
 
 Note the method itself is a good pattern: a **mechanical linter as an eval** for writing quality, and **prompt ablation** across variants — exactly the discipline in [[Evaluating Skills]], and the "STE skill" is a textbook [[Writing Great Skills|structured skill]] rather than a pile of don'ts.
 
+The 74%-vs-3% spread is also the cleanest measurement anyone has of [[Harnesses Matter More Than Models]]: the model was held constant and the rules were held constant, so the entire 24× difference is attributable to where the rules were enforced.
+
 ## Does it help humans?
 
 Studies show STE meaningfully improves **reading comprehension** — a 1996 study brought non-native speakers' comprehension up to native-speaker levels. Caveat: STE improves *understanding and clarity*, not necessarily *memory or recall*.
@@ -71,3 +73,5 @@ The takeaway generalises past writing: **you don't change model behaviour by enu
 ---
 
 *Added [[2026-06-27]] — Recorded the STE-vs-AI-slop experiment (six slop habits, linter, STE skill cut slop 74% on Claude / 50% on GPT-5.5; fixes form not substance, kills voice).*
+
+*Updated [[2026-08-09]] — Linked the 74%-vs-3% ablation to [[Harnesses Matter More Than Models]]: model and rules held constant, only enforcement location varied.*

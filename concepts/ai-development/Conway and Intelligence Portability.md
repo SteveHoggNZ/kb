@@ -84,6 +84,8 @@ When you use Conway for months, it accumulates your **behavioural context**:
 
 This accumulated intelligence — the model of *how you work* — is **not exportable**. Switching from Anthropic's Conway to an OpenAI agent doesn't just lose a tool; it loses months of training. Your new AI assistant becomes a "brilliant stranger."
 
+It's worth being precise about *which* memory is trapped. In [[Four-Tier Memory Model]] terms, the working tier is disposable and the episodic tier is logs you could in principle export. What has no export format is the **semantic** tier (durable facts about your world) and above all the **procedural** tier — the accumulated corrections that taught the agent your way of working. Those are exactly the two tiers built by slow accumulation, which is why the switching cost is measured in months rather than in migration effort.
+
 | Dimension | Data Portability | Intelligence Portability |
 |-----------|-----------------|------------------------|
 | What's locked in | Files, records, history | Behavioural patterns, preferences, workflow context |
@@ -185,3 +187,4 @@ Conway suggests your job choice becomes your agent choice. AMP's Control Room Pa
 
 *Created [[2026-04-09]] — Captured Conway leak analysis: always-on agents, the Google Play strategy for MCP, and intelligence portability as the new lock-in*
 *Updated [[2026-04-14]] — [[Agent Memory Architecture]]: structured bundles as portable memory vs opaque behavioural lock-in — if memory is explicit contracts, it becomes exportable*
+*Updated [[2026-08-09]] — Located the lock-in precisely in [[Four-Tier Memory Model]]'s semantic and procedural tiers; working and episodic memory are comparatively exportable.*
