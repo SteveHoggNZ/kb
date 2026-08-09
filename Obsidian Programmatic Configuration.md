@@ -219,3 +219,7 @@ Python/Node scripts can generate config files before opening vault.
 ## See Also
 
 - [Obsidian Developer Docs](https://docs.obsidian.md/)
+
+---
+
+*Updated [[2026-08-09]] — Linked from [[00-Home]] under Working Areas — it had no inbound links.*

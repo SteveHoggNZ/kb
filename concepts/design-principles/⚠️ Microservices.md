@@ -100,3 +100,7 @@ If all four answers are "no," keep it together.
 ## Sources
 
 - https://twitter.com/jasoncwarner/status/1592227285024636928
+
+---
+
+*Updated [[2026-08-09]] — Marked [[Conway's Law]] (planned) — note doesn't exist yet.*

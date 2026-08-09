@@ -85,3 +85,5 @@ Tested on the nopCommerce brownfield workshop (`docs/adc/2026-03-31--extract-car
 ---
 
 *Created [[2026-03-31]]*
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/AI-Assisted Development|AI-Assisted Development]] MOC — it had no inbound links.*

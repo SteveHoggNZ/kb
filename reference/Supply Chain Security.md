@@ -104,3 +104,5 @@ ignore-scripts=true
 ---
 
 *Created [[2026-04-14]] — Mini Shai-Hulud attack analysis and PNPM 11 supply chain protections*
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Technical Reference|Technical Reference]] MOC under Guides & Practices.*

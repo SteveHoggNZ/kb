@@ -152,3 +152,7 @@ Others have reached similar conclusions:
 
 - https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html (original)
 - https://paulgraham.com/taste.html
+
+---
+
+*Updated [[2026-08-09]] — Marked [[concepts/leadership/Conway's Law|Conway's Law]] (planned) — note doesn't exist yet.*

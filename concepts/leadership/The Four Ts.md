@@ -66,3 +66,7 @@ The mantra: **Scale Responsibly.**
 ## See Also
 
 - [[_MOCs/Leadership & Teams]] — Back to the MOC
+
+---
+
+*Updated [[2026-08-09]] — Fixed the [[⚠️ Scrum Critique]] link; marked [[Performance Reviews Alternative]] (planned).*

@@ -112,3 +112,7 @@ If you're working with AI coding assistants or agentic tools, your documentation
 
 - [[Strategic vs Tactical Documentation]] — The two-tier model in depth
 - [[_MOCs/AI-Assisted Development]] — Broader patterns for working with AI agents
+
+---
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Technical Reference|Technical Reference]] MOC under Guides & Practices.*

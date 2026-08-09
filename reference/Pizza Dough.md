@@ -36,3 +36,7 @@ About **90 seconds** once the floor is around **400°C**, but it can get much ho
 ## Pro Tips
 
 - Always perform a chef's kiss when you pull them out. Makes a massive difference.
+
+---
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Technical Reference|Technical Reference]] MOC.*

@@ -63,3 +63,5 @@ Reduces tool output by ~98%, keeping raw data out of the conversation context. E
 ---
 
 *Created [[2026-04-14]] — Initial list: claude-mem (persistent memory) and context-mode (context window optimisation)*
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Technical Reference|Technical Reference]] MOC.*

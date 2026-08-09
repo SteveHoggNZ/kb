@@ -99,3 +99,7 @@ Even then, consider lightweight alternatives first.
 ## See Also
 
 - [[_MOCs/Leadership & Teams]] — Back to the MOC
+
+---
+
+*Updated [[2026-08-09]] — Marked [[The Process Is Not The Product]] (planned) — note doesn't exist yet.*

@@ -64,3 +64,7 @@ The KB invited this synthesis by its design.
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
 - [[_MOCs/Leadership & Teams]] — The domain this lens connects to
+
+---
+
+*Updated [[2026-08-09]] — Fixed broken [[Systems Thinking Levels]] link (was `Systems Thinking`).*

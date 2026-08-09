@@ -201,3 +201,5 @@ As [[Rules of Thumb]] puts it: "If a decision is not permanent, it is better to 
 ---
 
 *Updated [[2026-02-16]] — Removed redundant Related Concepts list; added Rules of Thumb quote to Bike Principle*
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/AI-Assisted Development|AI-Assisted Development]] MOC — it had no inbound links.*

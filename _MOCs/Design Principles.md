@@ -62,6 +62,9 @@ Ship a thin, end-to-end slice before expanding scope. Build one complete path th
 ### [[concepts/design-principles/Definition of Done|Definition of Done]]
 A task is done only when: code works, tests pass, linter clean, docs updated, commits conventional. The checklist that prevents "it works on my machine."
 
+### [[concepts/design-principles/Technical Debt|Technical Debt]]
+Ward Cunningham's metaphor — ship expediently now, pay interest until you refactor. **The inversion:** in the age of cheap execution the terror has gone out of it, because the cost of paying debt down has collapsed. Worth reading alongside [[_MOCs/AI-Assisted Development|The Great Inversion]], which explains why.
+
 ### [[concepts/design-principles/⚠️ Mocking|⚠️ Anti-Pattern: Mocking]]
 Mock frameworks give false confidence—they prove you called the mock correctly, not that your system works. Use real databases, fake HTTP servers, and hand-written in-memory implementations instead. Integration tests are the default.
 
@@ -87,12 +90,21 @@ One-way dependency graph: Handlers → Services → Repositories. Lower layers n
 ### [[concepts/design-principles/Functional-Leaning Philosophy|Functional-Leaning Philosophy]]
 Pragmatism over dogma. Immutability where practical, minimize side effects, small focused packages, errors as values. When in doubt, choose the clearer, more direct path.
 
+### [[concepts/design-principles/API Anti-Patterns|API Anti-Patterns]]
+The catalogue of things that make an API painful: chatty APIs forcing N+1 calls, leaky abstractions, verbs in URLs, unversioned breaking changes. The counterweight to the patterns above — worth scanning before designing a new surface.
+
+### [[concepts/design-principles/RFC 7807 Problem Details|RFC 7807 Problem Details]]
+A standard, machine-readable shape for HTTP error responses (`type`, `title`, `status`, `detail`, `instance`). Errors become parseable rather than prose — which matters more than ever when the consumer is an agent, per [[concepts/design-principles/Agent Ergonomics|Agent Ergonomics]].
+
 ---
 
 ## Distributed Systems Patterns
 
 ### [[concepts/design-principles/Event-Driven Side Effects|Event-Driven Side Effects]]
 Background work via events, not direct calls. API emits events; workers consume asynchronously. Loose coupling, replayability, operational control.
+
+### [[concepts/design-principles/Outbox Pattern|Outbox Pattern]]
+Guaranteed event emission without distributed transactions: write the event to an outbox table *in the same transaction* as the domain change, then relay it. Closes the crash-between-commit-and-publish gap that makes [[concepts/design-principles/Event-Driven Side Effects|event-driven side effects]] silently lossy.
 
 ### [[concepts/design-principles/Async-First Design|Async-First Design]]
 Return 202 Accepted and process work asynchronously. Don't block requests waiting for completion. Better UX, resilience, and scalability.
@@ -144,6 +156,9 @@ One authoritative log line per request with all key context. Stripe's pattern: m
 ---
 
 ## UI & Product Design
+
+### [[concepts/ux/Psychological Principles in UX Design|Psychological Principles in UX Design]]
+Six principles that work *with* how the brain evaluates risk, effort, and value — smart defaults, and five more — with the ethical line drawn explicitly: the same levers become dark patterns when the nudge serves only the business. The applied cousin of [[concepts/decision-frameworks/Logical Fallacies|Logical Fallacies]]: identical heuristics, turned from errors-to-avoid into things-to-design-with.
 
 ### [[concepts/design-principles/Vibe Code to Production UI|Vibe Code to Production UI]]
 Practical checklist for upgrading AI-generated interfaces into polished SaaS products. AI makes predictable UI mistakes: emojis instead of icon libraries, clashing colours, KPI boxes without context, sprawling layouts, sparse flyout forms, non-functional billing pages, basic analytics, and generic landing pages. Each fix follows the same pattern: remove noise, add context, show don't tell. Type 1 architecture (functional) delegated to AI; Type 2 (trust, cohesion, feel) applied by human taste.

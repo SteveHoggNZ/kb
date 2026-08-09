@@ -64,3 +64,5 @@ A skill without evals is a hope, not a capability — the [[Ontologies as Agent 
 ---
 
 *Added [[2026-06-27]] — Recorded Schmid's "Don't Ship Skills Without Evals" (agents we use vs build, capability vs preference skills, nine best practices, ablation tests, Gemini API 19.6%→~90% case study).*
+
+*Updated [[2026-08-09]] — Noted why evals work — independence from the thing they judge — via [[Self-Report Is Not Verification]].*

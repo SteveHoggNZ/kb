@@ -83,3 +83,5 @@ Choosing an AI coding tool is no longer just a technical decision — it's a str
 *Updated [[2026-04-02]] — Referenced from [[Preparing for Next-Gen AI Models]]: harnesses still matter, but the optimal harness shifts from complex orchestration to clean data + clear intent + hard guardrails*
 *Updated [[2026-04-09]] — [[Conway and Intelligence Portability]] confirms at the strategy level: the moat isn't model intelligence (models converge) — it's the harness + accumulated behavioural context that creates switching costs*
 *Updated [[2026-04-14]] — [[The Implementation Layer]] scales this argument to enterprise strategy: the four-sided competitive squeeze confirms everyone is fighting over the harness layer, not the model layer*
+
+*Updated [[2026-08-09]] — Linked the linter feedback loop to [[Self-Report Is Not Verification]]: a linter is a signal the model can't argue with.*

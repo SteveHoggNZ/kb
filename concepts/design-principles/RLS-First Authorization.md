@@ -99,3 +99,7 @@ func TestAgentCanOnlySeeOwnPlatform(t *testing.T) {
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
+
+---
+
+*Updated [[2026-08-09]] — Marked [[Session Context Pattern]] (planned) — note doesn't exist yet.*

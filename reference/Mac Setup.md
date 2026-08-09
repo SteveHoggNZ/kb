@@ -32,3 +32,7 @@ alias brew='echo; echo "RUNNING brew via sudo"; echo; sudo -i -u steve brew'
 
 - [[Bash Snippets]] — Shell patterns and troubleshooting
 - [[Developer Tools]] — Tool recommendations
+
+---
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Technical Reference|Technical Reference]] MOC.*

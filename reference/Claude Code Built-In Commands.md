@@ -104,3 +104,7 @@ VS Code picks up `keybindings.json` changes live — no restart needed.
 *Created [[2026-04-14]] — Documented /powerup and /insights as Claude Code's built-in self-improvement commands*
 
 > For community plugins, see [[Claude Code Plugins]].
+
+---
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Technical Reference|Technical Reference]] MOC.*

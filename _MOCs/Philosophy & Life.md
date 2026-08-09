@@ -72,6 +72,9 @@ Principles for getting meaningful work done.
 
 ## Presence & Perception
 
+### [[concepts/philosophy/Trust|Trust]]
+Do what you say you're going to do; be who you say you are. Two pillars — **reliability** (following through on commitments) and **authenticity** (consistency between public persona and private behaviour). Built by accumulation, lost in a single instance, which is why it appears in [[_MOCs/AI-Assisted Development|AI-Assisted Development]] as one of the new bottlenecks: when anyone can build anything, trust is the durable advantage.
+
 ### [[concepts/philosophy/Being Helpful|Be the Most Helpful, Not the Most Talented]]
 > You ought not to be perceived "the most talented person" in the room.
 > You ought to be perceived "the most helpful person" in the room.

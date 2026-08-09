@@ -72,3 +72,5 @@ Each tip re-frames a decision so the brain's shortcut works *for* the user rathe
 ---
 
 *Added [[2026-06-27]] — Captured six UX psychology principles from video; screenshot placeholders pending frame capture.*
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Design Principles|Design Principles]] MOC under UI & Product Design — it had no inbound links.*

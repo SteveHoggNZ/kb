@@ -127,3 +127,5 @@ For simpler cases, publish inline but implement compensating transactions if pub
 ---
 
 *Updated [[2026-02-24]] — Added Commands That Emit Events cross-reference*
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Design Principles|Design Principles]] MOC under Distributed Systems Patterns — it had no inbound links.*

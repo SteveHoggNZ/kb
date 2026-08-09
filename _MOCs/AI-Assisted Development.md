@@ -223,6 +223,9 @@ The meta-skill for the AI era. **Decompose** complex work into sub-problems by [
 ### [[concepts/ai-development/Scarcity to Abundance - A Unifying Lens|Scarcity to Abundance: A Unifying Lens]]
 The Great Inversion isn't just about AI — it's a lens that reframes Leadership, Teams, and Systems Thinking. Monkey Management, Scrum Critique, and other concepts all describe the same shift from scarcity behaviors to abundance behaviors.
 
+### [[concepts/ai-development/Self-Report Is Not Verification|Self-Report Is Not Verification]]
+One claim tying together the KB's verification cluster: a model's confidence in its own output is drawn from the same distribution that produced the output, so it carries no independent information — asking "are you sure?" samples the error again rather than checking it. Explains why [[concepts/ai-development/The Honesty Gap|forced blanks and EXTRACTED/INFERRED labels]] work while confidence scores don't, why [[concepts/ai-development/Simplified Technical English (STE)|an STE linter cut slop 74% while a banned-words prompt moved Claude 3%]], and why [[concepts/ai-development/Thinking Out Loud|self-rating]] is safe in drafting but not in extraction. Four sources of independent signal (structure, deterministic tooling, evals, human judgment) and one design rule: *what would tell me this is wrong, that isn't the agent?*
+
 ---
 
 ## Related MOCs

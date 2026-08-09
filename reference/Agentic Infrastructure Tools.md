@@ -49,3 +49,5 @@ Infrastructure and services purpose-built for running AI agents in production �
 ---
 
 *Created [[2026-04-14]] — Started with Kernel (cloud browser infrastructure)*
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Technical Reference|Technical Reference]] MOC.*

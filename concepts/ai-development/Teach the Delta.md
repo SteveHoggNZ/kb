@@ -172,3 +172,5 @@ Part of structuring intent well is knowing what NOT to specify — letting the a
 
 *Updated [[2026-02-16]] — Added The Collapse of Roles and Time to Connection section; removed redundant list*
 *Updated [[2026-04-02]] — Referenced from [[Preparing for Next-Gen AI Models]]: as models scale, the delta shrinks — what required explicit context today may be inferable tomorrow*
+
+*Updated [[2026-08-09]] — Fixed the [[Context Distillation Loop - amnesia as a feature]] link (was pointing at a non-existent short name); marked [[Software-Shaped Intent]] (planned).*

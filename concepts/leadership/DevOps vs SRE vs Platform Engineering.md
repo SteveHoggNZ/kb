@@ -100,3 +100,7 @@ Where DevOps creates cognitive load, platform engineering alleviates it through 
 - https://www.bytebase.com/blog/dev-sre-ops-devops-difference
 - https://sre.google/sre-book/introduction/
 - https://platformengineering.org/
+
+---
+
+*Updated [[2026-08-09]] — Marked [[Conway's Law]] (planned) — note doesn't exist yet.*

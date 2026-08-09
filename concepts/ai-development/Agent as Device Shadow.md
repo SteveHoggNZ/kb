@@ -222,3 +222,7 @@ Shadow is a colleague that knows you well enough to represent you — not a tool
 
 - AWS IoT Device Shadows — The original pattern
 - Synthesis applying IoT concepts to human-agent interaction
+
+---
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/AI-Assisted Development|AI-Assisted Development]] MOC — it had no inbound links.*

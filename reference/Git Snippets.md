@@ -140,4 +140,9 @@ git config --global pull.rebase true
 ## Related
 
 - [[Bash Snippets]] - Shell scripting
+- [[misc/git|Git with multiple SSH keys]] - `GIT_SSH_COMMAND` and host aliases when one machine has several GitHub identities
 - [[GitLab CI Reference]] *(planned)* - CI/CD pipelines
+
+---
+
+*Updated [[2026-08-09]] — Linked [[misc/git|Git with multiple SSH keys]] from Related; marked [[GitLab CI Reference]] (planned).*

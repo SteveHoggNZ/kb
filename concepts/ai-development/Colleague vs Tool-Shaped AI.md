@@ -141,3 +141,7 @@ The CNC analogy also connects to [[Reversibility-Calibrated Action]]:
 ## Sources
 
 - [Colleague vs Tool-Shaped AI (YouTube)](https://www.youtube.com/watch?v=hDpjMJw3flk)
+
+---
+
+*Updated [[2026-08-09]] — Fixed broken link to [[Teams Of Agents - LLM Specialisation+Personas]] (was `LLM Specialization and Multi-Persona`).*

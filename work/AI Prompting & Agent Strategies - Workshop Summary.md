@@ -133,3 +133,7 @@ These themes recur across all five categories and may be useful framing for the 
 - [[_MOCs/AI-Assisted Development]] — The parent MOC for most concepts referenced here
 - [[SAGE Synthesis]] — Cross-domain synthesis log
 - [[AI & LLM Tools]] — Practical tools and frameworks reference
+
+---
+
+*Updated [[2026-08-09]] — Linked from [[00-Home]] under Working Areas — it had no inbound links.*

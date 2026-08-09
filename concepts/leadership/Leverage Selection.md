@@ -102,3 +102,7 @@ Leverage Selection sits at the top of this hierarchy — it's the meta-question 
 - [[_MOCs/Leadership & Teams]] — Back to the MOC
 - [[Scarcity to Abundance - A Unifying Lens]] — Another cross-domain synthesis
 - [[SAGE Synthesis]] — The synthesis log
+
+---
+
+*Updated [[2026-08-09]] — Fixed broken links: [[Systems Thinking Levels]] (was `Systems Thinking`) and [[TOSCA Framework]] (was `TOSCA`).*

@@ -162,3 +162,7 @@ From [[Agent Autonomy Levels]]:
 ## See Also
 
 - [[_MOCs/AI-Assisted Development]] — Back to the MOC
+
+---
+
+*Updated [[2026-08-09]] — Linked the self-rating caveat to [[Self-Report Is Not Verification]] — the rating is a trigger, not a truth, which is why it's safe here and not in extraction. Added to the MOC.*

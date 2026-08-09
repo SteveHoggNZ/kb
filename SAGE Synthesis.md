@@ -3,6 +3,8 @@
 > **Purpose**: Track cross-domain syntheses created by SAGE — patterns woven together from concepts across the knowledge base.
 >
 > **Format**: Each entry records the synthesis, its location, the domains connected, and the date added.
+>
+> **Orientation**: [[SAGE Notes]] is the companion — read that first for session context and conventions; this file is the output log.
 
 ---
 
@@ -198,6 +200,15 @@ All three are about **resource allocation under uncertainty**:
 **Source:** Internal architecture discussion
 **Content:** Decision framework for Columns vs JSONB in schema design. Three litmus tests: (1) Foreign Key Test — references another table? Column. (2) Indexing/Poller Test — background job queries it? Column. (3) Write-Path Gatekeeper Test — checked on every hot-path write? Column. Copy-Down pattern (resolve hierarchical settings at creation time) beats Runtime Lookup (join 3 tables every query). Same Law vs Physics philosophy at the infrastructure layer — Physics is what the database *cannot* violate; Policy is what the application *should* follow.
 **Added:** 2026-02-16
+
+---
+
+### Self-Report Is Not Verification
+**Location:** `concepts/ai-development/Self-Report Is Not Verification.md`
+**MOC:** AI-Assisted Development
+**Domains connected:** AI Development, Design Principles (Physics Thinking), Delivery (Definition of Done, Testing Strategy)
+**Insight:** A model's confidence in its own output is drawn from the same distribution that produced it, so the errors are correlated and the self-assessment carries no independent information. Explains in one claim why The Honesty Gap's structural rules beat confidence scores, why the STE linter cut slop 74% where a banned-words prompt moved Claude 3%, and why self-rating is safe in drafting (a trigger) but not in extraction (a truth). Design rule: *what would tell me this is wrong, that isn't the agent?*
+**Added:** 2026-08-09
 
 ---
 

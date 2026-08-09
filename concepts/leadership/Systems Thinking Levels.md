@@ -91,3 +91,7 @@ When something goes wrong, ask:
 ## Sources
 
 - https://datou-tech.medium.com/layers-of-engineering-leadership-f92721da0ba6
+
+---
+
+*Updated [[2026-08-09]] — Marked [[Conway's Law]] (planned) — note doesn't exist yet.*

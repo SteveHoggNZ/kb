@@ -153,3 +153,7 @@ The cost structure has changed. Optimize for learning speed, not upfront correct
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
+
+---
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Design Principles|Design Principles]] MOC under Delivery & Process — it had no inbound links.*

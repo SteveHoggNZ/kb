@@ -117,3 +117,7 @@ Clients can detect problem responses by media type.
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
+
+---
+
+*Updated [[2026-08-09]] — Added to the [[_MOCs/Design Principles|Design Principles]] MOC — it had no inbound links.*

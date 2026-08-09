@@ -87,3 +87,5 @@ The pattern also connects to [[Harnesses Matter More Than Models]]: the linting 
 ---
 
 *Created [[2026-02-16]]*
+
+*Updated [[2026-08-09]] — Generalised the "same process that produced the error" point to [[Self-Report Is Not Verification]]. Added to the MOC.*
