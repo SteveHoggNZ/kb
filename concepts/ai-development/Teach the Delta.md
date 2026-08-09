@@ -135,7 +135,7 @@ Before adding something to context, ask:
 ### [[Conditioning the Distribution]]
 Novel information shifts the distribution in ways training can't. Standard information just re-weights toward what would happen anyway.
 
-### [[Context Distillation Loop]]
+### [[Context Distillation Loop - amnesia as a feature]]
 What survives distillation *should be* the novel stuff. The compression process naturally filters toward signal.
 
 ### [[Strategic vs Tactical Documentation]]
@@ -144,7 +144,7 @@ Strategic docs should focus on what's non-obvious. Assume standard knowledge; do
 ### [[The Bottleneck Economy]]
 Context window is scarce. Redundant information is waste — it consumes the constraint without adding value.
 
-### [[Software-Shaped Intent]]
+### [[Software-Shaped Intent]] *(planned)*
 Part of structuring intent well is knowing what NOT to specify — letting the agent's training handle the baseline.
 
 ### [[The Collapse of Roles and Time]]

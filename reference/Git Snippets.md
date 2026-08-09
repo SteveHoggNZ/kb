@@ -140,4 +140,4 @@ git config --global pull.rebase true
 ## Related
 
 - [[Bash Snippets]] - Shell scripting
-- [[GitLab CI Reference]] - CI/CD pipelines
+- [[GitLab CI Reference]] *(planned)* - CI/CD pipelines

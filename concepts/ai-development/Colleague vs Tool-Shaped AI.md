@@ -132,7 +132,7 @@ The CNC analogy also connects to [[Reversibility-Calibrated Action]]:
 - [[The Barbell Economy]] — Spec writing is Layer 2; execution is Layer 1
 - [[Strategic vs Tactical Documentation]] — Tool AI needs strategic clarity
 - [[Reversibility-Calibrated Action]] — Colleague AI = more reversible feedback loops
-- [[LLM Specialization and Multi-Persona]] — Both approaches benefit from persona clarity
+- [[Teams Of Agents - LLM Specialisation+Personas|LLM Specialisation and Multi-Persona]] — Both approaches benefit from persona clarity
 
 ## See Also
 

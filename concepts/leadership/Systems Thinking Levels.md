@@ -80,7 +80,7 @@ When something goes wrong, ask:
 ## Related Concepts
 
 - [[The Four Ts]] — Building systems, not just responding
-- [[Conway's Law]] — Structure shapes output
+- [[Conway's Law]] *(planned)* — Structure shapes output
 - [[⚠️ Scrum Critique]] — When process becomes mental model
 - [[The Bottleneck Economy]] — Theory of Constraints applied to AI; all leverage is at the constraint
 

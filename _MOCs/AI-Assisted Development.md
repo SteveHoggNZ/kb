@@ -54,6 +54,8 @@ Quick navigation by cluster. Not exhaustive — full annotated entries follow be
 
 **Quality & Slop** — [[Framing the AI Slop Problem]] · [[Simplified Technical English (STE)]] · [[Conditioning the Distribution]] · [[The Inverted Causality of Language]]
 
+**Verification & Trust** — [[Self-Report Is Not Verification]] · [[The Honesty Gap]] · [[Evaluating Skills]] · [[Thinking Out Loud]] · [[Agent Autonomy Levels]]
+
 ---
 
 ## Strategies & Techniques
@@ -160,7 +162,25 @@ Visual feedback instrument for AI coding agents. Click page elements, annotate t
 ### [[concepts/ai-development/GitHub Copilot Skills and Plugins|GitHub Copilot Skills and Plugins]]
 GitHub's extensibility model for Copilot agents. Skills (`.github/skills/SKILL.md`) are agent-discoverable, agent-executable behaviours — the key distinction from prompts. Plugins bundle skills, agents, MCPs, and instructions as deployable units via a GitHub repo marketplace. The reactive-to-agentic progression (Zone 1 → Zone 2 → Zone 3) maps adoption maturity: ghost text → workspace chat → autonomous workflows. Sensei (open-source) automates skill refinement via the Ralph loop. Our ADC artefacts are structurally equivalent to Custom Skills; our RPI methodology could be packaged as a `.github/skills/brownfield-refactoring/` skill.
 
-### [[concepts/ai-development/Reductions Not Projections|Reductions, Not Projections]]
+### [[concepts/ai-development/The Honesty Gap|The Honesty Gap]]
+As models get more capable, their willingness to admit ignorance *decreases* — they'd rather please you than say "I don't know" — and **automation bias** means confident-sounding output gets checked less. Confidence scores don't fix it: the score comes from the same process that produced the error. Three structural rules instead: **force blanks** (leave ambiguous fields empty with a "Reason" column), **penalise guessing** ("a wrong answer is 3x worse than a blank"), and **label sources** (EXTRACTED vs INFERRED, with a basis for every inference). Bites hardest on extraction work — contracts, meeting notes, receipts.
+
+### [[concepts/ai-development/Thinking Out Loud|Thinking Out Loud]]
+LLMs are "extroverts" — the first output is version 1.0, not their best work. They satisfice: plausible, complete, fast, but not excellent. The **self-rating trick** ("rate that out of 10" → "now improve it") is a cheap quality multiplier because the evaluation capacity exists but isn't invoked automatically. Crucially task-dependent: safe for creative/drafting work where the number just triggers a revision, unsafe for extraction where the score gets believed — see [[concepts/ai-development/The Honesty Gap|The Honesty Gap]].
+
+### [[concepts/ai-development/Teach the Delta|Teach the Delta]]
+**Teach the delta, not the baseline — the rule is already in the weights.** An information-theory view of context: high-probability tokens (standard REST conventions, typical Git flow) add nothing when you supply them; low-probability ones (your 5s timeout that doesn't reset state, your non-standard auth) are the whole signal. The delta test before adding anything to context: *would the agent have done this anyway?* Yes → cut it. It would do the opposite → definitely include. Applies to agent memory too: store surprises, prune what matches common patterns.
+
+### [[concepts/ai-development/Agentic Context Framework|Agentic Context Framework]]
+An open-source structure for the docs agents need in a codebase: `AGENTS.md` instructions, architecture documentation, and **Agent Decision Context (ADC)** records — versioned decision logs capturing what was decided, what was rejected, and how to roll back. Its strongest idea is **Retrieval Discipline**: telling the agent which files to read, in what order, and when to stop, rather than leaving retrieval to freeform exploration. A harness in the sense of [[concepts/ai-development/Harnesses Matter More Than Models|Harnesses Matter More Than Models]], and the code-file ancestor of [[concepts/ai-development/Agent Memory Architecture|the bundle pattern]].
+
+### [[concepts/ai-development/Agent as Device Shadow|Agent as Device Shadow]]
+Borrows AWS IoT's **device shadow** — a virtual twin holding *reported* state (last known actual) and *desired* state — as the architecture for an agent that represents you while you're unavailable and syncs when you return. The IoT framing is apt because it was designed for exactly the failure mode humans have: intermittent, unreliable connection.
+
+### [[concepts/ai-development/The Collapse of Roles and Time|The Collapse of Roles and Time]]
+Two compressions happening at once: **horizontal** (engineering, marketing, PM, design converging into "AI orchestration") and **temporal** (multi-year career ladders compressed into months). Source of the **bike principle** — a bike is harder to balance slowly — which argues for moving fast on reversible AI adoption rather than deliberating.
+
+### [[concepts/ai-development/Reductions Not Projections|Reductions, Not Projections]] *(planned)*
 *(Coming soon)*
 
 ---

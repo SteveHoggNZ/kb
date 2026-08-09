@@ -10,6 +10,8 @@ If the model is a "brain in a jar," the harness is the body.
 
 The most powerful pattern from this analysis: **linters where the error messages double as remediation instructions.**
 
+Part of why this beats prompting is that a linter is a verification signal the model can't argue with — see [[Self-Report Is Not Verification]] for why any check the model generates about its own output inherits that output's errors.
+
 When OpenAI used Codex to write a million lines of code, agents initially struggled because the environment was under-specified. The fix wasn't better prompting — it was implementing rigid, layered architectural rules enforced by linters. When an agent violates an architectural boundary, the linter catches it and feeds back not just what went wrong, but *how to fix it*.
 
 This works because of **prompt recency** — the most recent tokens in the context window have the strongest influence on the next generation. A linter error arriving mid-task lands in exactly the right place: recent context, immediately actionable, tied to the specific mistake. Compare this to stuffing architectural rules into a system prompt at the top of the context — distant, generic, easy to drift from under context pressure.

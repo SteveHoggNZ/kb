@@ -88,7 +88,7 @@ Where DevOps creates cognitive load, platform engineering alleviates it through 
 ## Related Concepts
 
 - [[The Four Ts]] — Tools are one of the 4 Ts
-- [[Conway's Law]] — Platform teams shape how product teams work
+- [[Conway's Law]] *(planned)* — Platform teams shape how product teams work
 - [[Observability by Default]] — What SREs care about
 
 ## See Also

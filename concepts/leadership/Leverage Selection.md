@@ -23,7 +23,7 @@ Fixing an action is easy but temporary. Changing a mental model is hard but perm
 |--------|--------------|---------------|
 | Leadership | Fix the bug (event) | Change the process (structure) |
 | Design | Clean the code | Improve the architecture |
-| Decisions | Solve the problem | Reframe the problem ([[TOSCA]]) |
+| Decisions | Solve the problem | Reframe the problem ([[TOSCA Framework|TOSCA]]) |
 | AI Dev | Use AI faster | Change what you're building |
 | Philosophy | Work harder | Work on the right thing ([[Ikigai]]) |
 
@@ -46,7 +46,7 @@ But these are often symptoms. The high-leverage move is asking: *why does this p
 
 ## The Iceberg Model
 
-From [[Systems Thinking]]:
+From [[Systems Thinking Levels]]:
 
 ```
         Events          ← What happened? (reactive)
@@ -75,8 +75,8 @@ The highest-leverage intervention is often the most uncomfortable one.
 
 ## Related Concepts
 
-- [[Systems Thinking]] — The iceberg model and leverage points
-- [[TOSCA]] — Problem-reframing as high-leverage intervention
+- [[Systems Thinking Levels]] — The iceberg model and leverage points
+- [[TOSCA Framework]] — Problem-reframing as high-leverage intervention
 - [[Ikigai]] — Working on the right thing > working hard
 - [[The Great Inversion]] — Clarity (what to build) > execution (building it)
 - [[Agents vs Long Context]] — Agents operate at action level; long context at structure/model level

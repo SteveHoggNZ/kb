@@ -146,7 +146,7 @@ Others have reached similar conclusions:
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
-- [[concepts/leadership/Conway's Law]] — Architecture mirrors organization
+- [[concepts/leadership/Conway's Law]] *(planned)* — Architecture mirrors organization
 
 ## Sources
 

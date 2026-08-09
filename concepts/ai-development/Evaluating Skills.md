@@ -11,6 +11,8 @@ This is the **testing** companion to [[Writing Great Skills]] (authoring). The t
 - **Agents we use** (Cursor, Claude Code): the developer is the *engineer in the loop*. If the agent slips, a human catches and corrects it, or triggers the skill manually.
 - **Agents we build** (e.g. a customer-support bot for end-users): **no human safety net.** It has to work first try, so reliability is paramount — and evals are how you earn that confidence.
 
+The reason evals rather than a careful read-through: an eval suite is *independent of the thing it judges*, which a model's own account of its performance never is. [[Self-Report Is Not Verification]] generalises this, and flags the honest tension in LLM-as-judge below — what makes the judge trustworthy isn't that it's not a model, but that it runs a fixed rubric over cases the skill's author didn't write to.
+
 This is why the eval bar rises with autonomy — the further up [[Agent Autonomy Levels]] and the closer to production ([[The Implementation Layer]]), the less you can rely on a human catching mistakes.
 
 ## Two kinds of skill

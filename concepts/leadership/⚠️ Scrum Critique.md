@@ -93,7 +93,7 @@ Even then, consider lightweight alternatives first.
 
 ## Related Concepts
 
-- [[The Process Is Not The Product]] — Don't confuse process compliance with value delivery
+- [[The Process Is Not The Product]] *(planned)* — Don't confuse process compliance with value delivery
 - [[concepts/leadership/The Four Ts|The Four Ts]] — Trust as foundational to team effectiveness
 
 ## See Also

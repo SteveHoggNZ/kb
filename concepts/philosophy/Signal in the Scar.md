@@ -12,7 +12,7 @@ The Kintsugi philosophy — that breakage becomes beauty — appears implicitly 
 |--------|---------|------------------|
 | Philosophy | [[Kintsugi]] | Scars tell stories; repair is transformation |
 | Design | [[Technical Debt]] | Not shameful — evidence of shipping |
-| Leadership | [[Systems Thinking]] | "Events" (failures) become patterns that reveal structure |
+| Leadership | [[Systems Thinking Levels]] | "Events" (failures) become patterns that reveal structure |
 | Career | "Be memorable, not smart" | Your failures make you interesting |
 | AI Dev | "Show raw work immediately" | Unfinished ≠ unprofessional |
 
@@ -64,7 +64,7 @@ Visible mending > invisible patching.
 
 - [[Kintsugi]] — The original philosophy: breakage as beauty
 - [[Eight Habits to Break]] — "Hoarding until Ready" is the anti-pattern
-- [[Systems Thinking]] — Events reveal patterns reveal structure
+- [[Systems Thinking Levels]] — Events reveal patterns reveal structure
 - [[Technical Debt]] — Evidence of shipping, not shame
 
 ## Connection to Other Syntheses

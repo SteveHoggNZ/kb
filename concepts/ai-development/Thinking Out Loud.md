@@ -93,6 +93,8 @@ Agents can evaluate quality better than they generate it on first pass. The eval
 
 **Caveat:** This works well for creative and drafting tasks where the rating triggers improvement. For **extraction and verification** tasks, self-rating gives the model another opportunity to lie — a model that hallucinated an answer will confidently rate it 9/10. See [[The Honesty Gap]] for structural alternatives (forced blanks, source labelling) that make uncertainty visible without relying on the model's self-assessment.
 
+The reason the trick is safe here is that the number is a **trigger, not a truth** — nobody records the 6/10 as a fact, it just buys a revision pass. [[Self-Report Is Not Verification]] draws that line explicitly: self-rating is instrumental in drafting and misleading anywhere the score gets believed.
+
 ### The Critique Prompt
 > "What's wrong with this response? What did you miss?"
 
@@ -154,7 +156,7 @@ From [[Agent Autonomy Levels]]:
 - [[Conditioning the Distribution]] — Self-rating is post-hoc distribution conditioning; pushing for higher quality samples
 - [[Colleague vs Tool-Shaped AI]] — Colleague mode is extrovert mode; Tool mode expects introvert behavior
 - [[Agent Autonomy Levels]] — Level 3 includes reflection; higher levels should build it in
-- [[Context Distillation Loop]] — Iteration as a feature, not a bug
+- [[Context Distillation Loop - amnesia as a feature]] — Iteration as a feature, not a bug
 - [[The 2026 Builder Operating System]] — "Temporal Separation" = deliberate reflection after execution
 
 ## See Also

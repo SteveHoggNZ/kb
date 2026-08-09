@@ -11,7 +11,7 @@ The Great Inversion isn't just about AI and execution speed — it's a lens that
 | Concept | Scarcity Behavior | Abundance Behavior |
 |---------|-------------------|-------------------|
 | [[Monkey Management]] | Wait for others to move | Default to action; don't outsource momentum |
-| [[Systems Thinking]] | Protect execution time | Invest in clarity and leverage points |
+| [[Systems Thinking Levels]] | Protect execution time | Invest in clarity and leverage points |
 | [[⚠️ Scrum Critique]] | Ceremonies to coordinate scarce resources | "Scarcity-era artifacts" that now slow us down |
 
 ---

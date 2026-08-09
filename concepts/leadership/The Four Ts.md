@@ -60,8 +60,8 @@ The mantra: **Scale Responsibly.**
 ## Related Concepts
 
 - [[Career Advice]] — Personal application of leadership principles
-- [[Performance Reviews Alternative]] — Growing the Team
-- [[Scrum Critique]] — Tools and processes that don't work
+- [[Performance Reviews Alternative]] *(planned)* — Growing the Team
+- [[⚠️ Scrum Critique]] — Tools and processes that don't work
 
 ## See Also
 

@@ -94,7 +94,7 @@ func TestAgentCanOnlySeeOwnPlatform(t *testing.T) {
 
 - [[⚠️ Mocking]] — Integration tests prove RLS works
 - [[⚠️ Clean Architecture]] — Database at inner layer, HTTP at outer
-- [[Session Context Pattern]] — How identity propagates
+- [[Session Context Pattern]] *(planned)* — How identity propagates
 
 ## See Also
 

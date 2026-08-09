@@ -91,7 +91,7 @@ If all four answers are "no," keep it together.
 
 - [[Steel Thread Delivery]] — Build thin slices, not separate services
 - [[⚠️ Clean Architecture]] — Another over-abstraction anti-pattern
-- [[Conway's Law]] — Services should match team boundaries
+- [[Conway's Law]] *(planned)* — Services should match team boundaries
 
 ## See Also
 
