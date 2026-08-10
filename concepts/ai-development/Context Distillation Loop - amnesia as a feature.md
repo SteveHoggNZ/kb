@@ -217,6 +217,8 @@ The constraint isn't the enemy of good thinking — it's the **forcing function*
 
 **Infinite context with no boundaries would produce infinite sprawl.** The boundaries are the discipline.
 
+In [[Four-Tier Memory Model]] terms this loop has a precise job: it is the **working → semantic promotion step**. Re-articulation is the filter deciding which in-thread content was durable enough to become a fact worth keeping, and the compression checkpoint is where that decision gets made. That reframes the "paradox of forgetting" above — session amnesia isn't a memory failure to be engineered away, it's the tier boundary working correctly.
+
 ---
 
 ## See Also
@@ -226,3 +228,4 @@ The constraint isn't the enemy of good thinking — it's the **forcing function*
 ---
 
 *Updated [[2026-02-17]] — Added Contextual Breadcrumbs as complementary pattern*
+*Updated [[2026-08-10]] — Named the loop as [[Four-Tier Memory Model]]'s working→semantic promotion step.*

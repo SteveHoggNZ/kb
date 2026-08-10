@@ -146,6 +146,7 @@ This creates productive tension with [[Teams Of Agents - LLM Specialisation+Pers
 - [[Agents vs Long Context]] — Another dimension of the agent architecture trade-off
 - [[The 2026 Builder Operating System]] — Engineering Manager Mindset applied to agent orchestration
 - [[Agentic Harness Primitives]] — The 12 infrastructure primitives; constrained agent types (Primitive 12) echo "simple agents + smart orchestration"
+- [[Conway's Law]] — The human-organisation original of the same constraint: agents, like teams, cannot produce a design their coordination structure forbids, which is why the "human team" fallacy fails and two-tier/no-shared-state topologies yield composable work products
 
 ## Sources
 
@@ -156,3 +157,4 @@ This creates productive tension with [[Teams Of Agents - LLM Specialisation+Pers
 *Updated [[2026-02-17]] — Added Twelve-Factor Agents cross-reference*
 *Updated [[2026-04-02]] — Referenced from [[Preparing for Next-Gen AI Models]]: next-gen models extend Rule 5 — the orchestration layer itself becomes an AI planner*
 *Updated [[2026-02-24]] — Added Agentic Harness Primitives cross-reference*
+*Updated [[2026-08-10]] — Linked [[Conway's Law]] as the human-organisation original of the coordination-structure constraint.*

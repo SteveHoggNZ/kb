@@ -116,7 +116,7 @@ Organize by actionability, not topic. Projects (active, time-bound), Areas (ongo
 - **Dependency inversion** — Depend on abstractions
 
 ### From Leadership
-- **Conway's Law** — Structure shapes output
+- [[concepts/leadership/Conway's Law|Conway's Law]] — Structure shapes output: the architecture you get is a copy of the communication structure that built it
 - **Scale Responsibly** — Growth requires foundation
 - **4 Ts** — Team, Tech, Tools, Timing
 

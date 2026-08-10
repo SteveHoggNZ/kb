@@ -199,7 +199,7 @@ Shadow is a colleague that knows you well enough to represent you — not a tool
 
 ## Open Questions
 
-- How do you bootstrap a shadow? Cold start problem.
+- How do you bootstrap a shadow? Cold start problem. Worth noting this is the same problem [[Conway and Intelligence Portability]] leaves open from the other end — that note argues accumulated behavioural context can't be exported between vendors, and a shadow is a candidate answer, because *reported* and *desired* state are explicit, inspectable documents rather than weights. If your working context lives in a shadow you can read, switching agents costs a re-point rather than months of re-learning. Whether the shadow can hold enough to matter is exactly the cold-start question.
 - What's the right sync frequency? Too often = interruption; too rare = divergence.
 - How do shadows handle conflicting instructions from multiple people?
 - Legal/ethical status of shadow commitments?
@@ -226,3 +226,4 @@ Shadow is a colleague that knows you well enough to represent you — not a tool
 ---
 
 *Updated [[2026-08-09]] — Added to the [[_MOCs/AI-Assisted Development|AI-Assisted Development]] MOC — it had no inbound links.*
+*Updated [[2026-08-10]] — Linked [[Conway and Intelligence Portability]] at the cold-start question: an explicit shadow is a candidate answer to intelligence portability.*

@@ -101,6 +101,7 @@ Each modality compensates for the others' blind spots. The deliberate alternatio
 - [[Teams Of Agents - LLM Specialisation+Personas]] — Complementary technique: *how* to get better output once you choose your approach
 - [[Strategic vs Tactical Documentation]] — Strategic docs for long context, tactical for agentic retrieval
 - [[Colleague vs Tool-Shaped AI]] — Related framing: collaborative iteration vs autonomous execution
+- [[Four-Tier Memory Model]] — The corrective to over-reading this note: long context is a *working memory* answer, and everything it holds evaporates at the session boundary. Useful when deciding whether a problem actually needs a bigger window or needs the episodic, semantic or procedural tier instead.
 
 ## See Also
 
@@ -109,3 +110,4 @@ Each modality compensates for the others' blind spots. The deliberate alternatio
 ---
 
 *Updated [[2026-02-16]] — Added "Beyond Either/Or: The Orchestration Pattern" section*
+*Updated [[2026-08-10]] — Linked [[Four-Tier Memory Model]]: long context is the working tier, so this trade-off is about synthesis, not memory.*

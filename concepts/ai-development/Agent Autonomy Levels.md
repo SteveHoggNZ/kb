@@ -150,6 +150,7 @@ Is "correct" well-defined?
 - [[Colleague vs Tool-Shaped AI]] — Two philosophies mapping to different autonomy defaults
 - [[Agent as Device Shadow]] — Persistent agent proxy; autonomy varies by your availability
 - [[Reversibility-Calibrated Action]] — Reversibility determines safe autonomy level
+- [[Self-Report Is Not Verification]] — The second input to the decision tree above: autonomy should scale with the *external* verification available, never with the agent's expressed confidence. "It said it was sure" is the same distribution that produced the action, so it adds nothing. Before granting Level 4 or 5, ask what would tell you the action was wrong that isn't the agent.
 - [[The 2026 Builder Operating System]] — "Engineering Manager Mindset" = managing agent autonomy
 - [[The Barbell Economy]] — Level 1-3 work is increasingly Layer 1; Level 4-5 orchestration is Layer 2
 - [[The Inference Crunch]] — Agentic systems (Level 4-5) drive 100x token consumption; efficiency matters
@@ -169,3 +170,4 @@ Is "correct" well-defined?
 
 *Updated [[2026-02-24]] — Added Agentic Primitives cross-reference*
 *Updated [[2026-04-09]] — [[Conway and Intelligence Portability]]: Conway as Level 5 autonomy in practice — webhook triggers mean the agent acts without human initiation*
+*Updated [[2026-08-10]] — Added [[Self-Report Is Not Verification]] (autonomy scales with external verification, not expressed confidence).*

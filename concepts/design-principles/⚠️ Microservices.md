@@ -91,7 +91,7 @@ If all four answers are "no," keep it together.
 
 - [[Steel Thread Delivery]] — Build thin slices, not separate services
 - [[⚠️ Clean Architecture]] — Another over-abstraction anti-pattern
-- [[Conway's Law]] *(planned)* — Services should match team boundaries
+- [[Conway's Law]] — Services should match team boundaries; split without splitting the teams and the coupling reappears as release trains and shared databases
 
 ## See Also
 
@@ -104,3 +104,4 @@ If all four answers are "no," keep it together.
 ---
 
 *Updated [[2026-08-09]] — Marked [[Conway's Law]] (planned) — note doesn't exist yet.*
+*Updated [[2026-08-10]] — [[Conway's Law]] now exists; un-marked and gave the link its reason (the distributed-monolith failure mode).*

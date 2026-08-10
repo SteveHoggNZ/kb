@@ -33,6 +33,9 @@ Small Teams is a **Team + Timing** strategy: the model lives or dies on talent (
 ### [[Systems Thinking Levels]]
 Choosing team structure is a **structural** intervention (level 3), the high-leverage place to preserve speed — far more effective than exhorting people to "move faster" at the level of events.
 
+### [[Conway's Law]]
+Small Teams is the Inverse Conway Manoeuvre in practice, whether or not PostHog frames it that way. Autonomous 2–6 person units that own an area end-to-end can only produce loosely-coupled, independently-deployable components, because that is the only shape buildable without constant cross-team negotiation. The four golden rules are an architectural decision wearing an org-design hat — which is also why "stay easy to restructure" matters: you are keeping the architecture cheap to change.
+
 ## See Also
 
 - [[Leadership & Teams]] — Back to the MOC
@@ -46,3 +49,4 @@ Choosing team structure is a **structural** intervention (level 3), the high-lev
 ---
 
 *Added [[2026-06-27]] — Recorded PostHog's "small teams" org model (four golden rules, three trade-offs) for keeping startup speed at scale.*
+*Updated [[2026-08-10]] — Named the model as the Inverse Conway Manoeuvre, linking [[Conway's Law]].*

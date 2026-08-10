@@ -163,6 +163,10 @@ Conway suggests your job choice becomes your agent choice. AMP's Control Room Pa
 
 [[Harnesses Matter More Than Models]] argues the harness is the true differentiator, not the model. Conway proves this at the strategy level: the moat isn't Claude's intelligence (models converge) — it's the harness + accumulated behavioural context that creates switching costs.
 
+### Agent as Device Shadow
+
+The intelligence-portability problem is posed here and left open. [[Agent as Device Shadow]] is the KB's nearest thing to an answer: a shadow holds *reported* state (last known actual) and *desired* state as explicit, inspectable documents rather than as weights or an opaque vendor memory. If your behavioural context lives somewhere you can read, switching vendors costs a re-point rather than months of re-learning — which is precisely the export format the semantic and procedural tiers currently lack. The unresolved part is the shadow's own cold-start problem: it only helps once it holds enough to be worth carrying.
+
 ### Agent Autonomy Levels
 
 [[Agent Autonomy Levels]] defines five tiers from "wait until told" to "act independently." Conway operates at **Level 5** by default — webhook triggers mean the agent acts without human initiation. The speaker's six-month scenario is a portrait of what Level 5 autonomy looks like in practice: the agent works while you sleep.
@@ -188,3 +192,4 @@ Conway suggests your job choice becomes your agent choice. AMP's Control Room Pa
 *Created [[2026-04-09]] — Captured Conway leak analysis: always-on agents, the Google Play strategy for MCP, and intelligence portability as the new lock-in*
 *Updated [[2026-04-14]] — [[Agent Memory Architecture]]: structured bundles as portable memory vs opaque behavioural lock-in — if memory is explicit contracts, it becomes exportable*
 *Updated [[2026-08-09]] — Located the lock-in precisely in [[Four-Tier Memory Model]]'s semantic and procedural tiers; working and episodic memory are comparatively exportable.*
+*Updated [[2026-08-10]] — Added [[Agent as Device Shadow]] as a candidate answer to the portability problem this note poses and leaves open.*

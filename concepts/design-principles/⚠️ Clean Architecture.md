@@ -146,7 +146,7 @@ Others have reached similar conclusions:
 ## See Also
 
 - [[_MOCs/Design Principles]] — Back to the MOC
-- [[concepts/leadership/Conway's Law]] *(planned)* — Architecture mirrors organization
+- [[concepts/leadership/Conway's Law|Conway's Law]] — Architecture mirrors organisation: a layer boundary is only real if crossing it costs a conversation someone would rather avoid
 
 ## Sources
 
@@ -156,3 +156,4 @@ Others have reached similar conclusions:
 ---
 
 *Updated [[2026-08-09]] — Marked [[concepts/leadership/Conway's Law|Conway's Law]] (planned) — note doesn't exist yet.*
+*Updated [[2026-08-10]] — [[concepts/leadership/Conway's Law|Conway's Law]] now exists; un-marked and gave the link its reason (layers hold only where communication boundaries already do).*

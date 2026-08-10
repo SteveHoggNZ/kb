@@ -225,7 +225,7 @@ Practical checklist for upgrading AI-generated interfaces into polished SaaS pro
 
 ## Related MOCs
 
-- [[Leadership & Teams]] - Conway's Law: architecture mirrors organization
+- [[Leadership & Teams]] - [[concepts/leadership/Conway's Law|Conway's Law]]: architecture mirrors organization, so module boundaries only hold where team boundaries already do
 - [[Decision Frameworks]] - TOSCA for problem definition before solution design
 - [[Philosophy & Life]] - "Make sure you're running towards something, not away"
 

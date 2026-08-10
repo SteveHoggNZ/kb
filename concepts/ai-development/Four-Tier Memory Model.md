@@ -31,6 +31,10 @@ Each tier fails differently, so each needs a different tool:
 
 The common mistake is treating all four as one "RAG + vector DB" problem. Working memory needs no store; episodic is a query; semantic needs structure and invalidation; procedural is corrections turned into skills. The highest-leverage, cheapest win is usually **procedural** — the corrections are already sitting in your transcripts.
 
+The second common mistake is the opposite one: *"just use a bigger context window."* That is a working-memory-only answer, and [[Agents vs Long Context]] is where its real trade-off lives — long context buys genuine holistic synthesis but buys nothing durable, because everything it holds evaporates at the session boundary. A larger window makes the working tier roomier; it does not make facts non-superseding or turn corrections into skills.
+
+Which raises the transition the tiers imply but don't name: how does anything *get* from working to semantic? That promotion step is [[Context Distillation Loop - amnesia as a feature|Context Distillation]] — the re-articulation forced by a session boundary is exactly the filter that decides which working-memory content was durable enough to keep. Read together, session amnesia isn't a memory failure, it's the tier boundary doing its job.
+
 The split also explains where vendor lock-in bites. [[Conway and Intelligence Portability]] argues the next lock-in is behavioural, not data — and in these terms it is specifically the **semantic** and **procedural** tiers that are trapped. Working memory is disposable and episodic memory is logs you can export; the two tiers built slowly by accumulation are the ones with no export format. "Intelligence portability" is really the question of whether those two tiers have one.
 
 ## See Also
@@ -50,3 +54,5 @@ The split also explains where vendor lock-in bites. [[Conway and Intelligence Po
 *Added [[2026-06-27]] — Synthesis note: the four memory tiers (working/episodic/semantic/procedural) mapped to Contextual Breadcrumbs, Agent Memory Architecture, Ontologies, and Skills.*
 
 *Updated [[2026-08-09]] — Linked the procedural tier to [[Self-Report Is Not Verification]] (why corrections are the raw material) and the semantic/procedural tiers to [[Conway and Intelligence Portability]] (which tiers lock-in actually traps).*
+
+*Updated [[2026-08-10]] — Added the two connections the weekly digest flagged: [[Agents vs Long Context]] as the working-memory-only counter-argument, and [[Context Distillation Loop - amnesia as a feature]] as the working→semantic promotion step neither note had named.*

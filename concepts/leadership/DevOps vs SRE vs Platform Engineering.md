@@ -88,7 +88,7 @@ Where DevOps creates cognitive load, platform engineering alleviates it through 
 ## Related Concepts
 
 - [[The Four Ts]] — Tools are one of the 4 Ts
-- [[Conway's Law]] *(planned)* — Platform teams shape how product teams work
+- [[Conway's Law]] — Platform teams shape how product teams work: golden paths are a deliberate, narrow communication interface, and whatever the platform makes awkward gets architected around
 - [[Observability by Default]] — What SREs care about
 
 ## See Also
@@ -104,3 +104,4 @@ Where DevOps creates cognitive load, platform engineering alleviates it through 
 ---
 
 *Updated [[2026-08-09]] — Marked [[Conway's Law]] (planned) — note doesn't exist yet.*
+*Updated [[2026-08-10]] — [[Conway's Law]] now exists; un-marked and explained why the platform team is itself a Conway intervention.*

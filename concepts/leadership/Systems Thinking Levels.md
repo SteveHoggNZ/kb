@@ -80,7 +80,7 @@ When something goes wrong, ask:
 ## Related Concepts
 
 - [[The Four Ts]] — Building systems, not just responding
-- [[Conway's Law]] *(planned)* — Structure shapes output
+- [[Conway's Law]] — Structure shapes output, and the org chart is the Level 3 structure generating your architectural patterns
 - [[⚠️ Scrum Critique]] — When process becomes mental model
 - [[The Bottleneck Economy]] — Theory of Constraints applied to AI; all leverage is at the constraint
 
@@ -95,3 +95,4 @@ When something goes wrong, ask:
 ---
 
 *Updated [[2026-08-09]] — Marked [[Conway's Law]] (planned) — note doesn't exist yet.*
+*Updated [[2026-08-10]] — [[Conway's Law]] now exists; un-marked and named it as a Level 3 (systems structure) observation.*

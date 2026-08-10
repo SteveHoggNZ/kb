@@ -69,8 +69,8 @@ Scrum is a perverted implementation of agile philosophy masquerading as best pra
 ### [[concepts/leadership/Product vs Project|Separate Product and Project Delivery]] *(planned)*
 Different mindsets for different work. Don't conflate them.
 
-### [[concepts/leadership/Conway's Law|Conway's Law]] *(planned)*
-Architecture mirrors organization. Design your teams to match desired architecture.
+### [[concepts/leadership/Conway's Law|Conway's Law]]
+Architecture mirrors the organisation's communication structure, because teams minimise the interfaces they must negotiate and module boundaries land where the conversation boundaries already were. Read forwards it explains the distributed monolith ([[concepts/design-principles/⚠️ Microservices|⚠️ Microservices]] without a team split); read backwards it's the **Inverse Conway Manoeuvre** — pick the architecture, then organise teams to match, which is what [[concepts/leadership/Small Teams|Small Teams]] actually buys you.
 
 ### [[concepts/leadership/DevOps vs SRE vs Platform Engineering|DevOps → SRE → Platform Engineering]]
 The evolution of "who runs production." DevOps is a formation, not a position. SRE adds engineering discipline. Platform Engineering provides self-service golden paths.
