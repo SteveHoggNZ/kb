@@ -1,6 +1,13 @@
 
 * Do reporting
+* 
+	* Recap videos - shared to other orgs
 * Add Jira tasks
+	* Tiered token budgets - 2 categories
+	* Recommendations for limits
+* Onboarding
+	* Manager enable process
+	* 
 * Build AI SDLC demo
 	* Figure out credit card requirements
 	* Pre-record videos
