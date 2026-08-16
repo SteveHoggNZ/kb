@@ -1,4 +1,11 @@
 
+* Do reporting
+* Add Jira tasks
+* Build AI SDLC demo
+	* Figure out credit card requirements
+	* Pre-record videos
+
+
 RBNZ
 * ~~Email pack: 1, 2, & 3~~
 * Survey questions - TODO
