@@ -2,6 +2,8 @@
 * Do reporting
 * 
 	* Recap videos - shared to other orgs
+* Setup workflow swimlanes
+* 
 * Add Jira tasks
 	* Tiered token budgets - 2 categories
 	* Recommendations for limits
