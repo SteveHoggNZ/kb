@@ -50,7 +50,7 @@ Quick navigation by cluster. Not exhaustive — full annotated entries follow be
 
 **Economics & Strategy** — [[The Great Inversion]] · [[The Barbell Economy]] · [[Will AI Kill SaaS]] · [[The Implementation Layer]] · [[The Inference Crunch]] · [[Optimizing GitHub Copilot Cost]] · [[Scarcity to Abundance - A Unifying Lens]]
 
-**Org & Ways-of-Working** — [[The 15 AI Commandments]] · [[The 2026 Builder Operating System]] · [[Small Teams]] · [[Agent-First Operating Model]]
+**Org & Ways-of-Working** — [[The 15 AI Commandments]] · [[The 2026 Builder Operating System]] · [[Small Teams]] · [[Agent-First Operating Model]] · [[Knowledge Trails]]
 
 **Quality & Slop** — [[Framing the AI Slop Problem]] · [[Simplified Technical English (STE)]] · [[Conditioning the Distribution]] · [[The Inverted Causality of Language]]
 
@@ -170,6 +170,9 @@ LLMs are "extroverts" — the first output is version 1.0, not their best work. 
 
 ### [[concepts/ai-development/Teach the Delta|Teach the Delta]]
 **Teach the delta, not the baseline — the rule is already in the weights.** An information-theory view of context: high-probability tokens (standard REST conventions, typical Git flow) add nothing when you supply them; low-probability ones (your 5s timeout that doesn't reset state, your non-standard auth) are the whole signal. The delta test before adding anything to context: *would the agent have done this anyway?* Yes → cut it. It would do the opposite → definitely include. Applies to agent memory too: store surprises, prune what matches common patterns.
+
+### [[concepts/ai-development/Knowledge Trails|Knowledge Trails]]
+There's no substitute for a mission and getting hands-on — but the mental-model shifts that come out of that frustration stop looking non-obvious the moment you have them, so they never get passed on. **Expertise erases your ability to see your own delta** (the inverse of [[concepts/ai-development/Teach the Delta|Teach the Delta]]): everything hard-won gets re-filed as baseline. The fix is a *dated* knowledgebase — a technique plus its trigger, date and ordering, which is what makes it walkable by someone else. The trail is the time axis (`_periodic-notes/`), and it's the half nobody publishes. [[concepts/ai-development/Contextual Breadcrumbs|Contextual Breadcrumbs]] at human timescale.
 
 ### [[concepts/ai-development/Agentic Context Framework|Agentic Context Framework]]
 An open-source structure for the docs agents need in a codebase: `AGENTS.md` instructions, architecture documentation, and **Agent Decision Context (ADC)** records — versioned decision logs capturing what was decided, what was rejected, and how to roll back. Its strongest idea is **Retrieval Discipline**: telling the agent which files to read, in what order, and when to stop, rather than leaving retrieval to freeform exploration. A harness in the sense of [[concepts/ai-development/Harnesses Matter More Than Models|Harnesses Matter More Than Models]], and the code-file ancestor of [[concepts/ai-development/Agent Memory Architecture|the bundle pattern]].

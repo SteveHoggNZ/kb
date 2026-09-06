@@ -158,6 +158,8 @@ This is [[Agent Ergonomics]] for the Human→Agent interface: the instruction ar
 
 [[Context Distillation Loop - amnesia as a feature]] captures the upside of amnesia — each session forces re-articulation. Breadcrumbs are the complement: where distillation embraces forgetting, breadcrumbs *selectively prevent* it for critical information.
 
+[[Knowledge Trails]] runs the same stigmergy pattern at human timescale: the knowledgebase is the environment, the dated entry is the pheromone, and the next person is a reader with no shared context. The hard part inverts — an agent gets its breadcrumb pushed to it at perfect recency, whereas a human has to come looking.
+
 [[Trinity Protocol]] uses breadcrumbs as the implementation layer for its Show-and-Tell Law — the `on_close_reminder` is what actually prompts agents to "Tell" after they "Show."
 
 ---
@@ -176,3 +178,5 @@ This is [[Agent Ergonomics]] for the Human→Agent interface: the instruction ar
 *Created [[2026-02-17]] — Extracted from AMP contextual breadcrumbs strategy document*
 
 *Updated [[2026-06-27]] — Linked to [[Four-Tier Memory Model]] — this note is the "working memory (no store)" tier.*
+
+*Updated [[2026-09-07]] — Linked to [[Knowledge Trails]], the human-timescale sibling of the same stigmergy pattern.*

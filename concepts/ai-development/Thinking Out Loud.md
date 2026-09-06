@@ -158,6 +158,7 @@ From [[Agent Autonomy Levels]]:
 - [[Agent Autonomy Levels]] — Level 3 includes reflection; higher levels should build it in
 - [[Context Distillation Loop - amnesia as a feature]] — Iteration as a feature, not a bug
 - [[The 2026 Builder Operating System]] — "Temporal Separation" = deliberate reflection after execution
+- [[Knowledge Trails]] — The self-rating trick as a worked breadcrumb: obvious once you have it, invisible until someone shows you
 
 ## See Also
 
@@ -166,3 +167,5 @@ From [[Agent Autonomy Levels]]:
 ---
 
 *Updated [[2026-08-09]] — Linked the self-rating caveat to [[Self-Report Is Not Verification]] — the rating is a trigger, not a truth, which is why it's safe here and not in extraction. Added to the MOC.*
+
+*Updated [[2026-09-07]] — Cited from [[Knowledge Trails]] as an example of a technique that reads as obvious only after you already have it.*

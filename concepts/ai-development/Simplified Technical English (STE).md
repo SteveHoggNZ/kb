@@ -58,6 +58,12 @@ STE is highly effective at eliminating slop, but:
 
 The takeaway generalises past writing: **you don't change model behaviour by enumerating what not to do; you provide a complete, structured system to do instead.** A blocklist is whack-a-mole (Law); a controlled language is a distribution shift (Physics). STE just happens to be an unusually battle-tested such system — 40 years of eliminating ambiguity — which is why it out-performs both word-bans and Orwell's heuristics. But it's a form tool: pair it with substance and taste, or you get slop with good posture.
 
+## The personal trigger
+
+The reason this note exists, recorded late rather than at the time: **Enda called out the AI slop in the comments in my Terraform.** That's what prompted the search that turned up STE, and it has been my default for technical writing ever since — docs, PRs, module comments.
+
+Worth stating explicitly because the trigger is the transferable part. "Use STE" is a tip; "someone told me my Terraform read like a machine wrote it, and this is what fixed it" is a trail another person can recognise themselves in — the argument in [[Knowledge Trails]].
+
 ## See Also
 
 - [[AI-Assisted Development]] — Back to the MOC
@@ -75,3 +81,5 @@ The takeaway generalises past writing: **you don't change model behaviour by enu
 *Added [[2026-06-27]] — Recorded the STE-vs-AI-slop experiment (six slop habits, linter, STE skill cut slop 74% on Claude / 50% on GPT-5.5; fixes form not substance, kills voice).*
 
 *Updated [[2026-08-09]] — Linked the 74%-vs-3% ablation to [[Harnesses Matter More Than Models]]: model and rules held constant, only enforcement location varied.*
+
+*Updated [[2026-09-07]] — Added the personal trigger (Enda's AI-slop comment on my Terraform) and the fact that STE became the default for technical writing afterwards. Linked to [[Knowledge Trails]] as its worked example.*
