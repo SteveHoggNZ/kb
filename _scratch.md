@@ -1,4 +1,7 @@
 
+Also I'm interested in setting up our work trees so that they're independent. I think there's a way of doing this where the root work tree is checked out in a different way and the work trees are all pairs 
+
+
 * Do reporting
 * 
 	* Recap videos - shared to other orgs
