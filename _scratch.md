@@ -1,5 +1,14 @@
 
-Also I'm interested in setting up our work trees so that they're independent. I think there's a way of doing this where the root work tree is checked out in a different way and the work trees are all pairs 
+Spice - what it means for organisations
+* More software, not less
+* More developers, not less
+* Example first steps on the roadmap
+	* Days to hours - DSR
+
+* Token consumption etc
+
+
+
 
 
 * Do reporting
